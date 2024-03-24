@@ -2,6 +2,9 @@
 @using Plundi.Core.Models
 <div class="flex flex-col rounded shadow bg-slate-900 border-slate-950">
     <div class="grid px-4 py-2 items-baseline rounded-t shadow grid-cols-[1fr,auto,1fr] gap-2 bg-slate-950 @(CompactView ? "rounded-b" : "")">
+        <span class="text-xs text-slate-500"> 
+            @(Position).
+        </span>
         <span class="col-start-2 text-xs text-center lowercase text-slate-500">
             @Ability.Name
         </span>

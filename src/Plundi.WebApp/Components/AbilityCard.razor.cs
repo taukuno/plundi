@@ -13,6 +13,7 @@ public sealed partial class AbilityCard : IDisposable
 
     [Parameter] public IAbility Ability { get; set; } = default!;
     [Parameter] public bool CompactView { get; set; }
+    [Parameter] public int Position { get; set; }
     [Parameter] public EventCallback OnMoveUpClicked { get; set; }
     [Parameter] public EventCallback OnMoveDownClicked { get; set; }
 

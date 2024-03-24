@@ -61,12 +61,13 @@
                     </div>
                 </div>
                 <div class="grid gap-4 items-start xl:grid-cols-2">
-                    @foreach (var ability in GlobalState.DamageAbilities)
+                    @foreach (var ability in GlobalState.DamageAbilities.Select((x, i) => (Value: x, Index: i + 1)))
                     {
-                        <AbilityCard Ability="ability"
-                                     OnMoveUpClicked="async _ => await GlobalState.MoveDamageAbilityUpAsync(ability)"
-                                     OnMoveDownClicked="async _ => await GlobalState.MoveDamageAbilityDownAsync(ability)"
-                                     CompactView="_damageAbilitiesInCompactView"/>
+                        <AbilityCard Ability="ability.Value"
+                                     Position="ability.Index"
+                                     CompactView="_damageAbilitiesInCompactView"
+                                     OnMoveUpClicked="async _ => await GlobalState.MoveDamageAbilityUpAsync(ability.Value)"
+                                     OnMoveDownClicked="async _ => await GlobalState.MoveDamageAbilityDownAsync(ability.Value)"/>
                     }
                 </div>
                 <div class="grid grid-cols-[1fr,auto,1fr] items-baseline">
@@ -87,12 +88,13 @@
                     </div>
                 </div>
                 <div class="grid gap-4 xl:grid-cols-2">
-                    @foreach (var ability in GlobalState.UtilityAbilities)
+                    @foreach (var ability in GlobalState.UtilityAbilities.Select((x, i) => (Value: x, Index: i + 1)))
                     {
-                        <AbilityCard Ability="ability"
-                                     OnMoveUpClicked="async _ => await GlobalState.MoveUtilityAbilityUpAsync(ability)"
-                                     OnMoveDownClicked="async _ => await GlobalState.MoveUtilityAbilityDownAsync(ability)"
-                                     CompactView="_utilityAbilitiesInCompactView"/>
+                        <AbilityCard Ability="ability.Value"
+                                     Position="ability.Index"
+                                     CompactView="_utilityAbilitiesInCompactView"
+                                     OnMoveUpClicked="async _ => await GlobalState.MoveUtilityAbilityUpAsync(ability.Value)"
+                                     OnMoveDownClicked="async _ => await GlobalState.MoveUtilityAbilityDownAsync(ability.Value)"/>
                     }
                 </div>
             </div>

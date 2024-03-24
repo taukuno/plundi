@@ -50,7 +50,7 @@ public class ToxicSmackerel : IAbility
     /// <inheritdoc />
     public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        var bonusDamage = Math.Round(_damageProfiles[abilityRarity].SpecialHits[0] * CharacterStatsProvider.GetAttackPower(characterLevel), 1);
+        var bonusDamage = Math.Round(_damageProfiles[abilityRarity].SpecialHits[0] * CharacterStatsProvider.GetAttackPower(characterLevel));
         return [("frontal cone", 0), ("applies poison dot", 8), ($"does bonus damage on already poisoned targets ({bonusDamage})", 0)];
     }
 

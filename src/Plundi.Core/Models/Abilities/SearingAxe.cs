@@ -22,10 +22,10 @@ public class SearingAxe : IAbility
     public string Name => "Searing Axe";
 
     /// <inheritdoc />
-    public double CastDuration => 0;
+    public double CastDuration => 0.8;
 
     /// <inheritdoc />
-    public double ChannelDuration => 0.8;
+    public double ChannelDuration => 0;
 
     /// <inheritdoc />
     public string ImagePath => "searing_axe.jpg";

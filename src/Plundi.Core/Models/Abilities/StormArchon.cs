@@ -22,10 +22,10 @@ public class StormArchon : IAbility
     public string Name => "Storm Archon";
 
     /// <inheritdoc />
-    public double CastDuration => 0;
+    public double CastDuration => 0.75;
 
     /// <inheritdoc />
-    public double ChannelDuration => 0.75;
+    public double ChannelDuration => 0;
 
     /// <inheritdoc />
     public string ImagePath => "storm_archon.jpg";

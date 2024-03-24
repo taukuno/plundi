@@ -1,0 +1,15 @@
+﻿<Router AppAssembly="@typeof(App).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
+    </Found>
+    <NotFound>
+        <PageTitle>Not found...</PageTitle>
+        <LayoutView Layout="@typeof(MainLayout)">
+            <main class="overflow-auto z-0 grow">
+                <div class="p-6 mx-auto max-w-screen-xl">
+                    Sorry, there's nothing at this address.
+                </div>
+            </main>
+        </LayoutView>
+    </NotFound>
+</Router>

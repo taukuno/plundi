@@ -58,6 +58,14 @@ public sealed partial class Home
         _utilityAbilities.AddRange(utilityAbilities.Select(x => new RarifiedAbility(x, AbilityRarity.Common)));
     }
 
+    private void SetAllAbilityRarities(AbilityRarity rarity)
+    {
+        foreach (var ability in _damageAbilities.Concat(_utilityAbilities))
+        {
+            ability.Rarity = rarity;
+        }
+    }
+
     private void MoveAbility(RarifiedAbility ability, List<RarifiedAbility> inList, int offset)
     {
         var originalIndex = inList.IndexOf(ability);

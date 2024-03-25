@@ -16,19 +16,35 @@ public class ToxicSmackerel : IAbility
     {
         {
             AbilityRarity.Common,
-            new() { DefaultHits = [0.114], SpecialHits = [0.18], DotHits = [0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333] }
+            new()
+            {
+                DefaultHits = [0.114], SpecialHits = [0.18],
+                DotHits = [0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333]
+            }
         },
         {
             AbilityRarity.Uncommon,
-            new() { DefaultHits = [0.12], SpecialHits = [0.19], DotHits = [0.0350, 0.0350, 0.0350, 0.0350, 0.0350, 0.0350, 0.0350, 0.0350] }
+            new()
+            {
+                DefaultHits = [0.12], SpecialHits = [0.19],
+                DotHits = [0.0350, 0.0350, 0.0350, 0.0350, 0.0350, 0.0350, 0.0350, 0.0350]
+            }
         },
         {
             AbilityRarity.Rare,
-            new() { DefaultHits = [0.126], SpecialHits = [0.20], DotHits = [0.0368, 0.0368, 0.0368, 0.0368, 0.0368, 0.0368, 0.0368, 0.0368] }
+            new()
+            {
+                DefaultHits = [0.126], SpecialHits = [0.20],
+                DotHits = [0.0368, 0.0368, 0.0368, 0.0368, 0.0368, 0.0368, 0.0368, 0.0368]
+            }
         },
         {
             AbilityRarity.Epic,
-            new() { DefaultHits = [0.132], SpecialHits = [0.21], DotHits = [0.0385, 0.0385, 0.0385, 0.0385, 0.0385, 0.0385, 0.0385, 0.0385] }
+            new()
+            {
+                DefaultHits = [0.132], SpecialHits = [0.21],
+                DotHits = [0.0385, 0.0385, 0.0385, 0.0385, 0.0385, 0.0385, 0.0385, 0.0385]
+            }
         }
     };
 
@@ -50,8 +66,15 @@ public class ToxicSmackerel : IAbility
     /// <inheritdoc />
     public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        var bonusDamage = Math.Round(_damageProfiles[abilityRarity].SpecialHits[0] * CharacterStatsProvider.GetAttackPower(characterLevel));
-        return [("frontal cone", 0), ("applies poison dot", 8), ($"does bonus damage on already poisoned targets ({bonusDamage})", 0)];
+        var bonusDamage =
+            Math.Round(
+                _damageProfiles[abilityRarity].SpecialHits[0] * CharacterStatsProvider.GetAttackPower(characterLevel),
+                1);
+        return
+        [
+            ("frontal cone", 0), ("applies poison dot", 8),
+            ($"does bonus damage on already poisoned targets ({bonusDamage})", 0)
+        ];
     }
 
     /// <inheritdoc />

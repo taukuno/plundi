@@ -5,7 +5,7 @@
     <div class="py-6 px-2 mx-auto max-w-screen-2xl">
         <div class="flex flex-col gap-8 p-4">
             <div class="flex flex-col gap-4 items-stretch">
-                <span class="text-xs text-center text-slate-500">
+                <span class="text-2xl font-light">
                     select your level
                 </span>
                 <div class="grid grid-cols-10 gap-2">
@@ -43,21 +43,19 @@
                 </div>
             </div>
             <div class="flex flex-col gap-4 items-stretch">
-                <div class="grid grid-cols-[1fr,auto,1fr] items-baseline">
-                    <span class="col-start-2 text-xs text-center text-slate-500">
+                <div class="flex justify-between items-center">
+                    <span class="text-2xl font-light">
                         damage abilities
                     </span>
-                    <div class="flex col-start-3 justify-end">
-                        <div class="flex">
-                            <button class="text-xs py-1 px-2 h-8 rounded-l border-l border-y border-slate-950 @(_damageAbilitiesInCompactView ? "bg-slate-950" : "bg-slate-800")"
-                                    @onclick="() => _damageAbilitiesInCompactView = !_damageAbilitiesInCompactView">
-                                compact
-                            </button>
-                            <button class="text-xs py-1 px-2 h-8 rounded-r border-r border-y border-slate-950 @(_damageAbilitiesInCompactView ? "bg-slate-800" : "bg-slate-950")"
-                                    @onclick="() => _damageAbilitiesInCompactView = !_damageAbilitiesInCompactView">
-                                detailed
-                            </button>
-                        </div>
+                    <div class="flex">
+                        <button class="text-xs py-1 px-2 h-8 rounded-l border-l border-y border-slate-950 @(_damageAbilitiesInCompactView ? "bg-slate-950" : "bg-slate-800")"
+                                @onclick="() => _damageAbilitiesInCompactView = !_damageAbilitiesInCompactView">
+                            compact
+                        </button>
+                        <button class="text-xs py-1 px-2 h-8 rounded-r border-r border-y border-slate-950 @(_damageAbilitiesInCompactView ? "bg-slate-800" : "bg-slate-950")"
+                                @onclick="() => _damageAbilitiesInCompactView = !_damageAbilitiesInCompactView">
+                            detailed
+                        </button>
                     </div>
                 </div>
                 <div class="grid gap-4 items-start xl:grid-cols-2">
@@ -70,21 +68,19 @@
                                      OnMoveDownClicked="async _ => await GlobalState.MoveDamageAbilityDownAsync(ability.Value)"/>
                     }
                 </div>
-                <div class="grid grid-cols-[1fr,auto,1fr] items-baseline">
-                    <span class="col-start-2 text-xs text-center text-slate-500">
+                <div class="flex justify-between items-center mt-4">
+                    <span class="text-2xl font-light">
                         utility abilities
                     </span>
-                    <div class="flex col-start-3 justify-end">
-                        <div class="flex">
-                            <button class="text-xs py-1 px-2 h-8 rounded-l border-l border-y border-slate-950 @(_utilityAbilitiesInCompactView ? "bg-slate-950" : "bg-slate-800")"
-                                    @onclick="() => _utilityAbilitiesInCompactView = !_utilityAbilitiesInCompactView">
-                                compact
-                            </button>
-                            <button class="text-xs py-1 px-2 h-8 rounded-r border-r border-y border-slate-950 @(_utilityAbilitiesInCompactView ? "bg-slate-800" : "bg-slate-950")"
-                                    @onclick="() => _utilityAbilitiesInCompactView = !_utilityAbilitiesInCompactView">
-                                detailed
-                            </button>
-                        </div>
+                    <div class="flex">
+                        <button class="text-xs py-1 px-2 h-8 rounded-l border-l border-y border-slate-950 @(_utilityAbilitiesInCompactView ? "bg-slate-950" : "bg-slate-800")"
+                                @onclick="() => _utilityAbilitiesInCompactView = !_utilityAbilitiesInCompactView">
+                            compact
+                        </button>
+                        <button class="text-xs py-1 px-2 h-8 rounded-r border-r border-y border-slate-950 @(_utilityAbilitiesInCompactView ? "bg-slate-800" : "bg-slate-950")"
+                                @onclick="() => _utilityAbilitiesInCompactView = !_utilityAbilitiesInCompactView">
+                            detailed
+                        </button>
                     </div>
                 </div>
                 <div class="grid gap-4 xl:grid-cols-2">

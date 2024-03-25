@@ -11,7 +11,7 @@ public sealed partial class Home : IDisposable
 
     [Inject] private GlobalState GlobalState { get; set; } = default!;
     [Inject] private List<IAbility> Abilities { get; set; } = default!;
-
+    [Inject] private NavigationManager NavigationManager { get; set; } = default!;
     /// <inheritdoc />
     public void Dispose()
     {

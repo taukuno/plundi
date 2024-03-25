@@ -36,7 +36,7 @@ public class Faeform : IAbility
     /// <inheritdoc />
     public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("+125% movement speed", 3), ("50% damage reduction", 3), ("breaks all CC", 0), ("immune to CC", 3)];
+        return [("+125% movement speed", 3), ("50% damage reduction", 1), ("breaks all CC", 0), ("immune to CC", 3)];
     }
 
     /// <inheritdoc />

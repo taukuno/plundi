@@ -1,29 +1,24 @@
 using Microsoft.AspNetCore.Components;
 using Plundi.Core.Models;
-using Plundi.WebApp.States;
+using Plundi.WebApp.Common.Services;
+using Plundi.WebApp.Models;
 
 namespace Plundi.WebApp.Pages;
 
-public sealed partial class Home : IDisposable
+public sealed partial class Home
 {
-    private bool _damageAbilitiesInCompactView;
-    private bool _utilityAbilitiesInCompactView;
+    private const string DamageAbilitiesOrderStorageKey = "damageAbilitiesOrder";
+    private const string UtilityAbilitiesOrderStorageKey = "utilityAbilitiesOrder";
 
-    [Inject] private GlobalState GlobalState { get; set; } = default!;
+    private int _characterLevel = 1;
+    private List<RarifiedAbility> _damageAbilities = [];
+    private List<RarifiedAbility> _utilityAbilities = [];
+    private bool _displayDamageAbilitiesInCompactView;
+    private bool _displayUtilityAbilitiesInCompactView;
+
     [Inject] private List<IAbility> Abilities { get; set; } = default!;
     [Inject] private NavigationManager NavigationManager { get; set; } = default!;
-    /// <inheritdoc />
-    public void Dispose()
-    {
-        GlobalState.OnChange -= StateHasChanged;
-    }
-
-    /// <inheritdoc />
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
-        GlobalState.OnChange += StateHasChanged;
-    }
+    [Inject] private LocalStorage LocalStorage { get; set; } = default!;
 
     /// <inheritdoc />
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -32,9 +27,69 @@ public sealed partial class Home : IDisposable
 
         if (firstRender)
         {
-            await GlobalState.InitializeAbilitiesAsync(Abilities);
-            GlobalState.OnChange += StateHasChanged;
+            await InitilizeAbilitesAsync();
             StateHasChanged();
         }
+    }
+
+    private async Task InitilizeAbilitesAsync()
+    {
+        var damageAbilities = Abilities.Where(x => x.Type == AbilityType.Damage).ToList();
+        var utilityAbilities = Abilities.Where(x => x.Type == AbilityType.Utility).ToList();
+
+        var damageAbilitiesOrder = await LocalStorage.GetItemAsync<List<string>>(DamageAbilitiesOrderStorageKey);
+        var utilityAbilitiesOrder = await LocalStorage.GetItemAsync<List<string>>(UtilityAbilitiesOrderStorageKey);
+
+        foreach (var ability in from abilityName in damageAbilitiesOrder ?? []
+                 select damageAbilities.SingleOrDefault(x => x.Name == abilityName))
+        {
+            damageAbilities.Remove(ability);
+            _damageAbilities.Add(new(ability, AbilityRarity.Common));
+        }
+
+        foreach (var ability in from abilityName in utilityAbilitiesOrder ?? []
+                 select utilityAbilities.SingleOrDefault(x => x.Name == abilityName))
+        {
+            utilityAbilities.Remove(ability);
+            _utilityAbilities.Add(new(ability, AbilityRarity.Common));
+        }
+
+        _damageAbilities.AddRange(damageAbilities.Select(x => new RarifiedAbility(x, AbilityRarity.Common)));
+        _utilityAbilities.AddRange(utilityAbilities.Select(x => new RarifiedAbility(x, AbilityRarity.Common)));
+    }
+
+    private void MoveAbility(RarifiedAbility ability, List<RarifiedAbility> inList, int offset)
+    {
+        var originalIndex = inList.IndexOf(ability);
+        if (originalIndex == -1)
+        {
+            return;
+        }
+
+
+        var maxAllowedIndex = inList.Count - 1;
+        var newIndex = originalIndex + offset;
+        newIndex = newIndex < 0 ? 0 : newIndex > maxAllowedIndex ? maxAllowedIndex : newIndex;
+
+        inList.RemoveAt(originalIndex);
+        inList.Insert(newIndex, ability);
+    }
+
+    private async Task MoveDamageAbilityAsync(RarifiedAbility ability, MoveDirection direction)
+    {
+        MoveAbility(ability, _damageAbilities, (int)direction);
+        await LocalStorage.SetItemAsync(DamageAbilitiesOrderStorageKey, _damageAbilities.Select(x => x.Name));
+    }
+
+    private async Task MoveUtilityAbilityAsync(RarifiedAbility ability, MoveDirection direction)
+    {
+        MoveAbility(ability, _utilityAbilities, (int)direction);
+        await LocalStorage.SetItemAsync(UtilityAbilitiesOrderStorageKey, _utilityAbilities.Select(x => x.Name));
+    }
+
+    private enum MoveDirection
+    {
+        Up = -1,
+        Down = 1
     }
 }

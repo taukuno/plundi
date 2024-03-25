@@ -1,5 +1,5 @@
 <div class="flex flex-col rounded shadow bg-slate-900 border-slate-950">
-    <div class="grid px-4 py-2 items-baseline rounded-t shadow grid-cols-[1fr,auto,1fr] gap-2 bg-slate-950 @(CompactView ? "rounded-b" : "")">
+    <div class="grid px-4 py-2 items-baseline rounded-t shadow grid-cols-[1fr,auto,1fr] gap-2 bg-slate-950 @(DisplayInCompactView ? "rounded-b" : "")">
         <span class="text-xs text-slate-500">
             @(Position).
         </span>
@@ -16,8 +16,8 @@
         </div>
     </div>
     @{
-        var damageReport = DamageReportGenerator.GenerateDamageReport(Ability.OriginalAbility, GlobalState.CharacterLevel, Ability.Rarity);
-        var cooldown = Ability.GetCooldown(GlobalState.CharacterLevel);
+        var damageReport = DamageReportGenerator.GenerateDamageReport(Ability.OriginalAbility, CharacterLevel, Ability.Rarity);
+        var cooldown = Ability.GetCooldown(CharacterLevel);
 
         var minDps = Math.Round(damageReport.DamageRange.Min / cooldown, 1);
         var maxDps = Math.Round(damageReport.DamageRange.Max / cooldown, 1);
@@ -25,7 +25,7 @@
         var minHitAndDotDamage = damageReport.HitDamageRange.Min + damageReport.DotDamageRange.Min;
         var maxHitAndDotDamage = damageReport.HitDamageRange.Max + damageReport.DotDamageRange.Max;
 
-        if (CompactView)
+        if (DisplayInCompactView)
         {
             <div class="flex flex-row gap-2 items-center p-4 2xl:gap-4 md:max-xl:gap-4">
                 <div class="w-24 h-24 bg-clip-border bg-cover rounded border shadow border-slate-950" style="background-image: url('img/abilities/@Ability.ImagePath')">
@@ -171,7 +171,7 @@
             </div>
             <hr class="border-slate-950"/>
             <div class="flex flex-wrap gap-4 justify-center items-start p-4 grow">
-                @foreach (var effect in Ability.GetEffects(GlobalState.CharacterLevel))
+                @foreach (var effect in Ability.GetEffects(CharacterLevel))
                 {
                     if (effect.Duration == 0)
                     {

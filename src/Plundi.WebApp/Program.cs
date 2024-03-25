@@ -4,13 +4,11 @@ using Plundi.Core.Models;
 using Plundi.Core.Models.Abilities;
 using Plundi.WebApp;
 using Plundi.WebApp.Common.Services;
-using Plundi.WebApp.States;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddSingleton<GlobalState>();
 builder.Services.AddSingleton<LocalStorage>();
 builder.Services.AddSingleton(new List<IAbility>
 {

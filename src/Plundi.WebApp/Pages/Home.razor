@@ -1,5 +1,4 @@
 ﻿@page "/"
-@using Plundi.Core.Services
 
 <main class="overflow-auto z-0 grow">
     <div class="py-6 px-2 mx-auto max-w-screen-2xl">
@@ -12,8 +11,8 @@
                     @for (var i = 1; i <= 10; i++)
                     {
                         var characterLevel = i;
-                        <button class="py-1 px-2 h-8 font-mono rounded border-slate-950 border shadow focus:outline-none @(GlobalState.CharacterLevel == characterLevel ? "bg-sky-600 hover:bg-sky-500" : "bg-slate-900 hover:bg-slate-950")"
-                                @onclick="() => { GlobalState.CharacterLevel = characterLevel; }">
+                        <button class="py-1 px-2 h-8 font-mono rounded border-slate-950 border shadow focus:outline-none @(_characterLevel == characterLevel ? "bg-sky-600 hover:bg-sky-500" : "bg-slate-900 hover:bg-slate-950")"
+                                @onclick="() => { _characterLevel = characterLevel; }">
                             @characterLevel
                         </button>
                     }
@@ -23,21 +22,21 @@
                 <div class="flex flex-col gap-4 items-center p-4 rounded border shadow md:p-6 border-slate-950 bg-slate-900">
                     <div class="flex gap-2 items-baseline md:gap-4">
                         <i class="text-2xl md:text-4xl fa-solid fa-hand"></i>
-                        <span class="font-mono text-2xl md:text-4xl">@Math.Round(CharacterStatsProvider.CalculateMeleeAttack(GlobalState.CharacterLevel))</span>
+                        <span class="font-mono text-2xl md:text-4xl">@Math.Round(CharacterStatsProvider.CalculateMeleeAttack(_characterLevel))</span>
                     </div>
                     <span class="text-xs text-slate-500">melee damage</span>
                 </div>
                 <div class="flex flex-col gap-4 items-center p-4 rounded border shadow md:p-6 border-slate-950 bg-slate-900">
                     <div class="flex gap-2 items-baseline md:gap-4">
                         <i class="text-2xl text-red-500 md:text-4xl fa-solid fa-heart"></i>
-                        <span class="font-mono text-2xl md:text-4xl">@CharacterStatsProvider.GetHitPoints(GlobalState.CharacterLevel)</span>
+                        <span class="font-mono text-2xl md:text-4xl">@CharacterStatsProvider.GetHitPoints(_characterLevel)</span>
                     </div>
                     <span class="text-xs text-slate-500">hit points</span>
                 </div>
                 <div class="flex flex-col gap-4 items-center p-4 rounded border shadow md:p-6 border-slate-950 bg-slate-900">
                     <div class="flex gap-2 items-baseline md:gap-4">
                         <i class="text-2xl text-yellow-500 md:text-4xl fa-solid fa-bolt"></i>
-                        <span class="font-mono text-2xl md:text-4xl">@CharacterStatsProvider.GetAttackPower(GlobalState.CharacterLevel)</span>
+                        <span class="font-mono text-2xl md:text-4xl">@CharacterStatsProvider.GetAttackPower(_characterLevel)</span>
                     </div>
                     <span class="text-xs text-slate-500">attack power</span>
                 </div>
@@ -48,51 +47,55 @@
                         damage abilities
                     </span>
                     <div class="flex">
-                        <button class="text-xs py-1 px-2 h-8 rounded-l border-l border-y border-slate-950 @(_damageAbilitiesInCompactView ? "bg-slate-950" : "bg-slate-800")"
-                                @onclick="() => _damageAbilitiesInCompactView = !_damageAbilitiesInCompactView">
+                        <button class="text-xs py-1 px-2 h-8 rounded-l border-l border-y border-slate-950 @(_displayDamageAbilitiesInCompactView ? "bg-slate-950" : "bg-slate-800")"
+                                @onclick="() => _displayDamageAbilitiesInCompactView = !_displayDamageAbilitiesInCompactView">
                             compact
                         </button>
-                        <button class="text-xs py-1 px-2 h-8 rounded-r border-r border-y border-slate-950 @(_damageAbilitiesInCompactView ? "bg-slate-800" : "bg-slate-950")"
-                                @onclick="() => _damageAbilitiesInCompactView = !_damageAbilitiesInCompactView">
+                        <button class="text-xs py-1 px-2 h-8 rounded-r border-r border-y border-slate-950 @(_displayDamageAbilitiesInCompactView ? "bg-slate-800" : "bg-slate-950")"
+                                @onclick="() => _displayDamageAbilitiesInCompactView = !_displayDamageAbilitiesInCompactView">
                             detailed
                         </button>
                     </div>
                 </div>
-                <div class="grid gap-4 items-start xl:grid-cols-2">
-                    @foreach (var ability in GlobalState.DamageAbilities.Select((x, i) => (Value: x, Index: i + 1)))
-                    {
-                        <AbilityCard Ability="new(ability.Value, AbilityRarity.Common)"
-                                     Position="ability.Index"
-                                     CompactView="_damageAbilitiesInCompactView"
-                                     OnMoveUpClicked="async _ => await GlobalState.MoveDamageAbilityUpAsync(ability.Value)"
-                                     OnMoveDownClicked="async _ => await GlobalState.MoveDamageAbilityDownAsync(ability.Value)"/>
-                    }
-                </div>
-                <div class="flex justify-between items-center mt-4">
-                    <span class="text-2xl font-light">
-                        utility abilities
-                    </span>
-                    <div class="flex">
-                        <button class="text-xs py-1 px-2 h-8 rounded-l border-l border-y border-slate-950 @(_utilityAbilitiesInCompactView ? "bg-slate-950" : "bg-slate-800")"
-                                @onclick="() => _utilityAbilitiesInCompactView = !_utilityAbilitiesInCompactView">
-                            compact
-                        </button>
-                        <button class="text-xs py-1 px-2 h-8 rounded-r border-r border-y border-slate-950 @(_utilityAbilitiesInCompactView ? "bg-slate-800" : "bg-slate-950")"
-                                @onclick="() => _utilityAbilitiesInCompactView = !_utilityAbilitiesInCompactView">
-                            detailed
-                        </button>
+                <CascadingValue Value="_characterLevel" Name="CharacterLevel">
+                    <div class="grid gap-4 items-start xl:grid-cols-2">
+                        <CascadingValue Value="_displayDamageAbilitiesInCompactView" Name="DisplayInCompactView">
+                            @foreach (var ability in _damageAbilities.Select((x, i) => (Value: x, Index: i + 1)))
+                            {
+                                <AbilityCard Ability="ability.Value"
+                                             Position="ability.Index"
+                                             OnMoveUpClicked="async _ => await MoveDamageAbilityAsync(ability.Value, MoveDirection.Up)"
+                                             OnMoveDownClicked="async _ => await MoveDamageAbilityAsync(ability.Value, MoveDirection.Down)"/>
+                            }
+                        </CascadingValue>
                     </div>
-                </div>
-                <div class="grid gap-4 xl:grid-cols-2">
-                    @foreach (var ability in GlobalState.UtilityAbilities.Select((x, i) => (Value: x, Index: i + 1)))
-                    {
-                        <AbilityCard Ability="new(ability.Value, AbilityRarity.Common)"
-                                     Position="ability.Index"
-                                     CompactView="_utilityAbilitiesInCompactView"
-                                     OnMoveUpClicked="async _ => await GlobalState.MoveUtilityAbilityUpAsync(ability.Value)"
-                                     OnMoveDownClicked="async _ => await GlobalState.MoveUtilityAbilityDownAsync(ability.Value)"/>
-                    }
-                </div>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-2xl font-light">
+                            utility abilities
+                        </span>
+                        <div class="flex">
+                            <button class="text-xs py-1 px-2 h-8 rounded-l border-l border-y border-slate-950 @(_displayUtilityAbilitiesInCompactView ? "bg-slate-950" : "bg-slate-800")"
+                                    @onclick="() => _displayUtilityAbilitiesInCompactView = !_displayUtilityAbilitiesInCompactView">
+                                compact
+                            </button>
+                            <button class="text-xs py-1 px-2 h-8 rounded-r border-r border-y border-slate-950 @(_displayUtilityAbilitiesInCompactView ? "bg-slate-800" : "bg-slate-950")"
+                                    @onclick="() => _displayUtilityAbilitiesInCompactView = !_displayUtilityAbilitiesInCompactView">
+                                detailed
+                            </button>
+                        </div>
+                    </div>
+                    <div class="grid gap-4 xl:grid-cols-2">
+                        <CascadingValue Value="_displayUtilityAbilitiesInCompactView" Name="DisplayInCompactView">
+                            @foreach (var ability in _utilityAbilities.Select((x, i) => (Value: x, Index: i + 1)))
+                            {
+                                <AbilityCard Ability="ability.Value"
+                                             Position="ability.Index"
+                                             OnMoveUpClicked="async _ => await MoveUtilityAbilityAsync(ability.Value, MoveDirection.Up)"
+                                             OnMoveDownClicked="async _ => await MoveUtilityAbilityAsync(ability.Value, MoveDirection.Down)"/>
+                            }
+                        </CascadingValue>
+                    </div>
+                </CascadingValue>
             </div>
             <div class="flex justify-center">
                 <button class="py-1 px-4 text-red-500 rounded border-2 border-red-500 hover:font-bold hover:text-black hover:uppercase hover:bg-red-500"

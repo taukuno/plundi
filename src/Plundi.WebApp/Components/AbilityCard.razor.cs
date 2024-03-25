@@ -1,33 +1,21 @@
 using System.Text;
 using Microsoft.AspNetCore.Components;
-using Plundi.Core.Models;
 using Plundi.WebApp.Models;
-using Plundi.WebApp.States;
 
 namespace Plundi.WebApp.Components;
 
-public sealed partial class AbilityCard : IDisposable
+public sealed partial class AbilityCard
 {
-    [Inject] private GlobalState GlobalState { get; set; } = default!;
-
     [Parameter] public RarifiedAbility Ability { get; set; } = default!;
-    [Parameter] public bool CompactView { get; set; }
     [Parameter] public int Position { get; set; }
     [Parameter] public EventCallback OnMoveUpClicked { get; set; }
     [Parameter] public EventCallback OnMoveDownClicked { get; set; }
 
-    /// <inheritdoc />
-    public void Dispose()
-    {
-        GlobalState.OnChange -= StateHasChanged;
-    }
+    [CascadingParameter(Name = "CharacterLevel")]
+    public int CharacterLevel { get; set; }
 
-    /// <inheritdoc />
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
-        GlobalState.OnChange += StateHasChanged;
-    }
+    [CascadingParameter(Name = "DisplayInCompactView")]
+    public bool DisplayInCompactView { get; set; }
 
     private static string DamageSequenceToReadableString(List<double> damageSequence)
     {

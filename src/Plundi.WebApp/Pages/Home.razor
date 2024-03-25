@@ -61,7 +61,7 @@
                 <div class="grid gap-4 items-start xl:grid-cols-2">
                     @foreach (var ability in GlobalState.DamageAbilities.Select((x, i) => (Value: x, Index: i + 1)))
                     {
-                        <AbilityCard Ability="ability.Value"
+                        <AbilityCard Ability="new(ability.Value, AbilityRarity.Common)"
                                      Position="ability.Index"
                                      CompactView="_damageAbilitiesInCompactView"
                                      OnMoveUpClicked="async _ => await GlobalState.MoveDamageAbilityUpAsync(ability.Value)"
@@ -86,7 +86,7 @@
                 <div class="grid gap-4 xl:grid-cols-2">
                     @foreach (var ability in GlobalState.UtilityAbilities.Select((x, i) => (Value: x, Index: i + 1)))
                     {
-                        <AbilityCard Ability="ability.Value"
+                        <AbilityCard Ability="new(ability.Value, AbilityRarity.Common)"
                                      Position="ability.Index"
                                      CompactView="_utilityAbilitiesInCompactView"
                                      OnMoveUpClicked="async _ => await GlobalState.MoveUtilityAbilityUpAsync(ability.Value)"

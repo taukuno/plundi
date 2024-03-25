@@ -1,17 +1,16 @@
 using System.Text;
 using Microsoft.AspNetCore.Components;
 using Plundi.Core.Models;
+using Plundi.WebApp.Models;
 using Plundi.WebApp.States;
 
 namespace Plundi.WebApp.Components;
 
 public sealed partial class AbilityCard : IDisposable
 {
-    private AbilityRarity _abilityRarity = AbilityRarity.Common;
-
     [Inject] private GlobalState GlobalState { get; set; } = default!;
 
-    [Parameter] public IAbility Ability { get; set; } = default!;
+    [Parameter] public RarifiedAbility Ability { get; set; } = default!;
     [Parameter] public bool CompactView { get; set; }
     [Parameter] public int Position { get; set; }
     [Parameter] public EventCallback OnMoveUpClicked { get; set; }

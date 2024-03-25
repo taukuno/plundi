@@ -34,9 +34,13 @@ public class Windstorm : IAbility
     public AbilityType Type => AbilityType.Utility;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("frontal swirly", 0), ("stun on hit", 2.5)];
+        return
+        [
+            new() { Description = "frontal swirly", Duration = 0 },
+            new() { Description = "stun on hit", Duration = 2.5 }
+        ];
     }
 
     /// <inheritdoc />

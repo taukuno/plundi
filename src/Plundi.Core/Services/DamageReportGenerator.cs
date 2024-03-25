@@ -27,7 +27,6 @@ public class DamageReportGenerator
 
         return new()
         {
-            PotentialDamage = maxDmg,
             DamageRange = (minDmg, maxDmg),
             HitDamageRange = (defaultHits.FirstOrDefault(), Math.Round(defaultHits.Sum(), 1)),
             SpecialDamageRange = (0, Math.Round(specialHits.Sum(), 1)),

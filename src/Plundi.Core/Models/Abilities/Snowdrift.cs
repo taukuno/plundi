@@ -34,9 +34,13 @@ public class Snowdrift : IAbility
     public AbilityType Type => AbilityType.Utility;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("AoE", 0), ("stacking slow (30-90%) on hit", 4.5)];
+        return
+        [
+            new() { Description = "AoE", Duration = 0 },
+            new() { Description = "stacking slow (30-90%) on hit", Duration = 4.5 }
+        ];
     }
 
     /// <inheritdoc />

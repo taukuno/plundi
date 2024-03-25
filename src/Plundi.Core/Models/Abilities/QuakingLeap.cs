@@ -34,9 +34,14 @@ public class QuakingLeap : IAbility
     public AbilityType Type => AbilityType.Utility;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("stun AoE on crash down", 0), ("stuns on hit", 0.75), ("can be recast mid air to crash down early", 0)];
+        return
+        [
+            new() { Description = "stun AoE on crash down", Duration = 0 },
+            new() { Description = "stuns on hit", Duration = 0.75 },
+            new() { Description = "can be recast mid air to crash down early", Duration = 0 }
+        ];
     }
 
     /// <inheritdoc />

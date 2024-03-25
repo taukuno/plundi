@@ -34,9 +34,14 @@ public class HuntersChains : IAbility
     public AbilityType Type => AbilityType.Utility;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("chain to target (35 yards)", 0), ("recast to pull yourself to target", 0), ("target will be pulled back if out of range", 0)];
+        return
+        [
+            new() { Description = "chain to target (35 yards)", Duration = 0 },
+            new() { Description = "recast to pull yourself to target", Duration = 0 },
+            new() { Description = "target will be pulled back if out of range", Duration = 0 }
+        ];
     }
 
     /// <inheritdoc />

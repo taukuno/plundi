@@ -7,7 +7,7 @@ public interface IAbility
     public double ChannelDuration { get; }
     public string ImagePath { get; }
     public AbilityType Type { get; }
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity);
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity);
     public double GetCooldown(int characterLevel, AbilityRarity abilityRarity);
     public DamageProfile GetDamageProfile(int characterLevel, AbilityRarity abilityRarity);
 }

@@ -64,7 +64,7 @@ public class ToxicSmackerel : IAbility
     public AbilityType Type => AbilityType.Damage;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
         var bonusDamage =
             Math.Round(
@@ -72,8 +72,9 @@ public class ToxicSmackerel : IAbility
                 1);
         return
         [
-            ("frontal cone", 0), ("applies poison dot", 8),
-            ($"does bonus damage on already poisoned targets ({bonusDamage})", 0)
+            new() { Description = "frontal cone", Duration = 0 },
+            new() { Description = "applies poison dot", Duration = 8 },
+            new() { Description = $"does bonus damage on already poisoned targets ({bonusDamage})", Duration = 8 }
         ];
     }
 

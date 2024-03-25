@@ -34,9 +34,13 @@ public class SearingAxe : IAbility
     public AbilityType Type => AbilityType.Damage;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("frontal cone", 0), ("small knockback on hit", 0)];
+        return
+        [
+            new() { Description = "frontal cone", Duration = 0 },
+            new() { Description = "small knockback on hit", Duration = 0 }
+        ];
     }
 
     /// <inheritdoc />

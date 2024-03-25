@@ -34,15 +34,35 @@ public class SlicingWinds : IAbility
     public AbilityType Type => AbilityType.Damage;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
         return abilityRarity switch
         {
-            AbilityRarity.Common => [("frontal dash", 0), ("dash can be charged up to 12 yards", 0)],
-            AbilityRarity.Uncommon => [("frontal dash", 0), ("dash can be charged up to 20 yards", 0)],
-            AbilityRarity.Rare => [("frontal dash", 0), ("dash can be charged up to 28 yards", 0)],
-            AbilityRarity.Epic => [("frontal dash", 0), ("dash can be charged up to 36 yards", 0)],
-            _ => [("frontal dash", 0), ("dash can be charged up to 12 yards", 0)]
+            AbilityRarity.Common =>
+            [
+                new() { Description = "frontal dash", Duration = 0 },
+                new() { Description = "dash can be charged up to 12 yards", Duration = 0 }
+            ],
+            AbilityRarity.Uncommon =>
+            [
+                new() { Description = "frontal dash", Duration = 0 },
+                new() { Description = "dash can be charged up to 20 yards", Duration = 0 }
+            ],
+            AbilityRarity.Rare =>
+            [
+                new() { Description = "frontal dash", Duration = 0 },
+                new() { Description = "dash can be charged up to 28 yards", Duration = 0 }
+            ],
+            AbilityRarity.Epic =>
+            [
+                new() { Description = "frontal dash", Duration = 0 },
+                new() { Description = "dash can be charged up to 36 yards", Duration = 0 }
+            ],
+            _ =>
+            [
+                new() { Description = "frontal dash", Duration = 0 },
+                new() { Description = "dash can be charged up to 12 yards", Duration = 0 }
+            ]
         };
     }
 

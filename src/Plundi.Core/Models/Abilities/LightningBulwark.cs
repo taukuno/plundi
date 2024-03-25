@@ -13,14 +13,37 @@ public class LightningBulwark : IAbility
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
         {
-            AbilityRarity.Common, new() { DefaultHits = [], SpecialHits = [0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035], DotHits = [] }
+            AbilityRarity.Common,
+            new()
+            {
+                DefaultHits = [], SpecialHits = [0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035],
+                DotHits = []
+            }
         },
         {
             AbilityRarity.Uncommon,
-            new() { DefaultHits = [], SpecialHits = [0.036, 0.036, 0.036, 0.036, 0.036, 0.036, 0.036, 0.036, 0.036, 0.036], DotHits = [] }
+            new()
+            {
+                DefaultHits = [], SpecialHits = [0.036, 0.036, 0.036, 0.036, 0.036, 0.036, 0.036, 0.036, 0.036, 0.036],
+                DotHits = []
+            }
         },
-        { AbilityRarity.Rare, new() { DefaultHits = [], SpecialHits = [0.037, 0.037, 0.037, 0.037, 0.037, 0.037, 0.037, 0.037, 0.037, 0.037], DotHits = [] } },
-        { AbilityRarity.Epic, new() { DefaultHits = [], SpecialHits = [0.038, 0.038, 0.038, 0.038, 0.038, 0.038, 0.038, 0.038, 0.038, 0.038], DotHits = [] } }
+        {
+            AbilityRarity.Rare,
+            new()
+            {
+                DefaultHits = [], SpecialHits = [0.037, 0.037, 0.037, 0.037, 0.037, 0.037, 0.037, 0.037, 0.037, 0.037],
+                DotHits = []
+            }
+        },
+        {
+            AbilityRarity.Epic,
+            new()
+            {
+                DefaultHits = [], SpecialHits = [0.038, 0.038, 0.038, 0.038, 0.038, 0.038, 0.038, 0.038, 0.038, 0.038],
+                DotHits = []
+            }
+        }
     };
 
     /// <inheritdoc />
@@ -39,9 +62,14 @@ public class LightningBulwark : IAbility
     public AbilityType Type => AbilityType.Utility;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("immune to damage until first hit", 2), ("+120% movement speed if attack repelled", 4), ("AoE if attack repelled", 4)];
+        return
+        [
+            new() { Description = "immune to damage until first hit", Duration = 2 },
+            new() { Description = "+120% movement speed if attack repelled", Duration = 4 },
+            new() { Description = "AoE if attack repelled", Duration = 4 }
+        ];
     }
 
     /// <inheritdoc />

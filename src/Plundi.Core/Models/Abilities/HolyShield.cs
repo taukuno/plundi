@@ -34,9 +34,13 @@ public class HolyShield : IAbility
     public AbilityType Type => AbilityType.Damage;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("frontal swirly (bommerangs)", 0), ("recast to activate AoE", 0)];
+        return
+        [
+            new() { Description = "frontal swirly (bommerangs)", Duration = 0 },
+            new() { Description = "recast to activate AoE", Duration = 0 }
+        ];
     }
 
     /// <inheritdoc />

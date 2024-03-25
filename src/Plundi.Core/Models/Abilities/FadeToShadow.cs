@@ -34,9 +34,13 @@ public class FadeToShadow : IAbility
     public AbilityType Type => AbilityType.Utility;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("blinks 25 yards", 0), ("stealth after blink", 4)];
+        return
+        [
+            new() { Description = "blinks 25 yards", Duration = 0 },
+            new() { Description = "stealth after blink", Duration = 4 }
+        ];
     }
 
     /// <inheritdoc />

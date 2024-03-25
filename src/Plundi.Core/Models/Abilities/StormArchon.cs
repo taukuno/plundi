@@ -34,9 +34,13 @@ public class StormArchon : IAbility
     public AbilityType Type => AbilityType.Damage;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("frontal barrage", 0), ("can be recast twice (last cast does double-damage)", 0)];
+        return
+        [
+            new() { Description = "frontal barrage", Duration = 0 },
+            new() { Description = "can be recast twice (last cast does double-damage)", Duration = 0 }
+        ];
     }
 
     /// <inheritdoc />

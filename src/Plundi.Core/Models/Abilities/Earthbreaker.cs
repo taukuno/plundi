@@ -34,9 +34,13 @@ public class Earthbreaker : IAbility
     public AbilityType Type => AbilityType.Damage;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("AoE", 0), ("stuns on hit", 2), ("big knockback on hit", 0)];
+        return
+        [
+            new() { Description = "AoE", Duration = 0 }, new() { Description = "stuns on hit", Duration = 2 },
+            new() { Description = "big knockback on hit", Duration = 0 }
+        ];
     }
 
     /// <inheritdoc />

@@ -34,9 +34,13 @@ public class StarBomb : IAbility
     public AbilityType Type => AbilityType.Damage;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("frontal AoE", 0), ("pulls enemies into center on hit", 0)];
+        return
+        [
+            new() { Description = "frontal AoE", Duration = 0 },
+            new() { Description = "pulls enemies into center on hit", Duration = 0 }
+        ];
     }
 
     /// <inheritdoc />

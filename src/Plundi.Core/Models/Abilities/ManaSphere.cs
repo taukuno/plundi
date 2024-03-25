@@ -34,9 +34,14 @@ public class ManaSphere : IAbility
     public AbilityType Type => AbilityType.Damage;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("frontal orb", 0), ("medium knockback on hit", 0), ("size of orb can be charged", 0)];
+        return
+        [
+            new() { Description = "frontal orb", Duration = 0 },
+            new() { Description = "medium knockback on hit", Duration = 0 },
+            new() { Description = "size of orb can be charged", Duration = 0 }
+        ];
     }
 
     /// <inheritdoc />

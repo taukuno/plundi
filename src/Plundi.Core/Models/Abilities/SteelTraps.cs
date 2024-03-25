@@ -34,9 +34,13 @@ public class SteelTraps : IAbility
     public AbilityType Type => AbilityType.Utility;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("throws 5x root AoEs around you", 0), ("root on hit", 3)];
+        return
+        [
+            new() { Description = "throws 5x root AoEs around you", Duration = 0 },
+            new() { Description = "root on hit", Duration = 3 }
+        ];
     }
 
     /// <inheritdoc />

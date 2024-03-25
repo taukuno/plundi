@@ -16,7 +16,11 @@ public class FireWhirl : IAbility
             AbilityRarity.Common,
             new()
             {
-                DefaultHits = [0.0575, 0.0575, 0.0575, 0.0575, 0.0575, 0.0575, 0.0575, 0.0575, 0.0575, 0.0575, 0.0575, 0.0575, 0.0575, 0.0575, 0.0575],
+                DefaultHits =
+                [
+                    0.0575, 0.0575, 0.0575, 0.0575, 0.0575, 0.0575, 0.0575, 0.0575, 0.0575, 0.0575, 0.0575, 0.0575,
+                    0.0575, 0.0575, 0.0575
+                ],
                 SpecialHits = [],
                 DotHits = []
             }
@@ -25,7 +29,11 @@ public class FireWhirl : IAbility
             AbilityRarity.Uncommon,
             new()
             {
-                DefaultHits = [0.0605, 0.0605, 0.0605, 0.0605, 0.0605, 0.0605, 0.0605, 0.0605, 0.0605, 0.0605, 0.0605, 0.0605, 0.0605, 0.0605, 0.0605],
+                DefaultHits =
+                [
+                    0.0605, 0.0605, 0.0605, 0.0605, 0.0605, 0.0605, 0.0605, 0.0605, 0.0605, 0.0605, 0.0605, 0.0605,
+                    0.0605, 0.0605, 0.0605
+                ],
                 SpecialHits = [],
                 DotHits = []
             }
@@ -34,7 +42,11 @@ public class FireWhirl : IAbility
             AbilityRarity.Rare,
             new()
             {
-                DefaultHits = [0.0638, 0.0638, 0.0638, 0.0638, 0.0638, 0.0638, 0.0638, 0.0638, 0.0638, 0.0638, 0.0638, 0.0638, 0.0638, 0.0638, 0.0638],
+                DefaultHits =
+                [
+                    0.0638, 0.0638, 0.0638, 0.0638, 0.0638, 0.0638, 0.0638, 0.0638, 0.0638, 0.0638, 0.0638, 0.0638,
+                    0.0638, 0.0638, 0.0638
+                ],
                 SpecialHits = [],
                 DotHits = []
             }
@@ -43,7 +55,11 @@ public class FireWhirl : IAbility
             AbilityRarity.Epic,
             new()
             {
-                DefaultHits = [0.0665, 0.0665, 0.0665, 0.0665, 0.0665, 0.0665, 0.0665, 0.0665, 0.0665, 0.0665, 0.0665, 0.0665, 0.0665, 0.0665, 0.0665],
+                DefaultHits =
+                [
+                    0.0665, 0.0665, 0.0665, 0.0665, 0.0665, 0.0665, 0.0665, 0.0665, 0.0665, 0.0665, 0.0665, 0.0665,
+                    0.0665, 0.0665, 0.0665
+                ],
                 SpecialHits = [],
                 DotHits = []
             }
@@ -66,9 +82,13 @@ public class FireWhirl : IAbility
     public AbilityType Type => AbilityType.Damage;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("AoE", 0), ("+70% movement speed", 3)];
+        return
+        [
+            new() { Description = "AoE", Duration = 0 }, 
+            new() { Description = "+70% movement speed", Duration = 3 }
+        ];
     }
 
     /// <inheritdoc />

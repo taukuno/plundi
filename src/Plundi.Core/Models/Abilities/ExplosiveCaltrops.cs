@@ -34,9 +34,13 @@ public class ExplosiveCaltrops : IAbility
     public AbilityType Type => AbilityType.Utility;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("evades backwards", 0), ("leaves behind snare AoE (60%) after evade", 3)];
+        return
+        [
+            new() { Description = "evades backwards", Duration = 0 },
+            new() { Description = "leaves behind snare AoE (60%) after evade", Duration = 3 }
+        ];
     }
 
     /// <inheritdoc />

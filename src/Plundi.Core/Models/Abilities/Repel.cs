@@ -34,9 +34,15 @@ public class Repel : IAbility
     public AbilityType Type => AbilityType.Utility;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("AoE", 0), ("damage immunity", 1.25), ("cc immunity", 1.25), ("knockback on hit", 0), ("silence on hit", 2.5)];
+        return
+        [
+            new() { Description = "AoE", Duration = 0 }, new() { Description = "damage immunity", Duration = 1.25 },
+            new() { Description = "cc immunity", Duration = 1.25 },
+            new() { Description = "knockback on hit", Duration = 0 },
+            new() { Description = "silence on hit", Duration = 2.5 }
+        ];
     }
 
     /// <inheritdoc />

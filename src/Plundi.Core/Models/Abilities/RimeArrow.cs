@@ -34,9 +34,13 @@ public class RimeArrow : IAbility
     public AbilityType Type => AbilityType.Damage;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("targeted projectile", 0), ("small AoE on hit", 0), ("can't miss", 0)];
+        return
+        [
+            new() { Description = "targeted projectile", Duration = 0 },
+            new() { Description = "small AoE on hit", Duration = 0 }, new() { Description = "can't miss", Duration = 0 }
+        ];
     }
 
     /// <inheritdoc />

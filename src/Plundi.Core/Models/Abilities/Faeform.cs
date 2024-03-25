@@ -34,9 +34,14 @@ public class Faeform : IAbility
     public AbilityType Type => AbilityType.Utility;
 
     /// <inheritdoc />
-    public List<(string Effect, double Duration)> GetEffects(int characterLevel, AbilityRarity abilityRarity)
+    public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        return [("+125% movement speed", 3), ("50% damage reduction", 1), ("breaks all CC", 0), ("immune to CC", 3)];
+        return
+        [
+            new() { Description = "+125% movement speed", Duration = 3 },
+            new() { Description = "50% damage reduction", Duration = 1 },
+            new() { Description = "breaks all CC", Duration = 0 }, new() { Description = "immune to CC", Duration = 3 }
+        ];
     }
 
     /// <inheritdoc />

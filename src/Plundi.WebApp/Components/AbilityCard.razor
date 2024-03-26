@@ -17,13 +17,10 @@
     </div>
     @{
         var damageReport = DamageReportGenerator.GenerateDamageReport(Ability.OriginalAbility, CharacterLevel, Ability.Rarity);
+
         var cooldown = Ability.GetCooldown(CharacterLevel);
-
-        var minDps = Math.Round(damageReport.DamageRange.Min / cooldown, 1);
-        var maxDps = Math.Round(damageReport.DamageRange.Max / cooldown, 1);
-
-        var minHitAndDotDamage = damageReport.HitDamageRange.Min + damageReport.DotDamageRange.Min;
-        var maxHitAndDotDamage = damageReport.HitDamageRange.Max + damageReport.DotDamageRange.Max;
+        var minHitAndDotDamage = damageReport.DefaultDamageRange.Min + damageReport.DotDamageRange.Min;
+        var maxHitAndDotDamage = damageReport.DefaultDamageRange.Max + damageReport.DotDamageRange.Max;
 
         var damageTextColor = Ability.Rarity switch
         {
@@ -52,13 +49,13 @@
                         <span class="overflow-hidden text-xs whitespace-nowrap text-slate-500">damage</span>
                     </div>
                     <div class="flex flex-col items-center">
-                        @if (Math.Abs(minDps - maxDps) < 0.1)
+                        @if (Math.Abs(damageReport.DamageRange.MinDps - damageReport.DamageRange.MaxDps) < 0.1)
                         {
-                            <span class="font-mono text-center sm:text-xl">@maxDps</span>
+                            <span class="font-mono text-center sm:text-xl">@Math.Round(damageReport.DamageRange.MaxDps, 1)</span>
                         }
                         else
                         {
-                            <span class="font-mono text-center sm:text-xl">@minDps-@maxDps</span>
+                            <span class="font-mono text-center sm:text-xl">@Math.Round(damageReport.DamageRange.MinDps, 1)-@Math.Round(damageReport.DamageRange.MaxDps, 1)</span>
                         }
                         <span class="overflow-hidden text-xs whitespace-nowrap text-slate-500">dps</span>
                     </div>
@@ -98,13 +95,13 @@
                         <span class="overflow-hidden text-xs whitespace-nowrap text-slate-500">hit & dot dmg</span>
                     </div>
                     <div class="flex flex-col gap-1 items-center 2xl:order-2 md:max-lg:order-2">
-                        @if (Math.Abs(minDps - maxDps) < 0.1)
+                        @if (Math.Abs(damageReport.DamageRange.MinDps - damageReport.DamageRange.MaxDps) < 0.1)
                         {
-                        <span class="font-mono text-xl text-center sm:text-2xl">@maxDps</span>
+                            <span class="font-mono text-xl text-center sm:text-2xl">@Math.Round(damageReport.DamageRange.MaxDps, 1)</span>
                         }
                         else
                         {
-                        <span class="font-mono text-xl text-center sm:text-2xl">@minDps-@maxDps</span>
+                            <span class="font-mono text-xl text-center sm:text-2xl">@Math.Round(damageReport.DamageRange.MinDps, 1)-@Math.Round(damageReport.DamageRange.MaxDps, 1)</span>
                         }
                         <span class="overflow-hidden text-xs whitespace-nowrap text-slate-500">dps</span>
                     </div>
@@ -146,7 +143,7 @@
                         }
                         else
                         {
-                            @DamageSequenceToReadableString(damageReport.DefaultHits)
+                            @DamageSequenceToReadableString(damageReport.DefaultHits.Select(x => x.Damage).ToList())
                         }
                     </span>
                     <span class="overflow-hidden text-xs whitespace-nowrap text-slate-500">hit dmg profile</span>
@@ -159,7 +156,7 @@
                         }
                         else
                         {
-                            @DamageSequenceToReadableString(damageReport.SpecialHits)
+                            @DamageSequenceToReadableString(damageReport.SpecialHits.Select(x => x.Damage).ToList())
                         }
                     </span>
                     <span class="overflow-hidden text-xs whitespace-nowrap text-slate-500">special dmg profile</span>
@@ -172,7 +169,7 @@
                         }
                         else
                         {
-                            @DamageSequenceToReadableString(damageReport.DotHits)
+                            @DamageSequenceToReadableString(damageReport.DotHits.Select(x => x.Damage).ToList())
                         }
                     </span>
                     <span class="overflow-hidden text-xs whitespace-nowrap text-slate-500">dot dmg profile</span>

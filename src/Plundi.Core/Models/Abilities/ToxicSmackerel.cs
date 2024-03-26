@@ -18,32 +18,48 @@ public class ToxicSmackerel : IAbility
             AbilityRarity.Common,
             new()
             {
-                DefaultHits = [0.114], SpecialHits = [0.18],
-                DotHits = [0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333]
+                DefaultHits = [(0.114, 0)], SpecialHits = [(0.18, 0)],
+                DotHits =
+                [
+                    (0.0333, 1), (0.0333, 2), (0.0333, 3), (0.0333, 4), (0.0333, 5), (0.0333, 6), (0.0333, 7),
+                    (0.0333, 8)
+                ]
             }
         },
         {
             AbilityRarity.Uncommon,
             new()
             {
-                DefaultHits = [0.12], SpecialHits = [0.19],
-                DotHits = [0.0350, 0.0350, 0.0350, 0.0350, 0.0350, 0.0350, 0.0350, 0.0350]
+                DefaultHits = [(0.12, 0)], SpecialHits = [(0.19, 0)],
+                DotHits =
+                [
+                    (0.0350, 1), (0.0350, 2), (0.0350, 3), (0.0350, 4), (0.0350, 5), (0.0350, 6), (0.0350, 7),
+                    (0.0350, 8)
+                ]
             }
         },
         {
             AbilityRarity.Rare,
             new()
             {
-                DefaultHits = [0.126], SpecialHits = [0.20],
-                DotHits = [0.0368, 0.0368, 0.0368, 0.0368, 0.0368, 0.0368, 0.0368, 0.0368]
+                DefaultHits = [(0.126, 0)], SpecialHits = [(0.20, 0)],
+                DotHits =
+                [
+                    (0.0368, 1), (0.0368, 2), (0.0368, 3), (0.0368, 4), (0.0368, 5), (0.0368, 6), (0.0368, 7),
+                    (0.0368, 8)
+                ]
             }
         },
         {
             AbilityRarity.Epic,
             new()
             {
-                DefaultHits = [0.132], SpecialHits = [0.21],
-                DotHits = [0.0385, 0.0385, 0.0385, 0.0385, 0.0385, 0.0385, 0.0385, 0.0385]
+                DefaultHits = [(0.132, 0)], SpecialHits = [(0.21, 0)],
+                DotHits =
+                [
+                    (0.0385, 1), (0.0385, 2), (0.0385, 3), (0.0385, 4), (0.0385, 5), (0.0385, 6), (0.0385, 7),
+                    (0.0385, 8)
+                ]
             }
         }
     };
@@ -68,8 +84,8 @@ public class ToxicSmackerel : IAbility
     {
         var bonusDamage =
             Math.Round(
-                _damageProfiles[abilityRarity].SpecialHits[0] * CharacterStatsProvider.GetAttackPower(characterLevel),
-                1);
+                _damageProfiles[abilityRarity].SpecialHits[0].RelativeDamage *
+                CharacterStatsProvider.GetAttackPower(characterLevel), 1);
         return
         [
             new() { Description = "frontal cone", Duration = 0 },

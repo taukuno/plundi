@@ -16,7 +16,12 @@ public class LightningBulwark : IAbility
             AbilityRarity.Common,
             new()
             {
-                DefaultHits = [], SpecialHits = [0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035],
+                DefaultHits = [],
+                SpecialHits =
+                [
+                    (0.035, 0.4), (0.035, 0.8), (0.035, 1.2), (0.035, 1.6), (0.035, 2.0), (0.035, 2.4), (0.035, 2.8),
+                    (0.035, 3.2), (0.035, 3.6), (0.035, 4.0)
+                ],
                 DotHits = []
             }
         },
@@ -24,7 +29,12 @@ public class LightningBulwark : IAbility
             AbilityRarity.Uncommon,
             new()
             {
-                DefaultHits = [], SpecialHits = [0.036, 0.036, 0.036, 0.036, 0.036, 0.036, 0.036, 0.036, 0.036, 0.036],
+                DefaultHits = [],
+                SpecialHits =
+                [
+                    (0.036, 0.4), (0.036, 0.8), (0.036, 1.2), (0.036, 1.6), (0.036, 2.0), (0.036, 2.4), (0.036, 2.8),
+                    (0.036, 3.2), (0.036, 3.6), (0.036, 4.0)
+                ],
                 DotHits = []
             }
         },
@@ -32,7 +42,12 @@ public class LightningBulwark : IAbility
             AbilityRarity.Rare,
             new()
             {
-                DefaultHits = [], SpecialHits = [0.037, 0.037, 0.037, 0.037, 0.037, 0.037, 0.037, 0.037, 0.037, 0.037],
+                DefaultHits = [],
+                SpecialHits =
+                [
+                    (0.037, 0.4), (0.037, 0.8), (0.037, 1.2), (0.037, 1.6), (0.037, 2.0), (0.037, 2.4), (0.037, 2.8),
+                    (0.037, 3.2), (0.037, 3.6), (0.037, 4.0)
+                ],
                 DotHits = []
             }
         },
@@ -40,7 +55,12 @@ public class LightningBulwark : IAbility
             AbilityRarity.Epic,
             new()
             {
-                DefaultHits = [], SpecialHits = [0.038, 0.038, 0.038, 0.038, 0.038, 0.038, 0.038, 0.038, 0.038, 0.038],
+                DefaultHits = [],
+                SpecialHits =
+                [
+                    (0.038, 0.4), (0.038, 0.8), (0.038, 1.2), (0.038, 1.6), (0.038, 2.0), (0.038, 2.4), (0.038, 2.8),
+                    (0.038, 3.2), (0.038, 3.6), (0.038, 4.0)
+                ],
                 DotHits = []
             }
         }

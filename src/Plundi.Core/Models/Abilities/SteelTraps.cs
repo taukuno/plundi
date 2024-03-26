@@ -12,10 +12,10 @@ public class SteelTraps : IAbility
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { DefaultHits = [0.24], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { DefaultHits = [0.25], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { DefaultHits = [0.26], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { DefaultHits = [0.27], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { DefaultHits = [(0.24, 0)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { DefaultHits = [(0.25, 0)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { DefaultHits = [(0.26, 0)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { DefaultHits = [(0.27, 0)], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />

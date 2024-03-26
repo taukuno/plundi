@@ -12,10 +12,22 @@ public class Snowdrift : IAbility
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { DefaultHits = [0.1, 0.1, 0.1], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { DefaultHits = [0.106, 0.106, 0.106], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { DefaultHits = [0.112, 0.112, 0.112], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { DefaultHits = [0.118, 0.118, 0.118], SpecialHits = [], DotHits = [] } }
+        {
+            AbilityRarity.Common,
+            new() { DefaultHits = [(0.1, 0), (0.1, 0.5), (0.1, 1)], SpecialHits = [], DotHits = [] }
+        },
+        {
+            AbilityRarity.Uncommon,
+            new() { DefaultHits = [(0.106, 0), (0.106, 0.5), (0.106, 1)], SpecialHits = [], DotHits = [] }
+        },
+        {
+            AbilityRarity.Rare,
+            new() { DefaultHits = [(0.112, 0), (0.112, 0.5), (0.112, 1)], SpecialHits = [], DotHits = [] }
+        },
+        {
+            AbilityRarity.Epic,
+            new() { DefaultHits = [(0.118, 0), (0.118, 0.5), (0.118, 1)], SpecialHits = [], DotHits = [] }
+        }
     };
 
     /// <inheritdoc />

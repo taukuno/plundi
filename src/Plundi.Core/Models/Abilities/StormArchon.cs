@@ -12,20 +12,32 @@ public class StormArchon : IAbility
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { DefaultHits = [0.1575, 0.1575, 0.315], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { DefaultHits = [0.1675, 0.1675, 0.335], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { DefaultHits = [0.175, 0.175, 0.35], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { DefaultHits = [0.1825, 0.1825, 0.365], SpecialHits = [], DotHits = [] } }
+        {
+            AbilityRarity.Common,
+            new() { DefaultHits = [(0.1575, 0.75), (0.1575, 1.5), (0.315, 2.25)], SpecialHits = [], DotHits = [] }
+        },
+        {
+            AbilityRarity.Uncommon,
+            new() { DefaultHits = [(0.1675, 0.75), (0.1675, 1.5), (0.335, 2.25)], SpecialHits = [], DotHits = [] }
+        },
+        {
+            AbilityRarity.Rare,
+            new() { DefaultHits = [(0.175, 0.75), (0.175, 1.5), (0.35, 2.25)], SpecialHits = [], DotHits = [] }
+        },
+        {
+            AbilityRarity.Epic,
+            new() { DefaultHits = [(0.1825, 0.75), (0.1825, 1.5), (0.365, 2.25)], SpecialHits = [], DotHits = [] }
+        }
     };
 
     /// <inheritdoc />
     public string Name => "Storm Archon";
 
     /// <inheritdoc />
-    public double CastDuration => 0.75;
+    public double CastDuration => 0;
 
     /// <inheritdoc />
-    public double ChannelDuration => 0;
+    public double ChannelDuration => 0.75;
 
     /// <inheritdoc />
     public string ImagePath => "storm_archon.jpg";

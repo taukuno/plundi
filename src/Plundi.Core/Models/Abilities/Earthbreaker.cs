@@ -12,20 +12,20 @@ public class Earthbreaker : IAbility
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { DefaultHits = [0.44], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { DefaultHits = [0.47], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { DefaultHits = [0.5], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { DefaultHits = [0.53], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { DefaultHits = [(0.44, 0)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { DefaultHits = [(0.47, 0)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { DefaultHits = [(0.5, 0)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { DefaultHits = [(0.53, 0)], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />
     public string Name => "Earthbreaker";
 
     /// <inheritdoc />
-    public double CastDuration => 2;
+    public double CastDuration => 0;
 
     /// <inheritdoc />
-    public double ChannelDuration => 0;
+    public double ChannelDuration => 2;
 
     /// <inheritdoc />
     public string ImagePath => "earthbreaker.jpg";

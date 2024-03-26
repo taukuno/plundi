@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Plundi.WebApp",
   "resources": {
-    "hash": "sha256-wep2TnGS/oSU/yMoTHZ9GWcQ+zppOX7sDxXZh6AGlNg=",
+    "hash": "sha256-a3fKzzeoFawZUxxm2GwbCwsX+DPmHenuwMmH/tcPM/g=",
     "jsModuleNative": {
       "dotnet.native.8.0.3.9nm7bajy7e.js": "sha256-D4sYBYmDfH/YekgYRgX959/2RG6k28sJSHmcsn+iikk="
     },
@@ -46,8 +46,8 @@
       "Microsoft.Win32.Registry.wasm": "sha256-+2AD4fQfby/zh+LUcy482OFhjQjCGMZbB5cfFJKC+YY=",
       "mscorlib.wasm": "sha256-/xjZuJwCmantx5vGyH5ZZ8keySSTeu+YHKQRJbZzcuM=",
       "netstandard.wasm": "sha256-vuFKmCGJbyv85DrzI6S1ZvCikuhIllH6hqbXIL+fUAA=",
-      "Plundi.Core.wasm": "sha256-PAElASp7DQD18ImB8tyYnNMAHWntdYPExqYQpRMLGN8=",
-      "Plundi.WebApp.wasm": "sha256-Rv7FvApd2qQ6yeWtgdh4tKh00kVf6e1ngohkkN9sn+E=",
+      "Plundi.Core.wasm": "sha256-4RlBp1duJ/O6vzz8c6tCyN9EK2fzu9gAOJ+dkNvqNy8=",
+      "Plundi.WebApp.wasm": "sha256-i7+dDNj1wEk8Cvv/uz1YXUsAeFKLoqMYZiyIkLo7Ucc=",
       "System.AppContext.wasm": "sha256-QWLCKHuyAI++tkev3yMkFtfNjT3lTVux9/XAiScsWGk=",
       "System.Buffers.wasm": "sha256-6dhXsN8gB9beAsPX0hpHajvWXOnBlUvzVxfX6b9DO2Y=",
       "System.Collections.Concurrent.wasm": "sha256-ry5UByFn40qF4cDxoWGj8qcFS6LwQUIx02OmXDLrgck=",

@@ -12,10 +12,10 @@ public class Repel : IAbility
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { DefaultHits = [0.21], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { DefaultHits = [0.22], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { DefaultHits = [0.23], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { DefaultHits = [0.24], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { DefaultHits = [(0.21, 0)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { DefaultHits = [(0.22, 0)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { DefaultHits = [(0.23, 0)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { DefaultHits = [(0.24, 0)], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />

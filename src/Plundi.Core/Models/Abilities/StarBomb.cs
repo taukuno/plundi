@@ -12,10 +12,10 @@ public class StarBomb : IAbility
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { DefaultHits = [0.8], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { DefaultHits = [0.84], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { DefaultHits = [0.88], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { DefaultHits = [0.92], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { DefaultHits = [(0.8, 0)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { DefaultHits = [(0.84, 0)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { DefaultHits = [(0.88, 0)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { DefaultHits = [(0.92, 0)], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />

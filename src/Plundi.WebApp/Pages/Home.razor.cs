@@ -9,10 +9,10 @@ public sealed partial class Home
 {
     private const string DamageAbilitiesOrderStorageKey = "damageAbilitiesOrder";
     private const string UtilityAbilitiesOrderStorageKey = "utilityAbilitiesOrder";
-
-    private int _characterLevel = 1;
     private readonly List<RarifiedAbility> _damageAbilities = [];
     private readonly List<RarifiedAbility> _utilityAbilities = [];
+
+    private int _characterLevel = 1;
     private bool _displayDamageAbilitiesInCompactView;
     private bool _displayUtilityAbilitiesInCompactView;
 
@@ -60,19 +60,13 @@ public sealed partial class Home
 
     private void SetAllAbilityRarities(AbilityRarity rarity)
     {
-        foreach (var ability in _damageAbilities.Concat(_utilityAbilities))
-        {
-            ability.Rarity = rarity;
-        }
+        foreach (var ability in _damageAbilities.Concat(_utilityAbilities)) ability.Rarity = rarity;
     }
 
     private static void MoveAbility(RarifiedAbility ability, List<RarifiedAbility> inList, int offset)
     {
         var originalIndex = inList.IndexOf(ability);
-        if (originalIndex == -1)
-        {
-            return;
-        }
+        if (originalIndex == -1) return;
 
 
         var maxAllowedIndex = inList.Count - 1;

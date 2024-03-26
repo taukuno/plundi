@@ -23,16 +23,10 @@ public sealed partial class AbilityCard
         var distinctDamages = damageSequence.GroupBy(x => x).ToList();
 
         foreach (var group in distinctDamages)
-        {
             if (group.Count() > 1)
-            {
-                readableString.Append($"{group.Count()} x {group.Key}, ");
-            }
+                readableString.Append($"{group.Count()} x {Math.Round(group.Key, 1)}, ");
             else
-            {
-                readableString.Append($"{group.Key}, ");
-            }
-        }
+                readableString.Append($"{Math.Round(group.Key, 1)}, ");
 
         return readableString.ToString().TrimEnd(',', ' ');
     }

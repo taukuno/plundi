@@ -12,20 +12,20 @@ public class Windstorm : IAbility
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { DefaultHits = [0.19], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { DefaultHits = [0.2], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { DefaultHits = [0.21], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { DefaultHits = [0.22], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { DefaultHits = [(0.19, 1)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { DefaultHits = [(0.2, 1)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { DefaultHits = [(0.21, 1)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { DefaultHits = [(0.22, 1)], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />
     public string Name => "Windstorm";
 
     /// <inheritdoc />
-    public double CastDuration => 1;
+    public double CastDuration => 0;
 
     /// <inheritdoc />
-    public double ChannelDuration => 0;
+    public double ChannelDuration => 1;
 
     /// <inheritdoc />
     public string ImagePath => "windstorm.jpg";

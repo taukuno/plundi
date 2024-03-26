@@ -12,20 +12,20 @@ public class SearingAxe : IAbility
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { DefaultHits = [0.48], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { DefaultHits = [0.5], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { DefaultHits = [0.52], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { DefaultHits = [0.55], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { DefaultHits = [(0.48, 0.8)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { DefaultHits = [(0.5, 0.8)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { DefaultHits = [(0.52, 0.8)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { DefaultHits = [(0.55, 0.8)], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />
     public string Name => "Searing Axe";
 
     /// <inheritdoc />
-    public double CastDuration => 0.8;
+    public double CastDuration => 0;
 
     /// <inheritdoc />
-    public double ChannelDuration => 0;
+    public double ChannelDuration => 0.8;
 
     /// <inheritdoc />
     public string ImagePath => "searing_axe.jpg";

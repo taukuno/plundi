@@ -12,20 +12,20 @@ public class ManaSphere : IAbility
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { DefaultHits = [0.4], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { DefaultHits = [0.42], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { DefaultHits = [0.44], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { DefaultHits = [0.46], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { DefaultHits = [(0.4, 0)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { DefaultHits = [(0.42, 0)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { DefaultHits = [(0.44, 0)], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { DefaultHits = [(0.46, 0)], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />
     public string Name => "Mana Sphere";
 
     /// <inheritdoc />
-    public double CastDuration => 1.8;
+    public double CastDuration => 0;
 
     /// <inheritdoc />
-    public double ChannelDuration => 0;
+    public double ChannelDuration => 1.8;
 
     /// <inheritdoc />
     public string ImagePath => "mana_sphere.jpg";

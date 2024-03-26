@@ -33,9 +33,7 @@ public static class CharacterStatsProvider
     public static int GetHitPoints(int characterLevel)
     {
         if (characterLevel is < 1 or > 10)
-        {
             throw new ArgumentOutOfRangeException(nameof(characterLevel), "Character level must be between 1 and 10.");
-        }
 
         return HitPoints[characterLevel];
     }
@@ -43,9 +41,7 @@ public static class CharacterStatsProvider
     public static int GetAttackPower(int characterLevel)
     {
         if (characterLevel is < 1 or > 10)
-        {
             throw new ArgumentOutOfRangeException(nameof(characterLevel), "Character level must be between 1 and 10.");
-        }
 
         return AttackPower[characterLevel];
     }
@@ -53,9 +49,7 @@ public static class CharacterStatsProvider
     public static double CalculateMeleeAttack(int characterLevel)
     {
         if (characterLevel is < 1 or > 10)
-        {
             throw new ArgumentOutOfRangeException(nameof(characterLevel), "Character level must be between 1 and 10.");
-        }
 
         return Math.Round(GetAttackPower(characterLevel) * 0.16, 1);
     }

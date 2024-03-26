@@ -11,8 +11,8 @@ public sealed partial class Home
     private const string UtilityAbilitiesOrderStorageKey = "utilityAbilitiesOrder";
 
     private int _characterLevel = 1;
-    private List<RarifiedAbility> _damageAbilities = [];
-    private List<RarifiedAbility> _utilityAbilities = [];
+    private readonly List<RarifiedAbility> _damageAbilities = [];
+    private readonly List<RarifiedAbility> _utilityAbilities = [];
     private bool _displayDamageAbilitiesInCompactView;
     private bool _displayUtilityAbilitiesInCompactView;
 
@@ -27,12 +27,12 @@ public sealed partial class Home
 
         if (firstRender)
         {
-            await InitilizeAbilitesAsync();
+            await InitializeAbilitiesAsync();
             StateHasChanged();
         }
     }
 
-    private async Task InitilizeAbilitesAsync()
+    private async Task InitializeAbilitiesAsync()
     {
         var damageAbilities = Abilities.Where(x => x.Type == AbilityType.Damage).ToList();
         var utilityAbilities = Abilities.Where(x => x.Type == AbilityType.Utility).ToList();
@@ -66,7 +66,7 @@ public sealed partial class Home
         }
     }
 
-    private void MoveAbility(RarifiedAbility ability, List<RarifiedAbility> inList, int offset)
+    private static void MoveAbility(RarifiedAbility ability, List<RarifiedAbility> inList, int offset)
     {
         var originalIndex = inList.IndexOf(ability);
         if (originalIndex == -1)

@@ -39,8 +39,8 @@ public class Faeform : IAbility
         return
         [
             new() { Description = "+125% movement speed", Duration = 3 },
-            new() { Description = "50% damage reduction", Duration = 1 },
-            new() { Description = "breaks all CC", Duration = 0 }, new() { Description = "immune to CC", Duration = 3 }
+            new() { Description = "breaks all CC", Duration = 0 },
+            new() { Description = "immune to CC", Duration = 3 }
         ];
     }
 

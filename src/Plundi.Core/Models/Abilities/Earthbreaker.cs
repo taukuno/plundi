@@ -38,7 +38,9 @@ public class Earthbreaker : IAbility
     {
         return
         [
-            new() { Description = "AoE", Duration = 0 }, new() { Description = "stuns on hit", Duration = 2 },
+            new() { Description = "AoE", Duration = 0 },
+            new() { Description = "immune to cc while channeling", Duration = 2 },
+            new() { Description = "stuns on hit", Duration = 2 },
             new() { Description = "big knockback on hit", Duration = 0 }
         ];
     }

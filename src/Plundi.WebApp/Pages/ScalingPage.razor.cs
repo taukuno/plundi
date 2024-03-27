@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Components;
 using Plundi.Core.Models;
-using Plundi.Core.Models.Abilities;
 using Plundi.WebApp.Components;
 
 namespace Plundi.WebApp.Pages;
@@ -49,7 +48,9 @@ public sealed partial class ScalingPage : ComponentBase
     private async Task DisplayChartsAsync()
     {
         await Task.Yield();
-        while (_characterStatsChart is null || _abilitiesDamageComparisonChart is null || _abilitiesDpsComparisonChart is null)
+        while (_characterStatsChart is null ||
+               _abilitiesDamageComparisonChart is null ||
+               _abilitiesDpsComparisonChart is null)
         {
             await Task.Delay(10);
         }

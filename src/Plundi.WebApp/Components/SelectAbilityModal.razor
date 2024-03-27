@@ -1,0 +1,37 @@
+<dialog id="@_dialogId" class="z-20 p-6 w-full bg-transparent border text-slate-200 backdrop:bg-slate-500 backdrop:opacity-75 border-slate-950">
+    <div class="flex overflow-hidden justify-center">
+        <div class="max-w-4xl rounded shadow-xl bg-slate-800">
+            <h1 class="p-4 text-lg font-semibold rounded-t shadow-lg bg-slate-900">
+                Select ability
+            </h1>
+            <div class="flex flex-col gap-4 items-stretch p-4">
+                <span class="font-light">Damage abilities</span>
+                <div class="flex flex-wrap gap-4 items-stretch">
+                    @foreach (var ability in Abilities.Where(x => x.Type == AbilityType.Damage))
+                    {
+                        <div class="w-14 h-14 bg-clip-border bg-cover rounded border shadow cursor-pointer border-slate-950 hover:border-slate-500"
+                             style="background-image: url('img/abilities/@ability.ImagePath')"
+                             @onclick="async () => { await OnAbilitySelected.InvokeAsync(ability); Close(); }">
+                        </div>
+                    }
+                </div>
+                <span class="font-light">Utility abilities</span>
+                <div class="flex flex-wrap gap-4 items-stretch">
+                    @foreach (var ability in Abilities.Where(x => x.Type == AbilityType.Utility))
+                    {
+                        <div class="w-14 h-14 bg-clip-border bg-cover rounded border shadow cursor-pointer border-slate-950 hover:border-slate-500"
+                             style="background-image: url('img/abilities/@ability.ImagePath')"
+                             @onclick="async () => { await OnAbilitySelected.InvokeAsync(ability); Close(); }">
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="flex gap-x-2 justify-end p-4 rounded-b bg-slate-900">
+                <button class="py-1 px-4 rounded border-2 border-slate-200 hover:bg-slate-700"
+                        @onclick="Close">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</dialog>

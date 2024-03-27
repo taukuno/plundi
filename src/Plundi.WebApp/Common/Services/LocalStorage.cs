@@ -14,7 +14,10 @@ public class LocalStorage
 
     public async Task SetItemAsync<T>(string key, T value, CancellationToken cancellationToken = default)
     {
-        if (string.IsNullOrWhiteSpace(key)) throw new ArgumentNullException(nameof(key));
+        if (string.IsNullOrWhiteSpace(key))
+        {
+            throw new ArgumentNullException(nameof(key));
+        }
 
         var serializedValue = JsonSerializer.Serialize(value);
         await _jsRuntime.InvokeVoidAsync("localStorage.setItem", cancellationToken, key, serializedValue)
@@ -23,7 +26,10 @@ public class LocalStorage
 
     public async Task<T?> GetItemAsync<T>(string key, CancellationToken cancellationToken = default)
     {
-        if (string.IsNullOrWhiteSpace(key)) throw new ArgumentNullException(nameof(key));
+        if (string.IsNullOrWhiteSpace(key))
+        {
+            throw new ArgumentNullException(nameof(key));
+        }
 
         var result = await _jsRuntime.InvokeAsync<string?>("localStorage.getItem", cancellationToken, key)
             .ConfigureAwait(false);
@@ -32,7 +38,10 @@ public class LocalStorage
 
     public async Task RemoveItemAsync(string key, CancellationToken cancellationToken = default)
     {
-        if (string.IsNullOrWhiteSpace(key)) throw new ArgumentNullException(nameof(key));
+        if (string.IsNullOrWhiteSpace(key))
+        {
+            throw new ArgumentNullException(nameof(key));
+        }
 
         await _jsRuntime.InvokeVoidAsync("localStorage.removeItem", cancellationToken, key).ConfigureAwait(false);
     }

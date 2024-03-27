@@ -1,5 +1,40 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="flex flex-col justify-between h-full">
-    @Body
+    <header class="z-10 shadow-lg bg-slate-900">
+        <div class="py-2 px-4 mx-auto max-w-screen-2xl">
+            <div class="flex items-center">
+                <div class="flex gap-x-4 items-baseline">
+                    <span class="text-xl font-semibold]">
+                        Plundi
+                    </span>
+                    <div class="inline-flex items-baseline">
+                        <div class="flex gap-x-4 items-baseline">
+                            <NavLink class="p-2 py-1 text-sm bg-white bg-opacity-0 rounded-md hover:bg-opacity-30 focus:outline-none" href=""
+                                     Match="NavLinkMatch.All"
+                                     ActiveClass="bg-opacity-20">
+                                Overview
+                            </NavLink>
+                            <NavLink class="p-2 py-1 text-sm bg-white bg-opacity-0 rounded-md hover:bg-opacity-30 focus:outline-none" href="scaling"
+                                     ActiveClass="bg-opacity-20">
+                                <span>
+                                    Scaling
+                                </span>
+                                <span class="py-0.5 px-1 ml-1 text-xs bg-green-600 rounded">NEW</span>
+                            </NavLink>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="overflow-auto z-0 grow">
+        <div class="flex flex-col gap-8 py-6 px-4 mx-auto max-w-screen-2xl">
+            @Body
+            <div class="flex flex-col gap-2 items-center">
+                <span class="text-xs text-slate-500">&copy; 2024 <a href="https://github.com/taukuno" class="hover:underline">Taukuno</a>. All rights reserved.</span>
+                <span class="text-xs text-slate-500">Latest update: 2024-03-27 01:35 UTC</span>
+            </div>
+        </div>
+    </main>
 </div>

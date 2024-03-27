@@ -5,7 +5,7 @@ using Plundi.WebApp.Models;
 
 namespace Plundi.WebApp.Pages;
 
-public sealed partial class Home
+public sealed partial class OverviewPage
 {
     private const string DamageAbilitiesOrderStorageKey = "damageAbilitiesOrder";
     private const string UtilityAbilitiesOrderStorageKey = "utilityAbilitiesOrder";
@@ -60,14 +60,19 @@ public sealed partial class Home
 
     private void SetAllAbilityRarities(AbilityRarity rarity)
     {
-        foreach (var ability in _damageAbilities.Concat(_utilityAbilities)) ability.Rarity = rarity;
+        foreach (var ability in _damageAbilities.Concat(_utilityAbilities))
+        {
+            ability.Rarity = rarity;
+        }
     }
 
     private static void MoveAbility(RarifiedAbility ability, List<RarifiedAbility> inList, int offset)
     {
         var originalIndex = inList.IndexOf(ability);
-        if (originalIndex == -1) return;
-
+        if (originalIndex == -1)
+        {
+            return;
+        }
 
         var maxAllowedIndex = inList.Count - 1;
         var newIndex = originalIndex + offset;

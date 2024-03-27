@@ -18,7 +18,8 @@ public class ToxicSmackerel : IAbility
             AbilityRarity.Common,
             new()
             {
-                DefaultHits = [(0.114, 0)], SpecialHits = [(0.18, 0)],
+                DefaultHits = [(0.114, 0)],
+                SpecialHits = [(0.18, 0)],
                 DotHits =
                 [
                     (0.0333, 1), (0.0333, 2), (0.0333, 3), (0.0333, 4), (0.0333, 5), (0.0333, 6), (0.0333, 7),
@@ -30,7 +31,8 @@ public class ToxicSmackerel : IAbility
             AbilityRarity.Uncommon,
             new()
             {
-                DefaultHits = [(0.12, 0)], SpecialHits = [(0.19, 0)],
+                DefaultHits = [(0.12, 0)],
+                SpecialHits = [(0.19, 0)],
                 DotHits =
                 [
                     (0.0350, 1), (0.0350, 2), (0.0350, 3), (0.0350, 4), (0.0350, 5), (0.0350, 6), (0.0350, 7),

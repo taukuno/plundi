@@ -1,0 +1,95 @@
+using Microsoft.AspNetCore.Components;
+using Plundi.Core.Models;
+using Plundi.Core.Models.Abilities;
+using Plundi.WebApp.Components;
+
+namespace Plundi.WebApp.Pages;
+
+public sealed partial class ScalingPage : ComponentBase
+{
+    private readonly List<IAbility> _abilitiesToCompare = [];
+    private AbilitiesDamageComparisonChart? _abilitiesDamageComparisonChart;
+    private AbilitiesDpsComparisonChart? _abilitiesDpsComparisonChart;
+
+    private int _characterLevel = 1;
+    private CharacterStatsChart? _characterStatsChart;
+    private SelectAbilityModal? _selectAbilityModal;
+    private bool _smoothLines = true;
+
+    [Inject] private List<IAbility> Abilities { get; set; } = default!;
+
+    /// <inheritdoc />
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        var searingAxe = Abilities.SingleOrDefault(x => x.Name == "Searing Axe");
+        var slicingWinds = Abilities.SingleOrDefault(x => x.Name == "Slicing Winds");
+        var toxicSmackerel = Abilities.SingleOrDefault(x => x.Name == "Toxic Smackerel");
+
+        if (searingAxe is null || slicingWinds is null || toxicSmackerel is null)
+        {
+            return;
+        }
+
+        _abilitiesToCompare.AddRange([searingAxe, slicingWinds, toxicSmackerel]);
+    }
+
+    /// <inheritdoc />
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+
+        if (firstRender)
+        {
+            await DisplayChartsAsync();
+        }
+    }
+
+    private async Task DisplayChartsAsync()
+    {
+        await Task.Yield();
+        while (_characterStatsChart is null || _abilitiesDamageComparisonChart is null || _abilitiesDpsComparisonChart is null)
+        {
+            await Task.Delay(10);
+        }
+
+        await _characterStatsChart.DrawAsync();
+        await _characterStatsChart.UpdateAsync();
+
+        await _abilitiesDamageComparisonChart.DrawAsync();
+        await _abilitiesDamageComparisonChart.UpdateAsync();
+
+        await _abilitiesDpsComparisonChart.DrawAsync();
+        await _abilitiesDpsComparisonChart.UpdateAsync();
+    }
+
+    private async Task AddAbilityForComparisonAsync(IAbility ability)
+    {
+        if (_abilitiesToCompare.Contains(ability))
+        {
+            return;
+        }
+
+        _abilitiesToCompare.Add(ability);
+        await DisplayChartsAsync();
+    }
+
+    private async Task RemoveAbilityFromComparisonAsync(IAbility ability)
+    {
+        _abilitiesToCompare.Remove(ability);
+        await DisplayChartsAsync();
+    }
+
+    private async Task SetCharacterLevelAsync(int characterLevel)
+    {
+        _characterLevel = characterLevel;
+        await DisplayChartsAsync();
+    }
+
+    private async Task SetSmoothLinesAsync(bool smoothLines)
+    {
+        _smoothLines = smoothLines;
+        await DisplayChartsAsync();
+    }
+}

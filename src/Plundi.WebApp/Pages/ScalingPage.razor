@@ -15,10 +15,31 @@
                     @for (var i = 1; i <= 10; i++)
                     {
                         var characterLevel = i;
-                        <button class="p-1 font-mono border-slate-950 border-y border-l @(_characterLevel == characterLevel ? "font-bold text-slate-900 bg-sky-600 hover:bg-sky-500" : "bg-slate-900 hover:bg-slate-950") @(characterLevel == 1 ? "rounded-l" : characterLevel == 10 ? "border-r rounded-r" : "")"
+                        <button class="p-1 font-mono border-slate-950 border-y border-l @(_characterLevel == characterLevel ? "font-bold text-slate-900 bg-sky-600 hover:bg-sky-500" : "bg-slate-900 hover:bg-slate-950") @(characterLevel switch
+                                                                                                                                                                                                                          {
+                                                                                                                                                                                                                              1 => "rounded-l",
+                                                                                                                                                                                                                              10 => "border-r rounded-r",
+                                                                                                                                                                                                                              _ => ""
+                                                                                                                                                                                                                          })"
                                 @onclick="async () => { await SetCharacterLevelAsync(characterLevel); }">
                             @characterLevel
                         </button>
+                    }
+                </div>
+                <span class="font-light">Enemy level</span>
+                <div class="grid grid-cols-10 shadow grow">
+                    @for (var i = 1; i <= 10; i++)
+                    {
+                    var enemyLevel = i;
+                    <button class="p-1 font-mono border-slate-950 border-y border-l @(_enemyLevel == enemyLevel ? "font-bold text-slate-900 bg-red-500 hover:bg-red-400" : "bg-slate-900 hover:bg-slate-950") @(enemyLevel switch
+                                                                                                                                                                                                              {
+                                                                                                                                                                                                                  1 => "rounded-l",
+                                                                                                                                                                                                                  10 => "border-r rounded-r",
+                                                                                                                                                                                                                  _ => ""
+                                                                                                                                                                                                              })"
+                            @onclick="async () => { await SetEnemyLevelAsync(enemyLevel); }">
+                        @enemyLevel
+                    </button>
                     }
                 </div>
                 <span class="mt-4 font-light md:mt-0">Abilities to compare</span>
@@ -58,13 +79,18 @@
         </span>
         <div class="grid gap-4 lg:grid-cols-2">
             <AbilitiesDamageComparisonChart @ref="_abilitiesDamageComparisonChart"
-                                            ForLevel="_characterLevel"
+                                            CharacterLevel="_characterLevel"
                                             Abilities="_abilitiesToCompare"
                                             SmoothLines="_smoothLines"/>
             <AbilitiesDpsComparisonChart @ref="_abilitiesDpsComparisonChart"
-                                         ForLevel="_characterLevel"
+                                         CharacterLevel="_characterLevel"
                                          Abilities="_abilitiesToCompare"
                                          SmoothLines="_smoothLines"/>
+            <AbilitiesTimeToKillComparisonChart @ref="_abilitiesTimeToKillComparisonChart"
+                                                CharacterLevel="_characterLevel"
+                                                TargetLevel="_enemyLevel"
+                                                Abilities="_abilitiesToCompare"
+                                                SmoothLines="_smoothLines"/>
         </div>
     </div>
     <div class="flex flex-col gap-4 items-stretch">

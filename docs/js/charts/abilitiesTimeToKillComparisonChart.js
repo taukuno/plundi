@@ -161,12 +161,22 @@ export function updateChart(canvasId, data, smoothLines) {
             dataset.cubicInterpolationMode = 'monotone';
         } else {
             dataset.stepped = true;
+
+            if (item.data.length === 4) {
+                dataset.data.push(item.data[3]);
+            }
         }
 
         charts[canvasId].data.datasets.push(dataset);
-
+        
         index++;
-    })
+    });
+
+    if (smoothLines) {
+        charts[canvasId].data.labels = ['Common', 'Uncommon', 'Rare', 'Epic'];
+    } else {
+        charts[canvasId].data.labels = ['Common', 'Uncommon', 'Rare', 'Epic', ''];
+    }
 
     charts[canvasId].update();
 }

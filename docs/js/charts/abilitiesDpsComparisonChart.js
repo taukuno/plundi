@@ -197,13 +197,24 @@ export function updateChart(canvasId, data, smoothLines) {
         } else {
             maxDataset.stepped = true;
             minDataset.stepped = true;
+
+            if (item.data.length === 4) {
+                maxDataset.data.push(item.data[3].max);
+                minDataset.data.push(item.data[3].min);
+            }
         }
 
         charts[canvasId].data.datasets.push(maxDataset);
         charts[canvasId].data.datasets.push(minDataset);
 
         index++;
-    })
+    });
+
+    if (smoothLines) {
+        charts[canvasId].data.labels = ['Common', 'Uncommon', 'Rare', 'Epic'];
+    } else {
+        charts[canvasId].data.labels = ['Common', 'Uncommon', 'Rare', 'Epic', ''];
+    }
 
     charts[canvasId].update();
 }

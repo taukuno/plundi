@@ -16,7 +16,7 @@ public sealed partial class ScalingPage : ComponentBase
     private int _enemyLevel = 1;
     private CharacterStatsChart? _characterStatsChart;
     private SelectAbilityModal? _selectAbilityModal;
-    private bool _smoothLines = true;
+    private bool _smoothLines;
 
     [Inject] private List<IAbility> Abilities { get; set; } = default!;
 

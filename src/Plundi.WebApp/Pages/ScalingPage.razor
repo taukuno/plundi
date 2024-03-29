@@ -51,13 +51,13 @@
                 </div>
                 <span class="mt-4 font-light md:mt-0">Line visualization</span>
                 <div class="grid grid-cols-2 shadow grow">
-                    <button class="p-1 border-slate-950 border-y border-l rounded-l @(_smoothLines ? "text-slate-900 bg-sky-600 hover:bg-sky-500 font-bold" : "bg-slate-900 hover:bg-slate-950")"
-                            @onclick="async () => { await SetSmoothLinesAsync(true); }">
-                        Smooth
-                    </button>
-                    <button class="p-1 border-slate-950 border rounded-r @(!_smoothLines ? "text-slate-900 bg-sky-600 hover:bg-sky-500  font-bold" : "bg-slate-900 hover:bg-slate-950")"
+                    <button class="p-1 border-slate-950 border-y border-l rounded-l @(!_smoothLines ? "text-slate-900 bg-sky-600 hover:bg-sky-500  font-bold" : "bg-slate-900 hover:bg-slate-950")"
                             @onclick="async () => { await SetSmoothLinesAsync(false); }">
                         Real
+                    </button>
+                    <button class="p-1 border-slate-950 border rounded-r @(_smoothLines ? "text-slate-900 bg-sky-600 hover:bg-sky-500 font-bold" : "bg-slate-900 hover:bg-slate-950")"
+                            @onclick="async () => { await SetSmoothLinesAsync(true); }">
+                        Smooth
                     </button>
                 </div>
             </div>

@@ -151,11 +151,23 @@ export function updateChart(canvasId, hitPointsData, attackPowerData, smoothLine
         charts[canvasId].data.datasets[1].cubicInterpolationMode = 'monotone';
         charts[canvasId].data.datasets[0].stepped = false;
         charts[canvasId].data.datasets[1].stepped = false;
+
+        charts[canvasId].data.labels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
     } else {
         charts[canvasId].data.datasets[0].cubicInterpolationMode = undefined;
         charts[canvasId].data.datasets[1].cubicInterpolationMode = undefined;
         charts[canvasId].data.datasets[0].stepped = true;
         charts[canvasId].data.datasets[1].stepped = true;
+        
+        if (hitPointsData.length === 10) {
+            charts[canvasId].data.datasets[0].data.push(hitPointsData[9]);
+        }
+
+        if (attackPowerData.length === 10) {
+            charts[canvasId].data.datasets[1].data.push(attackPowerData[9]);
+        }
+        
+        charts[canvasId].data.labels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', ''];
     }
 
     charts[canvasId].update();

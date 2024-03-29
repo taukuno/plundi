@@ -9,6 +9,7 @@ public sealed partial class ScalingPage : ComponentBase
     private readonly List<IAbility> _abilitiesToCompare = [];
     private AbilitiesDamageComparisonChart? _abilitiesDamageComparisonChart;
     private AbilitiesDpsComparisonChart? _abilitiesDpsComparisonChart;
+    private AbilitiesCooldownComparisonChart? _abilitiesCooldownComparisonChart;
     private AbilitiesTimeToKillComparisonChart? _abilitiesTimeToKillComparisonChart;
 
     private int _characterLevel = 1;
@@ -53,6 +54,7 @@ public sealed partial class ScalingPage : ComponentBase
         while (_characterStatsChart is null ||
                _abilitiesDamageComparisonChart is null ||
                _abilitiesDpsComparisonChart is null ||
+               _abilitiesCooldownComparisonChart is null ||
                _abilitiesTimeToKillComparisonChart is null)
         {
             await Task.Delay(10);
@@ -66,6 +68,9 @@ public sealed partial class ScalingPage : ComponentBase
 
         await _abilitiesDpsComparisonChart.DrawAsync();
         await _abilitiesDpsComparisonChart.UpdateAsync();
+
+        await _abilitiesCooldownComparisonChart.DrawAsync();
+        await _abilitiesCooldownComparisonChart.UpdateAsync();
 
         await _abilitiesTimeToKillComparisonChart.DrawAsync();
         await _abilitiesTimeToKillComparisonChart.UpdateAsync();
@@ -93,6 +98,7 @@ public sealed partial class ScalingPage : ComponentBase
         _characterLevel = characterLevel;
         await DisplayChartsAsync();
     }
+
     private async Task SetEnemyLevelAsync(int enemyLevel)
     {
         _enemyLevel = enemyLevel;
@@ -104,5 +110,4 @@ public sealed partial class ScalingPage : ComponentBase
         _smoothLines = smoothLines;
         await DisplayChartsAsync();
     }
-
 }

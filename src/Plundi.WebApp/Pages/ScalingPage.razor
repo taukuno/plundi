@@ -15,12 +15,7 @@
                     @for (var i = 1; i <= 10; i++)
                     {
                         var characterLevel = i;
-                        <button class="p-1 font-mono border-slate-950 border-y border-l @(_characterLevel == characterLevel ? "font-bold text-slate-900 bg-sky-600 hover:bg-sky-500" : "bg-slate-900 hover:bg-slate-950") @(characterLevel switch
-                                                                                                                                                                                                                          {
-                                                                                                                                                                                                                              1 => "rounded-l",
-                                                                                                                                                                                                                              10 => "border-r rounded-r",
-                                                                                                                                                                                                                              _ => ""
-                                                                                                                                                                                                                          })"
+                        <button class="p-1 font-mono border-slate-950 border-y border-l @(_characterLevel == characterLevel ? "font-bold text-slate-900 bg-sky-600 hover:bg-sky-500" : "bg-slate-900 hover:bg-slate-950") @(characterLevel switch { 1 => "rounded-l", 10 => "border-r rounded-r", _ => "" })"
                                 @onclick="async () => { await SetCharacterLevelAsync(characterLevel); }">
                             @characterLevel
                         </button>
@@ -30,16 +25,11 @@
                 <div class="grid grid-cols-10 shadow grow">
                     @for (var i = 1; i <= 10; i++)
                     {
-                    var enemyLevel = i;
-                    <button class="p-1 font-mono border-slate-950 border-y border-l @(_enemyLevel == enemyLevel ? "font-bold text-slate-900 bg-red-500 hover:bg-red-400" : "bg-slate-900 hover:bg-slate-950") @(enemyLevel switch
-                                                                                                                                                                                                              {
-                                                                                                                                                                                                                  1 => "rounded-l",
-                                                                                                                                                                                                                  10 => "border-r rounded-r",
-                                                                                                                                                                                                                  _ => ""
-                                                                                                                                                                                                              })"
-                            @onclick="async () => { await SetEnemyLevelAsync(enemyLevel); }">
-                        @enemyLevel
-                    </button>
+                        var enemyLevel = i;
+                        <button class="p-1 font-mono border-slate-950 border-y border-l @(_enemyLevel == enemyLevel ? "font-bold text-slate-900 bg-red-500 hover:bg-red-400" : "bg-slate-900 hover:bg-slate-950") @(enemyLevel switch { 1 => "rounded-l", 10 => "border-r rounded-r", _ => "" })"
+                                @onclick="async () => { await SetEnemyLevelAsync(enemyLevel); }">
+                            @enemyLevel
+                        </button>
                     }
                 </div>
                 <span class="mt-4 font-light md:mt-0">Abilities to compare</span>
@@ -87,9 +77,9 @@
                                          Abilities="_abilitiesToCompare"
                                          SmoothLines="_smoothLines"/>
             <AbilitiesCooldownComparisonChart @ref="_abilitiesCooldownComparisonChart"
-                                                CharacterLevel="_characterLevel"
-                                                Abilities="_abilitiesToCompare"
-                                                SmoothLines="_smoothLines"/>
+                                              CharacterLevel="_characterLevel"
+                                              Abilities="_abilitiesToCompare"
+                                              SmoothLines="_smoothLines"/>
             <AbilitiesTimeToKillComparisonChart @ref="_abilitiesTimeToKillComparisonChart"
                                                 CharacterLevel="_characterLevel"
                                                 TargetLevel="_enemyLevel"
@@ -103,5 +93,16 @@
         </span>
         <CharacterStatsChart @ref="_characterStatsChart"
                              SmoothLines="_smoothLines"/>
+    </div>
+    <div class="mt-4 text-xs text-slate-500">
+        <p>
+            The DPS is calculated by dividing the damage an ability deals by its "real" cooldown, which is the sum of its cooldown and cast time.
+            When it comes to Toxic Smackerel, it does extra damage to poisoned targets. However, hitting an already poisoned target is quite rare, so we model this by assuming 3 consecutive hits, starting without the bonus damage, and then divide the total by 3x the "real" cooldown.
+        </p>
+        <p class="mt-2">
+            The Time-to-Kill is determined by dividing an enemy's hit points (based on their level) by an ability's maximal DPS. This calculation only considers the DPS from a single ability, not accounting for melee damage or other abilities.
+            While this method might seem flawed since abilities don't deal consistent damage, it's still a useful metric, albeit imperfect. It's akin to attacking a player with just one ability, timed perfectly with each cooldown, without any healing on their part.
+            And yes, Toxic Smackerel is given a bit of special consideration. After the first hit, which poisons the target, all subsequent hits deal bonus damage. Only during the first "real" cooldown is the DPS considered lower, after which the maximum DPS is used for calculations.
+        </p>
     </div>
 </div>

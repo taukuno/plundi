@@ -19,7 +19,6 @@ public sealed partial class AbilitiesCooldownComparisonChart : IAsyncDisposable
 
     [Parameter] public List<IAbility> Abilities { get; set; } = [];
     [Parameter] public int CharacterLevel { get; set; } = 1;
-    [Parameter] public bool SmoothLines { get; set; } = true;
 
 
     /// <inheritdoc />
@@ -87,7 +86,7 @@ public sealed partial class AbilitiesCooldownComparisonChart : IAsyncDisposable
             abilitiesData.Add(new { Label = ability.Name, Data = cooldownScalingData });
         }
 
-        await _jsModule.InvokeVoidAsync("updateChart", _canvasId, abilitiesData, SmoothLines);
+        await _jsModule.InvokeVoidAsync("updateChart", _canvasId, abilitiesData);
     }
 
     private List<object> GenerateCooldownScalingData(IAbility ability)

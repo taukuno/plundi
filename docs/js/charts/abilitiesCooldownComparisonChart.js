@@ -9,7 +9,7 @@ export function drawChart(canvasId) {
     let canvas = document.getElementById(canvasId);
     if (canvas) {
         charts[canvasId] = new Chart(canvas, {
-                type: 'line',
+                type: 'bar',
                 data: {
                     labels: ['Common', 'Uncommon', 'Rare', 'Epic']
                 },
@@ -58,11 +58,6 @@ export function drawChart(canvasId) {
                     scales: {
                         x: {
                             display: true,
-                            title: {
-                                display: true,
-                                text: 'Level',
-                                color: '#e2e8f0'
-                            },
                             ticks: {
                                 color: '#e2e8f0'
                             },
@@ -117,9 +112,8 @@ export function drawChart(canvasId) {
  *
  * @param {string} canvasId The id of the canvas.
  * @param {object} data The data to feed into the chart.
- * @param {boolean} smoothLines The value indicating whether to smooth the chart lines.
  */
-export function updateChart(canvasId, data, smoothLines) {
+export function updateChart(canvasId, data) {
     if (!charts[canvasId])
         return;
 
@@ -153,30 +147,13 @@ export function updateChart(canvasId, data, smoothLines) {
     data.forEach(item => {
         let dataset = {
             label: item.label,
-            borderColor: abilityColors[item.label],
+            backgroundColor: abilityColors[item.label],
             data: item.data,
         }
 
-        if (smoothLines) {
-            dataset.cubicInterpolationMode = 'monotone';
-        } else {
-            dataset.stepped = true;
-
-            if (item.data.length === 4) {
-                dataset.data.push(item.data[3]);
-            }
-        }
-
         charts[canvasId].data.datasets.push(dataset);
-
         index++;
     });
-
-    if (smoothLines) {
-        charts[canvasId].data.labels = ['Common', 'Uncommon', 'Rare', 'Epic'];
-    } else {
-        charts[canvasId].data.labels = ['Common', 'Uncommon', 'Rare', 'Epic', ''];
-    }
 
     charts[canvasId].update();
 }

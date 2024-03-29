@@ -58,11 +58,6 @@ export function drawChart(canvasId) {
                     scales: {
                         x: {
                             display: true,
-                            title: {
-                                display: true,
-                                text: 'Level',
-                                color: '#e2e8f0'
-                            },
                             ticks: {
                                 color: '#e2e8f0'
                             },

@@ -14,19 +14,59 @@ public class Snowdrift : IAbility
     {
         {
             AbilityRarity.Common,
-            new() { DefaultHits = [(0.1, 0), (0.1, 0.5), (0.1, 1)], SpecialHits = [], DotHits = [] }
+            new()
+            {
+                BaseHits =
+                [
+                    new() { Damage = 0.1, IsRelative = true, Timing = 0 }, 
+                    new() { Damage = 0.1, IsRelative = true, Timing = 0.5 },
+                    new() { Damage = 0.1, IsRelative = true, Timing = 1 }
+                ],
+                SpecialHits = [],
+                DotHits = []
+            }
         },
         {
             AbilityRarity.Uncommon,
-            new() { DefaultHits = [(0.106, 0), (0.106, 0.5), (0.106, 1)], SpecialHits = [], DotHits = [] }
+            new()
+            {
+                BaseHits =
+                [
+                    new() { Damage = 0.106, IsRelative = true, Timing = 0 },
+                    new() { Damage = 0.106, IsRelative = true, Timing = 0.5 },
+                    new() { Damage = 0.106, IsRelative = true, Timing = 1 }
+                ],
+                SpecialHits = [],
+                DotHits = []
+            }
         },
         {
             AbilityRarity.Rare,
-            new() { DefaultHits = [(0.112, 0), (0.112, 0.5), (0.112, 1)], SpecialHits = [], DotHits = [] }
+            new()
+            {
+                BaseHits =
+                [
+                    new() { Damage = 0.112, IsRelative = true, Timing = 0 },
+                    new() { Damage = 0.112, IsRelative = true, Timing = 0.5 },
+                    new() { Damage = 0.112, IsRelative = true, Timing = 1 }
+                ],
+                SpecialHits = [], 
+                DotHits = []
+            }
         },
         {
             AbilityRarity.Epic,
-            new() { DefaultHits = [(0.118, 0), (0.118, 0.5), (0.118, 1)], SpecialHits = [], DotHits = [] }
+            new()
+            {
+                BaseHits =
+                [
+                    new() { Damage = 0.118, IsRelative = true, Timing = 0 }, 
+                    new() { Damage = 0.118, IsRelative = true, Timing = 0.5 },
+                    new() { Damage = 0.118, IsRelative = true, Timing = 1 }
+                ],
+                SpecialHits = [],
+                DotHits = []
+            }
         }
     };
 

@@ -16,11 +16,16 @@ public class FireWhirl : IAbility
             AbilityRarity.Common,
             new()
             {
-                DefaultHits =
+                BaseHits =
                 [
-                    (0.0575, 0.2), (0.0575, 0.4), (0.0575, 0.6), (0.0575, 0.8), (0.0575, 1), (0.0575, 1.2),
-                    (0.0575, 1.4), (0.0575, 1.6), (0.0575, 1.8), (0.0575, 2), (0.0575, 2.2), (0.0575, 2.4),
-                    (0.0575, 2.6), (0.0575, 2.8), (0.0575, 3)
+                    new() { Damage = 0.0575, IsRelative = true, Timing = 0.2 }, new() { Damage = 0.0575, IsRelative = true, Timing = 0.4 },
+                    new() { Damage = 0.0575, IsRelative = true, Timing = 0.6 }, new() { Damage = 0.0575, IsRelative = true, Timing = 0.8 },
+                    new() { Damage = 0.0575, IsRelative = true, Timing = 1 }, new() { Damage = 0.0575, IsRelative = true, Timing = 1.2 },
+                    new() { Damage = 0.0575, IsRelative = true, Timing = 1.4 }, new() { Damage = 0.0575, IsRelative = true, Timing = 1.6 },
+                    new() { Damage = 0.0575, IsRelative = true, Timing = 1.8 }, new() { Damage = 0.0575, IsRelative = true, Timing = 2 },
+                    new() { Damage = 0.0575, IsRelative = true, Timing = 2.2 }, new() { Damage = 0.0575, IsRelative = true, Timing = 2.4 },
+                    new() { Damage = 0.0575, IsRelative = true, Timing = 2.6 }, new() { Damage = 0.0575, IsRelative = true, Timing = 2.8 },
+                    new() { Damage = 0.0575, IsRelative = true, Timing = 3 }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -30,11 +35,16 @@ public class FireWhirl : IAbility
             AbilityRarity.Uncommon,
             new()
             {
-                DefaultHits =
+                BaseHits =
                 [
-                    (0.0605, 0.2), (0.0605, 0.4), (0.0605, 0.6), (0.0605, 0.8), (0.0605, 1), (0.0605, 1.2),
-                    (0.0605, 1.4), (0.0605, 1.6), (0.0605, 1.8), (0.0605, 2), (0.0605, 2.2), (0.0605, 2.4),
-                    (0.0605, 2.6), (0.0605, 2.8), (0.0605, 3)
+                    new() { Damage = 0.0605, IsRelative = true, Timing = 0.2 }, new() { Damage = 0.0605, IsRelative = true, Timing = 0.4 },
+                    new() { Damage = 0.0605, IsRelative = true, Timing = 0.6 }, new() { Damage = 0.0605, IsRelative = true, Timing = 0.8 },
+                    new() { Damage = 0.0605, IsRelative = true, Timing = 1 }, new() { Damage = 0.0605, IsRelative = true, Timing = 1.2 },
+                    new() { Damage = 0.0605, IsRelative = true, Timing = 1.4 }, new() { Damage = 0.0605, IsRelative = true, Timing = 1.6 },
+                    new() { Damage = 0.0605, IsRelative = true, Timing = 1.8 }, new() { Damage = 0.0605, IsRelative = true, Timing = 2 },
+                    new() { Damage = 0.0605, IsRelative = true, Timing = 2.2 }, new() { Damage = 0.0605, IsRelative = true, Timing = 2.4 },
+                    new() { Damage = 0.0605, IsRelative = true, Timing = 2.6 }, new() { Damage = 0.0605, IsRelative = true, Timing = 2.8 },
+                    new() { Damage = 0.0605, IsRelative = true, Timing = 3 }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -44,11 +54,16 @@ public class FireWhirl : IAbility
             AbilityRarity.Rare,
             new()
             {
-                DefaultHits =
+                BaseHits =
                 [
-                    (0.0638, 0.2), (0.0638, 0.4), (0.0638, 0.6), (0.0638, 0.8), (0.0638, 1), (0.0638, 1.2),
-                    (0.0638, 1.4), (0.0638, 1.6), (0.0638, 1.8), (0.0638, 2), (0.0638, 2.2), (0.0638, 2.4),
-                    (0.0638, 2.6), (0.0638, 2.8), (0.0638, 3)
+                    new() { Damage = 0.0638, IsRelative = true, Timing = 0.2 }, new() { Damage = 0.0638, IsRelative = true, Timing = 0.4 },
+                    new() { Damage = 0.0638, IsRelative = true, Timing = 0.6 }, new() { Damage = 0.0638, IsRelative = true, Timing = 0.8 },
+                    new() { Damage = 0.0638, IsRelative = true, Timing = 1 }, new() { Damage = 0.0638, IsRelative = true, Timing = 1.2 },
+                    new() { Damage = 0.0638, IsRelative = true, Timing = 1.4 }, new() { Damage = 0.0638, IsRelative = true, Timing = 1.6 },
+                    new() { Damage = 0.0638, IsRelative = true, Timing = 1.8 }, new() { Damage = 0.0638, IsRelative = true, Timing = 2 },
+                    new() { Damage = 0.0638, IsRelative = true, Timing = 2.2 }, new() { Damage = 0.0638, IsRelative = true, Timing = 2.4 },
+                    new() { Damage = 0.0638, IsRelative = true, Timing = 2.6 }, new() { Damage = 0.0638, IsRelative = true, Timing = 2.8 },
+                    new() { Damage = 0.0638, IsRelative = true, Timing = 3 }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -58,11 +73,16 @@ public class FireWhirl : IAbility
             AbilityRarity.Epic,
             new()
             {
-                DefaultHits =
+                BaseHits =
                 [
-                    (0.0665, 0.2), (0.0665, 0.4), (0.0665, 0.6), (0.0665, 0.8), (0.0665, 1), (0.0665, 1.2),
-                    (0.0665, 1.4), (0.0665, 1.6), (0.0665, 1.8), (0.0665, 2), (0.0665, 2.2), (0.0665, 2.4),
-                    (0.0665, 2.6), (0.0665, 2.8), (0.0665, 3)
+                    new() { Damage = 0.0665, IsRelative = true, Timing = 0.2 }, new() { Damage = 0.0665, IsRelative = true, Timing = 0.4 },
+                    new() { Damage = 0.0665, IsRelative = true, Timing = 0.6 }, new() { Damage = 0.0665, IsRelative = true, Timing = 0.8 },
+                    new() { Damage = 0.0665, IsRelative = true, Timing = 1 }, new() { Damage = 0.0665, IsRelative = true, Timing = 1.2 },
+                    new() { Damage = 0.0665, IsRelative = true, Timing = 1.4 }, new() { Damage = 0.0665, IsRelative = true, Timing = 1.6 },
+                    new() { Damage = 0.0665, IsRelative = true, Timing = 1.8 }, new() { Damage = 0.0665, IsRelative = true, Timing = 2 },
+                    new() { Damage = 0.0665, IsRelative = true, Timing = 2.2 }, new() { Damage = 0.0665, IsRelative = true, Timing = 2.4 },
+                    new() { Damage = 0.0665, IsRelative = true, Timing = 2.6 }, new() { Damage = 0.0665, IsRelative = true, Timing = 2.8 },
+                    new() { Damage = 0.0665, IsRelative = true, Timing = 3 }
                 ],
                 SpecialHits = [],
                 DotHits = []

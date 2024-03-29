@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Plundi.Core.Models;
 using Plundi.Core.Services;
+using Plundi.WebApp.Common.Services;
 
 namespace Plundi.WebApp.Components;
 
@@ -15,9 +16,10 @@ public sealed partial class AbilitiesDpsComparisonChart : IAsyncDisposable
     private IJSObjectReference? _jsModule;
 
     [Inject] private IJSRuntime JsRuntime { get; set; } = default!;
+    [Inject] private AbilityReportGenerator AbilityReportGenerator { get; set; } = default!;
 
     [Parameter] public List<IAbility> Abilities { get; set; } = [];
-    [Parameter] public int ForLevel { get; set; } = 1;
+    [Parameter] public int CharacterLevel { get; set; } = 1;
     [Parameter] public bool SmoothLines { get; set; } = true;
 
 
@@ -82,21 +84,21 @@ public sealed partial class AbilitiesDpsComparisonChart : IAsyncDisposable
 
         foreach (var ability in Abilities)
         {
-            var dpsScalingData = GenerateDpsScalingData(ability, ForLevel);
+            var dpsScalingData = GenerateDpsScalingData(ability);
             abilitiesData.Add(new { Label = ability.Name, Data = dpsScalingData });
         }
 
         await _jsModule.InvokeVoidAsync("updateChart", _canvasId, abilitiesData, SmoothLines);
     }
 
-    private static List<object> GenerateDpsScalingData(IAbility ability, int characterLevel)
+    private List<object> GenerateDpsScalingData(IAbility ability)
     {
         var dpsScaling = new List<object>();
 
         foreach (var rarity in Enum.GetValues<AbilityRarity>())
         {
-            var report = DamageReportGenerator.GenerateDamageReport(ability, characterLevel, rarity);
-            dpsScaling.Add(new { Min = Math.Round(report.DamageRange.MinDps, 1), Max = Math.Round(report.DamageRange.MaxDps, 1) });
+            var report = AbilityReportGenerator.GenerateDamageReport(ability, CharacterLevel, rarity);
+            dpsScaling.Add(new { Min = Math.Round(report.TotalDamageRange.MinDps, 1), Max = Math.Round(report.TotalDamageRange.MaxDps, 1) });
         }
 
         return dpsScaling;

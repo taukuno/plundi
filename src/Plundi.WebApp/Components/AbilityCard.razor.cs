@@ -1,11 +1,15 @@
 using System.Text;
 using Microsoft.AspNetCore.Components;
+using Plundi.Core.Services;
+using Plundi.WebApp.Common.Services;
 using Plundi.WebApp.Models;
 
 namespace Plundi.WebApp.Components;
 
 public sealed partial class AbilityCard
 {
+    [Inject] private AbilityReportGenerator AbilityReportGenerator { get; set; } = default!;
+    
     [Parameter] public RarifiedAbility Ability { get; set; } = default!;
     [Parameter] public int Position { get; set; }
     [Parameter] public EventCallback OnMoveUpClicked { get; set; }

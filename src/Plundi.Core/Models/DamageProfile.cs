@@ -2,7 +2,7 @@ namespace Plundi.Core.Models;
 
 public record DamageProfile
 {
-    public required List<(double RelativeDamage, double Timing)> DefaultHits { get; init; }
-    public required List<(double RelativeDamage, double Timing)> SpecialHits { get; init; }
-    public required List<(double RelativeDamage, double Timing)> DotHits { get; init; }
+    public required List<DamageHit> BaseHits { get; init; }
+    public required List<DamageHit> SpecialHits { get; init; }
+    public required List<DamageHit> DotHits { get; init; }
 }

@@ -13,10 +13,10 @@ public class SlicingWinds : IAbility
     // The hit timing is the average between an instant cast and a fully charged one
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { DefaultHits = [(0.35, 0.7)], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { DefaultHits = [(0.37, 0.7)], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { DefaultHits = [(0.39, 0.7)], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { DefaultHits = [(0.41, 0.7)], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.35, IsRelative = true, Timing = 0.7 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.37, IsRelative = true, Timing = 0.7 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.39, IsRelative = true, Timing = 0.7 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.41, IsRelative = true, Timing = 0.7 }], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />

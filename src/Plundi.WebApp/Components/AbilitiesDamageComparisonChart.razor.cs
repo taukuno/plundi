@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Plundi.Core.Models;
 using Plundi.Core.Services;
+using Plundi.WebApp.Common.Services;
 
 namespace Plundi.WebApp.Components;
 
@@ -15,9 +16,10 @@ public sealed partial class AbilitiesDamageComparisonChart : IAsyncDisposable
     private IJSObjectReference? _jsModule;
 
     [Inject] private IJSRuntime JsRuntime { get; set; } = default!;
+    [Inject] private AbilityReportGenerator AbilityReportGenerator { get; set; } = default!;
 
     [Parameter] public List<IAbility> Abilities { get; set; } = [];
-    [Parameter] public int ForLevel { get; set; } = 1;
+    [Parameter] public int CharacterLevel { get; set; } = 1;
     [Parameter] public bool SmoothLines { get; set; } = true;
 
     /// <inheritdoc />
@@ -81,21 +83,21 @@ public sealed partial class AbilitiesDamageComparisonChart : IAsyncDisposable
 
         foreach (var ability in Abilities)
         {
-            var damageScalingData = GenerateDamageScalingData(ability, ForLevel);
+            var damageScalingData = GenerateDamageScalingData(ability);
             abilitiesData.Add(new { Label = ability.Name, Data = damageScalingData });
         }
 
         await _jsModule.InvokeVoidAsync("updateChart", _canvasId, abilitiesData, SmoothLines);
     }
 
-    private static List<object> GenerateDamageScalingData(IAbility ability, int characterLevel)
+    private List<object> GenerateDamageScalingData(IAbility ability)
     {
         var damageScaling = new List<object>();
 
         foreach (var rarity in Enum.GetValues<AbilityRarity>())
         {
-            var report = DamageReportGenerator.GenerateDamageReport(ability, characterLevel, rarity);
-            damageScaling.Add(new { Min = Math.Round(report.DamageRange.Min, 1), Max = Math.Round(report.DamageRange.Max, 1) });
+            var report = AbilityReportGenerator.GenerateDamageReport(ability, CharacterLevel, rarity);
+            damageScaling.Add(new { Min = Math.Round(report.TotalDamageRange.Min, 1), Max = Math.Round(report.TotalDamageRange.Max, 1) });
         }
 
         return damageScaling;

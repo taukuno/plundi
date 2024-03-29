@@ -1,7 +1,8 @@
+using System.Reflection;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Plundi.Core.Models;
-using Plundi.Core.Models.Abilities;
+using Plundi.Core.Services;
 using Plundi.WebApp;
 using Plundi.WebApp.Common.Services;
 
@@ -10,28 +11,20 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddSingleton<LocalStorage>();
-builder.Services.AddSingleton(new List<IAbility>
+
+var types = Assembly.GetAssembly(typeof(IAbility))!.GetTypes().Where(x => x is { IsInterface: false, IsAbstract: false }).ToList();
+builder.Services.AddSingleton(types.Where(x => x.GetInterfaces().Contains(typeof(IAbility))).Select(x => (IAbility)Activator.CreateInstance(x)!)
+    .ToList());
+
+foreach (var type in types)
+foreach (var @interface in type.GetInterfaces())
 {
-    new Earthbreaker(),
-    new FireWhirl(),
-    new HolyShield(),
-    new ManaSphere(),
-    new RimeArrow(),
-    new SearingAxe(),
-    new SlicingWinds(),
-    new StarBomb(),
-    new StormArchon(),
-    new ToxicSmackerel(),
-    new ExplosiveCaltrops(),
-    new FadeToShadow(),
-    new Faeform(),
-    new HuntersChains(),
-    new LightningBulwark(),
-    new QuakingLeap(),
-    new Repel(),
-    new Snowdrift(),
-    new SteelTraps(),
-    new Windstorm()
-});
+    if (@interface.IsGenericType && @interface.GetGenericTypeDefinition() == typeof(IAbilityDamageCalculator<>))
+    {
+        builder.Services.AddSingleton(@interface, type);
+    }
+}
+
+builder.Services.AddSingleton<AbilityReportGenerator>();
 
 await builder.Build().RunAsync();

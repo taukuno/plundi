@@ -14,19 +14,59 @@ public class StormArchon : IAbility
     {
         {
             AbilityRarity.Common,
-            new() { DefaultHits = [(0.1575, 0.75), (0.1575, 1.5), (0.315, 2.25)], SpecialHits = [], DotHits = [] }
+            new()
+            {
+                BaseHits =
+                [
+                    new() { Damage = 0.1575, IsRelative = true, Timing = 0.75 }, 
+                    new() { Damage = 0.1575, IsRelative = true, Timing = 1.5 },
+                    new() { Damage = 0.315, IsRelative = true, Timing = 2.25 }
+                ],
+                SpecialHits = [],
+                DotHits = []
+            }
         },
         {
             AbilityRarity.Uncommon,
-            new() { DefaultHits = [(0.1675, 0.75), (0.1675, 1.5), (0.335, 2.25)], SpecialHits = [], DotHits = [] }
+            new()
+            {
+                BaseHits =
+                [
+                    new() { Damage = 0.1675, IsRelative = true, Timing = 0.75 }, 
+                    new() { Damage = 0.1675, IsRelative = true, Timing = 1.5 },
+                    new() { Damage = 0.335, IsRelative = true, Timing = 2.25 }
+                ],
+                SpecialHits = [], 
+                DotHits = []
+            }
         },
         {
             AbilityRarity.Rare,
-            new() { DefaultHits = [(0.175, 0.75), (0.175, 1.5), (0.35, 2.25)], SpecialHits = [], DotHits = [] }
+            new()
+            {
+                BaseHits =
+                [
+                    new() { Damage = 0.175, IsRelative = true, Timing = 0.75 }, 
+                    new() { Damage = 0.175, IsRelative = true, Timing = 1.5 },
+                    new() { Damage = 0.35, IsRelative = true, Timing = 2.25 }
+                ],
+                SpecialHits = [], 
+                DotHits = []
+            }
         },
         {
             AbilityRarity.Epic,
-            new() { DefaultHits = [(0.1825, 0.75), (0.1825, 1.5), (0.365, 2.25)], SpecialHits = [], DotHits = [] }
+            new()
+            {
+                BaseHits =
+                [
+                    new() { Damage = 0.1825, IsRelative = true, Timing = 0.75 }, 
+                    new() { Damage = 0.1825, IsRelative = true, Timing = 1.5 },
+                    new() { Damage = 0.365, IsRelative = true, Timing = 2.25 }
+                ],
+                SpecialHits = [], 
+                DotHits = []
+            }
         }
     };
 

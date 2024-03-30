@@ -16,17 +16,54 @@ public class ToxicSmackerelDamageCalculator : BaseAbilityDamageCalculator<ToxicS
             MaxDps = damageRange.MaxDps * 2 / 3
         };
     }
+    
+    public override double? CalculateTimeToKillBasedOnSimulation(ToxicSmackerel ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel)
+    {
+        var baseHits = CalculateBaseHits(ability, characterLevel, abilityRarity);
+        var specialHits = CalculateSpecialHits(ability, characterLevel, abilityRarity);
+        var dotHits = CalculateDotHits(ability, characterLevel, abilityRarity);
+        var hits = baseHits.Concat(specialHits).Concat(dotHits).OrderBy(x => x.Timing).ToList();
+        
+        if (baseHits.Sum(x => x.Damage) + specialHits.Sum(x => x.Damage) + dotHits.Sum(x => x.Damage) <= 0)
+        {
+            return null;
+        }
 
-    public override double? CalculateTimeToKill(ToxicSmackerel ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel)
+        // We add the bonus damage to the targets health to simulate a not-yet poisoined target
+        var targetHitPoints = Convert.ToDouble(CharacterStatsProvider.GetHitPoints(targetLevel)) + specialHits.FirstOrDefault()?.Damage ?? 0;
+        var totalTime = 0d;
+        var cooldown = ability.GetCooldown(characterLevel, abilityRarity);
+
+        while (targetHitPoints >= 0)
+        {
+            totalTime += ability.CastDuration;
+            
+            foreach (var hit in hits.Where(x => x.Timing <= cooldown + ability.CastDuration))
+            {
+                targetHitPoints -= hit.Damage;
+
+                if (targetHitPoints <= 0)
+                {
+                    totalTime += hit.Timing;
+                }
+            }
+
+            totalTime += cooldown;
+        }
+
+        return totalTime;
+    }
+
+    public override double? CalculateTimeToKillBasedOnDps(ToxicSmackerel ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel)
     {
         var baseDamageRange = base.CalculateBaseDamageRange(ability, characterLevel, abilityRarity);
         var specialDamageRange = base.CalculateSpecialDamageRange(ability, characterLevel, abilityRarity);
         var dotDamageRange = base.CalculateDotDamageRange(ability, characterLevel, abilityRarity);
+        var targetHitPoints = Convert.ToDouble(CharacterStatsProvider.GetHitPoints(targetLevel));
 
         var dpsWithoutBonus = baseDamageRange.MaxDps + dotDamageRange.MaxDps;
         var dpsWithBonus = dpsWithoutBonus + specialDamageRange.MaxDps;
 
-        var targetHitPoints = Convert.ToDouble(CharacterStatsProvider.GetHitPoints(targetLevel));
         if (targetHitPoints <= 0 || dpsWithBonus <= 0)
         {
             return null;

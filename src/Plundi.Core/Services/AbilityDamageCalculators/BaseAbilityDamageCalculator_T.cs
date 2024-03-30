@@ -1,3 +1,4 @@
+using System.IO.Pipes;
 using Plundi.Core.Models;
 
 namespace Plundi.Core.Services.AbilityDamageCalculators;
@@ -85,10 +86,43 @@ public abstract class BaseAbilityDamageCalculator<T> : IAbilityDamageCalculator<
         return CalculateHits(damageProfile.DotHits, attackPower);
     }
 
-    /// <remarks>
-    /// The time to kill is only theoretically. Abilities don't deal constant damage and therefore the real time to kill will vary.
-    /// </remarks>
-    public virtual double? CalculateTimeToKill(T ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel)
+    public virtual double? CalculateTimeToKillBasedOnSimulation(T ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel)
+    {
+        var baseHits = CalculateBaseHits(ability, characterLevel, abilityRarity);
+        var specialHits = CalculateSpecialHits(ability, characterLevel, abilityRarity);
+        var dotHits = CalculateDotHits(ability, characterLevel, abilityRarity);
+        var hits = baseHits.Concat(specialHits).Concat(dotHits).OrderBy(x => x.Timing).ToList();
+        
+        if (baseHits.Sum(x => x.Damage) + specialHits.Sum(x => x.Damage) + dotHits.Sum(x => x.Damage) <= 0)
+        {
+            return null;
+        }
+
+        var targetHitPoints = Convert.ToDouble(CharacterStatsProvider.GetHitPoints(targetLevel));
+        var totalTime = 0d;
+        var cooldown = ability.GetCooldown(characterLevel, abilityRarity);
+
+        while (targetHitPoints >= 0)
+        {
+            totalTime += ability.CastDuration;
+            
+            foreach (var hit in hits.Where(x => x.Timing <= cooldown + ability.CastDuration))
+            {
+                targetHitPoints -= hit.Damage;
+
+                if (targetHitPoints <= 0)
+                {
+                    totalTime += hit.Timing;
+                }
+            }
+
+            totalTime += cooldown;
+        }
+
+        return totalTime;
+    }
+
+    public virtual double? CalculateTimeToKillBasedOnDps(T ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel)
     {
         var targetHitPoints = Convert.ToDouble(CharacterStatsProvider.GetHitPoints(targetLevel));
         var totalDamageRange = CalculateTotalDamageRange(ability, characterLevel, abilityRarity);

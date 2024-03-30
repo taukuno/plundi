@@ -21,6 +21,7 @@ public sealed partial class AbilitiesTimeToKillComparisonChart : IAsyncDisposabl
     [Parameter] public List<IAbility> Abilities { get; set; } = [];
     [Parameter] public int CharacterLevel { get; set; } = 1;
     [Parameter] public int TargetLevel { get; set; } = 1;
+    [Parameter] public bool BaseTimeToKillOnDps { get; set; }
     [Parameter] public bool SmoothLines { get; set; } = true;
 
 
@@ -98,10 +99,19 @@ public sealed partial class AbilitiesTimeToKillComparisonChart : IAsyncDisposabl
 
         foreach (var rarity in Enum.GetValues<AbilityRarity>())
         {
-            if (AbilityReportGenerator.TryGenerateKillReport(ability, CharacterLevel, rarity, TargetLevel, out var report))
+            var report = default(KillReport);
+            var success = BaseTimeToKillOnDps switch
             {
-                timeToKillScaling.Add(Math.Round(report!.TimeToKill, 1));
+                true => AbilityReportGenerator.TryGenerateKillReportBasedOnDps(ability, CharacterLevel, rarity, TargetLevel, out report),
+                false => AbilityReportGenerator.TryGenerateKillReportBasedOnSimulation(ability, CharacterLevel, rarity, TargetLevel, out report)
+            };
+
+            if (!success)
+            {
+                continue;
             }
+
+            timeToKillScaling.Add(Math.Round(report!.TimeToKill, 1));
         }
 
         return timeToKillScaling;

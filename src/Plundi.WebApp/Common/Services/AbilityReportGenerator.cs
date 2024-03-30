@@ -58,12 +58,34 @@ public class AbilityReportGenerator
         };
     }
 
-    public bool TryGenerateKillReport(IAbility ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel, out KillReport? killReport)
+    public bool TryGenerateKillReportBasedOnSimulation(IAbility ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel, out KillReport? killReport)
     {
         var abilityDamageCalculatorType = typeof(IAbilityDamageCalculator<>).MakeGenericType(ability.GetType());
         var abilityDamageCalculator = _serviceProvider.GetServices(abilityDamageCalculatorType).FirstOrDefault();
-        var calcTimeToKillMethod =
-            abilityDamageCalculatorType.GetMethod(nameof(IAbilityDamageCalculator<IAbility>.CalculateTimeToKill))!;
+        var calcTimeToKillMethod = abilityDamageCalculatorType.GetMethod(nameof(IAbilityDamageCalculator<IAbility>.CalculateTimeToKillBasedOnSimulation))!;
+
+        var timeToKill = (double?)calcTimeToKillMethod.Invoke(abilityDamageCalculator, [ability, characterLevel, abilityRarity, targetLevel]);
+
+        killReport = null;
+        if (timeToKill is null)
+        {
+            return false;
+        }
+
+        killReport = new()
+        {
+            TargetHitPoints = CharacterStatsProvider.GetHitPoints(targetLevel),
+            TimeToKill = timeToKill.Value
+        };
+
+        return true;
+    }
+    
+    public bool TryGenerateKillReportBasedOnDps(IAbility ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel, out KillReport? killReport)
+    {
+        var abilityDamageCalculatorType = typeof(IAbilityDamageCalculator<>).MakeGenericType(ability.GetType());
+        var abilityDamageCalculator = _serviceProvider.GetServices(abilityDamageCalculatorType).FirstOrDefault();
+        var calcTimeToKillMethod = abilityDamageCalculatorType.GetMethod(nameof(IAbilityDamageCalculator<IAbility>.CalculateTimeToKillBasedOnDps))!;
 
         var timeToKill = (double?)calcTimeToKillMethod.Invoke(abilityDamageCalculator, [ability, characterLevel, abilityRarity, targetLevel]);
 

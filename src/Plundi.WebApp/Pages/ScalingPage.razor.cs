@@ -17,6 +17,7 @@ public sealed partial class ScalingPage : ComponentBase
     private CharacterStatsChart? _characterStatsChart;
     private SelectAbilityModal? _selectAbilityModal;
     private bool _smoothLines;
+    private bool _baseTimeToKillOnDps = true;
 
     [Inject] private List<IAbility> Abilities { get; set; } = default!;
 
@@ -108,6 +109,12 @@ public sealed partial class ScalingPage : ComponentBase
     private async Task SetSmoothLinesAsync(bool smoothLines)
     {
         _smoothLines = smoothLines;
+        await DisplayChartsAsync();
+    }
+
+    private async Task SetBaseTimeToKillOnDpsAsync(bool baseTimeToKillOnDps)
+    {
+        _baseTimeToKillOnDps = baseTimeToKillOnDps;
         await DisplayChartsAsync();
     }
 }

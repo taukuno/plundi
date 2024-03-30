@@ -22,7 +22,7 @@
                     var powerDif = Math.Pow(yourHitPoints / targetHitPoints, 2);
 
                     <td class="@(powerDif > 1 ? "text-green-500" : powerDif < 1 ? "text-red-500" : "")">
-                        x@(Math.Round(powerDif, 1))<br/>
+                        x@(Math.Round(powerDif, 2))<br/>
                     </td>
                 }
             </tr>

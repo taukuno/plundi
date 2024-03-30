@@ -1,0 +1,32 @@
+<div class="flex overflow-auto flex-col items-stretch p-4 rounded border shadow bg-slate-900 border-slate-950">
+    <span class="text-center">Power Level</span>
+    <span class="text-xs text-center text-slate-500">combination of hit points & attack power advantage</span>
+    <table class="gap-2 mt-4 text-xs text-center md:text-base">
+        <thead class="border-b border-slate-500">
+        <th>Your Level</th>
+        @for (var level = 1; level <= 10; level++)
+        {
+            <th class="whitespace-nowrap">vs. L@(level)</th>
+        }
+        </thead>
+        <tbody class="mt-2">
+        @for (var yourLevel = 1; yourLevel <= 10; yourLevel++)
+        {
+            var yourHitPoints = CharacterStatsProvider.GetHitPoints(yourLevel);
+
+            <tr class="my-1 @(yourLevel % 2 == 0 ? "bg-slate-950" : "")">
+                <td>Level @(yourLevel)</td>
+                @for (var targetLevel = 1; targetLevel <= 10; targetLevel++)
+                {
+                    var targetHitPoints = Convert.ToDouble(CharacterStatsProvider.GetHitPoints(targetLevel));
+                    var powerDif = Math.Pow(yourHitPoints / targetHitPoints, 2) - 1;
+
+                    <td class="@(powerDif > 0 ? "text-green-500" : powerDif < 0 ? "text-red-500" : "")">
+                        @Math.Round(powerDif * 100, powerDif >= 1 ? 0 : 1)%<br/>
+                    </td>
+                }
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

@@ -19,10 +19,10 @@
                 @for (var targetLevel = 1; targetLevel <= 10; targetLevel++)
                 {
                     var targetHitPoints = Convert.ToDouble(CharacterStatsProvider.GetHitPoints(targetLevel));
-                    var powerDif = Math.Pow(yourHitPoints / targetHitPoints, 2) - 1;
+                    var powerDif = Math.Pow(yourHitPoints / targetHitPoints, 2);
 
-                    <td class="@(powerDif > 0 ? "text-green-500" : powerDif < 0 ? "text-red-500" : "")">
-                        @Math.Round(powerDif * 100, powerDif >= 1 ? 0 : 1)%<br/>
+                    <td class="@(powerDif > 1 ? "text-green-500" : powerDif < 1 ? "text-red-500" : "")">
+                        x@(Math.Round(powerDif, 1))<br/>
                     </td>
                 }
             </tr>

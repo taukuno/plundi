@@ -1,0 +1,133 @@
+﻿@page "/scaling"
+
+<SelectAbilityModal @ref="_selectAbilityModal"
+                    OnAbilitySelected="AddAbilityForComparisonAsync"/>
+
+<main class="overflow-auto grow" tabindex="-1">
+    <div class="flex flex-col gap-y-6 p-4 mx-auto max-w-screen-2xl lg:px-6">
+        <div class="flex flex-col gap-2">
+            <span class="text-lg">
+                Configuration
+            </span>
+            <div class="grid gap-2 items-baseline md:gap-4 md:grid-cols-[auto,1fr]">
+                <span class="text-sm">Your level</span>
+                <div class="grid grid-cols-10 shadow">
+                    @for (var i = 1; i <= 10; i++)
+                    {
+                        var characterLevel = i;
+                        <button type="button"
+                                class="@(_characterLevel == characterLevel ? "from-violet-600 to-violet-500 hover:from-violet-500 hover:to-violet-400 focus:outline-violet-600" : "from-gray-900 to-gray-900 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 font-mono text-sm font-semibold bg-gradient-to-r border-l first:rounded-l last:rounded-r last:border-r focus:z-10 border-y border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
+                                @onclick="async () => { await SetCharacterLevelAsync(characterLevel); }">
+                            @characterLevel
+                        </button>
+                    }
+                </div>
+                <span class="mt-2 text-sm md:mt-0">Enemy level</span>
+                <div class="grid grid-cols-10 shadow">
+                    @for (var i = 1; i <= 10; i++)
+                    {
+                        var enemyLevel = i;
+                        <button type="button"
+                                class="@(_enemyLevel == enemyLevel ? "from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 focus:outline-red-600" : "from-gray-900 to-gray-900 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 font-mono text-sm font-semibold bg-gradient-to-r border-l first:rounded-l last:rounded-r last:border-r focus:z-10 border-y border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
+                                @onclick="async () => { await SetEnemyLevelAsync(enemyLevel); }">
+                            @enemyLevel
+                        </button>
+                    }
+                </div>
+                <span class="self-center mt-2 text-sm md:mt-0">Abilities to compare</span>
+                <div class="flex flex-wrap gap-4 items-stretch p-2 bg-gray-900 rounded border shadow border-gray-950">
+                    @foreach (var ability in _abilitiesToCompare)
+                    {
+                        <div class="w-14 h-14 bg-clip-border bg-cover rounded border shadow cursor-pointer border-gray-950"
+                             style="background-image: url('img/abilities/@ability.ImagePath')">
+                            <button class="p-2 w-full h-full text-xs text-center text-white bg-gray-900 rounded opacity-0 outline-white hover:opacity-50 focus:opacity-50 outline outline-1"
+                                    @onclick="async () => await RemoveAbilityFromComparisonAsync(ability)">
+                                <i class="fa-solid fa-x"></i>
+                            </button>
+                        </div>
+                    }
+                    <button class="p-2 w-14 h-14 text-center text-gray-400 rounded border-2 border-gray-400 border-dashed hover:bg-gray-800 focus:bg-gray-800 focus:outline-none"
+                            @onclick="() => _selectAbilityModal?.Open()">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+                <span class="mt-2 text-sm md:mt-0">Line visualization</span>
+                <div class="grid grid-cols-2 shadow grow">
+                    <button
+                        class="@(_smoothLines ? "from-gray-900 to-gray-900 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600" : "from-violet-600 to-violet-500 hover:from-violet-500 hover:to-violet-400 focus:outline-violet-600") py-1 px-2 text-sm font-semibold bg-gradient-to-r rounded-l border-l focus:z-10 border-y border-gray-950 truncate focus:outline focus:outline-2 focus:outline-offset-2"
+                        @onclick="() => SetSmoothLinesAsync(false)">
+                        Real
+                    </button>
+                    <button
+                        class="@(_smoothLines ? "from-violet-600 to-violet-500 hover:from-violet-500 hover:to-violet-400 focus:outline-violet-600" : "from-gray-900 to-gray-900 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") py-1 px-2 text-sm font-semibold bg-gradient-to-r from-gray-900 to-gray-900 rounded-r border hover:from-gray-800 hover:to-gray-800 focus:z-10 border-y border-gray-950 truncate focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-gray-600"
+                        @onclick="() => SetSmoothLinesAsync(true)">
+                        Smooth
+                    </button>
+                </div>
+                <span class="mt-2 text-sm md:mt-0">Base Time-to-Kill on</span>
+                <div class="grid grid-cols-2 shadow grow">
+                    <button
+                        class="@(_baseTimeToKillOnDps ? "from-violet-600 to-violet-500 hover:from-violet-500 hover:to-violet-400 focus:outline-violet-600" : "from-gray-900 to-gray-900 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") py-1 px-2 text-sm font-semibold bg-gradient-to-r rounded-l border-l focus:z-10 border-y border-gray-950 truncate focus:outline focus:outline-2 focus:outline-offset-2"
+                        @onclick="async () => { await SetBaseTimeToKillOnDpsAsync(true); }">
+                        DPS
+                    </button>
+                    <button
+                        class="@(_baseTimeToKillOnDps ? "from-gray-900 to-gray-900 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600" : "from-violet-600 to-violet-500 hover:from-violet-500 hover:to-violet-400 focus:outline-violet-600") py-1 px-2 text-sm font-semibold bg-gradient-to-r from-gray-900 to-gray-900 rounded-r border hover:from-gray-800 hover:to-gray-800 focus:z-10 border-y border-gray-950 truncate focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-gray-600"
+                        @onclick="async () => { await SetBaseTimeToKillOnDpsAsync(false); }">
+                        Simulation
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-2 items-stretch">
+            <span class="text-lg">
+                Ability scaling
+            </span>
+            <div class="grid gap-2 lg:grid-cols-2">
+                <AbilitiesDamageComparisonChart @ref="_abilitiesDamageComparisonChart"
+                                                CharacterLevel="_characterLevel"
+                                                Abilities="_abilitiesToCompare"
+                                                SmoothLines="_smoothLines"/>
+                <AbilitiesDpsComparisonChart @ref="_abilitiesDpsComparisonChart"
+                                             CharacterLevel="_characterLevel"
+                                             Abilities="_abilitiesToCompare"
+                                             SmoothLines="_smoothLines"/>
+                <AbilitiesCooldownComparisonChart @ref="_abilitiesCooldownComparisonChart"
+                                                  CharacterLevel="_characterLevel"
+                                                  Abilities="_abilitiesToCompare"/>
+                <AbilitiesTimeToKillComparisonChart @ref="_abilitiesTimeToKillComparisonChart"
+                                                    CharacterLevel="_characterLevel"
+                                                    TargetLevel="_enemyLevel"
+                                                    BaseTimeToKillOnDps="_baseTimeToKillOnDps"
+                                                    Abilities="_abilitiesToCompare"
+                                                    SmoothLines="_smoothLines"/>
+            </div>
+        </div>
+        <div class="flex flex-col gap-2 items-stretch">
+            <span class="text-lg">
+                Character scaling
+            </span>
+            <CharacterStatsChart @ref="_characterStatsChart"
+                                 SmoothLines="_smoothLines"/>
+            <PowerLevelDisplay/>
+        </div>
+        <div class="text-xs text-center text-gray-400">
+            <p>
+                The DPS is calculated by dividing the damage an ability deals by its "real" cooldown, which is the sum of its cooldown and cast time.
+                When it comes to Toxic Smackerel, it does extra damage to poisoned targets. However, hitting an already poisoned target is extremely rare, so we model this by assuming 3 consecutive hits, starting without the bonus damage (the bonus damage
+                will be added to the 2nd and 3rd hit), and then divide the total by 3x the "real" cooldown.
+            </p>
+            <p class="mt-2">
+                The DPS based Time-to-Kill is determined by dividing an enemy's hit points (based on their level) by an ability's maximal DPS. While this method might seem flawed since abilities don't deal consistent damage, it's still a useful metric,
+                albeit imperfect.
+                It's akin to attacking a player with just one ability, timed perfectly with each cooldown, without any healing on their part.
+                And yes, Toxic Smackerel is given a bit of special consideration. After the first hit, which poisons the target, all subsequent hits deal bonus damage. Only during the first "real" cooldown is the DPS considered lower, after which the
+                maximum DPS is used for calculations.
+            </p>
+            <p class="mt-2">
+                For the simulated Time-to-Kill the ability is used on a simulated target until the target dies.
+            </p>
+        </div>
+    </div>
+    <SiteInformationDisplay />
+</main>

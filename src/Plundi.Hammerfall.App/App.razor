@@ -1,0 +1,19 @@
+﻿<Router AppAssembly="@typeof(App).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
+    </Found>
+    <NotFound>
+        <PageTitle>
+            Not found...
+        </PageTitle>
+        <LayoutView Layout="@typeof(MainLayout)">
+            <main class="overflow-auto grow" tabindex="-1">
+                <div class="flex justify-center items-center h-full">
+                    <span class="text-gray-400">
+                        Sorry, there's nothing at this address...
+                    </span>
+                </div>
+            </main>
+        </LayoutView>
+    </NotFound>
+</Router>

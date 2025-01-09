@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{797E650C-7A91-4039-A761-49CBCE1039DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hammerfall Client", "Hammerfall Client", "{900A99BA-418C-49E1-B31B-4AF583F9FC7B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{115F438C-24E8-4E33-823F-081A956CCF76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plundi.Hammerfall.Core", "src\Plundi.Hammerfall.Core\Plundi.Hammerfall.Core.csproj", "{56FC4097-4F12-4114-889C-76F41FB0CC6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plundi.Hammerfall.App", "src\Plundi.Hammerfall.App\Plundi.Hammerfall.App.csproj", "{BC1C9189-D4B4-4FAB-A8A7-CD62C5E6FC3B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{900A99BA-418C-49E1-B31B-4AF583F9FC7B} = {797E650C-7A91-4039-A761-49CBCE1039DD}
+		{56FC4097-4F12-4114-889C-76F41FB0CC6D} = {900A99BA-418C-49E1-B31B-4AF583F9FC7B}
+		{BC1C9189-D4B4-4FAB-A8A7-CD62C5E6FC3B} = {900A99BA-418C-49E1-B31B-4AF583F9FC7B}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56FC4097-4F12-4114-889C-76F41FB0CC6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56FC4097-4F12-4114-889C-76F41FB0CC6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56FC4097-4F12-4114-889C-76F41FB0CC6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56FC4097-4F12-4114-889C-76F41FB0CC6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC1C9189-D4B4-4FAB-A8A7-CD62C5E6FC3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC1C9189-D4B4-4FAB-A8A7-CD62C5E6FC3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC1C9189-D4B4-4FAB-A8A7-CD62C5E6FC3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC1C9189-D4B4-4FAB-A8A7-CD62C5E6FC3B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <LangVersion>preview</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.0" PrivateAssets="all"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Plundi.Hammerfall.Core\Plundi.Hammerfall.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\js\charts\abilitiesCooldownComparisonChart.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\charts\abilitiesDamageComparisonChart.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\charts\abilitiesDpsComparisonChart.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\charts\abilitiesTimeToKillComparisonChart.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\charts\characterStatsChart.js" />
+    </ItemGroup>
+
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+        <Exec Command="rustywind . --write"/>
+        <Exec Command="tailwindcss -i wwwroot/css/app.css -o wwwroot/css/app.min.css --minify"/>
+    </Target>
+
+</Project>

@@ -4,18 +4,18 @@ public class Earthbreaker : IAbility
 {
     private readonly Dictionary<AbilityRarity, double> _cooldowns = new()
     {
-        { AbilityRarity.Common, 18 },
-        { AbilityRarity.Uncommon, 16 },
-        { AbilityRarity.Rare, 14 },
-        { AbilityRarity.Epic, 12 }
+        { AbilityRarity.Common, 16 },
+        { AbilityRarity.Uncommon, 14 },
+        { AbilityRarity.Rare, 12 },
+        { AbilityRarity.Epic, 10 }
     };
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.44, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.47, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.5, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.53, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.621, IsRelative = true, Timing = 2 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.663, IsRelative = true, Timing = 2 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.7, IsRelative = true, Timing = 2 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.73, IsRelative = true, Timing = 2 }], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />
@@ -41,7 +41,8 @@ public class Earthbreaker : IAbility
             new() { Description = "AoE", Duration = 0 },
             new() { Description = "immune to cc while channeling", Duration = 2 },
             new() { Description = "stuns on hit", Duration = 2 },
-            new() { Description = "big knockback on hit", Duration = 0 }
+            new() { Description = "big knockback on hit", Duration = 0 },
+            new() { Description = "heavily slowed while channeling (-97%)", Duration = 2 }
         ];
     }
 

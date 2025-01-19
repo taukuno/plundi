@@ -12,10 +12,10 @@ public class ExplosiveCaltrops : IAbility
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.19, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.2, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.21, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.22, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.268, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.282, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.297, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.31, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />
@@ -39,7 +39,7 @@ public class ExplosiveCaltrops : IAbility
         return
         [
             new() { Description = "evades backwards", Duration = 0 },
-            new() { Description = "leaves behind snare AoE (60%) after evade", Duration = 3 }
+            new() { Description = "leaves behind snare AoE (-40%) after evade", Duration = 3 }
         ];
     }
 

@@ -4,7 +4,7 @@ using Plundi.Hammerfall.Core.Models;
 
 namespace Plundi.Hammerfall.App.Components;
 
-public sealed partial class SelectAbilityModal
+public partial class SelectAbilityModal : ComponentBase
 {
     private readonly string _dialogId = $"dialog-{Guid.NewGuid()}";
 

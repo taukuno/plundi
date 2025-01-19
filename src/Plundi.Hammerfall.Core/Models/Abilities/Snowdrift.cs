@@ -18,9 +18,9 @@ public class Snowdrift : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.1, IsRelative = true, Timing = 0 }, 
-                    new() { Damage = 0.1, IsRelative = true, Timing = 0.5 },
-                    new() { Damage = 0.1, IsRelative = true, Timing = 1 }
+                    new() { Damage = 0.1412, IsRelative = true, Timing = 0 },
+                    new() { Damage = 0.1412, IsRelative = true, Timing = 0.5 },
+                    new() { Damage = 0.1412, IsRelative = true, Timing = 1 }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -32,9 +32,9 @@ public class Snowdrift : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.106, IsRelative = true, Timing = 0 },
-                    new() { Damage = 0.106, IsRelative = true, Timing = 0.5 },
-                    new() { Damage = 0.106, IsRelative = true, Timing = 1 }
+                    new() { Damage = 0.1497, IsRelative = true, Timing = 0 },
+                    new() { Damage = 0.1497, IsRelative = true, Timing = 0.5 },
+                    new() { Damage = 0.1497, IsRelative = true, Timing = 1 }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -46,11 +46,11 @@ public class Snowdrift : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.112, IsRelative = true, Timing = 0 },
-                    new() { Damage = 0.112, IsRelative = true, Timing = 0.5 },
-                    new() { Damage = 0.112, IsRelative = true, Timing = 1 }
+                    new() { Damage = 0.158, IsRelative = true, Timing = 0 },
+                    new() { Damage = 0.158, IsRelative = true, Timing = 0.5 },
+                    new() { Damage = 0.158, IsRelative = true, Timing = 1 }
                 ],
-                SpecialHits = [], 
+                SpecialHits = [],
                 DotHits = []
             }
         },
@@ -60,9 +60,9 @@ public class Snowdrift : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.118, IsRelative = true, Timing = 0 }, 
-                    new() { Damage = 0.118, IsRelative = true, Timing = 0.5 },
-                    new() { Damage = 0.118, IsRelative = true, Timing = 1 }
+                    new() { Damage = 0.166, IsRelative = true, Timing = 0 },
+                    new() { Damage = 0.166, IsRelative = true, Timing = 0.5 },
+                    new() { Damage = 0.166, IsRelative = true, Timing = 1 }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -77,7 +77,7 @@ public class Snowdrift : IAbility
     public double CastDuration => 0.5;
 
     /// <inheritdoc />
-    public double ChannelDuration => 2;
+    public double ChannelDuration => 1;
 
     /// <inheritdoc />
     public string ImagePath => "snowdrift.jpg";

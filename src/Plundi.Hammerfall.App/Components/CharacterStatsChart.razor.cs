@@ -4,7 +4,7 @@ using Plundi.Hammerfall.Core.Services;
 
 namespace Plundi.Hammerfall.App.Components;
 
-public sealed partial class CharacterStatsChart : IAsyncDisposable
+public partial class CharacterStatsChart : IAsyncDisposable
 {
     private readonly string _canvasId = $"canvas-{Guid.NewGuid()}";
     private bool _isDisposed;

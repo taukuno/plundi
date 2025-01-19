@@ -19,11 +19,11 @@ public class LightningBulwark : IAbility
                 BaseHits = [],
                 SpecialHits =
                 [
-                    new() { Damage = 0.035, IsRelative = true, Timing = 0.4 }, new() { Damage = 0.035, IsRelative = true, Timing = 0.8 },
-                    new() { Damage = 0.035, IsRelative = true, Timing = 1.2 }, new() { Damage = 0.035, IsRelative = true, Timing = 1.6 },
-                    new() { Damage = 0.035, IsRelative = true, Timing = 2.0 }, new() { Damage = 0.035, IsRelative = true, Timing = 2.4 },
-                    new() { Damage = 0.035, IsRelative = true, Timing = 2.8 }, new() { Damage = 0.035, IsRelative = true, Timing = 3.2 },
-                    new() { Damage = 0.035, IsRelative = true, Timing = 3.6 }, new() { Damage = 0.035, IsRelative = true, Timing = 4.0 }
+                    new() { Damage = 0.049, IsRelative = true, Timing = 0.4 }, new() { Damage = 0.049, IsRelative = true, Timing = 0.8 },
+                    new() { Damage = 0.049, IsRelative = true, Timing = 1.2 }, new() { Damage = 0.049, IsRelative = true, Timing = 1.6 },
+                    new() { Damage = 0.049, IsRelative = true, Timing = 2.0 }, new() { Damage = 0.049, IsRelative = true, Timing = 2.4 },
+                    new() { Damage = 0.049, IsRelative = true, Timing = 2.8 }, new() { Damage = 0.049, IsRelative = true, Timing = 3.2 },
+                    new() { Damage = 0.049, IsRelative = true, Timing = 3.6 }, new() { Damage = 0.049, IsRelative = true, Timing = 4.0 }
                 ],
                 DotHits = []
             }
@@ -35,11 +35,11 @@ public class LightningBulwark : IAbility
                 BaseHits = [],
                 SpecialHits =
                 [
-                    new() { Damage = 0.036, IsRelative = true, Timing = 0.4 }, new() { Damage = 0.036, IsRelative = true, Timing = 0.8 },
-                    new() { Damage = 0.036, IsRelative = true, Timing = 1.2 }, new() { Damage = 0.036, IsRelative = true, Timing = 1.6 },
-                    new() { Damage = 0.036, IsRelative = true, Timing = 2.0 }, new() { Damage = 0.036, IsRelative = true, Timing = 2.4 },
-                    new() { Damage = 0.036, IsRelative = true, Timing = 2.8 }, new() { Damage = 0.036, IsRelative = true, Timing = 3.2 },
-                    new() { Damage = 0.036, IsRelative = true, Timing = 3.6 }, new() { Damage = 0.036, IsRelative = true, Timing = 4.0 }
+                    new() { Damage = 0.051, IsRelative = true, Timing = 0.4 }, new() { Damage = 0.051, IsRelative = true, Timing = 0.8 },
+                    new() { Damage = 0.051, IsRelative = true, Timing = 1.2 }, new() { Damage = 0.051, IsRelative = true, Timing = 1.6 },
+                    new() { Damage = 0.051, IsRelative = true, Timing = 2.0 }, new() { Damage = 0.051, IsRelative = true, Timing = 2.4 },
+                    new() { Damage = 0.051, IsRelative = true, Timing = 2.8 }, new() { Damage = 0.051, IsRelative = true, Timing = 3.2 },
+                    new() { Damage = 0.051, IsRelative = true, Timing = 3.6 }, new() { Damage = 0.051, IsRelative = true, Timing = 4.0 }
                 ],
                 DotHits = []
             }
@@ -51,11 +51,11 @@ public class LightningBulwark : IAbility
                 BaseHits = [],
                 SpecialHits =
                 [
-                    new() { Damage = 0.037, IsRelative = true, Timing = 0.4 }, new() { Damage = 0.037, IsRelative = true, Timing = 0.8 },
-                    new() { Damage = 0.037, IsRelative = true, Timing = 1.2 }, new() { Damage = 0.037, IsRelative = true, Timing = 1.6 },
-                    new() { Damage = 0.037, IsRelative = true, Timing = 2.0 }, new() { Damage = 0.037, IsRelative = true, Timing = 2.4 },
-                    new() { Damage = 0.037, IsRelative = true, Timing = 2.8 }, new() { Damage = 0.037, IsRelative = true, Timing = 3.2 },
-                    new() { Damage = 0.037, IsRelative = true, Timing = 3.6 }, new() { Damage = 0.037, IsRelative = true, Timing = 4.0 }
+                    new() { Damage = 0.0522, IsRelative = true, Timing = 0.4 }, new() { Damage = 0.0522, IsRelative = true, Timing = 0.8 },
+                    new() { Damage = 0.0522, IsRelative = true, Timing = 1.2 }, new() { Damage = 0.0522, IsRelative = true, Timing = 1.6 },
+                    new() { Damage = 0.0522, IsRelative = true, Timing = 2.0 }, new() { Damage = 0.0522, IsRelative = true, Timing = 2.4 },
+                    new() { Damage = 0.0522, IsRelative = true, Timing = 2.8 }, new() { Damage = 0.0522, IsRelative = true, Timing = 3.2 },
+                    new() { Damage = 0.0522, IsRelative = true, Timing = 3.6 }, new() { Damage = 0.0522, IsRelative = true, Timing = 4.0 }
                 ],
                 DotHits = []
             }
@@ -67,11 +67,11 @@ public class LightningBulwark : IAbility
                 BaseHits = [],
                 SpecialHits =
                 [
-                    new() { Damage = 0.038, IsRelative = true, Timing = 0.4 }, new() { Damage = 0.038, IsRelative = true, Timing = 0.8 },
-                    new() { Damage = 0.038, IsRelative = true, Timing = 1.2 }, new() { Damage = 0.038, IsRelative = true, Timing = 1.6 },
-                    new() { Damage = 0.038, IsRelative = true, Timing = 2.0 }, new() { Damage = 0.038, IsRelative = true, Timing = 2.4 },
-                    new() { Damage = 0.038, IsRelative = true, Timing = 2.8 }, new() { Damage = 0.038, IsRelative = true, Timing = 3.2 },
-                    new() { Damage = 0.038, IsRelative = true, Timing = 3.6 }, new() { Damage = 0.038, IsRelative = true, Timing = 4.0 }
+                    new() { Damage = 0.0537, IsRelative = true, Timing = 0.4 }, new() { Damage = 0.0537, IsRelative = true, Timing = 0.8 },
+                    new() { Damage = 0.0537, IsRelative = true, Timing = 1.2 }, new() { Damage = 0.0537, IsRelative = true, Timing = 1.6 },
+                    new() { Damage = 0.0537, IsRelative = true, Timing = 2.0 }, new() { Damage = 0.0537, IsRelative = true, Timing = 2.4 },
+                    new() { Damage = 0.0537, IsRelative = true, Timing = 2.8 }, new() { Damage = 0.0537, IsRelative = true, Timing = 3.2 },
+                    new() { Damage = 0.0537, IsRelative = true, Timing = 3.6 }, new() { Damage = 0.0537, IsRelative = true, Timing = 4.0 }
                 ],
                 DotHits = []
             }
@@ -100,7 +100,8 @@ public class LightningBulwark : IAbility
         [
             new() { Description = "immune to damage until first hit", Duration = 2 },
             new() { Description = "+120% movement speed if attack repelled", Duration = 4 },
-            new() { Description = "AoE if attack repelled", Duration = 4 }
+            new() { Description = "AoE if attack repelled", Duration = 4 },
+            new() { Description = "heavily slowed while channeling (-96%)", Duration = 2 }
         ];
     }
 

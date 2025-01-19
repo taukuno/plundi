@@ -5,29 +5,29 @@ public static class CharacterStatsProvider
     private static readonly Dictionary<int, int> HitPoints = new()
     {
         { 1, 100 },
-        { 2, 116 },
-        { 3, 132 },
-        { 4, 148 },
+        { 2, 120 },
+        { 3, 136 },
+        { 4, 152 },
         { 5, 164 },
-        { 6, 180 },
-        { 7, 196 },
-        { 8, 212 },
-        { 9, 228 },
-        { 10, 244 }
+        { 6, 176 },
+        { 7, 192 },
+        { 8, 196 },
+        { 9, 200 },
+        { 10, 200 }
     };
 
     private static readonly Dictionary<int, int> AttackPower = new()
     {
-        { 1, 34 },
-        { 2, 42 },
-        { 3, 50 },
-        { 4, 58 },
-        { 5, 66 },
-        { 6, 74 },
-        { 7, 82 },
-        { 8, 90 },
-        { 9, 98 },
-        { 10, 103 }
+        { 1, 31 },
+        { 2, 41 },
+        { 3, 49 },
+        { 4, 56 },
+        { 5, 61 },
+        { 6, 65 },
+        { 7, 69 },
+        { 8, 72 },
+        { 9, 74 },
+        { 10, 76 }
     };
 
     public static int GetHitPoints(int characterLevel)
@@ -57,6 +57,6 @@ public static class CharacterStatsProvider
             throw new ArgumentOutOfRangeException(nameof(characterLevel), "Character level must be between 1 and 10.");
         }
 
-        return Math.Round(GetAttackPower(characterLevel) * 0.16, 1);
+        return Math.Round(GetAttackPower(characterLevel) * 0.226, 1);
     }
 }

@@ -79,7 +79,7 @@ export function drawChart(canvasId) {
                             display: true,
                             position: 'left',
                             min: 100,
-                            max: 350,
+                            max: 220,
                             ticks: {
                                 stepSize: 50,
                                 color: '#f87171'
@@ -92,7 +92,7 @@ export function drawChart(canvasId) {
                             type: 'linear',
                             display: true,
                             min: 34,
-                            max: 119,
+                            max: 84,
                             position: 'right',
                             ticks: {
                                 stepSize: 17,
@@ -158,7 +158,7 @@ export function updateChart(canvasId, hitPointsData, attackPowerData, smoothLine
         charts[canvasId].data.datasets[1].cubicInterpolationMode = undefined;
         charts[canvasId].data.datasets[0].stepped = true;
         charts[canvasId].data.datasets[1].stepped = true;
-        
+
         if (hitPointsData.length === 10) {
             charts[canvasId].data.datasets[0].data.push(hitPointsData[9]);
         }
@@ -166,7 +166,7 @@ export function updateChart(canvasId, hitPointsData, attackPowerData, smoothLine
         if (attackPowerData.length === 10) {
             charts[canvasId].data.datasets[1].data.push(attackPowerData[9]);
         }
-        
+
         charts[canvasId].data.labels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', ''];
     }
 

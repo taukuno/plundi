@@ -12,10 +12,10 @@ public class RimeArrow : IAbility
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.15, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.18, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.21, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.24, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.212, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.254, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.296, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.338, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />

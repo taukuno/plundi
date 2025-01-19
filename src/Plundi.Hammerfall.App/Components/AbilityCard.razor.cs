@@ -5,7 +5,7 @@ using Plundi.Hammerfall.App.Services;
 
 namespace Plundi.Hammerfall.App.Components;
 
-public sealed partial class AbilityCard
+public partial class AbilityCard
 {
     [Inject] private AbilityReportGenerator AbilityReportGenerator { get; set; } = null!;
 

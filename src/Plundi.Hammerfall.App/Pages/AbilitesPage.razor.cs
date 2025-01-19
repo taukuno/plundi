@@ -7,7 +7,7 @@ namespace Plundi.Hammerfall.App.Pages;
 
 public partial class AbilitesPage : ComponentBase
 {
-     private const string DamageAbilitiesOrderStorageKey = "damageAbilitiesOrder";
+    private const string DamageAbilitiesOrderStorageKey = "damageAbilitiesOrder";
     private const string UtilityAbilitiesOrderStorageKey = "utilityAbilitiesOrder";
     private readonly List<RarifiedAbility> _damageAbilities = [];
     private readonly List<RarifiedAbility> _utilityAbilities = [];

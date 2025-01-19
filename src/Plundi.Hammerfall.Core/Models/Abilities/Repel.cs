@@ -12,10 +12,10 @@ public class Repel : IAbility
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.21, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.22, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.23, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.24, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.2965, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.31, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.325, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.339, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />
@@ -38,10 +38,12 @@ public class Repel : IAbility
     {
         return
         [
-            new() { Description = "AoE", Duration = 0 }, new() { Description = "damage immunity", Duration = 1.25 },
+            new() { Description = "AoE", Duration = 0 },
+            new() { Description = "damage immunity", Duration = 1.25 },
             new() { Description = "cc immunity", Duration = 1.25 },
             new() { Description = "knockback on hit", Duration = 0 },
-            new() { Description = "silence on hit", Duration = 2.5 }
+            new() { Description = "silence on hit", Duration = 2.5 },
+            new() { Description = "heavily slowed while channeling (-97%)", Duration = 1.25 }
         ];
     }
 

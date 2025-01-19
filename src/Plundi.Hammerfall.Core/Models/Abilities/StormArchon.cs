@@ -18,9 +18,9 @@ public class StormArchon : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.1575, IsRelative = true, Timing = 0.75 }, 
-                    new() { Damage = 0.1575, IsRelative = true, Timing = 1.5 },
-                    new() { Damage = 0.315, IsRelative = true, Timing = 2.25 }
+                    new() { Damage = 0.222, IsRelative = true, Timing = 0.75 },
+                    new() { Damage = 0.222, IsRelative = true, Timing = 1.5 },
+                    new() { Damage = 0.445, IsRelative = true, Timing = 2.25 }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -32,11 +32,11 @@ public class StormArchon : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.1675, IsRelative = true, Timing = 0.75 }, 
-                    new() { Damage = 0.1675, IsRelative = true, Timing = 1.5 },
-                    new() { Damage = 0.335, IsRelative = true, Timing = 2.25 }
+                    new() { Damage = 0.237, IsRelative = true, Timing = 0.75 },
+                    new() { Damage = 0.237, IsRelative = true, Timing = 1.5 },
+                    new() { Damage = 0.473, IsRelative = true, Timing = 2.25 }
                 ],
-                SpecialHits = [], 
+                SpecialHits = [],
                 DotHits = []
             }
         },
@@ -46,11 +46,11 @@ public class StormArchon : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.175, IsRelative = true, Timing = 0.75 }, 
-                    new() { Damage = 0.175, IsRelative = true, Timing = 1.5 },
-                    new() { Damage = 0.35, IsRelative = true, Timing = 2.25 }
+                    new() { Damage = 0.247, IsRelative = true, Timing = 0.75 },
+                    new() { Damage = 0.247, IsRelative = true, Timing = 1.5 },
+                    new() { Damage = 0.494, IsRelative = true, Timing = 2.25 }
                 ],
-                SpecialHits = [], 
+                SpecialHits = [],
                 DotHits = []
             }
         },
@@ -60,11 +60,11 @@ public class StormArchon : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.1825, IsRelative = true, Timing = 0.75 }, 
-                    new() { Damage = 0.1825, IsRelative = true, Timing = 1.5 },
-                    new() { Damage = 0.365, IsRelative = true, Timing = 2.25 }
+                    new() { Damage = 0.258, IsRelative = true, Timing = 0.75 },
+                    new() { Damage = 0.258, IsRelative = true, Timing = 1.5 },
+                    new() { Damage = 0.515, IsRelative = true, Timing = 2.25 }
                 ],
-                SpecialHits = [], 
+                SpecialHits = [],
                 DotHits = []
             }
         }
@@ -77,7 +77,7 @@ public class StormArchon : IAbility
     public double CastDuration => 0;
 
     /// <inheritdoc />
-    public double ChannelDuration => 0.75;
+    public double ChannelDuration => 2.25;
 
     /// <inheritdoc />
     public string ImagePath => "storm_archon.jpg";
@@ -91,7 +91,8 @@ public class StormArchon : IAbility
         return
         [
             new() { Description = "frontal barrage", Duration = 0 },
-            new() { Description = "can be recast twice (last cast does double-damage)", Duration = 0 }
+            new() { Description = "can be recast twice (last cast does double-damage)", Duration = 0 },
+            new() { Description = "heavily slowed while channeling (-96%)", Duration = 2.25 }
         ];
     }
 

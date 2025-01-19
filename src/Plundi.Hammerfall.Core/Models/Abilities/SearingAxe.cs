@@ -4,18 +4,18 @@ public class SearingAxe : IAbility
 {
     private readonly Dictionary<AbilityRarity, double> _cooldowns = new()
     {
-        { AbilityRarity.Common, 12 },
-        { AbilityRarity.Uncommon, 10 },
-        { AbilityRarity.Rare, 8 },
-        { AbilityRarity.Epic, 6 }
+        { AbilityRarity.Common, 14 },
+        { AbilityRarity.Uncommon, 12 },
+        { AbilityRarity.Rare, 10 },
+        { AbilityRarity.Epic, 8 }
     };
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.48, IsRelative = true, Timing = 0.8 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.5, IsRelative = true, Timing = 0.8 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.52, IsRelative = true, Timing = 0.8 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.55, IsRelative = true, Timing = 0.8 }], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.677, IsRelative = true, Timing = 0.8 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.706, IsRelative = true, Timing = 0.8 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.73, IsRelative = true, Timing = 0.8 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.77, IsRelative = true, Timing = 0.8 }], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />
@@ -39,7 +39,8 @@ public class SearingAxe : IAbility
         return
         [
             new() { Description = "frontal cone", Duration = 0 },
-            new() { Description = "small knockback on hit", Duration = 0 }
+            new() { Description = "small knockback on hit", Duration = 0 },
+            new() { Description = "heavily slowed while channeling (-99%)", Duration = 0.8 }
         ];
     }
 

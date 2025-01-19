@@ -12,10 +12,10 @@ public class ManaSphere : IAbility
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.4, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.42, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.44, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.46, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.56, IsRelative = true, Timing = 1.8 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.59, IsRelative = true, Timing = 1.8 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.62, IsRelative = true, Timing = 1.8 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.65, IsRelative = true, Timing = 1.8 }], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />
@@ -40,7 +40,8 @@ public class ManaSphere : IAbility
         [
             new() { Description = "frontal orb", Duration = 0 },
             new() { Description = "medium knockback on hit", Duration = 0 },
-            new() { Description = "size of orb can be charged", Duration = 0 }
+            new() { Description = "size of orb can be charged", Duration = 0 },
+            new() { Description = "heavily slowed while channeling (-97%)", Duration = 1.8 }
         ];
     }
 

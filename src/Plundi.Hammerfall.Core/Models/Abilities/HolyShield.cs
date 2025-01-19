@@ -10,16 +10,16 @@ public class HolyShield : IAbility
         { AbilityRarity.Epic, 8 }
     };
 
-    // The timings for the 2nd & special hits are arbitrary
-    // I chose 0.6s and 0.3s respectively as an average
+    // The timings for the 2nd and special hits are arbitrary
+    // I chose 0.6 s and 0.3 s respectively as an average
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
         {
             AbilityRarity.Common,
             new()
             {
-                BaseHits = [new() { Damage = 0.1275, IsRelative = true, Timing = 0 }, new() { Damage = 0.1275, IsRelative = true, Timing = 0.5 }],
-                SpecialHits = [new() { Damage = 0.255, IsRelative = true, Timing = 0.25 }], 
+                BaseHits = [new() { Damage = 0.18, IsRelative = true, Timing = 0 }, new() { Damage = 0.18, IsRelative = true, Timing = 0.5 }],
+                SpecialHits = [new() { Damage = 0.36, IsRelative = true, Timing = 0.36 }],
                 DotHits = []
             }
         },
@@ -27,8 +27,8 @@ public class HolyShield : IAbility
             AbilityRarity.Uncommon,
             new()
             {
-                BaseHits = [new() { Damage = 0.135, IsRelative = true, Timing = 0 }, new() { Damage = 0.135, IsRelative = true, Timing = 0.5 }],
-                SpecialHits = [new() { Damage = 0.265, IsRelative = true, Timing = 0.25 }], 
+                BaseHits = [new() { Damage = 0.19, IsRelative = true, Timing = 0 }, new() { Damage = 0.19, IsRelative = true, Timing = 0.5 }],
+                SpecialHits = [new() { Damage = 0.374, IsRelative = true, Timing = 0.374 }],
                 DotHits = []
             }
         },
@@ -36,8 +36,8 @@ public class HolyShield : IAbility
             AbilityRarity.Rare,
             new()
             {
-                BaseHits = [new() { Damage = 0.14, IsRelative = true, Timing = 0 }, new() { Damage = 0.14, IsRelative = true, Timing = 0.5 }],
-                SpecialHits = [new() { Damage = 0.28, IsRelative = true, Timing = 0.25 }], 
+                BaseHits = [new() { Damage = 0.198, IsRelative = true, Timing = 0 }, new() { Damage = 0.198, IsRelative = true, Timing = 0.5 }],
+                SpecialHits = [new() { Damage = 0.395, IsRelative = true, Timing = 0.395 }],
                 DotHits = []
             }
         },
@@ -45,8 +45,8 @@ public class HolyShield : IAbility
             AbilityRarity.Epic,
             new()
             {
-                BaseHits = [new() { Damage = 0.145, IsRelative = true, Timing = 0 }, new() { Damage = 0.145, IsRelative = true, Timing = 0.5 }],
-                SpecialHits = [new() { Damage = 0.29, IsRelative = true, Timing = 0.25 }],
+                BaseHits = [new() { Damage = 0.2, IsRelative = true, Timing = 0 }, new() { Damage = 0.2, IsRelative = true, Timing = 0.5 }],
+                SpecialHits = [new() { Damage = 0.409, IsRelative = true, Timing = 0.409 }],
                 DotHits = []
             }
         }

@@ -13,15 +13,15 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Plundi.Hammerfall.Core\Plundi.Hammerfall.Core.csproj" />
+        <ProjectReference Include="..\Plundi.Hammerfall.Core\Plundi.Hammerfall.Core.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <_ContentIncludedByDefault Remove="wwwroot\js\charts\abilitiesCooldownComparisonChart.js" />
-      <_ContentIncludedByDefault Remove="wwwroot\js\charts\abilitiesDamageComparisonChart.js" />
-      <_ContentIncludedByDefault Remove="wwwroot\js\charts\abilitiesDpsComparisonChart.js" />
-      <_ContentIncludedByDefault Remove="wwwroot\js\charts\abilitiesTimeToKillComparisonChart.js" />
-      <_ContentIncludedByDefault Remove="wwwroot\js\charts\characterStatsChart.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\js\charts\abilitiesCooldownComparisonChart.js"/>
+        <_ContentIncludedByDefault Remove="wwwroot\js\charts\abilitiesDamageComparisonChart.js"/>
+        <_ContentIncludedByDefault Remove="wwwroot\js\charts\abilitiesDpsComparisonChart.js"/>
+        <_ContentIncludedByDefault Remove="wwwroot\js\charts\abilitiesTimeToKillComparisonChart.js"/>
+        <_ContentIncludedByDefault Remove="wwwroot\js\charts\characterStatsChart.js"/>
     </ItemGroup>
 
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">

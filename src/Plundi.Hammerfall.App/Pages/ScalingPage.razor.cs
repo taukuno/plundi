@@ -4,7 +4,7 @@ using Plundi.Hammerfall.Core.Models;
 
 namespace Plundi.Hammerfall.App.Pages;
 
-public sealed partial class ScalingPage : ComponentBase
+public partial class ScalingPage : ComponentBase
 {
     private readonly List<IAbility> _abilitiesToCompare = [];
     private AbilitiesDamageComparisonChart? _abilitiesDamageComparisonChart;

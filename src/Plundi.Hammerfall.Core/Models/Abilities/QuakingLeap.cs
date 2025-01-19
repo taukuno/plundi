@@ -12,10 +12,10 @@ public class QuakingLeap : IAbility
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.28, IsRelative = true, Timing = 0.5 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.29, IsRelative = true, Timing = 0.5 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.3, IsRelative = true, Timing = 0.5 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.31, IsRelative = true, Timing = 0.5 }], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.395, IsRelative = true, Timing = 0.5 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.408, IsRelative = true, Timing = 0.5 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.424, IsRelative = true, Timing = 0.5 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.438, IsRelative = true, Timing = 0.5 }], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />
@@ -40,7 +40,8 @@ public class QuakingLeap : IAbility
         [
             new() { Description = "stun AoE on crash down", Duration = 0 },
             new() { Description = "stuns on hit", Duration = 0.75 },
-            new() { Description = "can be recast mid air to crash down early", Duration = 0 }
+            new() { Description = "can be recast mid air to crash down early", Duration = 0 },
+            new() { Description = "heavily slowed while channeling (-99%)", Duration = 0.5 }
         ];
     }
 

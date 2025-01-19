@@ -136,11 +136,15 @@ export function updateChart(canvasId, data, smoothLines) {
 
     let abilityColors =
         {
+            'Aura of Zealotry': '#fb923c',
+            'Call Galefeather': '#a5f3fc',
+            'Celestial Barrage': '#6d28d9',
             'Earthbreaker': '#a16207',
             'Explosive Caltrops': '#71717a',
             'Fade to Shadow': '#fde68a',
             'Faeform': '#0ea5e9',
             'Fire Whirl': '#f87171',
+            'G.R.A.V. Glove': '#818cf8',
             'Holy Shield': '#fde047',
             'Hunter\'s Chains': '#84cc16',
             'Lightning Bulwark': '#67e8f9',

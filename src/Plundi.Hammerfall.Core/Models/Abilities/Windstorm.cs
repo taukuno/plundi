@@ -12,10 +12,10 @@ public class Windstorm : IAbility
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.19, IsRelative = true, Timing = 1 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.2, IsRelative = true, Timing = 1 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.21, IsRelative = true, Timing = 1 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.22, IsRelative = true, Timing = 1 }], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.268, IsRelative = true, Timing = 1 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.282, IsRelative = true, Timing = 1 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.297, IsRelative = true, Timing = 1 }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.31, IsRelative = true, Timing = 1 }], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />
@@ -39,7 +39,8 @@ public class Windstorm : IAbility
         return
         [
             new() { Description = "frontal swirly", Duration = 0 },
-            new() { Description = "stun on hit", Duration = 2.5 }
+            new() { Description = "stun on hit", Duration = 2.5 },
+            new() { Description = "heavily slowed while channeling (-99%)", Duration = 1 }
         ];
     }
 

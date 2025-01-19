@@ -1,0 +1,86 @@
+@page "/info"
+
+<main class="overflow-auto grow" tabindex="-1">
+    <div class="flex flex-col gap-y-6 p-4 mx-auto max-w-screen-2xl lg:px-6">
+        <div class="flex flex-col gap-2">
+            <span class="font-semibold">
+                Data source
+            </span>
+            <div class="text-gray-400">
+                <p>
+                    The exact data was extracted from combat logs and/or extracted from game files. I used <a href="https://www.wowhead.com/" class="underline hover:text-gray-200">WowHead</a>,
+                    <a href="https://wago.tools/" class="underline hover:text-gray-200">Wago Tools</a> and <a href="https://www.warcraftlogs.com/" class="underline hover:text-gray-200">Warcraft Logs</a> to gather the data.
+                </p>
+                <p class="mt-2">
+                    With the help of @@dorovon from the <a href="https://discord.gg/qVZDRYfB4A" class="underline hover:text-gray-200">WoW Datamining Discord</a>.
+                </p>
+            </div>
+            <span class="font-semibold">
+                Game version
+            </span>
+            <div class="text-gray-400">
+                <p>
+                    The app is up-to-date as of 2025-01-19. For version 11.0.7 Build 58630.
+                </p>
+            </div>
+            <span class="font-semibold">
+                Source code
+            </span>
+            <div class="text-gray-400">
+                <p>
+                    You can find the source code on <a href="https://github.com/taukuno/plundi" class="underline hover:text-gray-200">GitHub</a>.
+                </p>
+            </div>
+        </div>
+        <div class="flex flex-col gap-2">
+            <span class="text-lg">
+                F.A.Q.
+            </span>
+            <span class="font-semibold">
+                How is the DPS calculated?
+            </span>
+            <div class="text-gray-400">
+                <p>
+                    The DPS is calculated by dividing the damage an ability deals by its total cooldown, which is the sum of its cooldown and cast time.
+                </p>
+                <p class="mt-2">
+                    When it comes to Toxic Smackerel, it does extra damage to poisoned targets. However, hitting an already poisoned target is extremely rare, so we model this by assuming 3 consecutive hits, starting without the bonus damage (the bonus
+                    damage will be added to the 2nd and 3rd hit), and then divide the total by 3x the total cooldown.
+                </p>
+                <p class="mt-2">
+                    Aura of Zealotry is also a special case. It increases your melee damage by 20%-38%. We include the extra melee damage as special damage (you can melee up to 8 times while the buff is active).
+                </p>
+            </div>
+            <span class="font-semibold">
+                Why do some abilities have a DPS range?
+            </span>
+            <div class="text-gray-400">
+                <p>
+                    Some abilities can hit multiple times (e.g. Fire Whirl hits up to 15x) or can do special damage (e.g. recasting Holy Shield while it travels). The minimum DPS includes only the damage of the first hit, no special damage and the damage
+                    of all dot ticks. The maximum DPS includes the damage of all hits, all special hits and all dot ticks.
+                </p>
+            </div>
+            <span class="font-semibold">
+                What is the difference between DPS based time-to-kill and simulation based time-to-kill?
+            </span>
+            <div class="text-gray-400">
+                <p>
+                    The DPS based time-to-kill is determined by dividing an enemy's hit points (based on their level) by an ability's maximal DPS. Toxic Smackerel is given a bit of special consideration. After the first hit, which
+                    poisons the target, all subsequent hits deal bonus damage. Only during the first "real" cooldown is the DPS considered lower, after which the maximum DPS is used for calculations.
+                </p>
+                <p class="mt-2">
+                    For the simulated time-to-kill the ability is used on a simulated target until the target dies. It's akin to attacking a player with just one ability, timed perfectly with each cooldown, without any healing on their part.
+                </p>
+            </div>
+            <span class="font-semibold">
+                How do I report a bug/wrong data?
+            </span>
+            <div class="text-gray-400">
+                <p>
+                    Either via (<a href="https://github.com/taukuno/plundi/issues" class="underline hover:text-gray-200">GitHub</a>). Or via Discord (@@taukuno).
+                </p>
+            </div>
+        </div>
+    </div>
+    <SiteInformationDisplay/>
+</main>

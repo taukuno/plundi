@@ -111,23 +111,6 @@
                                  SmoothLines="_smoothLines"/>
             <PowerLevelDisplay/>
         </div>
-        <div class="text-xs text-center text-gray-400">
-            <p>
-                The DPS is calculated by dividing the damage an ability deals by its "real" cooldown, which is the sum of its cooldown and cast time.
-                When it comes to Toxic Smackerel, it does extra damage to poisoned targets. However, hitting an already poisoned target is extremely rare, so we model this by assuming 3 consecutive hits, starting without the bonus damage (the bonus damage
-                will be added to the 2nd and 3rd hit), and then divide the total by 3x the "real" cooldown.
-            </p>
-            <p class="mt-2">
-                The DPS based Time-to-Kill is determined by dividing an enemy's hit points (based on their level) by an ability's maximal DPS. While this method might seem flawed since abilities don't deal consistent damage, it's still a useful metric,
-                albeit imperfect.
-                It's akin to attacking a player with just one ability, timed perfectly with each cooldown, without any healing on their part.
-                And yes, Toxic Smackerel is given a bit of special consideration. After the first hit, which poisons the target, all subsequent hits deal bonus damage. Only during the first "real" cooldown is the DPS considered lower, after which the
-                maximum DPS is used for calculations.
-            </p>
-            <p class="mt-2">
-                For the simulated Time-to-Kill the ability is used on a simulated target until the target dies.
-            </p>
-        </div>
     </div>
-    <SiteInformationDisplay />
+    <SiteInformationDisplay/>
 </main>

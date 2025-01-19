@@ -6,10 +6,10 @@ public class ToxicSmackerel : IAbility
 {
     private readonly Dictionary<AbilityRarity, double> _cooldowns = new()
     {
-        { AbilityRarity.Common, 5.5 },
-        { AbilityRarity.Uncommon, 5 },
-        { AbilityRarity.Rare, 4.5 },
-        { AbilityRarity.Epic, 4 }
+        { AbilityRarity.Common, 7 },
+        { AbilityRarity.Uncommon, 6.5 },
+        { AbilityRarity.Rare, 6 },
+        { AbilityRarity.Epic, 5.5 }
     };
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
@@ -18,14 +18,14 @@ public class ToxicSmackerel : IAbility
             AbilityRarity.Common,
             new()
             {
-                BaseHits = [new() { Damage = 0.114, IsRelative = true, Timing = 0 }],
-                SpecialHits = [new() { Damage = 0.18, IsRelative = true, Timing = 0 }],
+                BaseHits = [new() { Damage = 0.161, IsRelative = true, Timing = 0 }],
+                SpecialHits = [new() { Damage = 0.254, IsRelative = true, Timing = 0 }],
                 DotHits =
                 [
-                    new() { Damage = 0.0333, IsRelative = true, Timing = 1 }, new() { Damage = 0.0333, IsRelative = true, Timing = 2 },
-                    new() { Damage = 0.0333, IsRelative = true, Timing = 3 }, new() { Damage = 0.0333, IsRelative = true, Timing = 4 },
-                    new() { Damage = 0.0333, IsRelative = true, Timing = 5 }, new() { Damage = 0.0333, IsRelative = true, Timing = 6 },
-                    new() { Damage = 0.0333, IsRelative = true, Timing = 7 }, new() { Damage = 0.0333, IsRelative = true, Timing = 8 }
+                    new() { Damage = 0.0466, IsRelative = true, Timing = 1 }, new() { Damage = 0.0466, IsRelative = true, Timing = 2 },
+                    new() { Damage = 0.0466, IsRelative = true, Timing = 3 }, new() { Damage = 0.0466, IsRelative = true, Timing = 4 },
+                    new() { Damage = 0.0466, IsRelative = true, Timing = 5 }, new() { Damage = 0.0466, IsRelative = true, Timing = 6 },
+                    new() { Damage = 0.0466, IsRelative = true, Timing = 7 }, new() { Damage = 0.0466, IsRelative = true, Timing = 8 }
                 ]
             }
         },
@@ -33,14 +33,14 @@ public class ToxicSmackerel : IAbility
             AbilityRarity.Uncommon,
             new()
             {
-                BaseHits = [new() { Damage = 0.12, IsRelative = true, Timing = 0 }],
-                SpecialHits = [new() { Damage = 0.19, IsRelative = true, Timing = 0 }],
+                BaseHits = [new() { Damage = 0.169, IsRelative = true, Timing = 0 }],
+                SpecialHits = [new() { Damage = 0.268, IsRelative = true, Timing = 0 }],
                 DotHits =
                 [
-                    new() { Damage = 0.0350, IsRelative = true, Timing = 1 }, new() { Damage = 0.0350, IsRelative = true, Timing = 2 },
-                    new() { Damage = 0.0350, IsRelative = true, Timing = 3 }, new() { Damage = 0.0350, IsRelative = true, Timing = 4 },
-                    new() { Damage = 0.0350, IsRelative = true, Timing = 5 }, new() { Damage = 0.0350, IsRelative = true, Timing = 6 },
-                    new() { Damage = 0.0350, IsRelative = true, Timing = 7 }, new() { Damage = 0.0350, IsRelative = true, Timing = 8 }
+                    new() { Damage = 0.0492, IsRelative = true, Timing = 1 }, new() { Damage = 0.0492, IsRelative = true, Timing = 2 },
+                    new() { Damage = 0.0492, IsRelative = true, Timing = 3 }, new() { Damage = 0.0492, IsRelative = true, Timing = 4 },
+                    new() { Damage = 0.0492, IsRelative = true, Timing = 5 }, new() { Damage = 0.0492, IsRelative = true, Timing = 6 },
+                    new() { Damage = 0.0492, IsRelative = true, Timing = 7 }, new() { Damage = 0.0492, IsRelative = true, Timing = 8 }
                 ]
             }
         },
@@ -48,14 +48,14 @@ public class ToxicSmackerel : IAbility
             AbilityRarity.Rare,
             new()
             {
-                BaseHits = [new() { Damage = 0.126, IsRelative = true, Timing = 0 }],
-                SpecialHits = [new() { Damage = 0.20, IsRelative = true, Timing = 0 }],
+                BaseHits = [new() { Damage = 0.178, IsRelative = true, Timing = 0 }],
+                SpecialHits = [new() { Damage = 0.282, IsRelative = true, Timing = 0 }],
                 DotHits =
                 [
-                    new() { Damage = 0.0368, IsRelative = true, Timing = 1 }, new() { Damage = 0.0368, IsRelative = true, Timing = 2 },
-                    new() { Damage = 0.0368, IsRelative = true, Timing = 3 }, new() { Damage = 0.0368, IsRelative = true, Timing = 4 },
-                    new() { Damage = 0.0368, IsRelative = true, Timing = 5 }, new() { Damage = 0.0368, IsRelative = true, Timing = 6 },
-                    new() { Damage = 0.0368, IsRelative = true, Timing = 7 }, new() { Damage = 0.0368, IsRelative = true, Timing = 8 }
+                    new() { Damage = 0.05188, IsRelative = true, Timing = 1 }, new() { Damage = 0.05188, IsRelative = true, Timing = 2 },
+                    new() { Damage = 0.05188, IsRelative = true, Timing = 3 }, new() { Damage = 0.05188, IsRelative = true, Timing = 4 },
+                    new() { Damage = 0.05188, IsRelative = true, Timing = 5 }, new() { Damage = 0.05188, IsRelative = true, Timing = 6 },
+                    new() { Damage = 0.05188, IsRelative = true, Timing = 7 }, new() { Damage = 0.05188, IsRelative = true, Timing = 8 }
                 ]
             }
         },
@@ -63,14 +63,14 @@ public class ToxicSmackerel : IAbility
             AbilityRarity.Epic,
             new()
             {
-                BaseHits = [new() { Damage = 0.132, IsRelative = true, Timing = 0 }],
-                SpecialHits = [new() { Damage = 0.21, IsRelative = true, Timing = 0 }],
+                BaseHits = [new() { Damage = 0.1863, IsRelative = true, Timing = 0 }],
+                SpecialHits = [new() { Damage = 0.2962, IsRelative = true, Timing = 0 }],
                 DotHits =
                 [
-                    new() { Damage = 0.0385, IsRelative = true, Timing = 1 }, new() { Damage = 0.0385, IsRelative = true, Timing = 2 },
-                    new() { Damage = 0.0385, IsRelative = true, Timing = 3 }, new() { Damage = 0.0385, IsRelative = true, Timing = 4 },
-                    new() { Damage = 0.0385, IsRelative = true, Timing = 5 }, new() { Damage = 0.0385, IsRelative = true, Timing = 6 },
-                    new() { Damage = 0.0385, IsRelative = true, Timing = 7 }, new() { Damage = 0.0385, IsRelative = true, Timing = 8 }
+                    new() { Damage = 0.0543, IsRelative = true, Timing = 1 }, new() { Damage = 0.0543, IsRelative = true, Timing = 2 },
+                    new() { Damage = 0.0543, IsRelative = true, Timing = 3 }, new() { Damage = 0.0543, IsRelative = true, Timing = 4 },
+                    new() { Damage = 0.0543, IsRelative = true, Timing = 5 }, new() { Damage = 0.0543, IsRelative = true, Timing = 6 },
+                    new() { Damage = 0.0543, IsRelative = true, Timing = 7 }, new() { Damage = 0.0543, IsRelative = true, Timing = 8 }
                 ]
             }
         }

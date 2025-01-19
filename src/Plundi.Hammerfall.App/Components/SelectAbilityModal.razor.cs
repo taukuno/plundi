@@ -9,7 +9,7 @@ public partial class SelectAbilityModal : ComponentBase
     private readonly string _dialogId = $"dialog-{Guid.NewGuid()}";
 
     [Inject] private IJSRuntime JsRuntime { get; set; } = null!;
-    [Inject] private List<IAbility> Abilities { get; set; } = null!;
+    [Inject] private IEnumerable<IAbility> Abilities { get; set; } = null!;
 
     [Parameter] public EventCallback<IAbility> OnAbilitySelected { get; set; }
 

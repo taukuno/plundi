@@ -16,8 +16,7 @@ public partial class AbilitesPage : ComponentBase
     private bool _displayDamageAbilitiesInCompactView;
     private bool _displayUtilityAbilitiesInCompactView;
 
-    [Inject] private List<IAbility> Abilities { get; set; } = null!;
-    [Inject] private NavigationManager NavigationManager { get; set; } = null!;
+    [Inject] private IEnumerable<IAbility> Abilities { get; set; } = null!;
     [Inject] private LocalStorage LocalStorage { get; set; } = null!;
 
     /// <inheritdoc />

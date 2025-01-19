@@ -14,8 +14,11 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 // Abilities
 var types = coreAssembly.GetTypes().Where(x => x is { IsInterface: false, IsAbstract: false }).ToList();
-var abilityTypes = types.Where(x => x.GetInterfaces().Contains(typeof(IAbility))).Select(x => (IAbility)Activator.CreateInstance(x)!).ToList();
-builder.Services.AddSingleton(abilityTypes);
+var abilities = types.Where(x => x.GetInterfaces().Contains(typeof(IAbility))).Select(x => (IAbility)Activator.CreateInstance(x)!);
+foreach (var ability in abilities)
+{
+    builder.Services.AddSingleton(ability);
+}
 
 foreach (var type in types)
 foreach (var @interface in type.GetInterfaces())

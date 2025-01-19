@@ -19,7 +19,7 @@ public partial class ScalingPage : ComponentBase
     private bool _smoothLines;
     private bool _baseTimeToKillOnDps = true;
 
-    [Inject] private List<IAbility> Abilities { get; set; } = null!;
+    [Inject] private IEnumerable<IAbility> Abilities { get; set; } = null!;
 
     /// <inheritdoc />
     protected override void OnInitialized()

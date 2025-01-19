@@ -2,30 +2,30 @@ namespace Plundi.Hammerfall.Core.Models.Abilities;
 
 public class StarBomb : IAbility
 {
-    private readonly Dictionary<AbilityRarity, double> _cooldowns = new()
+    private readonly Dictionary<AbilityRarity, decimal> _cooldowns = new()
     {
-        { AbilityRarity.Common, 16 },
-        { AbilityRarity.Uncommon, 14 },
-        { AbilityRarity.Rare, 12 },
-        { AbilityRarity.Epic, 10 }
+        { AbilityRarity.Common, 16m },
+        { AbilityRarity.Uncommon, 14m },
+        { AbilityRarity.Rare, 12m },
+        { AbilityRarity.Epic, 10m }
     };
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 1.129, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 1.186, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 1.242, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 1.3, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 1.129m, IsRelative = true, Timing = 0m }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 1.186m, IsRelative = true, Timing = 0m }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 1.242m, IsRelative = true, Timing = 0m }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 1.3m, IsRelative = true, Timing = 0m }], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />
     public string Name => "Star Bomb";
 
     /// <inheritdoc />
-    public double CastDuration => 2;
+    public decimal CastDuration => 2m;
 
     /// <inheritdoc />
-    public double ChannelDuration => 0;
+    public decimal ChannelDuration => 0;
 
     /// <inheritdoc />
     public string ImagePath => "star_bomb.jpg";
@@ -38,14 +38,14 @@ public class StarBomb : IAbility
     {
         return
         [
-            new() { Description = "frontal AoE", Duration = 0 },
-            new() { Description = "pulls enemies into center on hit", Duration = 0 },
-            new() { Description = "heavily slowed while casting (-97%)", Duration = 2 }
+            new() { Description = "frontal AoE", Duration = 0m },
+            new() { Description = "pulls enemies into center on hit", Duration = 0m },
+            new() { Description = "heavily slowed while casting (-97%)", Duration = 2m }
         ];
     }
 
     /// <inheritdoc />
-    public double GetCooldown(int characterLevel, AbilityRarity abilityRarity)
+    public decimal GetCooldown(int characterLevel, AbilityRarity abilityRarity)
     {
         return _cooldowns[abilityRarity];
     }

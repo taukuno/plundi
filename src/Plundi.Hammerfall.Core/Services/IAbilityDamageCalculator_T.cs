@@ -18,7 +18,7 @@ public interface IAbilityDamageCalculator<in T> where T : IAbility
 
     List<DamageHit> CalculateDotHits(T ability, int characterLevel, AbilityRarity abilityRarity);
 
-    double? CalculateTimeToKillBasedOnSimulation(T ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel);
+    decimal? CalculateTimeToKillBasedOnSimulation(T ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel);
 
-    double? CalculateTimeToKillBasedOnDps(T ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel);
+    decimal? CalculateTimeToKillBasedOnDps(T ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel);
 }

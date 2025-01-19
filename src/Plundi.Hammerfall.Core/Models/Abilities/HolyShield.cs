@@ -2,12 +2,12 @@ namespace Plundi.Hammerfall.Core.Models.Abilities;
 
 public class HolyShield : IAbility
 {
-    private readonly Dictionary<AbilityRarity, double> _cooldowns = new()
+    private readonly Dictionary<AbilityRarity, decimal> _cooldowns = new()
     {
-        { AbilityRarity.Common, 14 },
-        { AbilityRarity.Uncommon, 12 },
-        { AbilityRarity.Rare, 10 },
-        { AbilityRarity.Epic, 8 }
+        { AbilityRarity.Common, 14m },
+        { AbilityRarity.Uncommon, 12m },
+        { AbilityRarity.Rare, 10m },
+        { AbilityRarity.Epic, 8m }
     };
 
     // The timings for the 2nd and special hits are arbitrary
@@ -18,8 +18,8 @@ public class HolyShield : IAbility
             AbilityRarity.Common,
             new()
             {
-                BaseHits = [new() { Damage = 0.18, IsRelative = true, Timing = 0 }, new() { Damage = 0.18, IsRelative = true, Timing = 0.5 }],
-                SpecialHits = [new() { Damage = 0.36, IsRelative = true, Timing = 0.36 }],
+                BaseHits = [new() { Damage = 0.18m, IsRelative = true, Timing = 0m }, new() { Damage = 0.18m, IsRelative = true, Timing = 0.5m }],
+                SpecialHits = [new() { Damage = 0.36m, IsRelative = true, Timing = 0.36m }],
                 DotHits = []
             }
         },
@@ -27,8 +27,8 @@ public class HolyShield : IAbility
             AbilityRarity.Uncommon,
             new()
             {
-                BaseHits = [new() { Damage = 0.19, IsRelative = true, Timing = 0 }, new() { Damage = 0.19, IsRelative = true, Timing = 0.5 }],
-                SpecialHits = [new() { Damage = 0.374, IsRelative = true, Timing = 0.374 }],
+                BaseHits = [new() { Damage = 0.19m, IsRelative = true, Timing = 0m }, new() { Damage = 0.19m, IsRelative = true, Timing = 0.5m }],
+                SpecialHits = [new() { Damage = 0.374m, IsRelative = true, Timing = 0.374m }],
                 DotHits = []
             }
         },
@@ -36,8 +36,8 @@ public class HolyShield : IAbility
             AbilityRarity.Rare,
             new()
             {
-                BaseHits = [new() { Damage = 0.198, IsRelative = true, Timing = 0 }, new() { Damage = 0.198, IsRelative = true, Timing = 0.5 }],
-                SpecialHits = [new() { Damage = 0.395, IsRelative = true, Timing = 0.395 }],
+                BaseHits = [new() { Damage = 0.198m, IsRelative = true, Timing = 0m }, new() { Damage = 0.198m, IsRelative = true, Timing = 0.5m }],
+                SpecialHits = [new() { Damage = 0.395m, IsRelative = true, Timing = 0.395m }],
                 DotHits = []
             }
         },
@@ -45,8 +45,8 @@ public class HolyShield : IAbility
             AbilityRarity.Epic,
             new()
             {
-                BaseHits = [new() { Damage = 0.2, IsRelative = true, Timing = 0 }, new() { Damage = 0.2, IsRelative = true, Timing = 0.5 }],
-                SpecialHits = [new() { Damage = 0.409, IsRelative = true, Timing = 0.409 }],
+                BaseHits = [new() { Damage = 0.2m, IsRelative = true, Timing = 0m }, new() { Damage = 0.2m, IsRelative = true, Timing = 0.5m }],
+                SpecialHits = [new() { Damage = 0.409m, IsRelative = true, Timing = 0.409m }],
                 DotHits = []
             }
         }
@@ -56,10 +56,10 @@ public class HolyShield : IAbility
     public string Name => "Holy Shield";
 
     /// <inheritdoc />
-    public double CastDuration => 1;
+    public decimal CastDuration => 1m;
 
     /// <inheritdoc />
-    public double ChannelDuration => 0;
+    public decimal ChannelDuration => 0;
 
     /// <inheritdoc />
     public string ImagePath => "holy_shield.jpg";
@@ -72,13 +72,13 @@ public class HolyShield : IAbility
     {
         return
         [
-            new() { Description = "frontal swirly (bommerangs)", Duration = 0 },
-            new() { Description = "recast to activate AoE", Duration = 0 }
+            new() { Description = "frontal swirly (bommerangs)", Duration = 0m },
+            new() { Description = "recast to activate AoE", Duration = 0m }
         ];
     }
 
     /// <inheritdoc />
-    public double GetCooldown(int characterLevel, AbilityRarity abilityRarity)
+    public decimal GetCooldown(int characterLevel, AbilityRarity abilityRarity)
     {
         return _cooldowns[abilityRarity];
     }

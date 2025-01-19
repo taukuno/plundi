@@ -57,7 +57,7 @@ public class AbilityReportGenerator
         var abilityDamageCalculator = _serviceProvider.GetServices(abilityDamageCalculatorType).FirstOrDefault();
         var calcTimeToKillMethod = abilityDamageCalculatorType.GetMethod(nameof(IAbilityDamageCalculator<IAbility>.CalculateTimeToKillBasedOnSimulation))!;
 
-        var timeToKill = (double?)calcTimeToKillMethod.Invoke(abilityDamageCalculator, [ability, characterLevel, abilityRarity, targetLevel]);
+        var timeToKill = (decimal?)calcTimeToKillMethod.Invoke(abilityDamageCalculator, [ability, characterLevel, abilityRarity, targetLevel]);
 
         killReport = null;
         if (timeToKill is null)
@@ -80,7 +80,7 @@ public class AbilityReportGenerator
         var abilityDamageCalculator = _serviceProvider.GetServices(abilityDamageCalculatorType).FirstOrDefault();
         var calcTimeToKillMethod = abilityDamageCalculatorType.GetMethod(nameof(IAbilityDamageCalculator<IAbility>.CalculateTimeToKillBasedOnDps))!;
 
-        var timeToKill = (double?)calcTimeToKillMethod.Invoke(abilityDamageCalculator, [ability, characterLevel, abilityRarity, targetLevel]);
+        var timeToKill = (decimal?)calcTimeToKillMethod.Invoke(abilityDamageCalculator, [ability, characterLevel, abilityRarity, targetLevel]);
 
         killReport = null;
         if (timeToKill is null)

@@ -20,7 +20,7 @@ public partial class AbilityCard
     [CascadingParameter(Name = "DisplayInCompactView")]
     public bool DisplayInCompactView { get; set; }
 
-    private static string DamageSequenceToReadableString(List<double> damageSequence)
+    private static string DamageSequenceToReadableString(List<decimal> damageSequence)
     {
         var readableString = new StringBuilder();
         var distinctDamages = damageSequence.GroupBy(x => x).ToList();

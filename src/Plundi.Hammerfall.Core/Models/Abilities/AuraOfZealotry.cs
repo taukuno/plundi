@@ -2,12 +2,12 @@ namespace Plundi.Hammerfall.Core.Models.Abilities;
 
 public class AuraOfZealotry : IAbility
 {
-    private readonly Dictionary<AbilityRarity, double> _cooldowns = new()
+    private readonly Dictionary<AbilityRarity, decimal> _cooldowns = new()
     {
-        { AbilityRarity.Common, 18 },
-        { AbilityRarity.Uncommon, 16 },
-        { AbilityRarity.Rare, 14 },
-        { AbilityRarity.Epic, 12 }
+        { AbilityRarity.Common, 18m },
+        { AbilityRarity.Uncommon, 16m },
+        { AbilityRarity.Rare, 14m },
+        { AbilityRarity.Epic, 12m }
     };
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
@@ -18,14 +18,14 @@ public class AuraOfZealotry : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.077, IsRelative = true, Timing = 0 }, new() { Damage = 0.077, IsRelative = true, Timing = 1 }, new() { Damage = 0.077, IsRelative = true, Timing = 2 }, new() { Damage = 0.077, IsRelative = true, Timing = 3 },
-                    new() { Damage = 0.077, IsRelative = true, Timing = 4 }, new() { Damage = 0.077, IsRelative = true, Timing = 5 }, new() { Damage = 0.077, IsRelative = true, Timing = 6 }, new() { Damage = 0.077, IsRelative = true, Timing = 7 },
-                    new() { Damage = 0.077, IsRelative = true, Timing = 8 }
+                    new() { Damage = 0.077m, IsRelative = true, Timing = 0m }, new() { Damage = 0.077m, IsRelative = true, Timing = 1m }, new() { Damage = 0.077m, IsRelative = true, Timing = 2m }, new() { Damage = 0.077m, IsRelative = true, Timing = 3m },
+                    new() { Damage = 0.077m, IsRelative = true, Timing = 4m }, new() { Damage = 0.077m, IsRelative = true, Timing = 5m }, new() { Damage = 0.077m, IsRelative = true, Timing = 6m }, new() { Damage = 0.077m, IsRelative = true, Timing = 7m },
+                    new() { Damage = 0.077m, IsRelative = true, Timing = 8m }
                 ],
                 SpecialHits =
                 [
-                    new() { Damage = 0.046, IsRelative = true, Timing = 1 }, new() { Damage = 0.046, IsRelative = true, Timing = 2 }, new() { Damage = 0.046, IsRelative = true, Timing = 3 }, new() { Damage = 0.046, IsRelative = true, Timing = 4 },
-                    new() { Damage = 0.046, IsRelative = true, Timing = 5 }, new() { Damage = 0.046, IsRelative = true, Timing = 6 }, new() { Damage = 0.046, IsRelative = true, Timing = 7 }, new() { Damage = 0.046, IsRelative = true, Timing = 8 }
+                    new() { Damage = 0.046m, IsRelative = true, Timing = 1m }, new() { Damage = 0.046m, IsRelative = true, Timing = 2m }, new() { Damage = 0.046m, IsRelative = true, Timing = 3m }, new() { Damage = 0.046m, IsRelative = true, Timing = 4m },
+                    new() { Damage = 0.046m, IsRelative = true, Timing = 5m }, new() { Damage = 0.046m, IsRelative = true, Timing = 6m }, new() { Damage = 0.046m, IsRelative = true, Timing = 7m }, new() { Damage = 0.046m, IsRelative = true, Timing = 8m }
                 ],
                 DotHits = []
             }
@@ -36,14 +36,14 @@ public class AuraOfZealotry : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.08, IsRelative = true, Timing = 0 }, new() { Damage = 0.08, IsRelative = true, Timing = 1 }, new() { Damage = 0.08, IsRelative = true, Timing = 2 }, new() { Damage = 0.08, IsRelative = true, Timing = 3 },
-                    new() { Damage = 0.08, IsRelative = true, Timing = 4 }, new() { Damage = 0.08, IsRelative = true, Timing = 5 }, new() { Damage = 0.08, IsRelative = true, Timing = 6 }, new() { Damage = 0.08, IsRelative = true, Timing = 7 },
-                    new() { Damage = 0.08, IsRelative = true, Timing = 8 }
+                    new() { Damage = 0.08m, IsRelative = true, Timing = 0m }, new() { Damage = 0.08m, IsRelative = true, Timing = 1m }, new() { Damage = 0.08m, IsRelative = true, Timing = 2m }, new() { Damage = 0.08m, IsRelative = true, Timing = 3m },
+                    new() { Damage = 0.08m, IsRelative = true, Timing = 4m }, new() { Damage = 0.08m, IsRelative = true, Timing = 5m }, new() { Damage = 0.08m, IsRelative = true, Timing = 6m }, new() { Damage = 0.08m, IsRelative = true, Timing = 7m },
+                    new() { Damage = 0.08m, IsRelative = true, Timing = 8m }
                 ],
                 SpecialHits =
                 [
-                    new() { Damage = 0.059, IsRelative = true, Timing = 1 }, new() { Damage = 0.059, IsRelative = true, Timing = 2 }, new() { Damage = 0.059, IsRelative = true, Timing = 3 }, new() { Damage = 0.059, IsRelative = true, Timing = 4 },
-                    new() { Damage = 0.059, IsRelative = true, Timing = 5 }, new() { Damage = 0.059, IsRelative = true, Timing = 6 }, new() { Damage = 0.059, IsRelative = true, Timing = 7 }, new() { Damage = 0.059, IsRelative = true, Timing = 8 }
+                    new() { Damage = 0.059m, IsRelative = true, Timing = 1m }, new() { Damage = 0.059m, IsRelative = true, Timing = 2m }, new() { Damage = 0.059m, IsRelative = true, Timing = 3m }, new() { Damage = 0.059m, IsRelative = true, Timing = 4m },
+                    new() { Damage = 0.059m, IsRelative = true, Timing = 5m }, new() { Damage = 0.059m, IsRelative = true, Timing = 6m }, new() { Damage = 0.059m, IsRelative = true, Timing = 7m }, new() { Damage = 0.059m, IsRelative = true, Timing = 8m }
                 ],
                 DotHits = []
             }
@@ -54,14 +54,14 @@ public class AuraOfZealotry : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.085, IsRelative = true, Timing = 0 }, new() { Damage = 0.085, IsRelative = true, Timing = 1 }, new() { Damage = 0.085, IsRelative = true, Timing = 2 }, new() { Damage = 0.085, IsRelative = true, Timing = 3 },
-                    new() { Damage = 0.085, IsRelative = true, Timing = 4 }, new() { Damage = 0.085, IsRelative = true, Timing = 5 }, new() { Damage = 0.085, IsRelative = true, Timing = 6 }, new() { Damage = 0.085, IsRelative = true, Timing = 7 },
-                    new() { Damage = 0.085, IsRelative = true, Timing = 8 }
+                    new() { Damage = 0.085m, IsRelative = true, Timing = 0m }, new() { Damage = 0.085m, IsRelative = true, Timing = 1m }, new() { Damage = 0.085m, IsRelative = true, Timing = 2m }, new() { Damage = 0.085m, IsRelative = true, Timing = 3m },
+                    new() { Damage = 0.085m, IsRelative = true, Timing = 4m }, new() { Damage = 0.085m, IsRelative = true, Timing = 5m }, new() { Damage = 0.085m, IsRelative = true, Timing = 6m }, new() { Damage = 0.085m, IsRelative = true, Timing = 7m },
+                    new() { Damage = 0.085m, IsRelative = true, Timing = 8m }
                 ],
                 SpecialHits =
                 [
-                    new() { Damage = 0.073, IsRelative = true, Timing = 1 }, new() { Damage = 0.073, IsRelative = true, Timing = 2 }, new() { Damage = 0.073, IsRelative = true, Timing = 3 }, new() { Damage = 0.073, IsRelative = true, Timing = 4 },
-                    new() { Damage = 0.073, IsRelative = true, Timing = 5 }, new() { Damage = 0.073, IsRelative = true, Timing = 6 }, new() { Damage = 0.073, IsRelative = true, Timing = 7 }, new() { Damage = 0.073, IsRelative = true, Timing = 8 }
+                    new() { Damage = 0.073m, IsRelative = true, Timing = 1m }, new() { Damage = 0.073m, IsRelative = true, Timing = 2m }, new() { Damage = 0.073m, IsRelative = true, Timing = 3m }, new() { Damage = 0.073m, IsRelative = true, Timing = 4m },
+                    new() { Damage = 0.073m, IsRelative = true, Timing = 5m }, new() { Damage = 0.073m, IsRelative = true, Timing = 6m }, new() { Damage = 0.073m, IsRelative = true, Timing = 7m }, new() { Damage = 0.073m, IsRelative = true, Timing = 8m }
                 ],
                 DotHits = []
             }
@@ -72,14 +72,14 @@ public class AuraOfZealotry : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.0859, IsRelative = true, Timing = 0 }, new() { Damage = 0.0859, IsRelative = true, Timing = 1 }, new() { Damage = 0.0859, IsRelative = true, Timing = 2 }, new() { Damage = 0.0859, IsRelative = true, Timing = 3 },
-                    new() { Damage = 0.0859, IsRelative = true, Timing = 4 }, new() { Damage = 0.0859, IsRelative = true, Timing = 5 }, new() { Damage = 0.0859, IsRelative = true, Timing = 6 }, new() { Damage = 0.0859, IsRelative = true, Timing = 7 },
-                    new() { Damage = 0.0859, IsRelative = true, Timing = 8 }
+                    new() { Damage = 0.0859m, IsRelative = true, Timing = 0m }, new() { Damage = 0.0859m, IsRelative = true, Timing = 1m }, new() { Damage = 0.0859m, IsRelative = true, Timing = 2m }, new() { Damage = 0.0859m, IsRelative = true, Timing = 3m },
+                    new() { Damage = 0.0859m, IsRelative = true, Timing = 4m }, new() { Damage = 0.0859m, IsRelative = true, Timing = 5m }, new() { Damage = 0.0859m, IsRelative = true, Timing = 6m }, new() { Damage = 0.0859m, IsRelative = true, Timing = 7m },
+                    new() { Damage = 0.0859m, IsRelative = true, Timing = 8m }
                 ],
                 SpecialHits =
                 [
-                    new() { Damage = 0.087, IsRelative = true, Timing = 1 }, new() { Damage = 0.087, IsRelative = true, Timing = 2 }, new() { Damage = 0.087, IsRelative = true, Timing = 3 }, new() { Damage = 0.087, IsRelative = true, Timing = 4 },
-                    new() { Damage = 0.087, IsRelative = true, Timing = 5 }, new() { Damage = 0.087, IsRelative = true, Timing = 6 }, new() { Damage = 0.087, IsRelative = true, Timing = 7 }, new() { Damage = 0.087, IsRelative = true, Timing = 8 }
+                    new() { Damage = 0.087m, IsRelative = true, Timing = 1m }, new() { Damage = 0.087m, IsRelative = true, Timing = 2m }, new() { Damage = 0.087m, IsRelative = true, Timing = 3m }, new() { Damage = 0.087m, IsRelative = true, Timing = 4m },
+                    new() { Damage = 0.087m, IsRelative = true, Timing = 5m }, new() { Damage = 0.087m, IsRelative = true, Timing = 6m }, new() { Damage = 0.087m, IsRelative = true, Timing = 7m }, new() { Damage = 0.087m, IsRelative = true, Timing = 8m }
                 ],
                 DotHits = []
             }
@@ -90,10 +90,10 @@ public class AuraOfZealotry : IAbility
     public string Name => "Aura of Zealotry";
 
     /// <inheritdoc />
-    public double CastDuration => 0.5;
+    public decimal CastDuration => 0.5m;
 
     /// <inheritdoc />
-    public double ChannelDuration => 0;
+    public decimal ChannelDuration => 0;
 
     /// <inheritdoc />
     public string ImagePath => "aura_of_zealotry.jpg";
@@ -104,28 +104,28 @@ public class AuraOfZealotry : IAbility
     /// <inheritdoc />
     public List<AbilityEffect> GetEffects(int characterLevel, AbilityRarity abilityRarity)
     {
-        const double baseMeleeDamage = 0.226;
-        var improvedMeleeDamage = new Dictionary<AbilityRarity, double>
+        const decimal baseMeleeDamage = 0.226m;
+        var improvedMeleeDamage = new Dictionary<AbilityRarity, decimal>
         {
-            { AbilityRarity.Common, 0.272 },
-            { AbilityRarity.Uncommon, 0.285 },
-            { AbilityRarity.Rare, 0.299 },
-            { AbilityRarity.Epic, 0.313 }
+            { AbilityRarity.Common, 0.272m },
+            { AbilityRarity.Uncommon, 0.285m },
+            { AbilityRarity.Rare, 0.299m },
+            { AbilityRarity.Epic, 0.313m }
         };
 
         var bonusMeleeDamage = improvedMeleeDamage[abilityRarity] / baseMeleeDamage - 1;
 
         return
         [
-            new() { Description = "AoE", Duration = 8 },
-            new() { Description = "+12% movement speed", Duration = 0 },
-            new() { Description = "+70% movement speed while inside AoE", Duration = 8 },
-            new() { Description = $"increases melee damage (+{bonusMeleeDamage:P0})", Duration = 8 }
+            new() { Description = "AoE", Duration = 8m },
+            new() { Description = "+12% movement speed", Duration = 0m },
+            new() { Description = "+70% movement speed while inside AoE", Duration = 8m },
+            new() { Description = $"increases melee damage (+{bonusMeleeDamage:P0})", Duration = 8m }
         ];
     }
 
     /// <inheritdoc />
-    public double GetCooldown(int characterLevel, AbilityRarity abilityRarity)
+    public decimal GetCooldown(int characterLevel, AbilityRarity abilityRarity)
     {
         return _cooldowns[abilityRarity];
     }

@@ -2,30 +2,30 @@ namespace Plundi.Hammerfall.Core.Models.Abilities;
 
 public class CelestialBarrage : IAbility
 {
-    private readonly Dictionary<AbilityRarity, double> _cooldowns = new()
+    private readonly Dictionary<AbilityRarity, decimal> _cooldowns = new()
     {
-        { AbilityRarity.Common, 18 },
-        { AbilityRarity.Uncommon, 16 },
-        { AbilityRarity.Rare, 14 },
-        { AbilityRarity.Epic, 12 }
+        { AbilityRarity.Common, 18m },
+        { AbilityRarity.Uncommon, 16m },
+        { AbilityRarity.Rare, 14m },
+        { AbilityRarity.Epic, 12m }
     };
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.595, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.625, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.654, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.684, IsRelative = true, Timing = 0 }], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.595m, IsRelative = true, Timing = 0m }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.625m, IsRelative = true, Timing = 0m }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.654m, IsRelative = true, Timing = 0m }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.684m, IsRelative = true, Timing = 0m }], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />
     public string Name => "Celestial Barrage";
 
     /// <inheritdoc />
-    public double CastDuration => 0;
+    public decimal CastDuration => 0m;
 
     /// <inheritdoc />
-    public double ChannelDuration => 2;
+    public decimal ChannelDuration => 2;
 
     /// <inheritdoc />
     public string ImagePath => "celestial_barrage.jpg";
@@ -38,14 +38,14 @@ public class CelestialBarrage : IAbility
     {
         return
         [
-            new() { Description = "frontal beam", Duration = 0 },
-            new() { Description = "length of beam can be charged", Duration = 0 },
-            new() { Description = "heavily slowed while channeling (-97%)", Duration = 2 }
+            new() { Description = "frontal beam", Duration = 0m },
+            new() { Description = "length of beam can be charged", Duration = 0m },
+            new() { Description = "heavily slowed while channeling (-97%)", Duration = 2m }
         ];
     }
 
     /// <inheritdoc />
-    public double GetCooldown(int characterLevel, AbilityRarity abilityRarity)
+    public decimal GetCooldown(int characterLevel, AbilityRarity abilityRarity)
     {
         return _cooldowns[abilityRarity];
     }

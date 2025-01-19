@@ -2,12 +2,12 @@ namespace Plundi.Hammerfall.Core.Models.Abilities;
 
 public class FadeToShadow : IAbility
 {
-    private readonly Dictionary<AbilityRarity, double> _cooldowns = new()
+    private readonly Dictionary<AbilityRarity, decimal> _cooldowns = new()
     {
-        { AbilityRarity.Common, 18 },
-        { AbilityRarity.Uncommon, 16 },
-        { AbilityRarity.Rare, 14 },
-        { AbilityRarity.Epic, 12 }
+        { AbilityRarity.Common, 18m },
+        { AbilityRarity.Uncommon, 16m },
+        { AbilityRarity.Rare, 14m },
+        { AbilityRarity.Epic, 12m }
     };
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
@@ -22,10 +22,10 @@ public class FadeToShadow : IAbility
     public string Name => "Fade to Shadow";
 
     /// <inheritdoc />
-    public double CastDuration => 0;
+    public decimal CastDuration => 0m;
 
     /// <inheritdoc />
-    public double ChannelDuration => 0;
+    public decimal ChannelDuration => 0;
 
     /// <inheritdoc />
     public string ImagePath => "fade_to_shadow.jpg";
@@ -38,13 +38,13 @@ public class FadeToShadow : IAbility
     {
         return
         [
-            new() { Description = "blinks 25 yards", Duration = 0 },
-            new() { Description = "stealth after blink", Duration = 4 }
+            new() { Description = "blinks 25 yards", Duration = 0m },
+            new() { Description = "stealth after blink", Duration = 4m }
         ];
     }
 
     /// <inheritdoc />
-    public double GetCooldown(int characterLevel, AbilityRarity abilityRarity)
+    public decimal GetCooldown(int characterLevel, AbilityRarity abilityRarity)
     {
         return _cooldowns[abilityRarity];
     }

@@ -2,12 +2,12 @@ namespace Plundi.Hammerfall.Core.Models.Abilities;
 
 public class Snowdrift : IAbility
 {
-    private readonly Dictionary<AbilityRarity, double> _cooldowns = new()
+    private readonly Dictionary<AbilityRarity, decimal> _cooldowns = new()
     {
-        { AbilityRarity.Common, 14 },
-        { AbilityRarity.Uncommon, 12 },
-        { AbilityRarity.Rare, 10 },
-        { AbilityRarity.Epic, 8 }
+        { AbilityRarity.Common, 14m },
+        { AbilityRarity.Uncommon, 12m },
+        { AbilityRarity.Rare, 10m },
+        { AbilityRarity.Epic, 8m }
     };
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
@@ -18,9 +18,9 @@ public class Snowdrift : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.1412, IsRelative = true, Timing = 0 },
-                    new() { Damage = 0.1412, IsRelative = true, Timing = 0.5 },
-                    new() { Damage = 0.1412, IsRelative = true, Timing = 1 }
+                    new() { Damage = 0.1412m, IsRelative = true, Timing = 0m },
+                    new() { Damage = 0.1412m, IsRelative = true, Timing = 0.5m },
+                    new() { Damage = 0.1412m, IsRelative = true, Timing = 1m }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -32,9 +32,9 @@ public class Snowdrift : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.1497, IsRelative = true, Timing = 0 },
-                    new() { Damage = 0.1497, IsRelative = true, Timing = 0.5 },
-                    new() { Damage = 0.1497, IsRelative = true, Timing = 1 }
+                    new() { Damage = 0.1497m, IsRelative = true, Timing = 0m },
+                    new() { Damage = 0.1497m, IsRelative = true, Timing = 0.5m },
+                    new() { Damage = 0.1497m, IsRelative = true, Timing = 1m }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -46,9 +46,9 @@ public class Snowdrift : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.158, IsRelative = true, Timing = 0 },
-                    new() { Damage = 0.158, IsRelative = true, Timing = 0.5 },
-                    new() { Damage = 0.158, IsRelative = true, Timing = 1 }
+                    new() { Damage = 0.158m, IsRelative = true, Timing = 0m },
+                    new() { Damage = 0.158m, IsRelative = true, Timing = 0.5m },
+                    new() { Damage = 0.158m, IsRelative = true, Timing = 1m }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -60,9 +60,9 @@ public class Snowdrift : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.166, IsRelative = true, Timing = 0 },
-                    new() { Damage = 0.166, IsRelative = true, Timing = 0.5 },
-                    new() { Damage = 0.166, IsRelative = true, Timing = 1 }
+                    new() { Damage = 0.166m, IsRelative = true, Timing = 0m },
+                    new() { Damage = 0.166m, IsRelative = true, Timing = 0.5m },
+                    new() { Damage = 0.166m, IsRelative = true, Timing = 1m }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -74,10 +74,10 @@ public class Snowdrift : IAbility
     public string Name => "Snowdrift";
 
     /// <inheritdoc />
-    public double CastDuration => 0.5;
+    public decimal CastDuration => 0.5m;
 
     /// <inheritdoc />
-    public double ChannelDuration => 1;
+    public decimal ChannelDuration => 1;
 
     /// <inheritdoc />
     public string ImagePath => "snowdrift.jpg";
@@ -90,13 +90,13 @@ public class Snowdrift : IAbility
     {
         return
         [
-            new() { Description = "AoE", Duration = 0 },
-            new() { Description = "stacking slow (30-90%) on hit", Duration = 4.5 }
+            new() { Description = "AoE", Duration = 0m },
+            new() { Description = "stacking slow (30-90%) on hit", Duration = 4.5m }
         ];
     }
 
     /// <inheritdoc />
-    public double GetCooldown(int characterLevel, AbilityRarity abilityRarity)
+    public decimal GetCooldown(int characterLevel, AbilityRarity abilityRarity)
     {
         return _cooldowns[abilityRarity];
     }

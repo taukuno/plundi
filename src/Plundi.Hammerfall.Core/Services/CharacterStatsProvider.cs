@@ -50,13 +50,13 @@ public static class CharacterStatsProvider
         return AttackPower[characterLevel];
     }
 
-    public static double CalculateMeleeAttack(int characterLevel)
+    public static decimal CalculateMeleeAttack(int characterLevel)
     {
         if (characterLevel is < 1 or > 10)
         {
             throw new ArgumentOutOfRangeException(nameof(characterLevel), "Character level must be between 1 and 10.");
         }
 
-        return Math.Round(GetAttackPower(characterLevel) * 0.226, 1);
+        return Math.Round(GetAttackPower(characterLevel) * 0.226m, 1);
     }
 }

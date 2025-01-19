@@ -38,7 +38,7 @@
                 </div>
                 <div class="grid grid-cols-3 gap-2 items-center 2xl:gap-4 grow md:max-lg:gap-4">
                     <div class="flex flex-col items-center">
-                        @if (Math.Abs(damageReport.TotalDamageRange.Min - damageReport.TotalDamageRange.Max) < 0.1)
+                        @if (damageReport.TotalDamageRange.Min - damageReport.TotalDamageRange.Max == 0)
                         {
                             <span class="font-mono font-bold sm:text-xl text-center @damageTextColor">
                                 @Math.Round(damageReport.TotalDamageRange.Max)
@@ -53,7 +53,7 @@
                         <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">damage</span>
                     </div>
                     <div class="flex flex-col items-center">
-                        @if (Math.Abs(damageReport.TotalDamageRange.MinDps - damageReport.TotalDamageRange.MaxDps) < 0.1)
+                        @if (damageReport.TotalDamageRange.MinDps - damageReport.TotalDamageRange.MaxDps == 0)
                         {
                             <span class="font-mono text-center sm:text-xl">
                                 @Math.Round(damageReport.TotalDamageRange.MaxDps, 1)
@@ -81,7 +81,7 @@
                 </div>
                 <div class="grid grid-cols-2 gap-x-2 gap-y-4 items-center 2xl:grid-cols-4 2xl:gap-4 grow md:max-lg:grid-cols-4 md:max-lg:gap-x-4">
                     <div class="flex flex-col gap-1 items-center xl:order-1 md:max-lg:order-1">
-                        @if (Math.Abs(damageReport.TotalDamageRange.Min - damageReport.TotalDamageRange.Max) < 0.1)
+                        @if (damageReport.TotalDamageRange.Min - damageReport.TotalDamageRange.Max == 0)
                         {
                             <span class="font-mono text-xl sm:text-2xl text-center font-bold @damageTextColor">@Math.Round(damageReport.TotalDamageRange.Max)</span>
                         }
@@ -92,7 +92,7 @@
                         <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">damage</span>
                     </div>
                     <div class="flex flex-col gap-1 items-center 2xl:order-3 md:max-lg:order-3">
-                        @if (Math.Abs(minHitAndDotDamage - maxHitAndDotDamage) < 0.1)
+                        @if (minHitAndDotDamage - maxHitAndDotDamage == 0)
                         {
                             <span class="font-mono text-xl text-center sm:text-2xl">@Math.Round(maxHitAndDotDamage)</span>
                         }
@@ -103,7 +103,7 @@
                         <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">hit & dot dmg</span>
                     </div>
                     <div class="flex flex-col gap-1 items-center 2xl:order-2 md:max-lg:order-2">
-                        @if (Math.Abs(damageReport.TotalDamageRange.MinDps - damageReport.TotalDamageRange.MaxDps) < 0.1)
+                        @if (damageReport.TotalDamageRange.MinDps - damageReport.TotalDamageRange.MaxDps == 0)
                         {
                             <span class="font-mono text-xl text-center sm:text-2xl">@Math.Round(damageReport.TotalDamageRange.MaxDps, 1)</span>
                         }
@@ -114,7 +114,7 @@
                         <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">dps</span>
                     </div>
                     <div class="flex flex-col gap-1 items-center xl:order-4 md:max-lg:order-4">
-                        @if (Math.Abs(damageReport.SpecialDamageRange.Min - damageReport.SpecialDamageRange.Max) < 0.1)
+                        @if (damageReport.SpecialDamageRange.Min - damageReport.SpecialDamageRange.Max == 0)
                         {
                             <span class="font-mono text-xl text-center sm:text-2xl">@Math.Round(damageReport.SpecialDamageRange.Max)</span>
                         }

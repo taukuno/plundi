@@ -2,30 +2,30 @@ namespace Plundi.Hammerfall.Core.Models.Abilities;
 
 public class Windstorm : IAbility
 {
-    private readonly Dictionary<AbilityRarity, double> _cooldowns = new()
+    private readonly Dictionary<AbilityRarity, decimal> _cooldowns = new()
     {
-        { AbilityRarity.Common, 14 },
-        { AbilityRarity.Uncommon, 12 },
-        { AbilityRarity.Rare, 10 },
-        { AbilityRarity.Epic, 8 }
+        { AbilityRarity.Common, 14m },
+        { AbilityRarity.Uncommon, 12m },
+        { AbilityRarity.Rare, 10m },
+        { AbilityRarity.Epic, 8m }
     };
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.268, IsRelative = true, Timing = 1 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.282, IsRelative = true, Timing = 1 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.297, IsRelative = true, Timing = 1 }], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.31, IsRelative = true, Timing = 1 }], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { BaseHits = [new() { Damage = 0.268m, IsRelative = true, Timing = 1m }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { BaseHits = [new() { Damage = 0.282m, IsRelative = true, Timing = 1m }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Rare, new() { BaseHits = [new() { Damage = 0.297m, IsRelative = true, Timing = 1m }], SpecialHits = [], DotHits = [] } },
+        { AbilityRarity.Epic, new() { BaseHits = [new() { Damage = 0.31m, IsRelative = true, Timing = 1m }], SpecialHits = [], DotHits = [] } }
     };
 
     /// <inheritdoc />
     public string Name => "Windstorm";
 
     /// <inheritdoc />
-    public double CastDuration => 0;
+    public decimal CastDuration => 0m;
 
     /// <inheritdoc />
-    public double ChannelDuration => 1;
+    public decimal ChannelDuration => 1;
 
     /// <inheritdoc />
     public string ImagePath => "windstorm.jpg";
@@ -38,14 +38,14 @@ public class Windstorm : IAbility
     {
         return
         [
-            new() { Description = "frontal swirly", Duration = 0 },
-            new() { Description = "stun on hit", Duration = 2.5 },
-            new() { Description = "heavily slowed while channeling (-99%)", Duration = 1 }
+            new() { Description = "frontal swirly", Duration = 0m },
+            new() { Description = "stun on hit", Duration = 2.5m },
+            new() { Description = "heavily slowed while channeling (-99%)", Duration = 1m }
         ];
     }
 
     /// <inheritdoc />
-    public double GetCooldown(int characterLevel, AbilityRarity abilityRarity)
+    public decimal GetCooldown(int characterLevel, AbilityRarity abilityRarity)
     {
         return _cooldowns[abilityRarity];
     }

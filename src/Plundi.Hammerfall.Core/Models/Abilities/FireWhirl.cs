@@ -2,12 +2,12 @@ namespace Plundi.Hammerfall.Core.Models.Abilities;
 
 public class FireWhirl : IAbility
 {
-    private readonly Dictionary<AbilityRarity, double> _cooldowns = new()
+    private readonly Dictionary<AbilityRarity, decimal> _cooldowns = new()
     {
-        { AbilityRarity.Common, 18 },
-        { AbilityRarity.Uncommon, 16 },
-        { AbilityRarity.Rare, 14 },
-        { AbilityRarity.Epic, 12 }
+        { AbilityRarity.Common, 18m },
+        { AbilityRarity.Uncommon, 16m },
+        { AbilityRarity.Rare, 14m },
+        { AbilityRarity.Epic, 12m }
     };
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
@@ -18,14 +18,14 @@ public class FireWhirl : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.104, IsRelative = true, Timing = 0.2 }, new() { Damage = 0.104, IsRelative = true, Timing = 0.4 },
-                    new() { Damage = 0.104, IsRelative = true, Timing = 0.6 }, new() { Damage = 0.104, IsRelative = true, Timing = 0.8 },
-                    new() { Damage = 0.104, IsRelative = true, Timing = 1 }, new() { Damage = 0.104, IsRelative = true, Timing = 1.2 },
-                    new() { Damage = 0.104, IsRelative = true, Timing = 1.4 }, new() { Damage = 0.104, IsRelative = true, Timing = 1.6 },
-                    new() { Damage = 0.104, IsRelative = true, Timing = 1.8 }, new() { Damage = 0.104, IsRelative = true, Timing = 2 },
-                    new() { Damage = 0.104, IsRelative = true, Timing = 2.2 }, new() { Damage = 0.104, IsRelative = true, Timing = 2.4 },
-                    new() { Damage = 0.104, IsRelative = true, Timing = 2.6 }, new() { Damage = 0.104, IsRelative = true, Timing = 2.8 },
-                    new() { Damage = 0.104, IsRelative = true, Timing = 3 }
+                    new() { Damage = 0.104m, IsRelative = true, Timing = 0.2m }, new() { Damage = 0.104m, IsRelative = true, Timing = 0.4m },
+                    new() { Damage = 0.104m, IsRelative = true, Timing = 0.6m }, new() { Damage = 0.104m, IsRelative = true, Timing = 0.8m },
+                    new() { Damage = 0.104m, IsRelative = true, Timing = 1m }, new() { Damage = 0.104m, IsRelative = true, Timing = 1.2m },
+                    new() { Damage = 0.104m, IsRelative = true, Timing = 1.4m }, new() { Damage = 0.104m, IsRelative = true, Timing = 1.6m },
+                    new() { Damage = 0.104m, IsRelative = true, Timing = 1.8m }, new() { Damage = 0.104m, IsRelative = true, Timing = 2m },
+                    new() { Damage = 0.104m, IsRelative = true, Timing = 2.2m }, new() { Damage = 0.104m, IsRelative = true, Timing = 2.4m },
+                    new() { Damage = 0.104m, IsRelative = true, Timing = 2.6m }, new() { Damage = 0.104m, IsRelative = true, Timing = 2.8m },
+                    new() { Damage = 0.104m, IsRelative = true, Timing = 3m }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -37,14 +37,14 @@ public class FireWhirl : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.109, IsRelative = true, Timing = 0.2 }, new() { Damage = 0.109, IsRelative = true, Timing = 0.4 },
-                    new() { Damage = 0.109, IsRelative = true, Timing = 0.6 }, new() { Damage = 0.109, IsRelative = true, Timing = 0.8 },
-                    new() { Damage = 0.109, IsRelative = true, Timing = 1 }, new() { Damage = 0.109, IsRelative = true, Timing = 1.2 },
-                    new() { Damage = 0.109, IsRelative = true, Timing = 1.4 }, new() { Damage = 0.109, IsRelative = true, Timing = 1.6 },
-                    new() { Damage = 0.109, IsRelative = true, Timing = 1.8 }, new() { Damage = 0.109, IsRelative = true, Timing = 2 },
-                    new() { Damage = 0.109, IsRelative = true, Timing = 2.2 }, new() { Damage = 0.109, IsRelative = true, Timing = 2.4 },
-                    new() { Damage = 0.109, IsRelative = true, Timing = 2.6 }, new() { Damage = 0.109, IsRelative = true, Timing = 2.8 },
-                    new() { Damage = 0.109, IsRelative = true, Timing = 3 }
+                    new() { Damage = 0.109m, IsRelative = true, Timing = 0.2m }, new() { Damage = 0.109m, IsRelative = true, Timing = 0.4m },
+                    new() { Damage = 0.109m, IsRelative = true, Timing = 0.6m }, new() { Damage = 0.109m, IsRelative = true, Timing = 0.8m },
+                    new() { Damage = 0.109m, IsRelative = true, Timing = 1m }, new() { Damage = 0.109m, IsRelative = true, Timing = 1.2m },
+                    new() { Damage = 0.109m, IsRelative = true, Timing = 1.4m }, new() { Damage = 0.109m, IsRelative = true, Timing = 1.6m },
+                    new() { Damage = 0.109m, IsRelative = true, Timing = 1.8m }, new() { Damage = 0.109m, IsRelative = true, Timing = 2m },
+                    new() { Damage = 0.109m, IsRelative = true, Timing = 2.2m }, new() { Damage = 0.109m, IsRelative = true, Timing = 2.4m },
+                    new() { Damage = 0.109m, IsRelative = true, Timing = 2.6m }, new() { Damage = 0.109m, IsRelative = true, Timing = 2.8m },
+                    new() { Damage = 0.109m, IsRelative = true, Timing = 3m }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -56,14 +56,14 @@ public class FireWhirl : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.115, IsRelative = true, Timing = 0.2 }, new() { Damage = 0.115, IsRelative = true, Timing = 0.4 },
-                    new() { Damage = 0.115, IsRelative = true, Timing = 0.6 }, new() { Damage = 0.115, IsRelative = true, Timing = 0.8 },
-                    new() { Damage = 0.115, IsRelative = true, Timing = 1 }, new() { Damage = 0.115, IsRelative = true, Timing = 1.2 },
-                    new() { Damage = 0.115, IsRelative = true, Timing = 1.4 }, new() { Damage = 0.115, IsRelative = true, Timing = 1.6 },
-                    new() { Damage = 0.115, IsRelative = true, Timing = 1.8 }, new() { Damage = 0.115, IsRelative = true, Timing = 2 },
-                    new() { Damage = 0.115, IsRelative = true, Timing = 2.2 }, new() { Damage = 0.115, IsRelative = true, Timing = 2.4 },
-                    new() { Damage = 0.115, IsRelative = true, Timing = 2.6 }, new() { Damage = 0.115, IsRelative = true, Timing = 2.8 },
-                    new() { Damage = 0.115, IsRelative = true, Timing = 3 }
+                    new() { Damage = 0.115m, IsRelative = true, Timing = 0.2m }, new() { Damage = 0.115m, IsRelative = true, Timing = 0.4m },
+                    new() { Damage = 0.115m, IsRelative = true, Timing = 0.6m }, new() { Damage = 0.115m, IsRelative = true, Timing = 0.8m },
+                    new() { Damage = 0.115m, IsRelative = true, Timing = 1m }, new() { Damage = 0.115m, IsRelative = true, Timing = 1.2m },
+                    new() { Damage = 0.115m, IsRelative = true, Timing = 1.4m }, new() { Damage = 0.115m, IsRelative = true, Timing = 1.6m },
+                    new() { Damage = 0.115m, IsRelative = true, Timing = 1.8m }, new() { Damage = 0.115m, IsRelative = true, Timing = 2m },
+                    new() { Damage = 0.115m, IsRelative = true, Timing = 2.2m }, new() { Damage = 0.115m, IsRelative = true, Timing = 2.4m },
+                    new() { Damage = 0.115m, IsRelative = true, Timing = 2.6m }, new() { Damage = 0.115m, IsRelative = true, Timing = 2.8m },
+                    new() { Damage = 0.115m, IsRelative = true, Timing = 3m }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -75,14 +75,14 @@ public class FireWhirl : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.12, IsRelative = true, Timing = 0.2 }, new() { Damage = 0.12, IsRelative = true, Timing = 0.4 },
-                    new() { Damage = 0.12, IsRelative = true, Timing = 0.6 }, new() { Damage = 0.12, IsRelative = true, Timing = 0.8 },
-                    new() { Damage = 0.12, IsRelative = true, Timing = 1 }, new() { Damage = 0.12, IsRelative = true, Timing = 1.2 },
-                    new() { Damage = 0.12, IsRelative = true, Timing = 1.4 }, new() { Damage = 0.12, IsRelative = true, Timing = 1.6 },
-                    new() { Damage = 0.12, IsRelative = true, Timing = 1.8 }, new() { Damage = 0.12, IsRelative = true, Timing = 2 },
-                    new() { Damage = 0.12, IsRelative = true, Timing = 2.2 }, new() { Damage = 0.12, IsRelative = true, Timing = 2.4 },
-                    new() { Damage = 0.12, IsRelative = true, Timing = 2.6 }, new() { Damage = 0.12, IsRelative = true, Timing = 2.8 },
-                    new() { Damage = 0.12, IsRelative = true, Timing = 3 }
+                    new() { Damage = 0.12m, IsRelative = true, Timing = 0.2m }, new() { Damage = 0.12m, IsRelative = true, Timing = 0.4m },
+                    new() { Damage = 0.12m, IsRelative = true, Timing = 0.6m }, new() { Damage = 0.12m, IsRelative = true, Timing = 0.8m },
+                    new() { Damage = 0.12m, IsRelative = true, Timing = 1m }, new() { Damage = 0.12m, IsRelative = true, Timing = 1.2m },
+                    new() { Damage = 0.12m, IsRelative = true, Timing = 1.4m }, new() { Damage = 0.12m, IsRelative = true, Timing = 1.6m },
+                    new() { Damage = 0.12m, IsRelative = true, Timing = 1.8m }, new() { Damage = 0.12m, IsRelative = true, Timing = 2m },
+                    new() { Damage = 0.12m, IsRelative = true, Timing = 2.2m }, new() { Damage = 0.12m, IsRelative = true, Timing = 2.4m },
+                    new() { Damage = 0.12m, IsRelative = true, Timing = 2.6m }, new() { Damage = 0.12m, IsRelative = true, Timing = 2.8m },
+                    new() { Damage = 0.12m, IsRelative = true, Timing = 3m }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -94,10 +94,10 @@ public class FireWhirl : IAbility
     public string Name => "Fire Whirl";
 
     /// <inheritdoc />
-    public double CastDuration => 1;
+    public decimal CastDuration => 1m;
 
     /// <inheritdoc />
-    public double ChannelDuration => 3;
+    public decimal ChannelDuration => 3;
 
     /// <inheritdoc />
     public string ImagePath => "fire_whirl.jpg";
@@ -110,13 +110,13 @@ public class FireWhirl : IAbility
     {
         return
         [
-            new() { Description = "AoE", Duration = 0 },
-            new() { Description = "+70% movement speed", Duration = 3 }
+            new() { Description = "AoE", Duration = 0m },
+            new() { Description = "+70% movement speed", Duration = 3m }
         ];
     }
 
     /// <inheritdoc />
-    public double GetCooldown(int characterLevel, AbilityRarity abilityRarity)
+    public decimal GetCooldown(int characterLevel, AbilityRarity abilityRarity)
     {
         return _cooldowns[abilityRarity];
     }

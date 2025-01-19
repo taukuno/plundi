@@ -2,12 +2,12 @@ namespace Plundi.Hammerfall.Core.Models.Abilities;
 
 public class CallGalefeather : IAbility
 {
-    private readonly Dictionary<AbilityRarity, double> _cooldowns = new()
+    private readonly Dictionary<AbilityRarity, decimal> _cooldowns = new()
     {
-        { AbilityRarity.Common, 18 },
-        { AbilityRarity.Uncommon, 16 },
-        { AbilityRarity.Rare, 14 },
-        { AbilityRarity.Epic, 12 }
+        { AbilityRarity.Common, 18m },
+        { AbilityRarity.Uncommon, 16m },
+        { AbilityRarity.Rare, 14m },
+        { AbilityRarity.Epic, 12m }
     };
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
@@ -22,10 +22,10 @@ public class CallGalefeather : IAbility
     public string Name => "Call Galefeather";
 
     /// <inheritdoc />
-    public double CastDuration => 0;
+    public decimal CastDuration => 0m;
 
     /// <inheritdoc />
-    public double ChannelDuration => 0;
+    public decimal ChannelDuration => 0;
 
     /// <inheritdoc />
     public string ImagePath => "call_galefeather.jpg";
@@ -38,13 +38,13 @@ public class CallGalefeather : IAbility
     {
         return
         [
-            new() { Description = "targetable AoE", Duration = 0 },
-            new() { Description = "big knockback on hit", Duration = 8 }
+            new() { Description = "targetable AoE", Duration = 0m },
+            new() { Description = "big knockback on hit", Duration = 8m }
         ];
     }
 
     /// <inheritdoc />
-    public double GetCooldown(int characterLevel, AbilityRarity abilityRarity)
+    public decimal GetCooldown(int characterLevel, AbilityRarity abilityRarity)
     {
         return _cooldowns[abilityRarity];
     }

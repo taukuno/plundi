@@ -93,7 +93,7 @@ public abstract class BaseAbilityDamageCalculator<T> : IAbilityDamageCalculator<
     }
 
     /// <inheritdoc />
-    public virtual double? CalculateTimeToKillBasedOnSimulation(T ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel)
+    public virtual decimal? CalculateTimeToKillBasedOnSimulation(T ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel)
     {
         var baseHits = CalculateBaseHits(ability, characterLevel, abilityRarity);
         var specialHits = CalculateSpecialHits(ability, characterLevel, abilityRarity);
@@ -105,8 +105,8 @@ public abstract class BaseAbilityDamageCalculator<T> : IAbilityDamageCalculator<
             return null;
         }
 
-        var targetHitPoints = Convert.ToDouble(CharacterStatsProvider.GetHitPoints(targetLevel));
-        var totalTime = 0d;
+        var targetHitPoints = Convert.ToDecimal(CharacterStatsProvider.GetHitPoints(targetLevel));
+        var totalTime = 0m;
         var cooldown = ability.GetCooldown(characterLevel, abilityRarity);
 
         while (targetHitPoints >= 0)
@@ -130,9 +130,9 @@ public abstract class BaseAbilityDamageCalculator<T> : IAbilityDamageCalculator<
     }
 
     /// <inheritdoc />
-    public virtual double? CalculateTimeToKillBasedOnDps(T ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel)
+    public virtual decimal? CalculateTimeToKillBasedOnDps(T ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel)
     {
-        var targetHitPoints = Convert.ToDouble(CharacterStatsProvider.GetHitPoints(targetLevel));
+        var targetHitPoints = Convert.ToDecimal(CharacterStatsProvider.GetHitPoints(targetLevel));
         var totalDamageRange = CalculateTotalDamageRange(ability, characterLevel, abilityRarity);
 
         if (targetHitPoints <= 0 || totalDamageRange.MaxDps <= 0)
@@ -152,7 +152,7 @@ public abstract class BaseAbilityDamageCalculator<T> : IAbilityDamageCalculator<
         }).ToList();
     }
 
-    private static double CalculateDps(IEnumerable<DamageHit> hits, double realCooldown)
+    private static decimal CalculateDps(IEnumerable<DamageHit> hits, decimal realCooldown)
     {
         return hits.Where(x => x.Timing <= realCooldown).Sum(x => x.Damage) / realCooldown;
     }

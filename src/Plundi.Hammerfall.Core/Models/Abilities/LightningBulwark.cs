@@ -2,12 +2,12 @@ namespace Plundi.Hammerfall.Core.Models.Abilities;
 
 public class LightningBulwark : IAbility
 {
-    private readonly Dictionary<AbilityRarity, double> _cooldowns = new()
+    private readonly Dictionary<AbilityRarity, decimal> _cooldowns = new()
     {
-        { AbilityRarity.Common, 14 },
-        { AbilityRarity.Uncommon, 12 },
-        { AbilityRarity.Rare, 10 },
-        { AbilityRarity.Epic, 8 }
+        { AbilityRarity.Common, 14m },
+        { AbilityRarity.Uncommon, 12m },
+        { AbilityRarity.Rare, 10m },
+        { AbilityRarity.Epic, 8m }
     };
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
@@ -19,11 +19,11 @@ public class LightningBulwark : IAbility
                 BaseHits = [],
                 SpecialHits =
                 [
-                    new() { Damage = 0.049, IsRelative = true, Timing = 0.4 }, new() { Damage = 0.049, IsRelative = true, Timing = 0.8 },
-                    new() { Damage = 0.049, IsRelative = true, Timing = 1.2 }, new() { Damage = 0.049, IsRelative = true, Timing = 1.6 },
-                    new() { Damage = 0.049, IsRelative = true, Timing = 2.0 }, new() { Damage = 0.049, IsRelative = true, Timing = 2.4 },
-                    new() { Damage = 0.049, IsRelative = true, Timing = 2.8 }, new() { Damage = 0.049, IsRelative = true, Timing = 3.2 },
-                    new() { Damage = 0.049, IsRelative = true, Timing = 3.6 }, new() { Damage = 0.049, IsRelative = true, Timing = 4.0 }
+                    new() { Damage = 0.049m, IsRelative = true, Timing = 0.4m }, new() { Damage = 0.049m, IsRelative = true, Timing = 0.8m },
+                    new() { Damage = 0.049m, IsRelative = true, Timing = 1.2m }, new() { Damage = 0.049m, IsRelative = true, Timing = 1.6m },
+                    new() { Damage = 0.049m, IsRelative = true, Timing = 2.0m }, new() { Damage = 0.049m, IsRelative = true, Timing = 2.4m },
+                    new() { Damage = 0.049m, IsRelative = true, Timing = 2.8m }, new() { Damage = 0.049m, IsRelative = true, Timing = 3.2m },
+                    new() { Damage = 0.049m, IsRelative = true, Timing = 3.6m }, new() { Damage = 0.049m, IsRelative = true, Timing = 4.0m }
                 ],
                 DotHits = []
             }
@@ -35,11 +35,11 @@ public class LightningBulwark : IAbility
                 BaseHits = [],
                 SpecialHits =
                 [
-                    new() { Damage = 0.051, IsRelative = true, Timing = 0.4 }, new() { Damage = 0.051, IsRelative = true, Timing = 0.8 },
-                    new() { Damage = 0.051, IsRelative = true, Timing = 1.2 }, new() { Damage = 0.051, IsRelative = true, Timing = 1.6 },
-                    new() { Damage = 0.051, IsRelative = true, Timing = 2.0 }, new() { Damage = 0.051, IsRelative = true, Timing = 2.4 },
-                    new() { Damage = 0.051, IsRelative = true, Timing = 2.8 }, new() { Damage = 0.051, IsRelative = true, Timing = 3.2 },
-                    new() { Damage = 0.051, IsRelative = true, Timing = 3.6 }, new() { Damage = 0.051, IsRelative = true, Timing = 4.0 }
+                    new() { Damage = 0.051m, IsRelative = true, Timing = 0.4m }, new() { Damage = 0.051m, IsRelative = true, Timing = 0.8m },
+                    new() { Damage = 0.051m, IsRelative = true, Timing = 1.2m }, new() { Damage = 0.051m, IsRelative = true, Timing = 1.6m },
+                    new() { Damage = 0.051m, IsRelative = true, Timing = 2.0m }, new() { Damage = 0.051m, IsRelative = true, Timing = 2.4m },
+                    new() { Damage = 0.051m, IsRelative = true, Timing = 2.8m }, new() { Damage = 0.051m, IsRelative = true, Timing = 3.2m },
+                    new() { Damage = 0.051m, IsRelative = true, Timing = 3.6m }, new() { Damage = 0.051m, IsRelative = true, Timing = 4.0m }
                 ],
                 DotHits = []
             }
@@ -51,11 +51,11 @@ public class LightningBulwark : IAbility
                 BaseHits = [],
                 SpecialHits =
                 [
-                    new() { Damage = 0.0522, IsRelative = true, Timing = 0.4 }, new() { Damage = 0.0522, IsRelative = true, Timing = 0.8 },
-                    new() { Damage = 0.0522, IsRelative = true, Timing = 1.2 }, new() { Damage = 0.0522, IsRelative = true, Timing = 1.6 },
-                    new() { Damage = 0.0522, IsRelative = true, Timing = 2.0 }, new() { Damage = 0.0522, IsRelative = true, Timing = 2.4 },
-                    new() { Damage = 0.0522, IsRelative = true, Timing = 2.8 }, new() { Damage = 0.0522, IsRelative = true, Timing = 3.2 },
-                    new() { Damage = 0.0522, IsRelative = true, Timing = 3.6 }, new() { Damage = 0.0522, IsRelative = true, Timing = 4.0 }
+                    new() { Damage = 0.0522m, IsRelative = true, Timing = 0.4m }, new() { Damage = 0.0522m, IsRelative = true, Timing = 0.8m },
+                    new() { Damage = 0.0522m, IsRelative = true, Timing = 1.2m }, new() { Damage = 0.0522m, IsRelative = true, Timing = 1.6m },
+                    new() { Damage = 0.0522m, IsRelative = true, Timing = 2.0m }, new() { Damage = 0.0522m, IsRelative = true, Timing = 2.4m },
+                    new() { Damage = 0.0522m, IsRelative = true, Timing = 2.8m }, new() { Damage = 0.0522m, IsRelative = true, Timing = 3.2m },
+                    new() { Damage = 0.0522m, IsRelative = true, Timing = 3.6m }, new() { Damage = 0.0522m, IsRelative = true, Timing = 4.0m }
                 ],
                 DotHits = []
             }
@@ -67,11 +67,11 @@ public class LightningBulwark : IAbility
                 BaseHits = [],
                 SpecialHits =
                 [
-                    new() { Damage = 0.0537, IsRelative = true, Timing = 0.4 }, new() { Damage = 0.0537, IsRelative = true, Timing = 0.8 },
-                    new() { Damage = 0.0537, IsRelative = true, Timing = 1.2 }, new() { Damage = 0.0537, IsRelative = true, Timing = 1.6 },
-                    new() { Damage = 0.0537, IsRelative = true, Timing = 2.0 }, new() { Damage = 0.0537, IsRelative = true, Timing = 2.4 },
-                    new() { Damage = 0.0537, IsRelative = true, Timing = 2.8 }, new() { Damage = 0.0537, IsRelative = true, Timing = 3.2 },
-                    new() { Damage = 0.0537, IsRelative = true, Timing = 3.6 }, new() { Damage = 0.0537, IsRelative = true, Timing = 4.0 }
+                    new() { Damage = 0.0537m, IsRelative = true, Timing = 0.4m }, new() { Damage = 0.0537m, IsRelative = true, Timing = 0.8m },
+                    new() { Damage = 0.0537m, IsRelative = true, Timing = 1.2m }, new() { Damage = 0.0537m, IsRelative = true, Timing = 1.6m },
+                    new() { Damage = 0.0537m, IsRelative = true, Timing = 2.0m }, new() { Damage = 0.0537m, IsRelative = true, Timing = 2.4m },
+                    new() { Damage = 0.0537m, IsRelative = true, Timing = 2.8m }, new() { Damage = 0.0537m, IsRelative = true, Timing = 3.2m },
+                    new() { Damage = 0.0537m, IsRelative = true, Timing = 3.6m }, new() { Damage = 0.0537m, IsRelative = true, Timing = 4.0m }
                 ],
                 DotHits = []
             }
@@ -82,10 +82,10 @@ public class LightningBulwark : IAbility
     public string Name => "Lightning Bulwark";
 
     /// <inheritdoc />
-    public double CastDuration => 0;
+    public decimal CastDuration => 0m;
 
     /// <inheritdoc />
-    public double ChannelDuration => 2;
+    public decimal ChannelDuration => 2;
 
     /// <inheritdoc />
     public string ImagePath => "lightning_bulwark.jpg";
@@ -98,15 +98,15 @@ public class LightningBulwark : IAbility
     {
         return
         [
-            new() { Description = "immune to damage until first hit", Duration = 2 },
-            new() { Description = "+120% movement speed if attack repelled", Duration = 4 },
-            new() { Description = "AoE if attack repelled", Duration = 4 },
-            new() { Description = "heavily slowed while channeling (-96%)", Duration = 2 }
+            new() { Description = "immune to damage until first hit", Duration = 2m },
+            new() { Description = "+120% movement speed if attack repelled", Duration = 4m },
+            new() { Description = "AoE if attack repelled", Duration = 4m },
+            new() { Description = "heavily slowed while channeling (-96%)", Duration = 2m }
         ];
     }
 
     /// <inheritdoc />
-    public double GetCooldown(int characterLevel, AbilityRarity abilityRarity)
+    public decimal GetCooldown(int characterLevel, AbilityRarity abilityRarity)
     {
         return _cooldowns[abilityRarity];
     }

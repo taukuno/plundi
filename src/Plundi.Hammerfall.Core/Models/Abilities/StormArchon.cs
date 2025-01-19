@@ -2,12 +2,12 @@ namespace Plundi.Hammerfall.Core.Models.Abilities;
 
 public class StormArchon : IAbility
 {
-    private readonly Dictionary<AbilityRarity, double> _cooldowns = new()
+    private readonly Dictionary<AbilityRarity, decimal> _cooldowns = new()
     {
-        { AbilityRarity.Common, 20 },
-        { AbilityRarity.Uncommon, 18 },
-        { AbilityRarity.Rare, 16 },
-        { AbilityRarity.Epic, 14 }
+        { AbilityRarity.Common, 20m },
+        { AbilityRarity.Uncommon, 18m },
+        { AbilityRarity.Rare, 16m },
+        { AbilityRarity.Epic, 14m }
     };
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
@@ -18,9 +18,9 @@ public class StormArchon : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.222, IsRelative = true, Timing = 0.75 },
-                    new() { Damage = 0.222, IsRelative = true, Timing = 1.5 },
-                    new() { Damage = 0.445, IsRelative = true, Timing = 2.25 }
+                    new() { Damage = 0.222m, IsRelative = true, Timing = 0.75m },
+                    new() { Damage = 0.222m, IsRelative = true, Timing = 1.5m },
+                    new() { Damage = 0.445m, IsRelative = true, Timing = 2.25m }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -32,9 +32,9 @@ public class StormArchon : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.237, IsRelative = true, Timing = 0.75 },
-                    new() { Damage = 0.237, IsRelative = true, Timing = 1.5 },
-                    new() { Damage = 0.473, IsRelative = true, Timing = 2.25 }
+                    new() { Damage = 0.237m, IsRelative = true, Timing = 0.75m },
+                    new() { Damage = 0.237m, IsRelative = true, Timing = 1.5m },
+                    new() { Damage = 0.473m, IsRelative = true, Timing = 2.25m }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -46,9 +46,9 @@ public class StormArchon : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.247, IsRelative = true, Timing = 0.75 },
-                    new() { Damage = 0.247, IsRelative = true, Timing = 1.5 },
-                    new() { Damage = 0.494, IsRelative = true, Timing = 2.25 }
+                    new() { Damage = 0.247m, IsRelative = true, Timing = 0.75m },
+                    new() { Damage = 0.247m, IsRelative = true, Timing = 1.5m },
+                    new() { Damage = 0.494m, IsRelative = true, Timing = 2.25m }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -60,9 +60,9 @@ public class StormArchon : IAbility
             {
                 BaseHits =
                 [
-                    new() { Damage = 0.258, IsRelative = true, Timing = 0.75 },
-                    new() { Damage = 0.258, IsRelative = true, Timing = 1.5 },
-                    new() { Damage = 0.515, IsRelative = true, Timing = 2.25 }
+                    new() { Damage = 0.258m, IsRelative = true, Timing = 0.75m },
+                    new() { Damage = 0.258m, IsRelative = true, Timing = 1.5m },
+                    new() { Damage = 0.515m, IsRelative = true, Timing = 2.25m }
                 ],
                 SpecialHits = [],
                 DotHits = []
@@ -74,10 +74,10 @@ public class StormArchon : IAbility
     public string Name => "Storm Archon";
 
     /// <inheritdoc />
-    public double CastDuration => 0;
+    public decimal CastDuration => 0m;
 
     /// <inheritdoc />
-    public double ChannelDuration => 2.25;
+    public decimal ChannelDuration => 2.25m;
 
     /// <inheritdoc />
     public string ImagePath => "storm_archon.jpg";
@@ -90,14 +90,14 @@ public class StormArchon : IAbility
     {
         return
         [
-            new() { Description = "frontal barrage", Duration = 0 },
-            new() { Description = "can be recast twice (last cast does double-damage)", Duration = 0 },
-            new() { Description = "heavily slowed while channeling (-96%)", Duration = 2.25 }
+            new() { Description = "frontal barrage", Duration = 0m },
+            new() { Description = "can be recast twice (last cast does decimal-damage)", Duration = 0m },
+            new() { Description = "heavily slowed while channeling (-96%)", Duration = 2.25m }
         ];
     }
 
     /// <inheritdoc />
-    public double GetCooldown(int characterLevel, AbilityRarity abilityRarity)
+    public decimal GetCooldown(int characterLevel, AbilityRarity abilityRarity)
     {
         return _cooldowns[abilityRarity];
     }

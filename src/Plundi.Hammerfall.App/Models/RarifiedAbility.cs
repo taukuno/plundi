@@ -14,8 +14,8 @@ public class RarifiedAbility
     public string Name => OriginalAbility.Name;
     public AbilityType Type => OriginalAbility.Type;
     public AbilityRarity Rarity { get; set; } = AbilityRarity.Common;
-    public double CastDuration => OriginalAbility.CastDuration;
-    public double ChannelDuration => OriginalAbility.ChannelDuration;
+    public decimal CastDuration => OriginalAbility.CastDuration;
+    public decimal ChannelDuration => OriginalAbility.ChannelDuration;
     public string ImagePath => OriginalAbility.ImagePath;
 
     public List<AbilityEffect> GetEffects(int characterLevel)
@@ -23,7 +23,7 @@ public class RarifiedAbility
         return OriginalAbility.GetEffects(characterLevel, Rarity);
     }
 
-    public double GetCooldown(int characterLevel)
+    public decimal GetCooldown(int characterLevel)
     {
         return OriginalAbility.GetCooldown(characterLevel, Rarity);
     }

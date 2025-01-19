@@ -4,12 +4,12 @@ namespace Plundi.Hammerfall.Core.Models.Abilities;
 
 public class ToxicSmackerel : IAbility
 {
-    private readonly Dictionary<AbilityRarity, double> _cooldowns = new()
+    private readonly Dictionary<AbilityRarity, decimal> _cooldowns = new()
     {
-        { AbilityRarity.Common, 7 },
-        { AbilityRarity.Uncommon, 6.5 },
-        { AbilityRarity.Rare, 6 },
-        { AbilityRarity.Epic, 5.5 }
+        { AbilityRarity.Common, 7m },
+        { AbilityRarity.Uncommon, 6.5m },
+        { AbilityRarity.Rare, 6m },
+        { AbilityRarity.Epic, 5.5m }
     };
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
@@ -18,14 +18,14 @@ public class ToxicSmackerel : IAbility
             AbilityRarity.Common,
             new()
             {
-                BaseHits = [new() { Damage = 0.161, IsRelative = true, Timing = 0 }],
-                SpecialHits = [new() { Damage = 0.254, IsRelative = true, Timing = 0 }],
+                BaseHits = [new() { Damage = 0.161m, IsRelative = true, Timing = 0m }],
+                SpecialHits = [new() { Damage = 0.254m, IsRelative = true, Timing = 0m }],
                 DotHits =
                 [
-                    new() { Damage = 0.0466, IsRelative = true, Timing = 1 }, new() { Damage = 0.0466, IsRelative = true, Timing = 2 },
-                    new() { Damage = 0.0466, IsRelative = true, Timing = 3 }, new() { Damage = 0.0466, IsRelative = true, Timing = 4 },
-                    new() { Damage = 0.0466, IsRelative = true, Timing = 5 }, new() { Damage = 0.0466, IsRelative = true, Timing = 6 },
-                    new() { Damage = 0.0466, IsRelative = true, Timing = 7 }, new() { Damage = 0.0466, IsRelative = true, Timing = 8 }
+                    new() { Damage = 0.0466m, IsRelative = true, Timing = 1m }, new() { Damage = 0.0466m, IsRelative = true, Timing = 2m },
+                    new() { Damage = 0.0466m, IsRelative = true, Timing = 3m }, new() { Damage = 0.0466m, IsRelative = true, Timing = 4m },
+                    new() { Damage = 0.0466m, IsRelative = true, Timing = 5m }, new() { Damage = 0.0466m, IsRelative = true, Timing = 6m },
+                    new() { Damage = 0.0466m, IsRelative = true, Timing = 7m }, new() { Damage = 0.0466m, IsRelative = true, Timing = 8m }
                 ]
             }
         },
@@ -33,14 +33,14 @@ public class ToxicSmackerel : IAbility
             AbilityRarity.Uncommon,
             new()
             {
-                BaseHits = [new() { Damage = 0.169, IsRelative = true, Timing = 0 }],
-                SpecialHits = [new() { Damage = 0.268, IsRelative = true, Timing = 0 }],
+                BaseHits = [new() { Damage = 0.169m, IsRelative = true, Timing = 0m }],
+                SpecialHits = [new() { Damage = 0.268m, IsRelative = true, Timing = 0m }],
                 DotHits =
                 [
-                    new() { Damage = 0.0492, IsRelative = true, Timing = 1 }, new() { Damage = 0.0492, IsRelative = true, Timing = 2 },
-                    new() { Damage = 0.0492, IsRelative = true, Timing = 3 }, new() { Damage = 0.0492, IsRelative = true, Timing = 4 },
-                    new() { Damage = 0.0492, IsRelative = true, Timing = 5 }, new() { Damage = 0.0492, IsRelative = true, Timing = 6 },
-                    new() { Damage = 0.0492, IsRelative = true, Timing = 7 }, new() { Damage = 0.0492, IsRelative = true, Timing = 8 }
+                    new() { Damage = 0.0492m, IsRelative = true, Timing = 1m }, new() { Damage = 0.0492m, IsRelative = true, Timing = 2m },
+                    new() { Damage = 0.0492m, IsRelative = true, Timing = 3m }, new() { Damage = 0.0492m, IsRelative = true, Timing = 4m },
+                    new() { Damage = 0.0492m, IsRelative = true, Timing = 5m }, new() { Damage = 0.0492m, IsRelative = true, Timing = 6m },
+                    new() { Damage = 0.0492m, IsRelative = true, Timing = 7m }, new() { Damage = 0.0492m, IsRelative = true, Timing = 8m }
                 ]
             }
         },
@@ -48,14 +48,14 @@ public class ToxicSmackerel : IAbility
             AbilityRarity.Rare,
             new()
             {
-                BaseHits = [new() { Damage = 0.178, IsRelative = true, Timing = 0 }],
-                SpecialHits = [new() { Damage = 0.282, IsRelative = true, Timing = 0 }],
+                BaseHits = [new() { Damage = 0.178m, IsRelative = true, Timing = 0m }],
+                SpecialHits = [new() { Damage = 0.282m, IsRelative = true, Timing = 0m }],
                 DotHits =
                 [
-                    new() { Damage = 0.05188, IsRelative = true, Timing = 1 }, new() { Damage = 0.05188, IsRelative = true, Timing = 2 },
-                    new() { Damage = 0.05188, IsRelative = true, Timing = 3 }, new() { Damage = 0.05188, IsRelative = true, Timing = 4 },
-                    new() { Damage = 0.05188, IsRelative = true, Timing = 5 }, new() { Damage = 0.05188, IsRelative = true, Timing = 6 },
-                    new() { Damage = 0.05188, IsRelative = true, Timing = 7 }, new() { Damage = 0.05188, IsRelative = true, Timing = 8 }
+                    new() { Damage = 0.05188m, IsRelative = true, Timing = 1m }, new() { Damage = 0.05188m, IsRelative = true, Timing = 2m },
+                    new() { Damage = 0.05188m, IsRelative = true, Timing = 3m }, new() { Damage = 0.05188m, IsRelative = true, Timing = 4m },
+                    new() { Damage = 0.05188m, IsRelative = true, Timing = 5m }, new() { Damage = 0.05188m, IsRelative = true, Timing = 6m },
+                    new() { Damage = 0.05188m, IsRelative = true, Timing = 7m }, new() { Damage = 0.05188m, IsRelative = true, Timing = 8m }
                 ]
             }
         },
@@ -63,14 +63,14 @@ public class ToxicSmackerel : IAbility
             AbilityRarity.Epic,
             new()
             {
-                BaseHits = [new() { Damage = 0.1863, IsRelative = true, Timing = 0 }],
-                SpecialHits = [new() { Damage = 0.2962, IsRelative = true, Timing = 0 }],
+                BaseHits = [new() { Damage = 0.1863m, IsRelative = true, Timing = 0m }],
+                SpecialHits = [new() { Damage = 0.2962m, IsRelative = true, Timing = 0m }],
                 DotHits =
                 [
-                    new() { Damage = 0.0543, IsRelative = true, Timing = 1 }, new() { Damage = 0.0543, IsRelative = true, Timing = 2 },
-                    new() { Damage = 0.0543, IsRelative = true, Timing = 3 }, new() { Damage = 0.0543, IsRelative = true, Timing = 4 },
-                    new() { Damage = 0.0543, IsRelative = true, Timing = 5 }, new() { Damage = 0.0543, IsRelative = true, Timing = 6 },
-                    new() { Damage = 0.0543, IsRelative = true, Timing = 7 }, new() { Damage = 0.0543, IsRelative = true, Timing = 8 }
+                    new() { Damage = 0.0543m, IsRelative = true, Timing = 1m }, new() { Damage = 0.0543m, IsRelative = true, Timing = 2m },
+                    new() { Damage = 0.0543m, IsRelative = true, Timing = 3m }, new() { Damage = 0.0543m, IsRelative = true, Timing = 4m },
+                    new() { Damage = 0.0543m, IsRelative = true, Timing = 5m }, new() { Damage = 0.0543m, IsRelative = true, Timing = 6m },
+                    new() { Damage = 0.0543m, IsRelative = true, Timing = 7m }, new() { Damage = 0.0543m, IsRelative = true, Timing = 8m }
                 ]
             }
         }
@@ -80,10 +80,10 @@ public class ToxicSmackerel : IAbility
     public string Name => "Toxic Smackerel";
 
     /// <inheritdoc />
-    public double CastDuration => 0.5;
+    public decimal CastDuration => 0.5m;
 
     /// <inheritdoc />
-    public double ChannelDuration => 0;
+    public decimal ChannelDuration => 0;
 
     /// <inheritdoc />
     public string ImagePath => "toxic_smackerel.jpg";
@@ -98,14 +98,14 @@ public class ToxicSmackerel : IAbility
 
         return
         [
-            new() { Description = "frontal cone", Duration = 0 },
-            new() { Description = "applies poison dot", Duration = 8 },
-            new() { Description = $"does bonus damage on already poisoned targets ({bonusDamage})", Duration = 8 }
+            new() { Description = "frontal cone", Duration = 0m },
+            new() { Description = "applies poison dot", Duration = 8m },
+            new() { Description = $"does bonus damage on already poisoned targets ({bonusDamage})", Duration = 8m }
         ];
     }
 
     /// <inheritdoc />
-    public double GetCooldown(int characterLevel, AbilityRarity abilityRarity)
+    public decimal GetCooldown(int characterLevel, AbilityRarity abilityRarity)
     {
         return _cooldowns[abilityRarity];
     }

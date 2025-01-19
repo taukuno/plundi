@@ -1,235 +1,244 @@
-﻿<div class="flex flex-col bg-gradient-to-br from-gray-900 to-gray-900 rounded border shadow border-gray-950">
-    <div class="grid gap-2 items-baseline py-2 px-4 rounded-t shadow grid-cols-[1fr,auto,1fr] bg-gray-950">
-        <span class="text-xs text-gray-400">
-            @(Position).
-        </span>
-        <span class="col-start-2 text-xs text-center text-gray-400">
-            @Ability.Name
-        </span>
-        <div class="flex col-start-3 gap-2 justify-end">
-            <i class="p-2 -my-2 text-xs text-gray-400 cursor-pointer hover:text-gray-100 fa-solid fa-chevron-up"
-               @onclick="async _ => await OnMoveUpClicked.InvokeAsync()">
-            </i>
-            <i class="p-2 -my-2 -mr-2 text-xs text-gray-400 cursor-pointer hover:text-gray-100 fa-solid fa-chevron-down"
-               @onclick="async _ => await OnMoveDownClicked.InvokeAsync()">
-            </i>
+﻿@{
+    var detailsProvider = GetAbilityDetailsProvider(Ability.Ability);
+
+    <div class="flex flex-col bg-gradient-to-br from-gray-900 to-gray-900 rounded border shadow border-gray-950">
+        <div class="grid gap-2 items-baseline py-2 px-4 rounded-t shadow grid-cols-[1fr,auto,1fr] bg-gray-950">
+            <span class="text-xs text-gray-400">
+                @(Position).
+            </span>
+            <span class="col-start-2 text-xs text-center text-gray-400">
+                @detailsProvider.GetDisplayName(Ability.Ability)
+            </span>
+            <div class="flex col-start-3 gap-2 justify-end">
+                <i class="p-2 -my-2 text-xs text-gray-400 cursor-pointer hover:text-gray-100 fa-solid fa-chevron-up"
+                   @onclick="async _ => await OnMoveUpClicked.InvokeAsync()">
+                </i>
+                <i class="p-2 -my-2 -mr-2 text-xs text-gray-400 cursor-pointer hover:text-gray-100 fa-solid fa-chevron-down"
+                   @onclick="async _ => await OnMoveDownClicked.InvokeAsync()">
+                </i>
+            </div>
         </div>
-    </div>
-    @{
-        var damageReport = AbilityReportGenerator.GenerateDamageReport(Ability.OriginalAbility, CharacterLevel, Ability.Rarity);
+        @{
+            var damageReport = AbilityReportGenerator.GenerateDamageReport(Ability.Ability, CharacterLevel, Ability.Rarity);
 
-        var cooldown = Ability.GetCooldown(CharacterLevel);
-        var minHitAndDotDamage = damageReport.BaseDamageRange.Min + damageReport.DotDamageRange.Min;
-        var maxHitAndDotDamage = damageReport.BaseDamageRange.Max + damageReport.DotDamageRange.Max;
+            var cooldown = detailsProvider.GetCooldown(Ability.Ability, CharacterLevel, Ability.Rarity);
+            var minHitAndDotDamage = damageReport.BaseDamageRange.Min + damageReport.DotDamageRange.Min;
+            var maxHitAndDotDamage = damageReport.BaseDamageRange.Max + damageReport.DotDamageRange.Max;
 
-        var damageTextColor = Ability.Rarity switch
-        {
-            AbilityRarity.Common => "text-white",
-            AbilityRarity.Uncommon => "text-emerald-400",
-            AbilityRarity.Rare => "text-sky-400",
-            AbilityRarity.Epic => "text-purple-400",
-            _ => "text-white"
-        };
+            var damageTextColor = Ability.Rarity switch
+            {
+                AbilityRarity.Common => "text-white",
+                AbilityRarity.Uncommon => "text-emerald-400",
+                AbilityRarity.Rare => "text-sky-400",
+                AbilityRarity.Epic => "text-purple-400",
+                _ => "text-white"
+            };
 
-        if (DisplayInCompactView)
-        {
-            <div class="flex flex-row gap-2 items-center py-2 px-4 2xl:gap-4 md:max-lg:gap-4">
-                <div class="w-14 h-14 bg-clip-border bg-cover rounded border shadow border-gray-950" style="background-image: url('img/abilities/@Ability.ImagePath')">
+            if (DisplayInCompactView)
+            {
+                <div class="flex flex-row gap-2 items-center py-2 px-4 2xl:gap-4 md:max-lg:gap-4">
+                    <div class="w-14 h-14 bg-clip-border bg-cover rounded border shadow border-gray-950" style="background-image: url('img/abilities/@detailsProvider.GetImagePath(Ability.Ability)')">
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 items-center 2xl:gap-4 grow md:max-lg:gap-4">
+                        <div class="flex flex-col items-center">
+                            @if (damageReport.TotalDamageRange.Min - damageReport.TotalDamageRange.Max == 0)
+                            {
+                                <span class="font-mono font-bold sm:text-xl text-center @damageTextColor">
+                                    @Math.Round(damageReport.TotalDamageRange.Max)
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="font-mono font-bold sm:text-xl text-center @damageTextColor">
+                                    @Math.Round(damageReport.TotalDamageRange.Min)-@Math.Round(damageReport.TotalDamageRange.Max)
+                                </span>
+                            }
+                            <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">damage</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            @if (damageReport.TotalDamageRange.MinDps - damageReport.TotalDamageRange.MaxDps == 0)
+                            {
+                                <span class="font-mono text-center sm:text-xl">
+                                    @Math.Round(damageReport.TotalDamageRange.MaxDps, 1)
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="font-mono text-center sm:text-xl">
+                                    @Math.Round(damageReport.TotalDamageRange.MinDps, 1)-@Math.Round(damageReport.TotalDamageRange.MaxDps, 1)
+                                </span>
+                            }
+                            <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">dps</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <span class="font-mono text-center sm:text-xl">@(cooldown == 0 ? "-" : $"{cooldown}s")</span>
+                            <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">cooldown</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="grid grid-cols-3 gap-2 items-center 2xl:gap-4 grow md:max-lg:gap-4">
-                    <div class="flex flex-col items-center">
-                        @if (damageReport.TotalDamageRange.Min - damageReport.TotalDamageRange.Max == 0)
-                        {
-                            <span class="font-mono font-bold sm:text-xl text-center @damageTextColor">
-                                @Math.Round(damageReport.TotalDamageRange.Max)
-                            </span>
-                        }
-                        else
-                        {
-                            <span class="font-mono font-bold sm:text-xl text-center @damageTextColor">
-                                @Math.Round(damageReport.TotalDamageRange.Min)-@Math.Round(damageReport.TotalDamageRange.Max)
-                            </span>
-                        }
-                        <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">damage</span>
+            }
+            else
+            {
+                <div class="flex flex-row gap-4 items-center p-4">
+                    <div class="w-20 h-20 bg-clip-border bg-cover rounded border shadow border-gray-950" style="background-image: url('img/abilities/@detailsProvider.GetImagePath(Ability.Ability)')">
                     </div>
-                    <div class="flex flex-col items-center">
-                        @if (damageReport.TotalDamageRange.MinDps - damageReport.TotalDamageRange.MaxDps == 0)
-                        {
-                            <span class="font-mono text-center sm:text-xl">
-                                @Math.Round(damageReport.TotalDamageRange.MaxDps, 1)
-                            </span>
-                        }
-                        else
-                        {
-                            <span class="font-mono text-center sm:text-xl">
-                                @Math.Round(damageReport.TotalDamageRange.MinDps, 1)-@Math.Round(damageReport.TotalDamageRange.MaxDps, 1)
-                            </span>
-                        }
-                        <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">dps</span>
+                    <div class="grid grid-cols-2 gap-x-2 gap-y-4 items-center 2xl:grid-cols-4 2xl:gap-4 grow md:max-lg:grid-cols-4 md:max-lg:gap-x-4">
+                        <div class="flex flex-col gap-1 items-center xl:order-1 md:max-lg:order-1">
+                            @if (damageReport.TotalDamageRange.Min - damageReport.TotalDamageRange.Max == 0)
+                            {
+                                <span class="font-mono text-xl sm:text-2xl text-center font-bold @damageTextColor">@Math.Round(damageReport.TotalDamageRange.Max)</span>
+                            }
+                            else
+                            {
+                                <span class="font-mono text-xl sm:text-2xl text-center font-bold @damageTextColor">@Math.Round(damageReport.TotalDamageRange.Min)-@Math.Round(damageReport.TotalDamageRange.Max)</span>
+                            }
+                            <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">damage</span>
+                        </div>
+                        <div class="flex flex-col gap-1 items-center 2xl:order-3 md:max-lg:order-3">
+                            @if (minHitAndDotDamage - maxHitAndDotDamage == 0)
+                            {
+                                <span class="font-mono text-xl text-center sm:text-2xl">@Math.Round(maxHitAndDotDamage)</span>
+                            }
+                            else
+                            {
+                                <span class="font-mono text-xl text-center sm:text-2xl">@Math.Round(minHitAndDotDamage)-@Math.Round(maxHitAndDotDamage)</span>
+                            }
+                            <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">hit & dot dmg</span>
+                        </div>
+                        <div class="flex flex-col gap-1 items-center 2xl:order-2 md:max-lg:order-2">
+                            @if (damageReport.TotalDamageRange.MinDps - damageReport.TotalDamageRange.MaxDps == 0)
+                            {
+                                <span class="font-mono text-xl text-center sm:text-2xl">@Math.Round(damageReport.TotalDamageRange.MaxDps, 1)</span>
+                            }
+                            else
+                            {
+                                <span class="font-mono text-xl text-center sm:text-2xl">@Math.Round(damageReport.TotalDamageRange.MinDps, 1)-@Math.Round(damageReport.TotalDamageRange.MaxDps, 1)</span>
+                            }
+                            <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">dps</span>
+                        </div>
+                        <div class="flex flex-col gap-1 items-center xl:order-4 md:max-lg:order-4">
+                            @if (damageReport.SpecialDamageRange.Min - damageReport.SpecialDamageRange.Max == 0)
+                            {
+                                <span class="font-mono text-xl text-center sm:text-2xl">@Math.Round(damageReport.SpecialDamageRange.Max)</span>
+                            }
+                            else
+                            {
+                                <span class="font-mono text-xl text-center sm:text-2xl">@Math.Round(damageReport.SpecialDamageRange.Min)-@Math.Round(damageReport.SpecialDamageRange.Max)</span>
+                            }
+                            <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">special dmg</span>
+                        </div>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <span class="font-mono text-center sm:text-xl">@(cooldown == 0 ? "-" : $"{cooldown}s")</span>
+                </div>
+                <hr class="border-gray-950"/>
+                <div class="grid grid-cols-3 gap-2 items-center p-4">
+                    <div class="flex flex-col gap-1 items-center">
+                        <span class="font-mono text-center">@(cooldown == 0 ? "-" : $"{cooldown}s")</span>
                         <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">cooldown</span>
                     </div>
-                </div>
-            </div>
-        }
-        else
-        {
-            <div class="flex flex-row gap-4 items-center p-4">
-                <div class="w-20 h-20 bg-clip-border bg-cover rounded border shadow border-gray-950" style="background-image: url('img/abilities/@Ability.ImagePath')">
-                </div>
-                <div class="grid grid-cols-2 gap-x-2 gap-y-4 items-center 2xl:grid-cols-4 2xl:gap-4 grow md:max-lg:grid-cols-4 md:max-lg:gap-x-4">
-                    <div class="flex flex-col gap-1 items-center xl:order-1 md:max-lg:order-1">
-                        @if (damageReport.TotalDamageRange.Min - damageReport.TotalDamageRange.Max == 0)
-                        {
-                            <span class="font-mono text-xl sm:text-2xl text-center font-bold @damageTextColor">@Math.Round(damageReport.TotalDamageRange.Max)</span>
-                        }
-                        else
-                        {
-                            <span class="font-mono text-xl sm:text-2xl text-center font-bold @damageTextColor">@Math.Round(damageReport.TotalDamageRange.Min)-@Math.Round(damageReport.TotalDamageRange.Max)</span>
-                        }
-                        <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">damage</span>
-                    </div>
-                    <div class="flex flex-col gap-1 items-center 2xl:order-3 md:max-lg:order-3">
-                        @if (minHitAndDotDamage - maxHitAndDotDamage == 0)
-                        {
-                            <span class="font-mono text-xl text-center sm:text-2xl">@Math.Round(maxHitAndDotDamage)</span>
-                        }
-                        else
-                        {
-                            <span class="font-mono text-xl text-center sm:text-2xl">@Math.Round(minHitAndDotDamage)-@Math.Round(maxHitAndDotDamage)</span>
-                        }
-                        <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">hit & dot dmg</span>
-                    </div>
-                    <div class="flex flex-col gap-1 items-center 2xl:order-2 md:max-lg:order-2">
-                        @if (damageReport.TotalDamageRange.MinDps - damageReport.TotalDamageRange.MaxDps == 0)
-                        {
-                            <span class="font-mono text-xl text-center sm:text-2xl">@Math.Round(damageReport.TotalDamageRange.MaxDps, 1)</span>
-                        }
-                        else
-                        {
-                            <span class="font-mono text-xl text-center sm:text-2xl">@Math.Round(damageReport.TotalDamageRange.MinDps, 1)-@Math.Round(damageReport.TotalDamageRange.MaxDps, 1)</span>
-                        }
-                        <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">dps</span>
-                    </div>
-                    <div class="flex flex-col gap-1 items-center xl:order-4 md:max-lg:order-4">
-                        @if (damageReport.SpecialDamageRange.Min - damageReport.SpecialDamageRange.Max == 0)
-                        {
-                            <span class="font-mono text-xl text-center sm:text-2xl">@Math.Round(damageReport.SpecialDamageRange.Max)</span>
-                        }
-                        else
-                        {
-                            <span class="font-mono text-xl text-center sm:text-2xl">@Math.Round(damageReport.SpecialDamageRange.Min)-@Math.Round(damageReport.SpecialDamageRange.Max)</span>
-                        }
-                        <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">special dmg</span>
-                    </div>
-                </div>
-            </div>
-            <hr class="border-gray-950"/>
-            <div class="grid grid-cols-3 gap-2 items-center p-4">
-                <div class="flex flex-col gap-1 items-center">
-                    <span class="font-mono text-center">@(cooldown == 0 ? "-" : $"{cooldown}s")</span>
-                    <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">cooldown</span>
-                </div>
-                <div class="flex flex-col gap-1 items-center">
-                    <span class="font-mono text-center">@(Ability.CastDuration == 0 ? "-" : $"{Ability.CastDuration}s")</span>
-                    <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">cast duration</span>
-                </div>
-                <div class="flex flex-col gap-1 items-center">
-                    <span class="font-mono text-center">@(Ability.ChannelDuration == 0 ? "-" : $"{Ability.ChannelDuration}s")</span>
-                    <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">channel duration</span>
-                </div>
-            </div>
-            <hr class="border-gray-950"/>
-            <div class="grid grid-cols-3 gap-2 items-center p-4">
-                <div class="flex flex-col gap-1 items-center">
-                    <span class="font-mono text-center">
-                        @if (damageReport.BaseHits.Count == 0)
-                        {
-                            @: -
-                        }
-                        else
-                        {
-                            @DamageSequenceToReadableString(damageReport.BaseHits.Select(x => x.Damage).ToList())
-                        }
-                    </span>
-                    <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">hit dmg profile</span>
-                </div>
-                <div class="flex flex-col gap-1 items-center">
-                    <span class="font-mono text-center">
-                        @if (damageReport.SpecialHits.Count == 0)
-                        {
-                            @: -
-                        }
-                        else
-                        {
-                            @DamageSequenceToReadableString(damageReport.SpecialHits.Select(x => x.Damage).ToList())
-                        }
-                    </span>
-                    <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">special dmg profile</span>
-                </div>
-                <div class="flex flex-col gap-1 items-center">
-                    <span class="font-mono text-center">
-                        @if (damageReport.DotHits.Count == 0)
-                        {
-                            @: -
-                        }
-                        else
-                        {
-                            @DamageSequenceToReadableString(damageReport.DotHits.Select(x => x.Damage).ToList())
-                        }
-                    </span>
-                    <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">dot dmg profile</span>
-                </div>
-            </div>
-            <hr class="border-gray-950"/>
-            <div class="flex flex-wrap gap-4 justify-center items-start p-4 grow">
-                @foreach (var effect in Ability.GetEffects(CharacterLevel))
-                {
-                    if (effect.Duration == 0)
-                    {
-                        <div class="py-1 px-3 font-mono rounded shadow bg-gray-950">
-                            <span class="text-xs text-center">@effect.Description</span>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="flex shadow">
-                            <div class="py-1 px-3 rounded-l bg-gray-950">
-                                <span class="font-mono text-xs text-center">@effect.Description</span>
-                            </div>
-                            <div class="py-1 px-3 rounded-r border-l border-gray-900 bg-gray-950">
-                                <span class="font-mono text-xs text-center text-gray-400">@(effect.Duration)s</span>
-                            </div>
-                        </div>
-                    }
-                }
-            </div>
-        }
+                    @{
+                        var castDuration = detailsProvider.GetCastDuration(Ability.Ability);
+                        var channelDuration = detailsProvider.GetChannelDuration(Ability.Ability);
 
-        var buttonVerticalPadding = DisplayInCompactView ? "py-1" : "py-2";
-        <div class="grid grid-cols-4 rounded-b">
-            <button
-                class="@(Ability.Rarity == AbilityRarity.Common ? "from-gray-400 to-gray-500 hover:from-gray-300 hover:to-gray-400 focus:outline-gray-600 text-black font-bold" : "from-transparent to-transparent hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") @buttonVerticalPadding px-2 text-xs bg-gradient-to-r rounded-bl border-t focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                @onclick="() => Ability.Rarity = AbilityRarity.Common">
-                Common
-            </button>
-            <button
-                class="@(Ability.Rarity == AbilityRarity.Uncommon ? "from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 focus:outline-emerald-600 text-black font-bold" : "text-emerald-400 from-transparent to-transparent hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") @buttonVerticalPadding px-2 text-xs bg-gradient-to-r border-t border-l focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                @onclick="() => Ability.Rarity = AbilityRarity.Uncommon">
-                Uncommon
-            </button>
-            <button
-                class="@(Ability.Rarity == AbilityRarity.Rare ? "from-sky-500 to-sky-600 hover:from-sky-40 hover:to-sky-500 focus:outline-sky-600 text-black font-bold" : "text-sky-400 from-transparent to-transparent hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") @buttonVerticalPadding px-2 text-xs bg-gradient-to-r border-t border-l focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                @onclick="() => Ability.Rarity = AbilityRarity.Rare">
-                Rare
-            </button>
-            <button
-                class="@(Ability.Rarity == AbilityRarity.Epic ? "from-purple-500 to-purple-600 hover:from-purple-400 hover:to-purple-500 focus:outline-purple-600 text-black font-bold" : "text-purple-400 from-transparent to-transparent hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") @buttonVerticalPadding px-2 text-xs bg-gradient-to-r rounded-br border-t border-l focus:z-10 border-gray-950 truncate focus:outline focus:outline-2 focus:outline-offset-2"
-                @onclick="() => Ability.Rarity = AbilityRarity.Epic">
-                Epic
-            </button>
-        </div>
-    }
-</div>
+                        <div class="flex flex-col gap-1 items-center">
+                            <span class="font-mono text-center">@(castDuration == 0 ? "-" : $"{castDuration}s")</span>
+                            <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">cast duration</span>
+                        </div>
+                        <div class="flex flex-col gap-1 items-center">
+                            <span class="font-mono text-center">@(channelDuration == 0 ? "-" : $"{channelDuration}s")</span>
+                            <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">channel duration</span>
+                        </div>
+                    }
+                </div>
+                <hr class="border-gray-950"/>
+                <div class="grid grid-cols-3 gap-2 items-center p-4">
+                    <div class="flex flex-col gap-1 items-center">
+                        <span class="font-mono text-center">
+                            @if (damageReport.BaseHits.Count == 0)
+                            {
+                                @: -
+                            }
+                            else
+                            {
+                                @DamageSequenceToReadableString(damageReport.BaseHits.Select(x => x.Damage).ToList())
+                            }
+                        </span>
+                        <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">hit dmg profile</span>
+                    </div>
+                    <div class="flex flex-col gap-1 items-center">
+                        <span class="font-mono text-center">
+                            @if (damageReport.SpecialHits.Count == 0)
+                            {
+                                @: -
+                            }
+                            else
+                            {
+                                @DamageSequenceToReadableString(damageReport.SpecialHits.Select(x => x.Damage).ToList())
+                            }
+                        </span>
+                        <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">special dmg profile</span>
+                    </div>
+                    <div class="flex flex-col gap-1 items-center">
+                        <span class="font-mono text-center">
+                            @if (damageReport.DotHits.Count == 0)
+                            {
+                                @: -
+                            }
+                            else
+                            {
+                                @DamageSequenceToReadableString(damageReport.DotHits.Select(x => x.Damage).ToList())
+                            }
+                        </span>
+                        <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">dot dmg profile</span>
+                    </div>
+                </div>
+                <hr class="border-gray-950"/>
+                <div class="flex flex-wrap gap-4 justify-center items-start p-4 grow">
+                    @foreach (var effect in detailsProvider.GetEffects(Ability.Ability, CharacterLevel, Ability.Rarity))
+                    {
+                        if (effect.Duration == 0)
+                        {
+                            <div class="py-1 px-3 font-mono rounded shadow bg-gray-950">
+                                <span class="text-xs text-center">@effect.Description</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="flex shadow">
+                                <div class="py-1 px-3 rounded-l bg-gray-950">
+                                    <span class="font-mono text-xs text-center">@effect.Description</span>
+                                </div>
+                                <div class="py-1 px-3 rounded-r border-l border-gray-900 bg-gray-950">
+                                    <span class="font-mono text-xs text-center text-gray-400">@(effect.Duration)s</span>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            }
+
+            var buttonVerticalPadding = DisplayInCompactView ? "py-1" : "py-2";
+            <div class="grid grid-cols-4 rounded-b">
+                <button
+                    class="@(Ability.Rarity == AbilityRarity.Common ? "from-gray-400 to-gray-500 hover:from-gray-300 hover:to-gray-400 focus:outline-gray-600 text-black font-bold" : "from-transparent to-transparent hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") @buttonVerticalPadding px-2 text-xs bg-gradient-to-r rounded-bl border-t focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
+                    @onclick="() => Ability.Rarity = AbilityRarity.Common">
+                    Common
+                </button>
+                <button
+                    class="@(Ability.Rarity == AbilityRarity.Uncommon ? "from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 focus:outline-emerald-600 text-black font-bold" : "text-emerald-400 from-transparent to-transparent hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") @buttonVerticalPadding px-2 text-xs bg-gradient-to-r border-t border-l focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
+                    @onclick="() => Ability.Rarity = AbilityRarity.Uncommon">
+                    Uncommon
+                </button>
+                <button
+                    class="@(Ability.Rarity == AbilityRarity.Rare ? "from-sky-500 to-sky-600 hover:from-sky-40 hover:to-sky-500 focus:outline-sky-600 text-black font-bold" : "text-sky-400 from-transparent to-transparent hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") @buttonVerticalPadding px-2 text-xs bg-gradient-to-r border-t border-l focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
+                    @onclick="() => Ability.Rarity = AbilityRarity.Rare">
+                    Rare
+                </button>
+                <button
+                    class="@(Ability.Rarity == AbilityRarity.Epic ? "from-purple-500 to-purple-600 hover:from-purple-400 hover:to-purple-500 focus:outline-purple-600 text-black font-bold" : "text-purple-400 from-transparent to-transparent hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") @buttonVerticalPadding px-2 text-xs bg-gradient-to-r rounded-br border-t border-l focus:z-10 border-gray-950 truncate focus:outline focus:outline-2 focus:outline-offset-2"
+                    @onclick="() => Ability.Rarity = AbilityRarity.Epic">
+                    Epic
+                </button>
+            </div>
+        }
+    </div>
+}

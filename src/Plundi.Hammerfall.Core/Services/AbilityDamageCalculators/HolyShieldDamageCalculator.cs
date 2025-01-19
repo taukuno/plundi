@@ -1,16 +1,29 @@
 using Plundi.Hammerfall.Core.Models;
-using Plundi.Hammerfall.Core.Models.Abilities;
 
 namespace Plundi.Hammerfall.Core.Services.AbilityDamageCalculators;
 
-public class HolyShieldDamageCalculator : BaseAbilityDamageCalculator<HolyShield>
+public class HolyShieldDamageCalculator : BaseAbilityDamageCalculator
 {
     // It's unlikely to hit with the default hit, but not with the special hit
     // We therefore set the minimal damage and DPS to the maximal special damage and DPS
 
     /// <inheritdoc />
-    public override DamageRange CalculateBaseDamageRange(HolyShield ability, int characterLevel, AbilityRarity abilityRarity)
+    public HolyShieldDamageCalculator(IEnumerable<IAbilityDetailsProvider> abilityDetailsProviders) : base(abilityDetailsProviders) {}
+
+    /// <inheritdoc />
+    public override bool CanHandleAbility(string ability)
     {
+        return ability == "Holy Shield";
+    }
+
+    /// <inheritdoc />
+    public override DamageRange CalculateBaseDamageRange(string ability, int characterLevel, AbilityRarity abilityRarity)
+    {
+        if (!CanHandleAbility(ability))
+        {
+            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+        }
+
         var damageRange = base.CalculateBaseDamageRange(ability, characterLevel, abilityRarity);
         return damageRange with
         {
@@ -20,8 +33,13 @@ public class HolyShieldDamageCalculator : BaseAbilityDamageCalculator<HolyShield
     }
 
     /// <inheritdoc />
-    public override DamageRange CalculateSpecialDamageRange(HolyShield ability, int characterLevel, AbilityRarity abilityRarity)
+    public override DamageRange CalculateSpecialDamageRange(string ability, int characterLevel, AbilityRarity abilityRarity)
     {
+        if (!CanHandleAbility(ability))
+        {
+            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+        }
+
         var damageRange = base.CalculateBaseDamageRange(ability, characterLevel, abilityRarity);
         return damageRange with
         {

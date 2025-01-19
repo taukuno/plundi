@@ -39,7 +39,7 @@
                     @foreach (var ability in _abilitiesToCompare)
                     {
                         <div class="w-14 h-14 bg-clip-border bg-cover rounded border shadow cursor-pointer border-gray-950"
-                             style="background-image: url('img/abilities/@ability.ImagePath')">
+                             style="background-image: url('img/abilities/@GetAbilityDetailsProvider(ability).GetImagePath(ability)')">
                             <button class="p-2 w-full h-full text-xs text-center text-white bg-gray-900 rounded opacity-0 outline-white hover:opacity-50 focus:opacity-50 outline outline-1"
                                     @onclick="async () => await RemoveAbilityFromComparisonAsync(ability)">
                                 <i class="fa-solid fa-x"></i>

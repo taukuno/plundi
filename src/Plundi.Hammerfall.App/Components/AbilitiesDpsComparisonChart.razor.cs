@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Plundi.Hammerfall.App.Services;
 using Plundi.Hammerfall.Core.Models;
+using Plundi.Hammerfall.Core.Services;
 
 namespace Plundi.Hammerfall.App.Components;
 
@@ -16,8 +17,9 @@ public partial class AbilitiesDpsComparisonChart : IAsyncDisposable
 
     [Inject] private IJSRuntime JsRuntime { get; set; } = null!;
     [Inject] private AbilityReportGenerator AbilityReportGenerator { get; set; } = null!;
+    [Inject] private IEnumerable<IAbilityDetailsProvider> AbilityDetailsProviders { get; set; } = null!;
 
-    [Parameter] public List<IAbility> Abilities { get; set; } = [];
+    [Parameter] public List<string> Abilities { get; set; } = [];
     [Parameter] public int CharacterLevel { get; set; } = 1;
     [Parameter] public bool SmoothLines { get; set; } = true;
 
@@ -83,14 +85,20 @@ public partial class AbilitiesDpsComparisonChart : IAsyncDisposable
 
         foreach (var ability in Abilities)
         {
+            var detailsProvider = GetAbilityDetailsProvider(ability);
             var dpsScalingData = GenerateDpsScalingData(ability);
-            abilitiesData.Add(new { Label = ability.Name, Data = dpsScalingData });
+            abilitiesData.Add(new { Label = detailsProvider.GetDisplayName(ability), Data = dpsScalingData });
         }
 
         await _jsModule.InvokeVoidAsync("updateChart", _canvasId, abilitiesData, SmoothLines);
     }
 
-    private List<object> GenerateDpsScalingData(IAbility ability)
+    private IAbilityDetailsProvider GetAbilityDetailsProvider(string ability)
+    {
+        return AbilityDetailsProviders.FirstOrDefault(x => x.CanHandleAbility(ability)) ?? throw new InvalidOperationException($"No details provider registered for the ability '{ability}'.");
+    }
+
+    private List<object> GenerateDpsScalingData(string ability)
     {
         var dpsScaling = new List<object>();
 

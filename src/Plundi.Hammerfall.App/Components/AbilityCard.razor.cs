@@ -2,12 +2,14 @@
 using Microsoft.AspNetCore.Components;
 using Plundi.Hammerfall.App.Models;
 using Plundi.Hammerfall.App.Services;
+using Plundi.Hammerfall.Core.Services;
 
 namespace Plundi.Hammerfall.App.Components;
 
 public partial class AbilityCard
 {
     [Inject] private AbilityReportGenerator AbilityReportGenerator { get; set; } = null!;
+    [Inject] private IEnumerable<IAbilityDetailsProvider> AbilityDetailsProviders { get; set; } = null!;
 
     [Parameter] public RarifiedAbility Ability { get; set; } = null!;
     [Parameter] public int Position { get; set; }
@@ -19,6 +21,11 @@ public partial class AbilityCard
 
     [CascadingParameter(Name = "DisplayInCompactView")]
     public bool DisplayInCompactView { get; set; }
+
+    private IAbilityDetailsProvider GetAbilityDetailsProvider(string ability)
+    {
+        return AbilityDetailsProviders.FirstOrDefault(x => x.CanHandleAbility(ability)) ?? throw new InvalidOperationException($"No details provider registered for the ability '{ability}'.");
+    }
 
     private static string DamageSequenceToReadableString(List<decimal> damageSequence)
     {

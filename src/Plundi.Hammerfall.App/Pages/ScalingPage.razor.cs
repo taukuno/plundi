@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Plundi.Hammerfall.App.Components;
 using Plundi.Hammerfall.Core.Models;
+using Plundi.Hammerfall.Core.Services;
 
 namespace Plundi.Hammerfall.App.Pages;
 
 public partial class ScalingPage : ComponentBase
 {
-    private readonly List<IAbility> _abilitiesToCompare = [];
+    private readonly List<string> _abilitiesToCompare = ["Searing Axe", "Slicing Winds", "Toxic Smackerel"];
     private AbilitiesDamageComparisonChart? _abilitiesDamageComparisonChart;
     private AbilitiesDpsComparisonChart? _abilitiesDpsComparisonChart;
     private AbilitiesCooldownComparisonChart? _abilitiesCooldownComparisonChart;
@@ -19,24 +20,8 @@ public partial class ScalingPage : ComponentBase
     private bool _smoothLines;
     private bool _baseTimeToKillOnDps = true;
 
-    [Inject] private IEnumerable<IAbility> Abilities { get; set; } = null!;
-
-    /// <inheritdoc />
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
-
-        var searingAxe = Abilities.SingleOrDefault(x => x.Name == "Searing Axe");
-        var slicingWinds = Abilities.SingleOrDefault(x => x.Name == "Slicing Winds");
-        var toxicSmackerel = Abilities.SingleOrDefault(x => x.Name == "Toxic Smackerel");
-
-        if (searingAxe is null || slicingWinds is null || toxicSmackerel is null)
-        {
-            return;
-        }
-
-        _abilitiesToCompare.AddRange([searingAxe, slicingWinds, toxicSmackerel]);
-    }
+    [Inject] private List<string> Abilities { get; set; } = null!;
+    [Inject] private IEnumerable<IAbilityDetailsProvider> AbilityDetailsProviders { get; set; } = null!;
 
     /// <inheritdoc />
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -47,6 +32,11 @@ public partial class ScalingPage : ComponentBase
         {
             await DisplayChartsAsync();
         }
+    }
+
+    private IAbilityDetailsProvider GetAbilityDetailsProvider(string ability)
+    {
+        return AbilityDetailsProviders.FirstOrDefault(x => x.CanHandleAbility(ability)) ?? throw new InvalidOperationException($"No details provider registered for the ability '{ability}'.");
     }
 
     private async Task DisplayChartsAsync()
@@ -77,7 +67,7 @@ public partial class ScalingPage : ComponentBase
         await _abilitiesTimeToKillComparisonChart.UpdateAsync();
     }
 
-    private async Task AddAbilityForComparisonAsync(IAbility ability)
+    private async Task AddAbilityForComparisonAsync(string ability)
     {
         if (_abilitiesToCompare.Contains(ability))
         {
@@ -88,7 +78,7 @@ public partial class ScalingPage : ComponentBase
         await DisplayChartsAsync();
     }
 
-    private async Task RemoveAbilityFromComparisonAsync(IAbility ability)
+    private async Task RemoveAbilityFromComparisonAsync(string ability)
     {
         _abilitiesToCompare.Remove(ability);
         await DisplayChartsAsync();

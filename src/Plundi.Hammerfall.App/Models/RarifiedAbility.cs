@@ -4,14 +4,16 @@ namespace Plundi.Hammerfall.App.Models;
 
 public class RarifiedAbility
 {
-    public RarifiedAbility(IAbility ability, AbilityRarity rarity)
+    public RarifiedAbility(string ability, AbilityRarity rarity)
     {
-        OriginalAbility = ability;
+        Ability = ability;
+        Rarity = rarity;
     }
 
-    public IAbility OriginalAbility { get; }
+    public string Ability { get; }
+    public AbilityRarity Rarity { get; set; }
 
-    public string Name => OriginalAbility.Name;
+    /*public string Name => OriginalAbility.Name;
     public AbilityType Type => OriginalAbility.Type;
     public AbilityRarity Rarity { get; set; } = AbilityRarity.Common;
     public decimal CastDuration => OriginalAbility.CastDuration;
@@ -31,5 +33,5 @@ public class RarifiedAbility
     public DamageProfile GetDamageProfile(int characterLevel)
     {
         return OriginalAbility.GetDamageProfile(characterLevel, Rarity);
-    }
+    }*/
 }

@@ -11,14 +11,14 @@ public class LoadoutSimulationGenerator
         _abilityServiceProvider = abilityServiceProvider;
     }
 
-    public LoadoutSimulationReport GenerateSimulationReport(Loadout loadout, decimal simulationDuration, int characterLevel, Dictionary<string, Dictionary<string, string>>? abilitySettings = null)
+    public LoadoutSimulationReport GenerateSimulationReport(Loadout loadout, decimal simulationDuration, int playerLevel, Dictionary<string, Dictionary<string, string>>? abilitySettings = null)
     {
         var context = new LoadoutSimulationContext
         {
             Loadout = loadout,
             AvailableAbilities = loadout.Abilities,
             SimulationDuration = simulationDuration,
-            CharacterLevel = characterLevel,
+            PlayerLevel = playerLevel,
             AbilitySettings = abilitySettings ?? new(),
         };
 
@@ -53,7 +53,7 @@ public class LoadoutSimulationGenerator
         {
             Loadout = loadout,
             SimulationDuration = simulationDuration,
-            CharacterLevel = characterLevel,
+            PlayerLevel = playerLevel,
             TotalDamage = context.Events.Sum(x => x.Damage),
             Events = context.Events
         };
@@ -127,7 +127,7 @@ public class LoadoutSimulationGenerator
             }
 
             var simulationHandler = _abilityServiceProvider.GetAbilitySimulationHandler(ability.Name);
-            simulationHandler.UseAbility(ability.Name, ability.Rarity, loadoutSimulationContext.CharacterLevel, loadoutSimulationContext);
+            simulationHandler.UseAbility(ability.Name, ability.Rarity, loadoutSimulationContext.PlayerLevel, loadoutSimulationContext);
         }
     }
 }

@@ -12,26 +12,26 @@ public class AbilityReportGenerator
         _abilityServiceProvider = abilityServiceProvider;
     }
 
-    public DamageReport GenerateDamageReport(string abilityName, AbilityRarity abilityRarity, int characterLevel)
+    public DamageReport GenerateDamageReport(string abilityName, AbilityRarity abilityRarity, int playerLevel)
     {
         var abilityDamageCalculator =_abilityServiceProvider.GetAbilityDamageCalculator(abilityName);
 
         return new()
         {
-            TotalDamageRange = abilityDamageCalculator.CalculateTotalDamageRange(abilityName, abilityRarity, characterLevel),
-            BaseDamageRange = abilityDamageCalculator.CalculateBaseDamageRange(abilityName, abilityRarity, characterLevel),
-            SpecialDamageRange = abilityDamageCalculator.CalculateSpecialDamageRange(abilityName, abilityRarity, characterLevel),
-            DotDamageRange = abilityDamageCalculator.CalculateDotDamageRange(abilityName, abilityRarity, characterLevel),
-            BaseHits = abilityDamageCalculator.CalculateBaseHits(abilityName, abilityRarity, characterLevel),
-            SpecialHits = abilityDamageCalculator.CalculateSpecialHits(abilityName, abilityRarity, characterLevel),
-            DotHits =abilityDamageCalculator.CalculateDotHits(abilityName, abilityRarity, characterLevel)
+            TotalDamageRange = abilityDamageCalculator.CalculateTotalDamageRange(abilityName, abilityRarity, playerLevel),
+            BaseDamageRange = abilityDamageCalculator.CalculateBaseDamageRange(abilityName, abilityRarity, playerLevel),
+            SpecialDamageRange = abilityDamageCalculator.CalculateSpecialDamageRange(abilityName, abilityRarity, playerLevel),
+            DotDamageRange = abilityDamageCalculator.CalculateDotDamageRange(abilityName, abilityRarity, playerLevel),
+            BaseHits = abilityDamageCalculator.CalculateBaseHits(abilityName, abilityRarity, playerLevel),
+            SpecialHits = abilityDamageCalculator.CalculateSpecialHits(abilityName, abilityRarity, playerLevel),
+            DotHits =abilityDamageCalculator.CalculateDotHits(abilityName, abilityRarity, playerLevel)
         };
     }
 
-    public bool TryGenerateKillReportBasedOnSimulation(string abilityName, AbilityRarity abilityRarity, int characterLevel, int targetLevel, out KillReport? killReport)
+    public bool TryGenerateKillReportBasedOnSimulation(string abilityName, AbilityRarity abilityRarity, int playerLevel, int targetLevel, out KillReport? killReport)
     {
         var abilityDamageCalculator = _abilityServiceProvider.GetAbilityDamageCalculator(abilityName);
-        var timeToKill = abilityDamageCalculator.CalculateTimeToKillBasedOnSimulation(abilityName, abilityRarity, characterLevel, targetLevel);
+        var timeToKill = abilityDamageCalculator.CalculateTimeToKillBasedOnSimulation(abilityName, abilityRarity, playerLevel, targetLevel);
 
         killReport = null;
         if (timeToKill is null)
@@ -41,17 +41,17 @@ public class AbilityReportGenerator
 
         killReport = new()
         {
-            TargetHitPoints = CharacterStatsProvider.GetHitPoints(targetLevel),
+            TargetHitPoints = PlayerStatsProvider.GetHitPoints(targetLevel),
             TimeToKill = timeToKill.Value
         };
 
         return true;
     }
 
-    public bool TryGenerateKillReportBasedOnDps(string abilityName, AbilityRarity abilityRarity, int characterLevel, int targetLevel, out KillReport? killReport)
+    public bool TryGenerateKillReportBasedOnDps(string abilityName, AbilityRarity abilityRarity, int playerLevel, int targetLevel, out KillReport? killReport)
     {
         var abilityDamageCalculator = _abilityServiceProvider.GetAbilityDamageCalculator(abilityName);
-        var timeToKill = abilityDamageCalculator.CalculateTimeToKillBasedOnDps(abilityName, abilityRarity, characterLevel, targetLevel);
+        var timeToKill = abilityDamageCalculator.CalculateTimeToKillBasedOnDps(abilityName, abilityRarity, playerLevel, targetLevel);
 
         killReport = null;
         if (timeToKill is null)
@@ -61,7 +61,7 @@ public class AbilityReportGenerator
 
         killReport = new()
         {
-            TargetHitPoints = CharacterStatsProvider.GetHitPoints(targetLevel),
+            TargetHitPoints = PlayerStatsProvider.GetHitPoints(targetLevel),
             TimeToKill = timeToKill.Value
         };
 

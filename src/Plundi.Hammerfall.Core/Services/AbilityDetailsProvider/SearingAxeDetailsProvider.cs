@@ -88,7 +88,7 @@ public class SearingAxeDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
-    public IEnumerable<AbilityEffect> GetEffects(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
+    public IEnumerable<AbilityEffect> GetEffects(string abilityName, AbilityRarity abilityRarity, int playerLevel, Dictionary<string, string>? simulationSettings = null)
     {
         if (!CanHandleAbility(abilityName))
         {
@@ -104,7 +104,7 @@ public class SearingAxeDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
-    public decimal GetCooldown(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
+    public decimal GetCooldown(string abilityName, AbilityRarity abilityRarity, int playerLevel, Dictionary<string, string>? simulationSettings = null)
     {
         if (!CanHandleAbility(abilityName))
         {
@@ -115,7 +115,7 @@ public class SearingAxeDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
-    public DamageProfile GetDamageProfile(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
+    public DamageProfile GetDamageProfile(string abilityName, AbilityRarity abilityRarity, int playerLevel, Dictionary<string, string>? simulationSettings = null)
     {
         if (!CanHandleAbility(abilityName))
         {

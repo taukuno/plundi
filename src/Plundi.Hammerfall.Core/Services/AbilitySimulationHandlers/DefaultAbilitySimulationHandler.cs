@@ -46,7 +46,7 @@ public class DefaultAbilitySimulationHandler : IAbilitySimulationHandler
     }
 
     /// <inheritdoc />
-    public virtual void UseAbility(string abilityName, AbilityRarity abilityRarity, int characterLevel, LoadoutSimulationContext loadoutSimulationContext)
+    public virtual void UseAbility(string abilityName, AbilityRarity abilityRarity, int playerLevel, LoadoutSimulationContext loadoutSimulationContext)
     {
         if (!CanHandleAbility(abilityName))
         {
@@ -55,7 +55,7 @@ public class DefaultAbilitySimulationHandler : IAbilitySimulationHandler
 
         var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(abilityName);
 
-        var cooldown = detailsProvider.GetCooldown(abilityName, abilityRarity, characterLevel);
+        var cooldown = detailsProvider.GetCooldown(abilityName, abilityRarity, playerLevel);
         if (cooldown > 0)
         {
             loadoutSimulationContext.AbilitiesOnCooldown.Add((abilityName, cooldown));
@@ -73,11 +73,11 @@ public class DefaultAbilitySimulationHandler : IAbilitySimulationHandler
         {
             AbilityName = abilityName,
             AbilityRarity = abilityRarity,
-            CharacterLevel = characterLevel,
+            PlayerLevel = playerLevel,
 
             AdjustedCastDuration = castDuration,
             AdjustedChannelDuration = channelDuration,
-            AdjustedDamageProfile = detailsProvider.GetDamageProfile(abilityName, abilityRarity, characterLevel, abilitySettings),
+            AdjustedDamageProfile = detailsProvider.GetDamageProfile(abilityName, abilityRarity, playerLevel, abilitySettings),
 
             SimulationStartedAt = loadoutSimulationContext.CurrentTime,
 
@@ -89,7 +89,7 @@ public class DefaultAbilitySimulationHandler : IAbilitySimulationHandler
         loadoutSimulationContext.Events.Add((loadoutSimulationContext.CurrentTime,
             abilitySimulationContext.AbilityName,
             abilitySimulationContext.AbilityRarity,
-            abilitySimulationContext.CharacterLevel,
+            abilitySimulationContext.PlayerLevel,
             "Inital Cast",
             0));
 
@@ -201,7 +201,7 @@ public class DefaultAbilitySimulationHandler : IAbilitySimulationHandler
 
     protected virtual void ProcessCurrentHits(AbilitySimulationContext abilitySimulationContext, LoadoutSimulationContext loadoutSimulationContext)
     {
-        var attackPower = CharacterStatsProvider.GetAttackPower(loadoutSimulationContext.CharacterLevel);
+        var attackPower = PlayerStatsProvider.GetAttackPower(loadoutSimulationContext.PlayerLevel);
         var adjustedTime = loadoutSimulationContext.CurrentTime - abilitySimulationContext.ChannelStartedAt;
         var currentBaseHit = abilitySimulationContext.AdjustedDamageProfile.BaseHits.FirstOrDefault(x => x.Timing == adjustedTime);
         var currentSpecialHit = abilitySimulationContext.AdjustedDamageProfile.SpecialHits.FirstOrDefault(x => x.Timing == adjustedTime);
@@ -215,7 +215,7 @@ public class DefaultAbilitySimulationHandler : IAbilitySimulationHandler
                     loadoutSimulationContext.CurrentTime,
                     abilitySimulationContext.AbilityName,
                     abilitySimulationContext.AbilityRarity,
-                    abilitySimulationContext.CharacterLevel,
+                    abilitySimulationContext.PlayerLevel,
                     "Hit",
                     damage
                 ));
@@ -229,7 +229,7 @@ public class DefaultAbilitySimulationHandler : IAbilitySimulationHandler
                     loadoutSimulationContext.CurrentTime,
                     abilitySimulationContext.AbilityName,
                     abilitySimulationContext.AbilityRarity,
-                    abilitySimulationContext.CharacterLevel,
+                    abilitySimulationContext.PlayerLevel,
                     "Hit (special)",
                     damage
                 ));
@@ -243,7 +243,7 @@ public class DefaultAbilitySimulationHandler : IAbilitySimulationHandler
                     loadoutSimulationContext.CurrentTime,
                     abilitySimulationContext.AbilityName,
                     abilitySimulationContext.AbilityRarity,
-                    abilitySimulationContext.CharacterLevel,
+                    abilitySimulationContext.PlayerLevel,
                     "Hit (dot)",
                     damage
                 ));

@@ -20,7 +20,7 @@ public partial class AbilitiesDamageComparisonChart : IAsyncDisposable
     [Inject] private AbilityServiceProvider AbilityServiceProvider { get; set; } = null!;
 
     [Parameter] public List<string> Abilities { get; set; } = [];
-    [Parameter] public int CharacterLevel { get; set; } = 1;
+    [Parameter] public int PlayerLevel { get; set; } = 1;
     [Parameter] public bool SmoothLines { get; set; } = true;
 
     /// <inheritdoc />
@@ -98,7 +98,7 @@ public partial class AbilitiesDamageComparisonChart : IAsyncDisposable
 
         foreach (var rarity in Enum.GetValues<AbilityRarity>())
         {
-            var report = AbilityReportGenerator.GenerateDamageReport(abilityName, rarity, CharacterLevel);
+            var report = AbilityReportGenerator.GenerateDamageReport(abilityName, rarity, PlayerLevel);
             damageScaling.Add(new { Min = Math.Round(report.TotalDamageRange.Min, 1), Max = Math.Round(report.TotalDamageRange.Max, 1) });
         }
 

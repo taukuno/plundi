@@ -88,14 +88,14 @@ public class VoidTearDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
-    public IEnumerable<AbilityEffect> GetEffects(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
+    public IEnumerable<AbilityEffect> GetEffects(string abilityName, AbilityRarity abilityRarity, int playerLevel, Dictionary<string, string>? simulationSettings = null)
     {
         if (!CanHandleAbility(abilityName))
         {
             throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        var damageOnReturn = _damageProfiles[abilityRarity].SpecialHits[0].Damage * CharacterStatsProvider.GetAttackPower(characterLevel);
+        var damageOnReturn = _damageProfiles[abilityRarity].SpecialHits[0].Damage * PlayerStatsProvider.GetAttackPower(playerLevel);
 
         return
         [
@@ -107,7 +107,7 @@ public class VoidTearDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
-    public decimal GetCooldown(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
+    public decimal GetCooldown(string abilityName, AbilityRarity abilityRarity, int playerLevel, Dictionary<string, string>? simulationSettings = null)
     {
         if (!CanHandleAbility(abilityName))
         {
@@ -118,7 +118,7 @@ public class VoidTearDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
-    public DamageProfile GetDamageProfile(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
+    public DamageProfile GetDamageProfile(string abilityName, AbilityRarity abilityRarity, int playerLevel, Dictionary<string, string>? simulationSettings = null)
     {
         if (!CanHandleAbility(abilityName))
         {

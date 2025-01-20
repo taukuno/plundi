@@ -1,6 +1,11 @@
 <div class="flex flex-col items-stretch p-4 bg-gray-900 rounded border shadow border-gray-950">
     <span class="text-center">Power Level</span>
-    <span class="text-xs text-center text-gray-400">combination of hit points & attack power advantage</span>
+    <span class="text-xs text-center text-gray-400">
+        combination of hit points & attack power advantage<br/>
+    </span>
+    <span class="font-mono text-xs text-center text-gray-400">
+        (your health / target health) * (your attack power / target attack power)
+        </span>
     <div class="flex overflow-auto" tabindex="-1">
         <table class="gap-2 mt-4 text-xs text-center md:text-base grow">
             <thead class="focus:outline-2">
@@ -11,19 +16,17 @@
             }
             </thead>
             <tbody class="mt-2">
-            @for (var yourLevel = 1; yourLevel <= 10; yourLevel++)
+            @for (var playerLevel = 1; playerLevel <= 10; playerLevel++)
             {
-                var yourHitPoints = CharacterStatsProvider.GetHitPoints(yourLevel);
-
-                <tr class="@(yourLevel % 2 == 1 ? "bg-gray-950" : "")">
-                    <td class="p-1 text-sm text-nowrap">Level @(yourLevel)</td>
+                <tr class="@(playerLevel % 2 == 1 ? "bg-gray-950" : "")">
+                    <td class="p-1 text-sm text-nowrap">Level @(playerLevel)</td>
                     @for (var targetLevel = 1; targetLevel <= 10; targetLevel++)
                     {
-                        var targetHitPoints = Convert.ToDouble(CharacterStatsProvider.GetHitPoints(targetLevel));
-                        var powerDif = Math.Pow(yourHitPoints / targetHitPoints, 2);
+                        var isSelection = playerLevel == PlayerLevel && targetLevel == TargetLevel;
+                        var powerDifference = PlayerStatsProvider.CalculatePowerDifference(playerLevel, targetLevel);
 
-                        <td class="p-1 text-sm text-nowrap @(powerDif > 1 ? "text-green-500" : powerDif < 1 ? "text-red-500" : "")">
-                            x@(Math.Round(powerDif, 2))<br/>
+                        <td class="p-1 text-sm text-nowrap @(powerDifference > 1 ? "text-green-500" : powerDifference < 1 ? "text-red-500" : "") @(isSelection ? "bg-gradient-to-r from-violet-800 to-violet-700 rounded" : "")">
+                            x@(powerDifference.ToString("N2"))
                         </td>
                     }
                 </tr>

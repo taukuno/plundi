@@ -4,7 +4,7 @@ using Plundi.Hammerfall.Core.Services;
 
 namespace Plundi.Hammerfall.App.Components;
 
-public partial class CharacterStatsChart : IAsyncDisposable
+public partial class PlayerStatsChart : IAsyncDisposable
 {
     private readonly string _canvasId = $"canvas-{Guid.NewGuid()}";
     private bool _isDisposed;
@@ -38,7 +38,7 @@ public partial class CharacterStatsChart : IAsyncDisposable
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        _jsModule = await JsRuntime.InvokeAsync<IJSObjectReference>("import", $"./Components/CharacterStatsChart.razor.js?cacheBuster={DateTime.UtcNow.Ticks}");
+        _jsModule = await JsRuntime.InvokeAsync<IJSObjectReference>("import", $"./Components/PlayerStatsChart.razor.js?cacheBuster={DateTime.UtcNow.Ticks}");
         _isJsModuleLoaded = true;
     }
 
@@ -77,8 +77,8 @@ public partial class CharacterStatsChart : IAsyncDisposable
 
         for (var level = 1; level <= 10; level++)
         {
-            hitPointsData.Add(CharacterStatsProvider.GetHitPoints(level));
-            attackPowerData.Add(CharacterStatsProvider.GetAttackPower(level));
+            hitPointsData.Add(PlayerStatsProvider.GetHitPoints(level));
+            attackPowerData.Add(PlayerStatsProvider.GetAttackPower(level));
         }
 
         await _jsModule.InvokeVoidAsync("updateChart", _canvasId, hitPointsData, attackPowerData, SmoothLines);

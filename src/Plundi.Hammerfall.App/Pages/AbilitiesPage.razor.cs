@@ -12,7 +12,7 @@ public partial class AbilitiesPage : ComponentBase
     private readonly List<RarifiedAbility> _damageAbilities = [];
     private readonly List<RarifiedAbility> _utilityAbilities = [];
 
-    private int _characterLevel = 10;
+    private int _playerLevel = 10;
     private bool _displayDamageAbilitiesInCompactView;
     private bool _displayUtilityAbilitiesInCompactView;
 

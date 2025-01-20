@@ -16,8 +16,8 @@ public partial class AbilityCard
     [Parameter] public EventCallback OnMoveUpClicked { get; set; }
     [Parameter] public EventCallback OnMoveDownClicked { get; set; }
 
-    [CascadingParameter(Name = "CharacterLevel")]
-    public int CharacterLevel { get; set; }
+    [CascadingParameter(Name = "PlayerLevel")]
+    public int PlayerLevel { get; set; }
 
     [CascadingParameter(Name = "DisplayInCompactView")]
     public bool DisplayInCompactView { get; set; }

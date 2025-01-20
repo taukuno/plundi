@@ -13,11 +13,11 @@ public partial class ScalingPage : ComponentBase
     private AbilitiesDpsComparisonChart? _abilitiesDpsComparisonChart;
     private AbilitiesCooldownComparisonChart? _abilitiesCooldownComparisonChart;
     private AbilitiesTimeToKillComparisonChart? _abilitiesTimeToKillComparisonChart;
-    private CharacterStatsChart? _characterStatsChart;
+    private PlayerStatsChart? _playerStatsChart;
     private SelectAbilityModal? _selectAbilityModal;
 
-    private int _characterLevel = 10;
-    private int _enemyLevel = 10;
+    private int _playerLevel = 10;
+    private int _targetLevel = 10;
     private bool _smoothLines;
     private bool _baseTimeToKillOnDps = true;
 
@@ -38,7 +38,7 @@ public partial class ScalingPage : ComponentBase
     private async Task DisplayChartsAsync()
     {
         await Task.Yield();
-        while (_characterStatsChart is null ||
+        while (_playerStatsChart is null ||
                _abilitiesDamageComparisonChart is null ||
                _abilitiesDpsComparisonChart is null ||
                _abilitiesCooldownComparisonChart is null ||
@@ -47,8 +47,8 @@ public partial class ScalingPage : ComponentBase
             await Task.Delay(10);
         }
 
-        await _characterStatsChart.DrawAsync();
-        await _characterStatsChart.UpdateAsync();
+        await _playerStatsChart.DrawAsync();
+        await _playerStatsChart.UpdateAsync();
 
         await _abilitiesDamageComparisonChart.DrawAsync();
         await _abilitiesDamageComparisonChart.UpdateAsync();
@@ -80,15 +80,15 @@ public partial class ScalingPage : ComponentBase
         await DisplayChartsAsync();
     }
 
-    private async Task SetCharacterLevelAsync(int characterLevel)
+    private async Task SetPlayerLevelAsync(int playerLevel)
     {
-        _characterLevel = characterLevel;
+        _playerLevel = playerLevel;
         await DisplayChartsAsync();
     }
 
-    private async Task SetEnemyLevelAsync(int enemyLevel)
+    private async Task SetTargetLevelAsync(int targetLevel)
     {
-        _enemyLevel = enemyLevel;
+        _targetLevel = targetLevel;
         await DisplayChartsAsync();
     }
 

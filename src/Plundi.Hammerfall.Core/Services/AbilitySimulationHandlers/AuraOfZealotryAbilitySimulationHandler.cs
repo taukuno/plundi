@@ -13,7 +13,7 @@ public class AuraOfZealotrySimulationHandler : DefaultAbilitySimulationHandler
     }
 
     /// <inheritdoc />
-    public override void UseAbility(string abilityName, AbilityRarity abilityRarity, int characterLevel, LoadoutSimulationContext loadoutSimulationContext)
+    public override void UseAbility(string abilityName, AbilityRarity abilityRarity, int playerLevel, LoadoutSimulationContext loadoutSimulationContext)
     {
         if (!CanHandleAbility(abilityName))
         {
@@ -22,7 +22,7 @@ public class AuraOfZealotrySimulationHandler : DefaultAbilitySimulationHandler
 
         var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(abilityName);
 
-        var cooldown = detailsProvider.GetCooldown(abilityName, abilityRarity, characterLevel);
+        var cooldown = detailsProvider.GetCooldown(abilityName, abilityRarity, playerLevel);
         if (cooldown > 0)
         {
             loadoutSimulationContext.AbilitiesOnCooldown.Add((abilityName, cooldown));
@@ -36,11 +36,11 @@ public class AuraOfZealotrySimulationHandler : DefaultAbilitySimulationHandler
         {
             AbilityName = abilityName,
             AbilityRarity = abilityRarity,
-            CharacterLevel = characterLevel,
+            PlayerLevel = playerLevel,
 
             AdjustedCastDuration = castDuration,
             AdjustedChannelDuration = 0,
-            AdjustedDamageProfile = detailsProvider.GetDamageProfile(abilityName, abilityRarity, characterLevel, abilitySettings),
+            AdjustedDamageProfile = detailsProvider.GetDamageProfile(abilityName, abilityRarity, playerLevel, abilitySettings),
 
             SimulationStartedAt = loadoutSimulationContext.CurrentTime,
 
@@ -52,7 +52,7 @@ public class AuraOfZealotrySimulationHandler : DefaultAbilitySimulationHandler
         loadoutSimulationContext.Events.Add((loadoutSimulationContext.CurrentTime,
             abilitySimulationContext.AbilityName,
             abilitySimulationContext.AbilityRarity,
-            abilitySimulationContext.CharacterLevel,
+            abilitySimulationContext.PlayerLevel,
             "Inital Cast",
             0));
 

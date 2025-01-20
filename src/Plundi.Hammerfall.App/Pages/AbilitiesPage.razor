@@ -11,11 +11,11 @@
                 <div class="grid grid-cols-10 shadow">
                     @for (var i = 1; i <= 10; i++)
                     {
-                        var characterLevel = i;
+                        var playerLevel = i;
                         <button type="button"
-                                class="@(_characterLevel == characterLevel ? "from-violet-600 to-violet-500 hover:from-violet-500 hover:to-violet-400 focus:outline-violet-600" : "from-gray-900 to-gray-900 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 font-mono text-sm font-semibold bg-gradient-to-r border-l first:rounded-l last:rounded-r last:border-r focus:z-10 border-y border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                                @onclick="() => { _characterLevel = characterLevel; }">
-                            @characterLevel
+                                class="@(_playerLevel == playerLevel ? "from-violet-600 to-violet-500 hover:from-violet-500 hover:to-violet-400 focus:outline-violet-600" : "from-gray-900 to-gray-900 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 font-mono text-sm font-semibold bg-gradient-to-r border-l first:rounded-l last:rounded-r last:border-r focus:z-10 border-y border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
+                                @onclick="() => { _playerLevel = playerLevel; }">
+                            @playerLevel
                         </button>
                     }
                 </div>
@@ -46,12 +46,12 @@
         </div>
         <div class="flex flex-col gap-2 items stretch">
             <span class="text-lg">
-                Character stats
+                Player stats
             </span>
             @{
-                var meleeDamage = Math.Round(CharacterStatsProvider.CalculateMeleeAttack(_characterLevel));
-                var hitPoints = CharacterStatsProvider.GetHitPoints(_characterLevel);
-                var attackPower = CharacterStatsProvider.GetAttackPower(_characterLevel);
+                var meleeDamage = Math.Round(PlayerStatsProvider.CalculateMeleeAttack(_playerLevel));
+                var hitPoints = PlayerStatsProvider.GetHitPoints(_playerLevel);
+                var attackPower = PlayerStatsProvider.GetAttackPower(_playerLevel);
 
                 <div class="grid grid-cols-1 gap-2 sm:grid-cols-3">
                     <div class="flex flex-col gap-2 items-center p-4 bg-gradient-to-br from-gray-900 to-gray-900 rounded border shadow md:p-6 border-gray-950">
@@ -96,7 +96,7 @@
                     </button>
                 </div>
             </div>
-            <CascadingValue Value="_characterLevel" Name="CharacterLevel">
+            <CascadingValue Value="_playerLevel" Name="PlayerLevel">
                 <CascadingValue Value="_displayDamageAbilitiesInCompactView" Name="DisplayInCompactView">
                     <div class="grid gap-2 lg:grid-cols-2 @(_displayDamageAbilitiesInCompactView ? "2xl:grid-cols-3" : "")">
                         @foreach (var ability in _damageAbilities.Select((x, i) => (Value: x, Index: i + 1)))
@@ -130,7 +130,7 @@
                     </div>
                 </div>
             </div>
-            <CascadingValue Value="_characterLevel" Name="CharacterLevel">
+            <CascadingValue Value="_playerLevel" Name="PlayerLevel">
                 <CascadingValue Value="_displayUtilityAbilitiesInCompactView" Name="DisplayInCompactView">
                     <div class="grid gap-2 lg:grid-cols-2 @(_displayUtilityAbilitiesInCompactView ? "2xl:grid-cols-3" : "")">
                         @foreach (var ability in _utilityAbilities.Select((x, i) => (Value: x, Index: i + 1)))

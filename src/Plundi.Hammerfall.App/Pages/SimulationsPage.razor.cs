@@ -17,7 +17,7 @@ public partial class SimulationsPage : ComponentBase
 
     private string _selectAbilityModalOpenedFor = nameof(_primaryOffensiveAbilityName);
 
-    private int _characterLevel = 10;
+    private int _playerLevel = 10;
     private bool _useMeleeDuringDowntime = true;
 
     private string? _primaryOffensiveAbilityName;
@@ -122,7 +122,7 @@ public partial class SimulationsPage : ComponentBase
                     setting => setting.Value)
             );
 
-        _simulationReport = LoadoutSimulationGenerator.GenerateSimulationReport(loadout, 60, _characterLevel, abilitySettings);
+        _simulationReport = LoadoutSimulationGenerator.GenerateSimulationReport(loadout, 60, _playerLevel, abilitySettings);
 
         _isSimulationOutdated = false;
         _isSimulationRunning = false;

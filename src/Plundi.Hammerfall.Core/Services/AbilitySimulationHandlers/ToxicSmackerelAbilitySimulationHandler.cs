@@ -13,7 +13,7 @@ public class ToxicSmackerelSimulationHandler : DefaultAbilitySimulationHandler
     }
 
     /// <inheritdoc />
-    public override void UseAbility(string abilityName, AbilityRarity abilityRarity, int characterLevel, LoadoutSimulationContext loadoutSimulationContext)
+    public override void UseAbility(string abilityName, AbilityRarity abilityRarity, int playerLevel, LoadoutSimulationContext loadoutSimulationContext)
     {
         if (!CanHandleAbility(abilityName))
         {
@@ -25,7 +25,7 @@ public class ToxicSmackerelSimulationHandler : DefaultAbilitySimulationHandler
 
         var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(abilityName);
 
-        var cooldown = detailsProvider.GetCooldown(abilityName, abilityRarity, characterLevel);
+        var cooldown = detailsProvider.GetCooldown(abilityName, abilityRarity, playerLevel);
         if (cooldown > 0)
         {
             loadoutSimulationContext.AbilitiesOnCooldown.Add((abilityName, cooldown));
@@ -37,11 +37,11 @@ public class ToxicSmackerelSimulationHandler : DefaultAbilitySimulationHandler
         {
             AbilityName = abilityName,
             AbilityRarity = abilityRarity,
-            CharacterLevel = characterLevel,
+            PlayerLevel = playerLevel,
 
             AdjustedCastDuration = castDuration,
             AdjustedChannelDuration = 0m,
-            AdjustedDamageProfile = detailsProvider.GetDamageProfile(abilityName, abilityRarity, characterLevel),
+            AdjustedDamageProfile = detailsProvider.GetDamageProfile(abilityName, abilityRarity, playerLevel),
 
             SimulationStartedAt = loadoutSimulationContext.CurrentTime,
 
@@ -54,7 +54,7 @@ public class ToxicSmackerelSimulationHandler : DefaultAbilitySimulationHandler
         loadoutSimulationContext.Events.Add((loadoutSimulationContext.CurrentTime,
             abilitySimulationContext.AbilityName,
             abilitySimulationContext.AbilityRarity,
-            abilitySimulationContext.CharacterLevel,
+            abilitySimulationContext.PlayerLevel,
             "Inital Cast",
             0));
 
@@ -111,7 +111,7 @@ public class ToxicSmackerelSimulationHandler : DefaultAbilitySimulationHandler
 
     protected override void ProcessCurrentHits(AbilitySimulationContext abilitySimulationContext, LoadoutSimulationContext loadoutSimulationContext)
     {
-        var attackPower = CharacterStatsProvider.GetAttackPower(loadoutSimulationContext.CharacterLevel);
+        var attackPower = PlayerStatsProvider.GetAttackPower(loadoutSimulationContext.PlayerLevel);
         var adjustedTime = loadoutSimulationContext.CurrentTime - abilitySimulationContext.ChannelStartedAt;
         var currentBaseHit = abilitySimulationContext.AdjustedDamageProfile.BaseHits.FirstOrDefault(x => x.Timing == adjustedTime);
         var currentSpecialHit = abilitySimulationContext.AdjustedDamageProfile.SpecialHits.FirstOrDefault(x => x.Timing == adjustedTime);
@@ -125,7 +125,7 @@ public class ToxicSmackerelSimulationHandler : DefaultAbilitySimulationHandler
                     loadoutSimulationContext.CurrentTime,
                     abilitySimulationContext.AbilityName,
                     abilitySimulationContext.AbilityRarity,
-                    abilitySimulationContext.CharacterLevel,
+                    abilitySimulationContext.PlayerLevel,
                     "Hit",
                     damage
                 ));
@@ -140,7 +140,7 @@ public class ToxicSmackerelSimulationHandler : DefaultAbilitySimulationHandler
                     loadoutSimulationContext.CurrentTime,
                     abilitySimulationContext.AbilityName,
                     abilitySimulationContext.AbilityRarity,
-                    abilitySimulationContext.CharacterLevel,
+                    abilitySimulationContext.PlayerLevel,
                     "Hit (special)",
                     damage
                 ));
@@ -154,7 +154,7 @@ public class ToxicSmackerelSimulationHandler : DefaultAbilitySimulationHandler
                     loadoutSimulationContext.CurrentTime,
                     abilitySimulationContext.AbilityName,
                     abilitySimulationContext.AbilityRarity,
-                    abilitySimulationContext.CharacterLevel,
+                    abilitySimulationContext.PlayerLevel,
                     "Hit (dot)",
                     damage
                 ));

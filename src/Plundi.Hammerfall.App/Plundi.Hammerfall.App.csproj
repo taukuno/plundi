@@ -21,7 +21,7 @@
         <_ContentIncludedByDefault Remove="wwwroot\js\charts\abilitiesDamageComparisonChart.js"/>
         <_ContentIncludedByDefault Remove="wwwroot\js\charts\abilitiesDpsComparisonChart.js"/>
         <_ContentIncludedByDefault Remove="wwwroot\js\charts\abilitiesTimeToKillComparisonChart.js"/>
-        <_ContentIncludedByDefault Remove="wwwroot\js\charts\characterStatsChart.js"/>
+        <_ContentIncludedByDefault Remove="wwwroot\js\charts\playerStatsChart.js"/>
     </ItemGroup>
 
     <Target Name="T1" BeforeTargets="BeforeBuild">

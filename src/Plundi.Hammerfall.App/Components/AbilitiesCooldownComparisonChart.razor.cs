@@ -19,7 +19,7 @@ public partial class AbilitiesCooldownComparisonChart : IAsyncDisposable
     [Inject] private AbilityServiceProvider AbilityServiceProvider { get; set; } = null!;
 
     [Parameter] public List<string> Abilities { get; set; } = [];
-    [Parameter] public int CharacterLevel { get; set; } = 1;
+    [Parameter] public int PlayerLevel { get; set; } = 1;
 
 
     /// <inheritdoc />
@@ -94,7 +94,7 @@ public partial class AbilitiesCooldownComparisonChart : IAsyncDisposable
     private List<object> GenerateCooldownScalingData(string abilityName)
     {
         var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(abilityName);
-        return Enum.GetValues<AbilityRarity>().Select(rarity => detailsProvider.GetCooldown(abilityName, rarity, CharacterLevel)).Cast<object>().ToList();
+        return Enum.GetValues<AbilityRarity>().Select(rarity => detailsProvider.GetCooldown(abilityName, rarity, PlayerLevel)).Cast<object>().ToList();
     }
 
     public async Task ClearAsync()

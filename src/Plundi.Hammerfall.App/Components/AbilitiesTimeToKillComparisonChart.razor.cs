@@ -20,7 +20,7 @@ public partial class AbilitiesTimeToKillComparisonChart : IAsyncDisposable
     [Inject] private AbilityServiceProvider AbilityServiceProvider { get; set; } = null!;
 
     [Parameter] public List<string> Abilities { get; set; } = [];
-    [Parameter] public int CharacterLevel { get; set; } = 1;
+    [Parameter] public int PlayerLevel { get; set; } = 1;
     [Parameter] public int TargetLevel { get; set; } = 1;
     [Parameter] public bool BaseTimeToKillOnDps { get; set; }
     [Parameter] public bool SmoothLines { get; set; } = true;
@@ -104,8 +104,8 @@ public partial class AbilitiesTimeToKillComparisonChart : IAsyncDisposable
             var report = default(KillReport);
             var success = BaseTimeToKillOnDps switch
             {
-                true => AbilityReportGenerator.TryGenerateKillReportBasedOnDps(abilityName, rarity, CharacterLevel, TargetLevel, out report),
-                false => AbilityReportGenerator.TryGenerateKillReportBasedOnSimulation(abilityName, rarity, CharacterLevel, TargetLevel, out report)
+                true => AbilityReportGenerator.TryGenerateKillReportBasedOnDps(abilityName, rarity, PlayerLevel, TargetLevel, out report),
+                false => AbilityReportGenerator.TryGenerateKillReportBasedOnSimulation(abilityName, rarity, PlayerLevel, TargetLevel, out report)
             };
 
             if (!success)

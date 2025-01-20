@@ -14,23 +14,23 @@
                 <div class="grid grid-cols-10 shadow">
                     @for (var i = 1; i <= 10; i++)
                     {
-                        var characterLevel = i;
+                        var playerLevel = i;
                         <button type="button"
-                                class="@(_characterLevel == characterLevel ? "from-violet-600 to-violet-500 hover:from-violet-500 hover:to-violet-400 focus:outline-violet-600" : "from-gray-900 to-gray-900 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 font-mono text-sm font-semibold bg-gradient-to-r border-l first:rounded-l last:rounded-r last:border-r focus:z-10 border-y border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                                @onclick="async () => { await SetCharacterLevelAsync(characterLevel); }">
-                            @characterLevel
+                                class="@(_playerLevel == playerLevel ? "from-violet-600 to-violet-500 hover:from-violet-500 hover:to-violet-400 focus:outline-violet-600" : "from-gray-900 to-gray-900 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 font-mono text-sm font-semibold bg-gradient-to-r border-l first:rounded-l last:rounded-r last:border-r focus:z-10 border-y border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
+                                @onclick="async () => { await SetPlayerLevelAsync(playerLevel); }">
+                            @playerLevel
                         </button>
                     }
                 </div>
-                <span class="mt-2 text-sm md:mt-0">Enemy level</span>
+                <span class="mt-2 text-sm md:mt-0">Target level</span>
                 <div class="grid grid-cols-10 shadow">
                     @for (var i = 1; i <= 10; i++)
                     {
-                        var enemyLevel = i;
+                        var targetLevel = i;
                         <button type="button"
-                                class="@(_enemyLevel == enemyLevel ? "from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 focus:outline-red-600" : "from-gray-900 to-gray-900 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 font-mono text-sm font-semibold bg-gradient-to-r border-l first:rounded-l last:rounded-r last:border-r focus:z-10 border-y border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                                @onclick="async () => { await SetEnemyLevelAsync(enemyLevel); }">
-                            @enemyLevel
+                                class="@(_targetLevel == targetLevel ? "from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 focus:outline-red-600" : "from-gray-900 to-gray-900 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 font-mono text-sm font-semibold bg-gradient-to-r border-l first:rounded-l last:rounded-r last:border-r focus:z-10 border-y border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
+                                @onclick="async () => { await SetTargetLevelAsync(targetLevel); }">
+                            @targetLevel
                         </button>
                     }
                 </div>
@@ -79,25 +79,62 @@
                 </div>
             </div>
         </div>
+        <div class="flex flex-col gap-2 items stretch">
+            <span class="text-lg">
+                Player power
+            </span>
+            @{
+                var playerPower = PlayerStatsProvider.CalculatePowerLevel(_playerLevel);
+                var targetPower = PlayerStatsProvider.CalculatePowerLevel(_targetLevel);
+
+                var powerDifference = PlayerStatsProvider.CalculatePowerDifference(_playerLevel, _targetLevel);
+
+                <div class="grid grid-cols-1 gap-2 sm:grid-cols-3">
+                    <div class="flex flex-col gap-2 items-center p-4 bg-gradient-to-br from-gray-900 to-gray-900 rounded border shadow md:p-6 border-gray-950">
+                        <div class="flex gap-2 items-baseline md:gap-4">
+                            <i class="text-2xl text-violet-400 md:text-4xl fa-solid fa-hand-fist"></i>
+                            <span class="font-mono text-2xl md:text-4xl">@playerPower.ToString("N2")</span>
+                        </div>
+                        <span class="text-xs text-gray-500">your power level*</span>
+                    </div>
+                    <div class="flex flex-col gap-2 items-center p-4 bg-gradient-to-br from-gray-900 to-gray-900 rounded border shadow md:p-6 border-gray-950">
+                        <div class="flex gap-2 items-baseline md:gap-4">
+                            <i class="text-2xl md:text-4xl fa-solid fa-xmark @(powerDifference == 1 ? "" : powerDifference > 1 ? "text-green-400" : "text-red-400")"></i>
+                            <span class="font-mono text-2xl md:text-4xl @(powerDifference == 1 ? "" : powerDifference > 1 ? "text-green-400" : "text-red-400")">@(powerDifference.ToString("N2"))</span>
+                        </div>
+                        <span class="text-xs text-gray-500">vs. your target</span>
+                    </div>
+                    <div class="flex flex-col gap-2 items-center p-4 bg-gradient-to-br from-gray-900 to-gray-900 rounded border shadow md:p-6 border-gray-950">
+                        <div class="flex gap-2 items-baseline md:gap-4">
+                            <i class="text-2xl text-yellow-400 md:text-4xl fa-solid fa-bullseye"></i>
+                            <span class="font-mono text-2xl md:text-4xl">@targetPower.ToString("N2")</span>
+                        </div>
+                        <span class="text-xs text-gray-500">enemies power level*</span>
+                    </div>
+                    <span class="text-xs text-gray-500 md:col-span-3 text-end">
+                        *compared to a Level 1 player
+                    </span>
+                </div>}
+        </div>
         <div class="flex flex-col gap-2 items-stretch">
             <span class="text-lg">
                 Ability scaling
             </span>
             <div class="grid gap-2 lg:grid-cols-2">
                 <AbilitiesDamageComparisonChart @ref="_abilitiesDamageComparisonChart"
-                                                CharacterLevel="_characterLevel"
+                                                PlayerLevel="_playerLevel"
                                                 Abilities="_abilitiesToCompare"
                                                 SmoothLines="_smoothLines"/>
                 <AbilitiesDpsComparisonChart @ref="_abilitiesDpsComparisonChart"
-                                             CharacterLevel="_characterLevel"
+                                             PlayerLevel="_playerLevel"
                                              Abilities="_abilitiesToCompare"
                                              SmoothLines="_smoothLines"/>
                 <AbilitiesCooldownComparisonChart @ref="_abilitiesCooldownComparisonChart"
-                                                  CharacterLevel="_characterLevel"
+                                                  PlayerLevel="_playerLevel"
                                                   Abilities="_abilitiesToCompare"/>
                 <AbilitiesTimeToKillComparisonChart @ref="_abilitiesTimeToKillComparisonChart"
-                                                    CharacterLevel="_characterLevel"
-                                                    TargetLevel="_enemyLevel"
+                                                    PlayerLevel="_playerLevel"
+                                                    TargetLevel="_targetLevel"
                                                     BaseTimeToKillOnDps="_baseTimeToKillOnDps"
                                                     Abilities="_abilitiesToCompare"
                                                     SmoothLines="_smoothLines"/>
@@ -105,11 +142,12 @@
         </div>
         <div class="flex flex-col gap-2 items-stretch">
             <span class="text-lg">
-                Character scaling
+                Player scaling
             </span>
-            <CharacterStatsChart @ref="_characterStatsChart"
+            <PlayerStatsChart @ref="_playerStatsChart"
                                  SmoothLines="_smoothLines"/>
-            <PowerLevelDisplay/>
+            <PowerLevelDisplay PlayerLevel="_playerLevel"
+                               TargetLevel="_targetLevel"/>
         </div>
     </div>
     <SiteInformationDisplay/>

@@ -43,16 +43,16 @@ public class DefaultAbilityDamageCalculator : IAbilityDamageCalculator
     }
 
     /// <inheritdoc />
-    public virtual DamageRange CalculateTotalDamageRange(string abilityName, AbilityRarity abilityRarity, int characterLevel)
+    public virtual DamageRange CalculateTotalDamageRange(string abilityName, AbilityRarity abilityRarity, int playerLevel)
     {
         if (!CanHandleAbility(abilityName))
         {
             throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        var baseDamageRange = CalculateBaseDamageRange(abilityName, abilityRarity, characterLevel);
-        var specialDamageRange = CalculateSpecialDamageRange(abilityName, abilityRarity, characterLevel);
-        var dotDamageRange = CalculateDotDamageRange(abilityName, abilityRarity, characterLevel);
+        var baseDamageRange = CalculateBaseDamageRange(abilityName, abilityRarity, playerLevel);
+        var specialDamageRange = CalculateSpecialDamageRange(abilityName, abilityRarity, playerLevel);
+        var dotDamageRange = CalculateDotDamageRange(abilityName, abilityRarity, playerLevel);
 
         return new()
         {
@@ -64,7 +64,7 @@ public class DefaultAbilityDamageCalculator : IAbilityDamageCalculator
     }
 
     /// <inheritdoc />
-    public virtual DamageRange CalculateBaseDamageRange(string abilityName, AbilityRarity abilityRarity, int characterLevel)
+    public virtual DamageRange CalculateBaseDamageRange(string abilityName, AbilityRarity abilityRarity, int playerLevel)
     {
         if (!CanHandleAbility(abilityName))
         {
@@ -73,8 +73,8 @@ public class DefaultAbilityDamageCalculator : IAbilityDamageCalculator
 
         var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(abilityName);
 
-        var totalCooldown = detailsProvider.GetCooldown(abilityName, abilityRarity, characterLevel) + detailsProvider.GetCastDuration(abilityName);
-        var baseHits = CalculateBaseHits(abilityName, abilityRarity, characterLevel).ToList();
+        var totalCooldown = detailsProvider.GetCooldown(abilityName, abilityRarity, playerLevel) + detailsProvider.GetCastDuration(abilityName);
+        var baseHits = CalculateBaseHits(abilityName, abilityRarity, playerLevel).ToList();
 
         return new()
         {
@@ -86,7 +86,7 @@ public class DefaultAbilityDamageCalculator : IAbilityDamageCalculator
     }
 
     /// <inheritdoc />
-    public virtual DamageRange CalculateSpecialDamageRange(string abilityName, AbilityRarity abilityRarity, int characterLevel)
+    public virtual DamageRange CalculateSpecialDamageRange(string abilityName, AbilityRarity abilityRarity, int playerLevel)
     {
         if (!CanHandleAbility(abilityName))
         {
@@ -95,8 +95,8 @@ public class DefaultAbilityDamageCalculator : IAbilityDamageCalculator
 
         var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(abilityName);
 
-        var totalCooldown = detailsProvider.GetCooldown(abilityName, abilityRarity, characterLevel) + detailsProvider.GetCastDuration(abilityName);
-        var specialHits = CalculateSpecialHits(abilityName, abilityRarity, characterLevel).ToList();
+        var totalCooldown = detailsProvider.GetCooldown(abilityName, abilityRarity, playerLevel) + detailsProvider.GetCastDuration(abilityName);
+        var specialHits = CalculateSpecialHits(abilityName, abilityRarity, playerLevel).ToList();
 
         return new()
         {
@@ -108,7 +108,7 @@ public class DefaultAbilityDamageCalculator : IAbilityDamageCalculator
     }
 
     /// <inheritdoc />
-    public virtual DamageRange CalculateDotDamageRange(string abilityName, AbilityRarity abilityRarity, int characterLevel)
+    public virtual DamageRange CalculateDotDamageRange(string abilityName, AbilityRarity abilityRarity, int playerLevel)
     {
         if (!CanHandleAbility(abilityName))
         {
@@ -117,8 +117,8 @@ public class DefaultAbilityDamageCalculator : IAbilityDamageCalculator
 
         var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(abilityName);
 
-        var totalCooldown = detailsProvider.GetCooldown(abilityName, abilityRarity, characterLevel) + detailsProvider.GetCastDuration(abilityName);
-        var dotHits = CalculateDotHits(abilityName, abilityRarity, characterLevel);
+        var totalCooldown = detailsProvider.GetCooldown(abilityName, abilityRarity, playerLevel) + detailsProvider.GetCastDuration(abilityName);
+        var dotHits = CalculateDotHits(abilityName, abilityRarity, playerLevel);
 
         var dotDamage = dotHits.Sum(x => x.Damage);
         var dotDps = CalculateDps(dotHits, totalCooldown);
@@ -133,7 +133,7 @@ public class DefaultAbilityDamageCalculator : IAbilityDamageCalculator
     }
 
     /// <inheritdoc />
-    public virtual List<DamageHit> CalculateBaseHits(string abilityName, AbilityRarity abilityRarity, int characterLevel)
+    public virtual List<DamageHit> CalculateBaseHits(string abilityName, AbilityRarity abilityRarity, int playerLevel)
     {
         if (!CanHandleAbility(abilityName))
         {
@@ -142,13 +142,13 @@ public class DefaultAbilityDamageCalculator : IAbilityDamageCalculator
 
         var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(abilityName);
 
-        var damageProfile = detailsProvider.GetDamageProfile(abilityName, abilityRarity, characterLevel);
-        var attackPower = CharacterStatsProvider.GetAttackPower(characterLevel);
+        var damageProfile = detailsProvider.GetDamageProfile(abilityName, abilityRarity, playerLevel);
+        var attackPower = PlayerStatsProvider.GetAttackPower(playerLevel);
         return CalculateHits(damageProfile.BaseHits, attackPower);
     }
 
     /// <inheritdoc />
-    public virtual List<DamageHit> CalculateSpecialHits(string abilityName, AbilityRarity abilityRarity, int characterLevel)
+    public virtual List<DamageHit> CalculateSpecialHits(string abilityName, AbilityRarity abilityRarity, int playerLevel)
     {
         if (!CanHandleAbility(abilityName))
         {
@@ -157,13 +157,13 @@ public class DefaultAbilityDamageCalculator : IAbilityDamageCalculator
 
         var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(abilityName);
 
-        var damageProfile = detailsProvider.GetDamageProfile(abilityName, abilityRarity, characterLevel);
-        var attackPower = CharacterStatsProvider.GetAttackPower(characterLevel);
+        var damageProfile = detailsProvider.GetDamageProfile(abilityName, abilityRarity, playerLevel);
+        var attackPower = PlayerStatsProvider.GetAttackPower(playerLevel);
         return CalculateHits(damageProfile.SpecialHits, attackPower);
     }
 
     /// <inheritdoc />
-    public virtual List<DamageHit> CalculateDotHits(string abilityName, AbilityRarity abilityRarity, int characterLevel)
+    public virtual List<DamageHit> CalculateDotHits(string abilityName, AbilityRarity abilityRarity, int playerLevel)
     {
         if (!CanHandleAbility(abilityName))
         {
@@ -172,13 +172,13 @@ public class DefaultAbilityDamageCalculator : IAbilityDamageCalculator
 
         var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(abilityName);
 
-        var damageProfile = detailsProvider.GetDamageProfile(abilityName, abilityRarity, characterLevel);
-        var attackPower = CharacterStatsProvider.GetAttackPower(characterLevel);
+        var damageProfile = detailsProvider.GetDamageProfile(abilityName, abilityRarity, playerLevel);
+        var attackPower = PlayerStatsProvider.GetAttackPower(playerLevel);
         return CalculateHits(damageProfile.DotHits, attackPower);
     }
 
     /// <inheritdoc />
-    public virtual decimal? CalculateTimeToKillBasedOnSimulation(string abilityName, AbilityRarity abilityRarity, int characterLevel, int targetLevel)
+    public virtual decimal? CalculateTimeToKillBasedOnSimulation(string abilityName, AbilityRarity abilityRarity, int playerLevel, int targetLevel)
     {
         if (!CanHandleAbility(abilityName))
         {
@@ -187,9 +187,9 @@ public class DefaultAbilityDamageCalculator : IAbilityDamageCalculator
 
         var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(abilityName);
 
-        var baseHits = CalculateBaseHits(abilityName, abilityRarity, characterLevel);
-        var specialHits = CalculateSpecialHits(abilityName, abilityRarity, characterLevel);
-        var dotHits = CalculateDotHits(abilityName, abilityRarity, characterLevel);
+        var baseHits = CalculateBaseHits(abilityName, abilityRarity, playerLevel);
+        var specialHits = CalculateSpecialHits(abilityName, abilityRarity, playerLevel);
+        var dotHits = CalculateDotHits(abilityName, abilityRarity, playerLevel);
         var hits = baseHits.Concat(specialHits).Concat(dotHits).OrderBy(x => x.Timing).ToList();
 
         if (baseHits.Sum(x => x.Damage) + specialHits.Sum(x => x.Damage) + dotHits.Sum(x => x.Damage) <= 0)
@@ -197,9 +197,9 @@ public class DefaultAbilityDamageCalculator : IAbilityDamageCalculator
             return null;
         }
 
-        var targetHitPoints = Convert.ToDecimal(CharacterStatsProvider.GetHitPoints(targetLevel));
+        var targetHitPoints = Convert.ToDecimal(PlayerStatsProvider.GetHitPoints(targetLevel));
         var totalTime = 0m;
-        var cooldown = detailsProvider.GetCooldown(abilityName, abilityRarity, characterLevel);
+        var cooldown = detailsProvider.GetCooldown(abilityName, abilityRarity, playerLevel);
 
         while (targetHitPoints >= 0)
         {
@@ -222,15 +222,15 @@ public class DefaultAbilityDamageCalculator : IAbilityDamageCalculator
     }
 
     /// <inheritdoc />
-    public virtual decimal? CalculateTimeToKillBasedOnDps(string abilityName, AbilityRarity abilityRarity, int characterLevel, int targetLevel)
+    public virtual decimal? CalculateTimeToKillBasedOnDps(string abilityName, AbilityRarity abilityRarity, int playerLevel, int targetLevel)
     {
         if (!CanHandleAbility(abilityName))
         {
             throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        var targetHitPoints = Convert.ToDecimal(CharacterStatsProvider.GetHitPoints(targetLevel));
-        var totalDamageRange = CalculateTotalDamageRange(abilityName, abilityRarity, characterLevel);
+        var targetHitPoints = Convert.ToDecimal(PlayerStatsProvider.GetHitPoints(targetLevel));
+        var totalDamageRange = CalculateTotalDamageRange(abilityName, abilityRarity, playerLevel);
 
         if (targetHitPoints <= 0 || totalDamageRange.MaxDps <= 0)
         {

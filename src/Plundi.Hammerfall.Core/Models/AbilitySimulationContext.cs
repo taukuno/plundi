@@ -4,7 +4,7 @@ public class AbilitySimulationContext
 {
     public required string AbilityName { get; set; }
     public required AbilityRarity AbilityRarity { get; set; }
-    public required int CharacterLevel { get; set; }
+    public required int PlayerLevel { get; set; }
 
     public required decimal AdjustedCastDuration { get; set; }
     public required decimal AdjustedChannelDuration { get; set; }

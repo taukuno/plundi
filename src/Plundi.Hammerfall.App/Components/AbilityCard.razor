@@ -19,9 +19,9 @@
             </div>
         </div>
         @{
-            var damageReport = AbilityReportGenerator.GenerateDamageReport(Ability.Name, Ability.Rarity, CharacterLevel);
+            var damageReport = AbilityReportGenerator.GenerateDamageReport(Ability.Name, Ability.Rarity, PlayerLevel);
 
-            var cooldown = detailsProvider.GetCooldown(Ability.Name, Ability.Rarity, CharacterLevel);
+            var cooldown = detailsProvider.GetCooldown(Ability.Name, Ability.Rarity, PlayerLevel);
             var minHitAndDotDamage = damageReport.BaseDamageRange.Min + damageReport.DotDamageRange.Min;
             var maxHitAndDotDamage = damageReport.BaseDamageRange.Max + damageReport.DotDamageRange.Max;
 
@@ -193,7 +193,7 @@
                 </div>
                 <hr class="border-gray-950"/>
                 <div class="flex flex-wrap gap-4 justify-center items-start p-4 grow">
-                    @foreach (var effect in detailsProvider.GetEffects(Ability.Name, Ability.Rarity, CharacterLevel))
+                    @foreach (var effect in detailsProvider.GetEffects(Ability.Name, Ability.Rarity, PlayerLevel))
                     {
                         if (effect.Duration == 0)
                         {

@@ -10,13 +10,13 @@ public class LoadoutSimulationContext
 
     public required decimal SimulationDuration { get; set; }
 
-    public required int CharacterLevel { get; set; }
+    public required int PlayerLevel { get; set; }
 
     public Dictionary<string, Dictionary<string, string>> AbilitySettings { get; set; } = new();
 
     public decimal CurrentTime { get; set; }
 
-    public List<(decimal Timestamp, string AbilityName, AbilityRarity AbilityRarity, int CharacterLevel, string Event, decimal Damage)> Events { get; set; } = [];
+    public List<(decimal Timestamp, string AbilityName, AbilityRarity AbilityRarity, int PlayerLevel, string Event, decimal Damage)> Events { get; set; } = [];
 
     public bool IsFinished { get; set; }
 

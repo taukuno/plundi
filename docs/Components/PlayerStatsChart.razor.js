@@ -54,6 +54,11 @@ export function drawChart(canvasId) {
                             boxPadding: 4,
                             callbacks: {
                                 title: function (tooltipItems) {
+                                    if(tooltipItems[0].label === '')
+                                    {
+                                        return 'Level 10';
+                                    }
+
                                     return 'Level ' + tooltipItems[0].label;
                                 }
                             }

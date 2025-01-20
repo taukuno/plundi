@@ -16,7 +16,7 @@ public partial class AbilitiesCooldownComparisonChart : IAsyncDisposable
     private IJSObjectReference? _jsModule;
 
     [Inject] private IJSRuntime JsRuntime { get; set; } = null!;
-    [Inject] private IEnumerable<IAbilityDetailsProvider> AbilityDetailsProviders { get; set; } = null!;
+    [Inject] private AbilityServiceProvider AbilityServiceProvider { get; set; } = null!;
 
     [Parameter] public List<string> Abilities { get; set; } = [];
     [Parameter] public int CharacterLevel { get; set; } = 1;
@@ -83,7 +83,7 @@ public partial class AbilitiesCooldownComparisonChart : IAsyncDisposable
 
         foreach (var ability in Abilities)
         {
-            var detailsProvider = GetAbilityDetailsProvider(ability);
+            var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(ability);
             var cooldownScalingData = GenerateCooldownScalingData(ability);
             abilitiesData.Add(new { Label = detailsProvider.GetDisplayName(ability), Data = cooldownScalingData });
         }
@@ -91,15 +91,10 @@ public partial class AbilitiesCooldownComparisonChart : IAsyncDisposable
         await _jsModule.InvokeVoidAsync("updateChart", _canvasId, abilitiesData);
     }
 
-    private IAbilityDetailsProvider GetAbilityDetailsProvider(string ability)
+    private List<object> GenerateCooldownScalingData(string abilityName)
     {
-        return AbilityDetailsProviders.FirstOrDefault(x => x.CanHandleAbility(ability)) ?? throw new InvalidOperationException($"No details provider registered for the ability '{ability}'.");
-    }
-
-    private List<object> GenerateCooldownScalingData(string ability)
-    {
-        var detailsProvider = GetAbilityDetailsProvider(ability);
-        return Enum.GetValues<AbilityRarity>().Select(rarity => detailsProvider.GetCooldown(ability, CharacterLevel, rarity)).Cast<object>().ToList();
+        var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(abilityName);
+        return Enum.GetValues<AbilityRarity>().Select(rarity => detailsProvider.GetCooldown(abilityName, rarity, CharacterLevel)).Cast<object>().ToList();
     }
 
     public async Task ClearAsync()

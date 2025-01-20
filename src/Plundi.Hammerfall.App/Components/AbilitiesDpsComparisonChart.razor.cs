@@ -17,7 +17,7 @@ public partial class AbilitiesDpsComparisonChart : IAsyncDisposable
 
     [Inject] private IJSRuntime JsRuntime { get; set; } = null!;
     [Inject] private AbilityReportGenerator AbilityReportGenerator { get; set; } = null!;
-    [Inject] private IEnumerable<IAbilityDetailsProvider> AbilityDetailsProviders { get; set; } = null!;
+    [Inject] private AbilityServiceProvider AbilityServiceProvider { get; set; } = null!;
 
     [Parameter] public List<string> Abilities { get; set; } = [];
     [Parameter] public int CharacterLevel { get; set; } = 1;
@@ -85,7 +85,7 @@ public partial class AbilitiesDpsComparisonChart : IAsyncDisposable
 
         foreach (var ability in Abilities)
         {
-            var detailsProvider = GetAbilityDetailsProvider(ability);
+            var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(ability);
             var dpsScalingData = GenerateDpsScalingData(ability);
             abilitiesData.Add(new { Label = detailsProvider.GetDisplayName(ability), Data = dpsScalingData });
         }
@@ -93,18 +93,13 @@ public partial class AbilitiesDpsComparisonChart : IAsyncDisposable
         await _jsModule.InvokeVoidAsync("updateChart", _canvasId, abilitiesData, SmoothLines);
     }
 
-    private IAbilityDetailsProvider GetAbilityDetailsProvider(string ability)
-    {
-        return AbilityDetailsProviders.FirstOrDefault(x => x.CanHandleAbility(ability)) ?? throw new InvalidOperationException($"No details provider registered for the ability '{ability}'.");
-    }
-
-    private List<object> GenerateDpsScalingData(string ability)
+    private List<object> GenerateDpsScalingData(string abilityName)
     {
         var dpsScaling = new List<object>();
 
         foreach (var rarity in Enum.GetValues<AbilityRarity>())
         {
-            var report = AbilityReportGenerator.GenerateDamageReport(ability, CharacterLevel, rarity);
+            var report = AbilityReportGenerator.GenerateDamageReport(abilityName, rarity, CharacterLevel);
             dpsScaling.Add(new { Min = Math.Round(report.TotalDamageRange.MinDps, 1), Max = Math.Round(report.TotalDamageRange.MaxDps, 1) });
         }
 

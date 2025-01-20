@@ -27,66 +27,79 @@ public class ManaSphereDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
-    public string GetDisplayName(string ability)
+    public string GetDisplayName(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return "Mana Sphere";
     }
 
     /// <inheritdoc />
-    public decimal GetCastDuration(string ability)
+    public decimal GetCastDuration(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return 0m;
     }
 
     /// <inheritdoc />
-    public decimal GetChannelDuration(string ability)
+    public decimal GetChannelDuration(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the abilityName '{abilityName}'.", nameof(abilityName));
         }
 
-        return 1.8m;
+        var chargeDuration = 1.8m;
+        if (simulationSettings is not null && simulationSettings.TryGetValue("charge_duration", out var chargeDurationSetting))
+        {
+            chargeDuration = chargeDurationSetting switch
+            {
+                "Stage 0 (0.6s)" => 0.6m,
+                "Stage 1 (1s)" => 1m,
+                "Stage 2 (1.4s)" => 1.4m,
+                "Stage 3 (1.8s)" => 1.8m,
+                _ => 1.8m
+            };
+        }
+
+        return chargeDuration;
     }
 
     /// <inheritdoc />
-    public string GetImagePath(string ability)
+    public string GetImagePath(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return "mana_sphere.jpg";
     }
 
     /// <inheritdoc />
-    public AbilityType GetAbilityType(string ability)
+    public AbilityType GetAbilityType(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return AbilityType.Damage;
     }
 
     /// <inheritdoc />
-    public IEnumerable<AbilityEffect> GetEffects(string ability, int characterLevel, AbilityRarity abilityRarity)
+    public IEnumerable<AbilityEffect> GetEffects(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return
@@ -99,24 +112,57 @@ public class ManaSphereDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
-    public decimal GetCooldown(string ability, int characterLevel, AbilityRarity abilityRarity)
+    public decimal GetCooldown(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return _cooldowns[abilityRarity];
     }
 
     /// <inheritdoc />
-    public DamageProfile GetDamageProfile(string ability, int characterLevel, AbilityRarity abilityRarity)
+    public DamageProfile GetDamageProfile(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        return _damageProfiles[abilityRarity];
+        var chargeDuration = 1.8m;
+        if (simulationSettings is not null && simulationSettings.TryGetValue("charge_duration", out var chargeDurationSetting))
+        {
+            chargeDuration = chargeDurationSetting switch
+            {
+                "Stage 0 (0.6s)" => 0.6m,
+                "Stage 1 (1s)" => 1m,
+                "Stage 2 (1.4s)" => 1.4m,
+                "Stage 3 (1.8s)" => 1.8m,
+                _ => 1.8m
+            };
+        }
+
+        var damageProfile = _damageProfiles[abilityRarity];
+        var adjustedDamageProfile = damageProfile with
+        {
+            BaseHits = [damageProfile.BaseHits[0] with { Timing = chargeDuration }],
+        };
+
+        return adjustedDamageProfile;
+    }
+
+    /// <inheritdoc />
+    public Dictionary<string, (string Description, List<string> PossibleValues, string DefaultValue)> GetPossibleSimulationSettings(string abilityName)
+    {
+        if (!CanHandleAbility(abilityName))
+        {
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
+        }
+
+        return new()
+        {
+            { "charge_duration", ("How long are you charging it?", ["Stage 0 (0.6s)", "Stage 1 (1s)", "Stage 2 (1.4s)", "Stage 3 (1.8s)"], "Stage 0 (0.6s)") },
+        };
     }
 }

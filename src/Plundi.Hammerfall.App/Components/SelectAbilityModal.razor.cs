@@ -9,14 +9,22 @@ public partial class SelectAbilityModal : ComponentBase
 {
     private readonly string _dialogId = $"dialog-{Guid.NewGuid()}";
 
+    private List<string> _abilitiesToHide = [];
+    private bool _showOffensiveAbilities = true;
+    private bool _showUtilityAbilities = true;
+
     [Inject] private IJSRuntime JsRuntime { get; set; } = null!;
     [Inject] private List<string> Abilities { get; set; } = null!;
-    [Inject] private IEnumerable<IAbilityDetailsProvider> AbilityDetailsProviders { get; set; } = null!;
+    [Inject] private AbilityServiceProvider AbilityServiceProvider { get; set; } = null!;
 
     [Parameter] public EventCallback<string> OnAbilitySelected { get; set; }
 
-    public async void Open()
+    public async void Open(List<string>? abilitiesToHide = null, bool showOffensiveAbilities = true, bool showUtilityAbilities = true)
     {
+        _abilitiesToHide = abilitiesToHide ?? [];
+        _showOffensiveAbilities = showOffensiveAbilities;
+        _showUtilityAbilities = showUtilityAbilities;
+
         await JsRuntime.InvokeVoidAsync("window.dialogFunctions.openDialog", _dialogId);
         StateHasChanged();
     }
@@ -24,10 +32,5 @@ public partial class SelectAbilityModal : ComponentBase
     public async void Close()
     {
         await JsRuntime.InvokeVoidAsync("window.dialogFunctions.closeDialog", _dialogId);
-    }
-
-    private IAbilityDetailsProvider GetAbilityDetailsProvider(string ability)
-    {
-        return AbilityDetailsProviders.FirstOrDefault(x => x.CanHandleAbility(ability)) ?? throw new InvalidOperationException($"No details provider registered for the ability '{ability}'.");
     }
 }

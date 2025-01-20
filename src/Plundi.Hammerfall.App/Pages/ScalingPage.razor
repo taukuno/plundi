@@ -9,7 +9,7 @@
             <span class="text-lg">
                 Configuration
             </span>
-            <div class="grid gap-2 items-baseline md:gap-4 md:grid-cols-[auto,1fr]">
+            <div class="grid gap-2 items-center md:gap-4 md:grid-cols-[auto,1fr]">
                 <span class="text-sm">Your level</span>
                 <div class="grid grid-cols-10 shadow">
                     @for (var i = 1; i <= 10; i++)
@@ -39,7 +39,7 @@
                     @foreach (var ability in _abilitiesToCompare)
                     {
                         <div class="w-14 h-14 bg-clip-border bg-cover rounded border shadow cursor-pointer border-gray-950"
-                             style="background-image: url('img/abilities/@GetAbilityDetailsProvider(ability).GetImagePath(ability)')">
+                             style="background-image: url('img/abilities/@AbilityServiceProvider.GetAbilityDetailsProvider(ability).GetImagePath(ability)')">
                             <button class="p-2 w-full h-full text-xs text-center text-white bg-gray-900 rounded opacity-0 outline-white hover:opacity-50 focus:opacity-50 outline outline-1"
                                     @onclick="async () => await RemoveAbilityFromComparisonAsync(ability)">
                                 <i class="fa-solid fa-x"></i>
@@ -47,7 +47,7 @@
                         </div>
                     }
                     <button class="p-2 w-14 h-14 text-center text-gray-400 rounded border-2 border-gray-400 border-dashed hover:bg-gray-800 focus:bg-gray-800 focus:outline-none"
-                            @onclick="() => _selectAbilityModal?.Open()">
+                            @onclick="() => _selectAbilityModal?.Open(_abilitiesToCompare)">
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>

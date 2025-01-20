@@ -21,7 +21,7 @@ public class HolyShieldDetailsProvider : IAbilityDetailsProvider
             new()
             {
                 BaseHits = [new() { Damage = 0.18m, IsRelative = true, Timing = 0m }, new() { Damage = 0.18m, IsRelative = true, Timing = 0.5m }],
-                SpecialHits = [new() { Damage = 0.36m, IsRelative = true, Timing = 0.36m }],
+                SpecialHits = [new() { Damage = 0.36m, IsRelative = true, Timing = 0.25m }],
                 DotHits = []
             }
         },
@@ -30,7 +30,7 @@ public class HolyShieldDetailsProvider : IAbilityDetailsProvider
             new()
             {
                 BaseHits = [new() { Damage = 0.19m, IsRelative = true, Timing = 0m }, new() { Damage = 0.19m, IsRelative = true, Timing = 0.5m }],
-                SpecialHits = [new() { Damage = 0.374m, IsRelative = true, Timing = 0.374m }],
+                SpecialHits = [new() { Damage = 0.374m, IsRelative = true, Timing = 0.25m }],
                 DotHits = []
             }
         },
@@ -39,7 +39,7 @@ public class HolyShieldDetailsProvider : IAbilityDetailsProvider
             new()
             {
                 BaseHits = [new() { Damage = 0.198m, IsRelative = true, Timing = 0m }, new() { Damage = 0.198m, IsRelative = true, Timing = 0.5m }],
-                SpecialHits = [new() { Damage = 0.395m, IsRelative = true, Timing = 0.395m }],
+                SpecialHits = [new() { Damage = 0.395m, IsRelative = true, Timing = 0.25m }],
                 DotHits = []
             }
         },
@@ -48,7 +48,7 @@ public class HolyShieldDetailsProvider : IAbilityDetailsProvider
             new()
             {
                 BaseHits = [new() { Damage = 0.2m, IsRelative = true, Timing = 0m }, new() { Damage = 0.2m, IsRelative = true, Timing = 0.5m }],
-                SpecialHits = [new() { Damage = 0.409m, IsRelative = true, Timing = 0.409m }],
+                SpecialHits = [new() { Damage = 0.409m, IsRelative = true, Timing = 0.25m }],
                 DotHits = []
             }
         }
@@ -61,66 +61,66 @@ public class HolyShieldDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
-    public string GetDisplayName(string ability)
+    public string GetDisplayName(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return "Holy Shield";
     }
 
     /// <inheritdoc />
-    public decimal GetCastDuration(string ability)
+    public decimal GetCastDuration(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return 1m;
     }
 
     /// <inheritdoc />
-    public decimal GetChannelDuration(string ability)
+    public decimal GetChannelDuration(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the abilityName '{abilityName}'.", nameof(abilityName));
         }
 
-        return 0;
+        return 0m;
     }
 
     /// <inheritdoc />
-    public string GetImagePath(string ability)
+    public string GetImagePath(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return "holy_shield.jpg";
     }
 
     /// <inheritdoc />
-    public AbilityType GetAbilityType(string ability)
+    public AbilityType GetAbilityType(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return AbilityType.Damage;
     }
 
     /// <inheritdoc />
-    public IEnumerable<AbilityEffect> GetEffects(string ability, int characterLevel, AbilityRarity abilityRarity)
+    public IEnumerable<AbilityEffect> GetEffects(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return
@@ -131,24 +131,58 @@ public class HolyShieldDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
-    public decimal GetCooldown(string ability, int characterLevel, AbilityRarity abilityRarity)
+    public decimal GetCooldown(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return _cooldowns[abilityRarity];
     }
 
     /// <inheritdoc />
-    public DamageProfile GetDamageProfile(string ability, int characterLevel, AbilityRarity abilityRarity)
+    public DamageProfile GetDamageProfile(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        return _damageProfiles[abilityRarity];
+        var hitSpecial = true;
+        var hitOnBoomerang = true;
+        if (simulationSettings is not null && simulationSettings.TryGetValue("hit_special", out var hitSpecialSetting))
+        {
+            hitSpecial = hitSpecialSetting == "Yes";
+        }
+
+        if (simulationSettings is not null && simulationSettings.TryGetValue("hit_on_boomerang", out var hitOnBoomerangSetting))
+        {
+            hitOnBoomerang = hitOnBoomerangSetting == "Yes";
+        }
+
+        var damageProfile = _damageProfiles[abilityRarity];
+        var adjustedDamageProfile = damageProfile with
+        {
+            BaseHits = damageProfile.BaseHits.Take(hitOnBoomerang ? 2 : 1).ToList(),
+            SpecialHits = damageProfile.SpecialHits.Take(hitSpecial ? 1 : 0).ToList(),
+        };
+
+        return adjustedDamageProfile;
+    }
+
+    /// <inheritdoc />
+    public Dictionary<string, (string Description, List<string> PossibleValues, string DefaultValue)> GetPossibleSimulationSettings(string abilityName)
+    {
+        if (!CanHandleAbility(abilityName))
+        {
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
+        }
+
+        return new()
+        {
+            { "hit_special", ("Are you hitting with the special?", ["No", "Yes"], "Yes") },
+            { "hit_on_boomerang", ("Is the projectile also hitting on the way back?", ["No", "Yes"], "No") },
+        };
     }
 }

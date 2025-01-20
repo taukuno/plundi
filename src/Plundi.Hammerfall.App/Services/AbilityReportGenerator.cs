@@ -5,35 +5,33 @@ namespace Plundi.Hammerfall.App.Services;
 
 public class AbilityReportGenerator
 {
-    private readonly IEnumerable<IAbilityDetailsProvider> _abilityDetailsProviders;
-    private readonly IEnumerable<IAbilityDamageCalculator> _abilityDamageCalculators;
+    private readonly AbilityServiceProvider _abilityServiceProvider;
 
-    public AbilityReportGenerator(IEnumerable<IAbilityDetailsProvider> abilityDetailsProviders, IEnumerable<IAbilityDamageCalculator> abilityDamageCalculators)
+    public AbilityReportGenerator(AbilityServiceProvider abilityServiceProvider)
     {
-        _abilityDetailsProviders = abilityDetailsProviders;
-        _abilityDamageCalculators = abilityDamageCalculators;
+        _abilityServiceProvider = abilityServiceProvider;
     }
 
-    public DamageReport GenerateDamageReport(string ability, int characterLevel, AbilityRarity abilityRarity)
+    public DamageReport GenerateDamageReport(string abilityName, AbilityRarity abilityRarity, int characterLevel)
     {
-        var abilityDamageCalculator = GetAbilityDamageCalculator(ability);
+        var abilityDamageCalculator =_abilityServiceProvider.GetAbilityDamageCalculator(abilityName);
 
         return new()
         {
-            TotalDamageRange = abilityDamageCalculator.CalculateTotalDamageRange(ability, characterLevel, abilityRarity),
-            BaseDamageRange = abilityDamageCalculator.CalculateBaseDamageRange(ability, characterLevel, abilityRarity),
-            SpecialDamageRange = abilityDamageCalculator.CalculateSpecialDamageRange(ability, characterLevel, abilityRarity),
-            DotDamageRange = abilityDamageCalculator.CalculateDotDamageRange(ability, characterLevel, abilityRarity),
-            BaseHits = abilityDamageCalculator.CalculateBaseHits(ability, characterLevel, abilityRarity),
-            SpecialHits = abilityDamageCalculator.CalculateSpecialHits(ability, characterLevel, abilityRarity),
-            DotHits =abilityDamageCalculator.CalculateDotHits(ability, characterLevel, abilityRarity)
+            TotalDamageRange = abilityDamageCalculator.CalculateTotalDamageRange(abilityName, abilityRarity, characterLevel),
+            BaseDamageRange = abilityDamageCalculator.CalculateBaseDamageRange(abilityName, abilityRarity, characterLevel),
+            SpecialDamageRange = abilityDamageCalculator.CalculateSpecialDamageRange(abilityName, abilityRarity, characterLevel),
+            DotDamageRange = abilityDamageCalculator.CalculateDotDamageRange(abilityName, abilityRarity, characterLevel),
+            BaseHits = abilityDamageCalculator.CalculateBaseHits(abilityName, abilityRarity, characterLevel),
+            SpecialHits = abilityDamageCalculator.CalculateSpecialHits(abilityName, abilityRarity, characterLevel),
+            DotHits =abilityDamageCalculator.CalculateDotHits(abilityName, abilityRarity, characterLevel)
         };
     }
 
-    public bool TryGenerateKillReportBasedOnSimulation(string ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel, out KillReport? killReport)
+    public bool TryGenerateKillReportBasedOnSimulation(string abilityName, AbilityRarity abilityRarity, int characterLevel, int targetLevel, out KillReport? killReport)
     {
-        var abilityDamageCalculator = GetAbilityDamageCalculator(ability);
-        var timeToKill = abilityDamageCalculator.CalculateTimeToKillBasedOnSimulation(ability, characterLevel, abilityRarity, targetLevel);
+        var abilityDamageCalculator = _abilityServiceProvider.GetAbilityDamageCalculator(abilityName);
+        var timeToKill = abilityDamageCalculator.CalculateTimeToKillBasedOnSimulation(abilityName, abilityRarity, characterLevel, targetLevel);
 
         killReport = null;
         if (timeToKill is null)
@@ -50,10 +48,10 @@ public class AbilityReportGenerator
         return true;
     }
 
-    public bool TryGenerateKillReportBasedOnDps(string ability, int characterLevel, AbilityRarity abilityRarity, int targetLevel, out KillReport? killReport)
+    public bool TryGenerateKillReportBasedOnDps(string abilityName, AbilityRarity abilityRarity, int characterLevel, int targetLevel, out KillReport? killReport)
     {
-        var abilityDamageCalculator = GetAbilityDamageCalculator(ability);
-        var timeToKill = abilityDamageCalculator.CalculateTimeToKillBasedOnDps(ability, characterLevel, abilityRarity, targetLevel);
+        var abilityDamageCalculator = _abilityServiceProvider.GetAbilityDamageCalculator(abilityName);
+        var timeToKill = abilityDamageCalculator.CalculateTimeToKillBasedOnDps(abilityName, abilityRarity, characterLevel, targetLevel);
 
         killReport = null;
         if (timeToKill is null)
@@ -68,15 +66,5 @@ public class AbilityReportGenerator
         };
 
         return true;
-    }
-
-    private IAbilityDetailsProvider GetAbilityDetailsProvider(string ability)
-    {
-        return _abilityDetailsProviders.FirstOrDefault(x => x.CanHandleAbility(ability)) ?? throw new InvalidOperationException($"No details provider registered for the ability '{ability}'.");
-    }
-
-    private IAbilityDamageCalculator GetAbilityDamageCalculator(string ability)
-    {
-        return _abilityDamageCalculators.FirstOrDefault(x => x.CanHandleAbility(ability)) ?? throw new InvalidOperationException($"No details provider registered for the ability '{ability}'.");
     }
 }

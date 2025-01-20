@@ -2,29 +2,29 @@ using Plundi.Hammerfall.Core.Models;
 
 namespace Plundi.Hammerfall.Core.Services.AbilityDamageCalculators;
 
-public class HolyShieldDamageCalculator : BaseAbilityDamageCalculator
+public class HolyShieldDamageCalculator : DefaultAbilityDamageCalculator
 {
     // It's unlikely to hit with the default hit, but not with the special hit
     // We therefore set the minimal damage and DPS to the maximal special damage and DPS
 
     /// <inheritdoc />
-    public HolyShieldDamageCalculator(IEnumerable<IAbilityDetailsProvider> abilityDetailsProviders) : base(abilityDetailsProviders) {}
+    public HolyShieldDamageCalculator(AbilityServiceProvider abilityServiceProvider) : base(abilityServiceProvider) {}
 
     /// <inheritdoc />
-    public override bool CanHandleAbility(string ability)
+    public override bool CanHandleAbility(string abilityName)
     {
-        return ability == "Holy Shield";
+        return abilityName == "Holy Shield";
     }
 
     /// <inheritdoc />
-    public override DamageRange CalculateBaseDamageRange(string ability, int characterLevel, AbilityRarity abilityRarity)
+    public override DamageRange CalculateBaseDamageRange(string abilityName, AbilityRarity abilityRarity, int characterLevel)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        var damageRange = base.CalculateBaseDamageRange(ability, characterLevel, abilityRarity);
+        var damageRange = base.CalculateBaseDamageRange(abilityName, abilityRarity, characterLevel);
         return damageRange with
         {
             Min = 0,
@@ -33,14 +33,14 @@ public class HolyShieldDamageCalculator : BaseAbilityDamageCalculator
     }
 
     /// <inheritdoc />
-    public override DamageRange CalculateSpecialDamageRange(string ability, int characterLevel, AbilityRarity abilityRarity)
+    public override DamageRange CalculateSpecialDamageRange(string abilityName, AbilityRarity abilityRarity, int characterLevel)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        var damageRange = base.CalculateBaseDamageRange(ability, characterLevel, abilityRarity);
+        var damageRange = base.CalculateBaseDamageRange(abilityName, abilityRarity, characterLevel);
         return damageRange with
         {
             Min = damageRange.Max,

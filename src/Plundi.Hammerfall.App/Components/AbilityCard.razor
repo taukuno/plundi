@@ -1,5 +1,5 @@
 ﻿@{
-    var detailsProvider = GetAbilityDetailsProvider(Ability.Ability);
+    var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(Ability.Name);
 
     <div class="flex flex-col bg-gradient-to-br from-gray-900 to-gray-900 rounded border shadow border-gray-950">
         <div class="grid gap-2 items-baseline py-2 px-4 rounded-t shadow grid-cols-[1fr,auto,1fr] bg-gray-950">
@@ -7,7 +7,7 @@
                 @(Position).
             </span>
             <span class="col-start-2 text-xs text-center text-gray-400">
-                @detailsProvider.GetDisplayName(Ability.Ability)
+                @detailsProvider.GetDisplayName(Ability.Name)
             </span>
             <div class="flex col-start-3 gap-2 justify-end">
                 <i class="p-2 -my-2 text-xs text-gray-400 cursor-pointer hover:text-gray-100 fa-solid fa-chevron-up"
@@ -19,9 +19,9 @@
             </div>
         </div>
         @{
-            var damageReport = AbilityReportGenerator.GenerateDamageReport(Ability.Ability, CharacterLevel, Ability.Rarity);
+            var damageReport = AbilityReportGenerator.GenerateDamageReport(Ability.Name, Ability.Rarity, CharacterLevel);
 
-            var cooldown = detailsProvider.GetCooldown(Ability.Ability, CharacterLevel, Ability.Rarity);
+            var cooldown = detailsProvider.GetCooldown(Ability.Name, Ability.Rarity, CharacterLevel);
             var minHitAndDotDamage = damageReport.BaseDamageRange.Min + damageReport.DotDamageRange.Min;
             var maxHitAndDotDamage = damageReport.BaseDamageRange.Max + damageReport.DotDamageRange.Max;
 
@@ -37,7 +37,7 @@
             if (DisplayInCompactView)
             {
                 <div class="flex flex-row gap-2 items-center py-2 px-4 2xl:gap-4 md:max-lg:gap-4">
-                    <div class="w-14 h-14 bg-clip-border bg-cover rounded border shadow border-gray-950" style="background-image: url('img/abilities/@detailsProvider.GetImagePath(Ability.Ability)')">
+                    <div class="w-14 h-14 bg-clip-border bg-cover rounded border shadow border-gray-950" style="background-image: url('img/abilities/@detailsProvider.GetImagePath(Ability.Name)')">
                     </div>
                     <div class="grid grid-cols-3 gap-2 items-center 2xl:gap-4 grow md:max-lg:gap-4">
                         <div class="flex flex-col items-center">
@@ -80,7 +80,7 @@
             else
             {
                 <div class="flex flex-row gap-4 items-center p-4">
-                    <div class="w-20 h-20 bg-clip-border bg-cover rounded border shadow border-gray-950" style="background-image: url('img/abilities/@detailsProvider.GetImagePath(Ability.Ability)')">
+                    <div class="w-20 h-20 bg-clip-border bg-cover rounded border shadow border-gray-950" style="background-image: url('img/abilities/@detailsProvider.GetImagePath(Ability.Name)')">
                     </div>
                     <div class="grid grid-cols-2 gap-x-2 gap-y-4 items-center 2xl:grid-cols-4 2xl:gap-4 grow md:max-lg:grid-cols-4 md:max-lg:gap-x-4">
                         <div class="flex flex-col gap-1 items-center xl:order-1 md:max-lg:order-1">
@@ -136,8 +136,8 @@
                         <span class="overflow-hidden text-xs text-gray-400 whitespace-nowrap">cooldown</span>
                     </div>
                     @{
-                        var castDuration = detailsProvider.GetCastDuration(Ability.Ability);
-                        var channelDuration = detailsProvider.GetChannelDuration(Ability.Ability);
+                        var castDuration = detailsProvider.GetCastDuration(Ability.Name);
+                        var channelDuration = detailsProvider.GetChannelDuration(Ability.Name);
 
                         <div class="flex flex-col gap-1 items-center">
                             <span class="font-mono text-center">@(castDuration == 0 ? "-" : $"{castDuration}s")</span>
@@ -193,7 +193,7 @@
                 </div>
                 <hr class="border-gray-950"/>
                 <div class="flex flex-wrap gap-4 justify-center items-start p-4 grow">
-                    @foreach (var effect in detailsProvider.GetEffects(Ability.Ability, CharacterLevel, Ability.Rarity))
+                    @foreach (var effect in detailsProvider.GetEffects(Ability.Name, Ability.Rarity, CharacterLevel))
                     {
                         if (effect.Duration == 0)
                         {

@@ -24,11 +24,7 @@ public class AuraOfZealotryDetailsProvider : IAbilityDetailsProvider
                     new() { Damage = 0.077m, IsRelative = true, Timing = 4m }, new() { Damage = 0.077m, IsRelative = true, Timing = 5m }, new() { Damage = 0.077m, IsRelative = true, Timing = 6m }, new() { Damage = 0.077m, IsRelative = true, Timing = 7m },
                     new() { Damage = 0.077m, IsRelative = true, Timing = 8m }
                 ],
-                SpecialHits =
-                [
-                    new() { Damage = 0.046m, IsRelative = true, Timing = 1m }, new() { Damage = 0.046m, IsRelative = true, Timing = 2m }, new() { Damage = 0.046m, IsRelative = true, Timing = 3m }, new() { Damage = 0.046m, IsRelative = true, Timing = 4m },
-                    new() { Damage = 0.046m, IsRelative = true, Timing = 5m }, new() { Damage = 0.046m, IsRelative = true, Timing = 6m }, new() { Damage = 0.046m, IsRelative = true, Timing = 7m }, new() { Damage = 0.046m, IsRelative = true, Timing = 8m }
-                ],
+                SpecialHits = [],
                 DotHits = []
             }
         },
@@ -42,11 +38,7 @@ public class AuraOfZealotryDetailsProvider : IAbilityDetailsProvider
                     new() { Damage = 0.08m, IsRelative = true, Timing = 4m }, new() { Damage = 0.08m, IsRelative = true, Timing = 5m }, new() { Damage = 0.08m, IsRelative = true, Timing = 6m }, new() { Damage = 0.08m, IsRelative = true, Timing = 7m },
                     new() { Damage = 0.08m, IsRelative = true, Timing = 8m }
                 ],
-                SpecialHits =
-                [
-                    new() { Damage = 0.059m, IsRelative = true, Timing = 1m }, new() { Damage = 0.059m, IsRelative = true, Timing = 2m }, new() { Damage = 0.059m, IsRelative = true, Timing = 3m }, new() { Damage = 0.059m, IsRelative = true, Timing = 4m },
-                    new() { Damage = 0.059m, IsRelative = true, Timing = 5m }, new() { Damage = 0.059m, IsRelative = true, Timing = 6m }, new() { Damage = 0.059m, IsRelative = true, Timing = 7m }, new() { Damage = 0.059m, IsRelative = true, Timing = 8m }
-                ],
+                SpecialHits = [],
                 DotHits = []
             }
         },
@@ -60,11 +52,7 @@ public class AuraOfZealotryDetailsProvider : IAbilityDetailsProvider
                     new() { Damage = 0.085m, IsRelative = true, Timing = 4m }, new() { Damage = 0.085m, IsRelative = true, Timing = 5m }, new() { Damage = 0.085m, IsRelative = true, Timing = 6m }, new() { Damage = 0.085m, IsRelative = true, Timing = 7m },
                     new() { Damage = 0.085m, IsRelative = true, Timing = 8m }
                 ],
-                SpecialHits =
-                [
-                    new() { Damage = 0.073m, IsRelative = true, Timing = 1m }, new() { Damage = 0.073m, IsRelative = true, Timing = 2m }, new() { Damage = 0.073m, IsRelative = true, Timing = 3m }, new() { Damage = 0.073m, IsRelative = true, Timing = 4m },
-                    new() { Damage = 0.073m, IsRelative = true, Timing = 5m }, new() { Damage = 0.073m, IsRelative = true, Timing = 6m }, new() { Damage = 0.073m, IsRelative = true, Timing = 7m }, new() { Damage = 0.073m, IsRelative = true, Timing = 8m }
-                ],
+                SpecialHits = [],
                 DotHits = []
             }
         },
@@ -75,16 +63,10 @@ public class AuraOfZealotryDetailsProvider : IAbilityDetailsProvider
                 BaseHits =
                 [
                     new() { Damage = 0.0859m, IsRelative = true, Timing = 0m }, new() { Damage = 0.0859m, IsRelative = true, Timing = 1m }, new() { Damage = 0.0859m, IsRelative = true, Timing = 2m },
-                    new() { Damage = 0.0859m, IsRelative = true, Timing = 3m },
-                    new() { Damage = 0.0859m, IsRelative = true, Timing = 4m }, new() { Damage = 0.0859m, IsRelative = true, Timing = 5m }, new() { Damage = 0.0859m, IsRelative = true, Timing = 6m },
-                    new() { Damage = 0.0859m, IsRelative = true, Timing = 7m },
-                    new() { Damage = 0.0859m, IsRelative = true, Timing = 8m }
+                    new() { Damage = 0.0859m, IsRelative = true, Timing = 3m }, new() { Damage = 0.0859m, IsRelative = true, Timing = 4m }, new() { Damage = 0.0859m, IsRelative = true, Timing = 5m },
+                    new() { Damage = 0.0859m, IsRelative = true, Timing = 6m }, new() { Damage = 0.0859m, IsRelative = true, Timing = 7m }, new() { Damage = 0.0859m, IsRelative = true, Timing = 8m }
                 ],
-                SpecialHits =
-                [
-                    new() { Damage = 0.087m, IsRelative = true, Timing = 1m }, new() { Damage = 0.087m, IsRelative = true, Timing = 2m }, new() { Damage = 0.087m, IsRelative = true, Timing = 3m }, new() { Damage = 0.087m, IsRelative = true, Timing = 4m },
-                    new() { Damage = 0.087m, IsRelative = true, Timing = 5m }, new() { Damage = 0.087m, IsRelative = true, Timing = 6m }, new() { Damage = 0.087m, IsRelative = true, Timing = 7m }, new() { Damage = 0.087m, IsRelative = true, Timing = 8m }
-                ],
+                SpecialHits = [],
                 DotHits = []
             }
         }
@@ -97,66 +79,66 @@ public class AuraOfZealotryDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
-    public string GetDisplayName(string ability)
+    public string GetDisplayName(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return "Aura of Zealotry";
     }
 
     /// <inheritdoc />
-    public decimal GetCastDuration(string ability)
+    public decimal GetCastDuration(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return 0.5m;
     }
 
     /// <inheritdoc />
-    public decimal GetChannelDuration(string ability)
+    public decimal GetChannelDuration(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        return 0;
+        return 0m;
     }
 
     /// <inheritdoc />
-    public string GetImagePath(string ability)
+    public string GetImagePath(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return "aura_of_zealotry.jpg";
     }
 
     /// <inheritdoc />
-    public AbilityType GetAbilityType(string ability)
+    public AbilityType GetAbilityType(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return AbilityType.Damage;
     }
 
     /// <inheritdoc />
-    public IEnumerable<AbilityEffect> GetEffects(string ability, int characterLevel, AbilityRarity abilityRarity)
+    public IEnumerable<AbilityEffect> GetEffects(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         const decimal baseMeleeDamage = 0.226m;
@@ -180,24 +162,50 @@ public class AuraOfZealotryDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
-    public decimal GetCooldown(string ability, int characterLevel, AbilityRarity abilityRarity)
+    public decimal GetCooldown(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return _cooldowns[abilityRarity];
     }
 
     /// <inheritdoc />
-    public DamageProfile GetDamageProfile(string ability, int characterLevel, AbilityRarity abilityRarity)
+    public DamageProfile GetDamageProfile(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        return _damageProfiles[abilityRarity];
+        var numberOfHitsToKeep = 9;
+        if (simulationSettings is not null && simulationSettings.TryGetValue("duration_inside_aoe", out var durationInsideAoeSetting))
+        {
+            numberOfHitsToKeep = int.Parse(durationInsideAoeSetting[0].ToString()) + 1;
+        }
+
+        var damageProfile = _damageProfiles[abilityRarity];
+        var adjustedDamageProfile = damageProfile with
+        {
+            BaseHits = damageProfile.BaseHits.Take(numberOfHitsToKeep).ToList()
+        };
+
+        return adjustedDamageProfile;
+    }
+
+    /// <inheritdoc />
+    public Dictionary<string, (string Description, List<string> PossibleValues, string DefaultValue)> GetPossibleSimulationSettings(string abilityName)
+    {
+        if (!CanHandleAbility(abilityName))
+        {
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
+        }
+
+        return new()
+        {
+            { "duration_inside_aoe", ("How long do you stand in the AoE?", ["1s", "2s", "3s", "4s", "5s", "6s", "7s", "8s"], "5s") }
+        };
     }
 }

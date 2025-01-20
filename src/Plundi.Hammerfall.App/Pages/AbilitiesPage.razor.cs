@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Plundi.Hammerfall.App.Models;
 using Plundi.Hammerfall.App.Services;
 using Plundi.Hammerfall.Core.Models;
 using Plundi.Hammerfall.Core.Services;
@@ -13,12 +12,12 @@ public partial class AbilitiesPage : ComponentBase
     private readonly List<RarifiedAbility> _damageAbilities = [];
     private readonly List<RarifiedAbility> _utilityAbilities = [];
 
-    private int _characterLevel = 1;
+    private int _characterLevel = 10;
     private bool _displayDamageAbilitiesInCompactView;
     private bool _displayUtilityAbilitiesInCompactView;
 
     [Inject] private List<string> Abilities { get; set; } = null!;
-    [Inject] private IEnumerable<IAbilityDetailsProvider> AbilityDetailsProviders { get; set; } = null!;
+    [Inject] private AbilityServiceProvider AbilityServiceProvider { get; set; } = null!;
     [Inject] private LocalStorage LocalStorage { get; set; } = null!;
 
     /// <inheritdoc />
@@ -35,8 +34,8 @@ public partial class AbilitiesPage : ComponentBase
 
     private async Task InitializeAbilitiesAsync()
     {
-        var damageAbilities = Abilities.Where(x => GetAbilityDetailsProvider(x).GetAbilityType(x) == AbilityType.Damage).ToList();
-        var utilityAbilities = Abilities.Where(x => GetAbilityDetailsProvider(x).GetAbilityType(x) == AbilityType.Utility).ToList();
+        var damageAbilities = Abilities.Where(x => AbilityServiceProvider.GetAbilityDetailsProvider(x).GetAbilityType(x) == AbilityType.Damage).ToList();
+        var utilityAbilities = Abilities.Where(x => AbilityServiceProvider.GetAbilityDetailsProvider(x).GetAbilityType(x) == AbilityType.Utility).ToList();
 
         var damageAbilitiesOrder = await LocalStorage.GetItemAsync<List<string>>(DamageAbilitiesOrderStorageKey);
         var utilityAbilitiesOrder = await LocalStorage.GetItemAsync<List<string>>(UtilityAbilitiesOrderStorageKey);
@@ -44,22 +43,17 @@ public partial class AbilitiesPage : ComponentBase
         foreach (var ability in damageAbilitiesOrder ?? [])
         {
             damageAbilities.Remove(ability);
-            _damageAbilities.Add(new(ability, AbilityRarity.Common));
+            _damageAbilities.Add(new() {Name = ability, Rarity = AbilityRarity.Epic });
         }
 
         foreach (var ability in utilityAbilitiesOrder ?? [])
         {
             utilityAbilities.Remove(ability);
-            _utilityAbilities.Add(new(ability, AbilityRarity.Common));
+            _utilityAbilities.Add(new() {Name = ability, Rarity = AbilityRarity.Epic });
         }
 
-        _damageAbilities.AddRange(damageAbilities.Select(x => new RarifiedAbility(x, AbilityRarity.Common)));
-        _utilityAbilities.AddRange(utilityAbilities.Select(x => new RarifiedAbility(x, AbilityRarity.Common)));
-    }
-
-    private IAbilityDetailsProvider GetAbilityDetailsProvider(string ability)
-    {
-        return AbilityDetailsProviders.FirstOrDefault(x => x.CanHandleAbility(ability)) ?? throw new InvalidOperationException($"No details provider registered for the ability '{ability}'.");
+        _damageAbilities.AddRange(damageAbilities.Select(x => new RarifiedAbility {Name = x, Rarity = AbilityRarity.Epic } ));
+        _utilityAbilities.AddRange(utilityAbilities.Select(x => new RarifiedAbility {Name = x, Rarity = AbilityRarity.Epic } ));
     }
 
     private void SetAllAbilityRarities(AbilityRarity rarity)
@@ -89,13 +83,13 @@ public partial class AbilitiesPage : ComponentBase
     private async Task MoveDamageAbilityAsync(RarifiedAbility ability, MoveDirection direction)
     {
         MoveAbility(ability, _damageAbilities, (int)direction);
-        await LocalStorage.SetItemAsync(DamageAbilitiesOrderStorageKey, _damageAbilities.Select(x => x.Ability));
+        await LocalStorage.SetItemAsync(DamageAbilitiesOrderStorageKey, _damageAbilities.Select(x => x.Name));
     }
 
     private async Task MoveUtilityAbilityAsync(RarifiedAbility ability, MoveDirection direction)
     {
         MoveAbility(ability, _utilityAbilities, (int)direction);
-        await LocalStorage.SetItemAsync(UtilityAbilitiesOrderStorageKey, _utilityAbilities.Select(x => x.Ability));
+        await LocalStorage.SetItemAsync(UtilityAbilitiesOrderStorageKey, _utilityAbilities.Select(x => x.Name));
     }
 
     private enum MoveDirection

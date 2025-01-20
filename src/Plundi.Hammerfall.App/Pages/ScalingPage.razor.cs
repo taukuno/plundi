@@ -8,20 +8,21 @@ namespace Plundi.Hammerfall.App.Pages;
 public partial class ScalingPage : ComponentBase
 {
     private readonly List<string> _abilitiesToCompare = ["Searing Axe", "Slicing Winds", "Toxic Smackerel"];
+
     private AbilitiesDamageComparisonChart? _abilitiesDamageComparisonChart;
     private AbilitiesDpsComparisonChart? _abilitiesDpsComparisonChart;
     private AbilitiesCooldownComparisonChart? _abilitiesCooldownComparisonChart;
     private AbilitiesTimeToKillComparisonChart? _abilitiesTimeToKillComparisonChart;
-
-    private int _characterLevel = 1;
-    private int _enemyLevel = 1;
     private CharacterStatsChart? _characterStatsChart;
     private SelectAbilityModal? _selectAbilityModal;
+
+    private int _characterLevel = 10;
+    private int _enemyLevel = 10;
     private bool _smoothLines;
     private bool _baseTimeToKillOnDps = true;
 
     [Inject] private List<string> Abilities { get; set; } = null!;
-    [Inject] private IEnumerable<IAbilityDetailsProvider> AbilityDetailsProviders { get; set; } = null!;
+    [Inject] private AbilityServiceProvider AbilityServiceProvider { get; set; } = null!;
 
     /// <inheritdoc />
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -32,11 +33,6 @@ public partial class ScalingPage : ComponentBase
         {
             await DisplayChartsAsync();
         }
-    }
-
-    private IAbilityDetailsProvider GetAbilityDetailsProvider(string ability)
-    {
-        return AbilityDetailsProviders.FirstOrDefault(x => x.CanHandleAbility(ability)) ?? throw new InvalidOperationException($"No details provider registered for the ability '{ability}'.");
     }
 
     private async Task DisplayChartsAsync()
@@ -67,20 +63,20 @@ public partial class ScalingPage : ComponentBase
         await _abilitiesTimeToKillComparisonChart.UpdateAsync();
     }
 
-    private async Task AddAbilityForComparisonAsync(string ability)
+    private async Task AddAbilityForComparisonAsync(string abilityName)
     {
-        if (_abilitiesToCompare.Contains(ability))
+        if (_abilitiesToCompare.Contains(abilityName))
         {
             return;
         }
 
-        _abilitiesToCompare.Add(ability);
+        _abilitiesToCompare.Add(abilityName);
         await DisplayChartsAsync();
     }
 
-    private async Task RemoveAbilityFromComparisonAsync(string ability)
+    private async Task RemoveAbilityFromComparisonAsync(string abilityName)
     {
-        _abilitiesToCompare.Remove(ability);
+        _abilitiesToCompare.Remove(abilityName);
         await DisplayChartsAsync();
     }
 

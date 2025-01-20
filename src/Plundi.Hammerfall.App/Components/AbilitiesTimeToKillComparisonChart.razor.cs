@@ -17,7 +17,7 @@ public partial class AbilitiesTimeToKillComparisonChart : IAsyncDisposable
 
     [Inject] private IJSRuntime JsRuntime { get; set; } = null!;
     [Inject] private AbilityReportGenerator AbilityReportGenerator { get; set; } = null!;
-    [Inject] private IEnumerable<IAbilityDetailsProvider> AbilityDetailsProviders { get; set; } = null!;
+    [Inject] private AbilityServiceProvider AbilityServiceProvider { get; set; } = null!;
 
     [Parameter] public List<string> Abilities { get; set; } = [];
     [Parameter] public int CharacterLevel { get; set; } = 1;
@@ -87,7 +87,7 @@ public partial class AbilitiesTimeToKillComparisonChart : IAsyncDisposable
 
         foreach (var ability in Abilities)
         {
-            var detailsProvider = GetAbilityDetailsProvider(ability);
+            var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(ability);
             var timeToKillScalingData = GenerateTimeToKillScalingData(ability);
             abilitiesData.Add(new { Label = detailsProvider.GetDisplayName(ability), Data = timeToKillScalingData });
         }
@@ -95,12 +95,7 @@ public partial class AbilitiesTimeToKillComparisonChart : IAsyncDisposable
         await _jsModule.InvokeVoidAsync("updateChart", _canvasId, abilitiesData, SmoothLines);
     }
 
-    private IAbilityDetailsProvider GetAbilityDetailsProvider(string ability)
-    {
-        return AbilityDetailsProviders.FirstOrDefault(x => x.CanHandleAbility(ability)) ?? throw new InvalidOperationException($"No details provider registered for the ability '{ability}'.");
-    }
-
-    private List<object> GenerateTimeToKillScalingData(string ability)
+    private List<object> GenerateTimeToKillScalingData(string abilityName)
     {
         var timeToKillScaling = new List<object>();
 
@@ -109,8 +104,8 @@ public partial class AbilitiesTimeToKillComparisonChart : IAsyncDisposable
             var report = default(KillReport);
             var success = BaseTimeToKillOnDps switch
             {
-                true => AbilityReportGenerator.TryGenerateKillReportBasedOnDps(ability, CharacterLevel, rarity, TargetLevel, out report),
-                false => AbilityReportGenerator.TryGenerateKillReportBasedOnSimulation(ability, CharacterLevel, rarity, TargetLevel, out report)
+                true => AbilityReportGenerator.TryGenerateKillReportBasedOnDps(abilityName, rarity, CharacterLevel, TargetLevel, out report),
+                false => AbilityReportGenerator.TryGenerateKillReportBasedOnSimulation(abilityName, rarity, CharacterLevel, TargetLevel, out report)
             };
 
             if (!success)

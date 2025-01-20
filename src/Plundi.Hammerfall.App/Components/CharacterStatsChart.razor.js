@@ -114,6 +114,9 @@ export function drawChart(canvasId) {
         ];
 
         function handleMediaChange() {
+            if(charts[canvasId] === undefined)
+                return;
+
             if (mediaQueries[0].matches) {
                 charts[canvasId].options.aspectRatio = 1;
             } else if (mediaQueries[1].matches) {

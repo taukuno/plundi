@@ -30,6 +30,9 @@
                 <p>
                     You can find the source code on <a href="https://github.com/taukuno/plundi" class="underline hover:text-gray-200">GitHub</a>.
                 </p>
+                <p class="mt-2">
+                    Sorry that's its a bit messy/shitty, I programmed it in a few hours "high" on black tea. I will refactor it. Eventually... Probably... Maybe...
+                </p>
             </div>
         </div>
         <div class="flex flex-col gap-2">
@@ -46,9 +49,6 @@
                 <p class="mt-2">
                     When it comes to Toxic Smackerel, it does extra damage to poisoned targets. However, hitting an already poisoned target is extremely rare, so we model this by assuming 3 consecutive hits, starting without the bonus damage (the bonus
                     damage will be added to the 2nd and 3rd hit), and then divide the total by 3x the total cooldown.
-                </p>
-                <p class="mt-2">
-                    Aura of Zealotry is also a special case. It increases your melee damage by 20%-38%. We include the extra melee damage as special damage (you can melee up to 8 times while the buff is active).
                 </p>
             </div>
             <span class="font-semibold">

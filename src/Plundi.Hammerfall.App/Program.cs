@@ -38,39 +38,12 @@ builder.Services.AddSingleton(new List<string>()
     "Repel",
     "Snowdrift",
     "Steel Traps",
-    "Windstorm"
+    "Windstorm",
+    "Melee",
+    "Zealot's Smite"
 });
+
 var types = coreAssembly.GetTypes().Where(x => x is { IsInterface: false, IsAbstract: false }).ToList();
-
-    /*builder.Services.AddSingleton<IAbilityDetailsProvider, AuraOfZealotryDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, CelestialBarrageDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, EarthbreakerDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, FireWhirlDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, HolyShieldDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, ManaSphereDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, RimeArrowDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, SearingAxeDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, SlicingWindsDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, StarBombDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, StormArchonDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, ToxicSmackerelDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, CallGalefeatherDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, ExplosiveCaltropsDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, FadeToShadowDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, FaeformDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, GravGloveDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, HuntersChainsDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, LightningBulwarkDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, QuakingLeapDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, RepelDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, SnowdriftDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, SteelTrapsDetailsProvider>();
-    builder.Services.AddSingleton<IAbilityDetailsProvider, WindstormDetailsProvider>();
-
-    builder.Services.AddSingleton<IAbilityDamageCalculator, GeneralAbilityDamageCalculator>();
-    builder.Services.AddSingleton<IAbilityDamageCalculator, HolyShieldDamageCalculator>();
-    builder.Services.AddSingleton<IAbilityDamageCalculator, ToxicSmackerelDamageCalculator>();*/
-
 
 foreach (var type in types)
 foreach (var @interface in type.GetInterfaces())
@@ -84,10 +57,17 @@ foreach (var @interface in type.GetInterfaces())
     {
         builder.Services.AddSingleton(typeof(IAbilityDamageCalculator), type);
     }
+
+    if (@interface == typeof(IAbilitySimulationHandler))
+    {
+        builder.Services.AddSingleton(typeof(IAbilitySimulationHandler), type);
+    }
 }
 
 // Services
+builder.Services.AddSingleton<AbilityServiceProvider>();
 builder.Services.AddSingleton<AbilityReportGenerator>();
+builder.Services.AddSingleton<LoadoutSimulationGenerator>();
 builder.Services.AddSingleton<LocalStorage>();
 
 // App

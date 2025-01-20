@@ -27,66 +27,66 @@ public class FaeformDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
-    public string GetDisplayName(string ability)
+    public string GetDisplayName(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return "Faeform";
     }
 
     /// <inheritdoc />
-    public decimal GetCastDuration(string ability)
+    public decimal GetCastDuration(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return 0m;
     }
 
     /// <inheritdoc />
-    public decimal GetChannelDuration(string ability)
+    public decimal GetChannelDuration(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the abilityName '{abilityName}'.", nameof(abilityName));
         }
 
-        return 0;
+        return 0m;
     }
 
     /// <inheritdoc />
-    public string GetImagePath(string ability)
+    public string GetImagePath(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return "faeform.jpg";
     }
 
     /// <inheritdoc />
-    public AbilityType GetAbilityType(string ability)
+    public AbilityType GetAbilityType(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return AbilityType.Utility;
     }
 
     /// <inheritdoc />
-    public IEnumerable<AbilityEffect> GetEffects(string ability, int characterLevel, AbilityRarity abilityRarity)
+    public IEnumerable<AbilityEffect> GetEffects(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return
@@ -98,24 +98,35 @@ public class FaeformDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
-    public decimal GetCooldown(string ability, int characterLevel, AbilityRarity abilityRarity)
+    public decimal GetCooldown(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return _cooldowns[abilityRarity];
     }
 
     /// <inheritdoc />
-    public DamageProfile GetDamageProfile(string ability, int characterLevel, AbilityRarity abilityRarity)
+    public DamageProfile GetDamageProfile(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null)
     {
-        if (!CanHandleAbility(ability))
+        if (!CanHandleAbility(abilityName))
         {
-            throw new ArgumentException($"Can't handle the ability '{ability}'.", nameof(ability));
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
         return _damageProfiles[abilityRarity];
+    }
+
+    /// <inheritdoc />
+    public Dictionary<string, (string Description, List<string> PossibleValues, string DefaultValue)> GetPossibleSimulationSettings(string abilityName)
+    {
+        if (!CanHandleAbility(abilityName))
+        {
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
+        }
+
+        return [];
     }
 }

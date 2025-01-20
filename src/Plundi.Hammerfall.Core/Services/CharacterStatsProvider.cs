@@ -50,6 +50,7 @@ public static class CharacterStatsProvider
         return AttackPower[characterLevel];
     }
 
+    //TODO: access the ability service provider instead
     public static decimal CalculateMeleeAttack(int characterLevel)
     {
         if (characterLevel is < 1 or > 10)

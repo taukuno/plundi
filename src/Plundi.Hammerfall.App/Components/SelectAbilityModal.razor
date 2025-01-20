@@ -1,35 +1,49 @@
-    <dialog id="@_dialogId" class="overflow-x-hidden w-full bg-transparent backdrop:bg-gray-800 backdrop:opacity-75" tabindex="-1">
-        <div class="flex flex-col mx-auto w-full max-w-4xl bg-gradient-to-br to-gray-900 rounded shadow-lg from-gray-950">
-            <div class="px-4 pt-4 pb-2 font-bold text-white">
-                Select ability
-            </div>
-            <div class="flex flex-col gap-4 items-stretch p-4">
-                <span class="text-sm text-white">Damage abilities</span>
-                <div class="flex flex-wrap gap-4 items-stretch">
-                    @foreach (var ability in Abilities.Where(x => GetAbilityDetailsProvider(x).GetAbilityType(x) == AbilityType.Damage))
-                    {
-                        <button type="button" class="w-14 h-14 bg-clip-border bg-cover rounded border shadow cursor-pointer hover:border-gray-400 border-gray-950 focus:outline focus:outline-2 focus:outline-gray-600 focus:outline-offset-2"
-                                style="background-image: url('img/abilities/@GetAbilityDetailsProvider(ability).GetImagePath(ability)')"
-                                @onclick="async () => { await OnAbilitySelected.InvokeAsync(ability); Close(); }">
-                        </button>
-                    }
-                </div>
-                <span class="text-sm text-white">Utility abilities</span>
-                <div class="flex flex-wrap gap-4 items-stretch">
-                    @foreach (var ability in Abilities.Where(x => GetAbilityDetailsProvider(x).GetAbilityType(x) == AbilityType.Utility))
-                    {
-                        <button type="button" class="w-14 h-14 bg-clip-border bg-cover rounded border shadow cursor-pointer hover:border-gray-400 border-gray-950 focus:outline focus:outline-2 focus:outline-gray-600 focus:outline-offset-2"
-                                style="background-image: url('img/abilities/@GetAbilityDetailsProvider(ability).GetImagePath(ability)')"
-                                @onclick="async () => { await OnAbilitySelected.InvokeAsync(ability); Close(); }">
-                        </button>
-                    }
-                </div>
-            </div>
-            <div class="flex gap-x-2 justify-end p-4">
-                <button type="button" class="py-1 px-3 text-sm text-gray-400 hover:text-white focus-visible:text-white focus-visible:outline-none"
-                        @onclick="Close">
-                    Close
-                </button>
-            </div>
+<dialog id="@_dialogId" class="overflow-x-hidden w-full bg-transparent backdrop:bg-gray-800 backdrop:opacity-75" tabindex="-1">
+    <div class="flex flex-col mx-auto w-full max-w-4xl bg-gradient-to-br to-gray-900 rounded shadow-lg from-gray-950">
+        <div class="px-4 pt-4 pb-2 font-bold text-white">
+            Select ability
         </div>
-    </dialog>
+        <div class="flex flex-col gap-4 items-stretch p-4">
+            @{
+                var filteredAbilities = Abilities.Where(x => !_abilitiesToHide.Contains(x)).ToList();
+                var offensiveAbilities = filteredAbilities.Where(x => AbilityServiceProvider.GetAbilityDetailsProvider(x).GetAbilityType(x) == AbilityType.Damage).ToList();
+                var utilityAbilities = filteredAbilities.Where(x => AbilityServiceProvider.GetAbilityDetailsProvider(x).GetAbilityType(x) == AbilityType.Utility).ToList();
+
+                if (_showOffensiveAbilities && offensiveAbilities.Count > 0)
+                {
+
+                    <span class="text-sm text-white">Offensive abilities</span>
+                    <div class="flex flex-wrap gap-4 items-stretch">
+                        @foreach (var ability in offensiveAbilities)
+                        {
+                            <button type="button" class="w-14 h-14 bg-clip-border bg-cover rounded border shadow cursor-pointer hover:border-gray-400 border-gray-950 focus:outline focus:outline-2 focus:outline-gray-600 focus:outline-offset-2"
+                                    style="background-image: url('img/abilities/@AbilityServiceProvider.GetAbilityDetailsProvider(ability).GetImagePath(ability)')"
+                                    @onclick="async () => { await OnAbilitySelected.InvokeAsync(ability); Close(); }">
+                            </button>
+                        }
+                    </div>
+                }
+
+                if (_showUtilityAbilities && utilityAbilities.Count > 0)
+                {
+                    <span class="text-sm text-white">Utility abilities</span>
+                    <div class="flex flex-wrap gap-4 items-stretch">
+                        @foreach (var ability in utilityAbilities)
+                        {
+                            <button type="button" class="w-14 h-14 bg-clip-border bg-cover rounded border shadow cursor-pointer hover:border-gray-400 border-gray-950 focus:outline focus:outline-2 focus:outline-gray-600 focus:outline-offset-2"
+                                    style="background-image: url('img/abilities/@AbilityServiceProvider.GetAbilityDetailsProvider(ability).GetImagePath(ability)')"
+                                    @onclick="async () => { await OnAbilitySelected.InvokeAsync(ability); Close(); }">
+                            </button>
+                        }
+                    </div>
+                }
+            }
+        </div>
+        <div class="flex gap-x-2 justify-end p-4">
+            <button type="button" class="py-1 px-3 text-sm text-gray-400 hover:text-white focus-visible:text-white focus-visible:outline-none"
+                    @onclick="Close">
+                Close
+            </button>
+        </div>
+    </div>
+</dialog>

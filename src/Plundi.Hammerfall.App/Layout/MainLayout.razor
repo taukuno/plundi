@@ -5,11 +5,14 @@
          @onclick="() => _navigationMenuIsOpen = false">
         <div class="grid z-20 items-center px-4 h-12 bg-gradient-to-r to-gray-900 shadow-lg lg:hidden grid-cols-[1fr_auto_1fr] from-gray-950 shrink-0">
             <div class="relative justify-self-start">
-                <button type="button" class="@(_navigationMenuIsOpen ? "!text-white" : "") w-6 h-6 text-gray-400 hover:text-white rounded focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-gray-600"
-                        @onclick="() => _navigationMenuIsOpen = !_navigationMenuIsOpen"
-                        @onclick:stopPropagation="true">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
+                <div class="flex gap-2">
+                    <button type="button" class="@(_navigationMenuIsOpen ? "!text-white" : "") w-6 h-6 text-gray-400 hover:text-white rounded focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-gray-600"
+                            @onclick="() => _navigationMenuIsOpen = !_navigationMenuIsOpen"
+                            @onclick:stopPropagation="true">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <span class="p-1 font-mono text-sm text-black bg-red-400 rounded">new!</span>
+                </div>
                 <nav
                     class="@(_navigationMenuIsOpen ? "" : "hidden") flex absolute left-0 top-7 flex-col gap-y-4 py-4 bg-gray-900 rounded ring-1 shadow-lg ring-violet-500/50"
                     @onclick:stopPropagation="true">

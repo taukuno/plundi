@@ -14,6 +14,8 @@ public interface IAbilityDetailsProvider
 
     string GetImagePath(string abilityName, Dictionary<string, string>? simulationSettings = null);
 
+    bool CanBeCastedDuringGlobalCooldown(string abilityName, Dictionary<string, string>? simulationSettings = null);
+
     AbilityType GetAbilityType(string abilityName, Dictionary<string, string>? simulationSettings = null);
 
     IEnumerable<AbilityEffect> GetEffects(string abilityName, AbilityRarity abilityRarity, int characterLevel, Dictionary<string, string>? simulationSettings = null);

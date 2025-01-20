@@ -49,6 +49,12 @@ public class EarthbreakerDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
+    public bool CanBeCastedDuringGlobalCooldown(string abilityName, Dictionary<string, string>? simulationSettings = null)
+    {
+        return false;
+    }
+
+    /// <inheritdoc />
     public decimal GetChannelDuration(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
         if (!CanHandleAbility(abilityName))

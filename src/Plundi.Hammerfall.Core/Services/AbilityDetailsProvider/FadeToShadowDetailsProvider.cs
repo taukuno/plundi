@@ -71,6 +71,12 @@ public class FadeToShadowDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
+    public bool CanBeCastedDuringGlobalCooldown(string abilityName, Dictionary<string, string>? simulationSettings = null)
+    {
+        return false;
+    }
+
+    /// <inheritdoc />
     public AbilityType GetAbilityType(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
         if (!CanHandleAbility(abilityName))

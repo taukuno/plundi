@@ -91,38 +91,27 @@ public partial class SimulationsPage : ComponentBase
         _isSimulationRunning = true;
         StateHasChanged();
 
-        var abilities = new List<RarifiedAbility>();
+        var abilitiesBeforeMelee = new List<RarifiedAbility>();
+        var abilitiesAfterMelee = new List<RarifiedAbility>();
 
-        if (_primaryOffensiveAbilityName is not null)
-        {
-            abilities.Add(new() { Name = _primaryOffensiveAbilityName, Rarity = _primaryOffensiveAbilityRarity });
-        }
+        ProcessAbility(_primaryOffensiveAbilityName, _primaryOffensiveAbilityRarity);
+        ProcessAbility(_secondaryOffensiveAbilityName, _secondaryOffensiveAbilityRarity);
+        ProcessAbility(_primaryUtilityAbilityName, _primaryUtilityAbilityRarity);
+        ProcessAbility(_secondaryUtilityAbilityName, _secondaryUtilityAbilityRarity);
 
-        if (_secondaryOffensiveAbilityName is not null)
-        {
-            abilities.Add(new() { Name = _secondaryOffensiveAbilityName, Rarity = _secondaryOffensiveAbilityRarity });
-        }
-
-        if (_primaryUtilityAbilityName is not null)
-        {
-            abilities.Add(new() { Name = _primaryUtilityAbilityName, Rarity = _primaryUtilityAbilityRarity });
-        }
-
-        if (_secondaryUtilityAbilityName is not null)
-        {
-            abilities.Add(new() { Name = _secondaryUtilityAbilityName, Rarity = _secondaryUtilityAbilityRarity });
-        }
+        var abilities = abilitiesBeforeMelee.ToList();
 
         if (_useMeleeDuringDowntime)
         {
             abilities.Add(new() { Name = "Melee", Rarity = AbilityRarity.Common });
         }
 
+        abilities.AddRange(abilitiesAfterMelee);
+
         var loadout = new Loadout
         {
             Abilities = abilities
         };
-
 
         var abilitySettings = _abilitySettings
             .GroupBy(setting => setting.AbilityName)
@@ -141,6 +130,28 @@ public partial class SimulationsPage : ComponentBase
 
         await DrawChartsAsync();
         await UpdateChartsAsync();
+
+        return;
+
+        void ProcessAbility(string? abilityName, AbilityRarity abilityRarity)
+        {
+            if (abilityName is null)
+            {
+                return;
+            }
+
+            var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(abilityName);
+            var newAbility = new RarifiedAbility { Name = abilityName, Rarity = abilityRarity };
+
+            if (detailsProvider.CanBeCastedDuringGlobalCooldown(abilityName))
+            {
+                abilitiesAfterMelee.Add(newAbility);
+            }
+            else
+            {
+                abilitiesBeforeMelee.Add(newAbility);
+            }
+        }
     }
 
     private async Task DrawChartsAsync()

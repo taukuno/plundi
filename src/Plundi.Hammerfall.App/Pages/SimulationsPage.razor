@@ -229,7 +229,7 @@
         </div>
         <button class="py-1 px-2 text-sm font-semibold bg-gradient-to-r from-gray-900 to-gray-900 rounded border hover:from-gray-800 hover:to-gray-800 border-gray-950 truncate focus:outline-gray-600 focus:outline focus:outline-2 focus:outline-offset-2"
                 @onclick="SimulateAsync">
-            Simulate
+            Simulate@(_isSimulationRunning ? "ing..." : "")
         </button>
         @if (_simulationReport is not null)
         {

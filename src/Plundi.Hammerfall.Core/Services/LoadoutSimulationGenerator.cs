@@ -59,12 +59,18 @@ public class LoadoutSimulationGenerator
         };
     }
 
-    private static decimal CalculateWhenNextHandlingIsNeeded(LoadoutSimulationContext context)
+    private decimal CalculateWhenNextHandlingIsNeeded(LoadoutSimulationContext context)
     {
         var unfinishedAbilities = context.AbilitySimulationContexts.Where(x => !x.IsFinished).ToList();
         var earliestAbilityHandlingNeededAt = unfinishedAbilities.Count > 0 ? unfinishedAbilities.Min(x => x.NextHandlingNeededAt) : -1;
-        var nextGlobalHandlingNeededAt = context.IsCurrentlyCasting || context.IsCurrentlyChanneling ? earliestAbilityHandlingNeededAt
-            : context.RemainingGlobalCooldown > 0 ? context.RemainingGlobalCooldown + context.CurrentTime : -1;
+        var globalCooldownFinishedAt = context.RemainingGlobalCooldown > 0 ? context.RemainingGlobalCooldown + context.CurrentTime : -1;
+        var anyAbilityCastableDuringGlobalCooldown = context.AvailableAbilities.Any(x =>
+        {
+            var detailsProvider = _abilityServiceProvider.GetAbilityDetailsProvider(x.Name);
+            return detailsProvider.CanBeCastedDuringGlobalCooldown(x.Name, context.AbilitySettings.GetValueOrDefault(x.Name));
+        });
+
+        var nextGlobalHandlingNeededAt = context.IsCurrentlyCasting || context.IsCurrentlyChanneling ? earliestAbilityHandlingNeededAt : anyAbilityCastableDuringGlobalCooldown ? context.CurrentTime : globalCooldownFinishedAt;
 
         return earliestAbilityHandlingNeededAt switch
         {
@@ -104,11 +110,14 @@ public class LoadoutSimulationGenerator
         for (var i = 0; i < loadoutSimulationContext.AvailableAbilities.Count; i++)
         {
             var ability = loadoutSimulationContext.AvailableAbilities[i];
+            var detailsProvider = _abilityServiceProvider.GetAbilityDetailsProvider(ability.Name);
+            var canBeCastedDuringGlobalCooldown = detailsProvider.CanBeCastedDuringGlobalCooldown(ability.Name, loadoutSimulationContext.AbilitySettings.GetValueOrDefault(ability.Name));
 
-            var playerCanUseAbility = loadoutSimulationContext is { IsCurrentlyCasting: false, IsCurrentlyChanneling: false, RemainingGlobalCooldown: <= 0 };
-            if (!playerCanUseAbility)
+            var playerIsCastingOrChanneling = loadoutSimulationContext.IsCurrentlyCasting || loadoutSimulationContext.IsCurrentlyChanneling;
+            var playerIsOnGlobalCooldown = loadoutSimulationContext.RemainingGlobalCooldown > 0;
+            if (playerIsCastingOrChanneling || (playerIsOnGlobalCooldown && !canBeCastedDuringGlobalCooldown))
             {
-                return;
+                continue;
             }
 
             var abilityIsUsable = loadoutSimulationContext.AbilitiesOnCooldown.All(x => x.AbilityName != ability.Name);

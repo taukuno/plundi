@@ -71,6 +71,12 @@ public class RepelDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
+    public bool CanBeCastedDuringGlobalCooldown(string abilityName, Dictionary<string, string>? simulationSettings = null)
+    {
+        return true;
+    }
+
+    /// <inheritdoc />
     public AbilityType GetAbilityType(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
         if (!CanHandleAbility(abilityName))
@@ -96,6 +102,7 @@ public class RepelDetailsProvider : IAbilityDetailsProvider
             new() { Description = "cc immunity", Duration = 1.25m },
             new() { Description = "knockback on hit", Duration = 0m },
             new() { Description = "silence on hit", Duration = 2.5m },
+            new() { Description = "castable during gcd", Duration = 0m },
             new() { Description = "heavily slowed while channeling (-97%)", Duration = 1.25m }
         ];
     }

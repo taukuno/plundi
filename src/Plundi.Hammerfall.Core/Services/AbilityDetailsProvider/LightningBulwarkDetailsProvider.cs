@@ -131,6 +131,12 @@ public class LightningBulwarkDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
+    public bool CanBeCastedDuringGlobalCooldown(string abilityName, Dictionary<string, string>? simulationSettings = null)
+    {
+        return true;
+    }
+
+    /// <inheritdoc />
     public AbilityType GetAbilityType(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
         if (!CanHandleAbility(abilityName))
@@ -154,7 +160,9 @@ public class LightningBulwarkDetailsProvider : IAbilityDetailsProvider
             new() { Description = "immune to damage until first hit", Duration = 2m },
             new() { Description = "+120% movement speed if attack repelled", Duration = 4m },
             new() { Description = "AoE if attack repelled", Duration = 4m },
+            new() { Description = "castable during gcd", Duration = 0m },
             new() { Description = "heavily slowed while channeling (-96%)", Duration = 2m }
+
         ];
     }
 

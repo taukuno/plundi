@@ -84,6 +84,12 @@ public class CelestialBarrageDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
+    public bool CanBeCastedDuringGlobalCooldown(string abilityName, Dictionary<string, string>? simulationSettings = null)
+    {
+        return false;
+    }
+
+    /// <inheritdoc />
     public AbilityType GetAbilityType(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
         if (!CanHandleAbility(abilityName))
@@ -106,6 +112,7 @@ public class CelestialBarrageDetailsProvider : IAbilityDetailsProvider
         [
             new() { Description = "frontal beam", Duration = 0m },
             new() { Description = "length of beam can be charged", Duration = 0m },
+            new() { Description = "jumps back for casting", Duration = 0m },
             new() { Description = "heavily slowed while channeling (-97%)", Duration = 2m }
         ];
     }

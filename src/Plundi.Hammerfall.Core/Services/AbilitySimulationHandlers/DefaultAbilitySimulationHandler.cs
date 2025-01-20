@@ -22,7 +22,6 @@ public class DefaultAbilitySimulationHandler : IAbilitySimulationHandler
         "Explosive Caltrops",
         "Fade to Shadow",
         "Faeform",
-        "G.R.A.V. Glove",
         "Hunter's Chains",
         "Lightning Bulwark",
         "Quaking Leap",
@@ -30,6 +29,7 @@ public class DefaultAbilitySimulationHandler : IAbilitySimulationHandler
         "Snowdrift",
         "Steel Traps",
         "Windstorm",
+        "Void Tear",
         "Melee",
         "Zealot's Smite"
     ];
@@ -90,7 +90,7 @@ public class DefaultAbilitySimulationHandler : IAbilitySimulationHandler
             abilitySimulationContext.AbilityName,
             abilitySimulationContext.AbilityRarity,
             abilitySimulationContext.CharacterLevel,
-            "Pressed",
+            "Inital Cast",
             0));
 
         if (abilityIsCasted)

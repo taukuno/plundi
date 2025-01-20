@@ -131,7 +131,7 @@ export function updateChart(canvasId, data, smoothLines) {
             'Fade to Shadow': '#fde68a',
             'Faeform': '#0ea5e9',
             'Fire Whirl': '#f87171',
-            'G.R.A.V. Glove': '#818cf8',
+            'Void Tear': '#818cf8',
             'Holy Shield': '#fde047',
             'Hunter\'s Chains': '#84cc16',
             'Lightning Bulwark': '#67e8f9',

@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Plundi.Hammerfall.App;
 using Plundi.Hammerfall.App.Services;
 using Plundi.Hammerfall.Core.Services;
-using Plundi.Hammerfall.Core.Services.AbilityDamageCalculators;
-using Plundi.Hammerfall.Core.Services.AbilityDetailsProvider;
 
 var coreAssembly = Assembly.GetAssembly(typeof(IAbilityDetailsProvider))!;
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -31,7 +29,6 @@ builder.Services.AddSingleton(new List<string>()
     "Explosive Caltrops",
     "Fade to Shadow",
     "Faeform",
-    "G.R.A.V. Glove",
     "Hunter's Chains",
     "Lightning Bulwark",
     "Quaking Leap",
@@ -39,6 +36,7 @@ builder.Services.AddSingleton(new List<string>()
     "Snowdrift",
     "Steel Traps",
     "Windstorm",
+    "Void Tear",
     "Melee",
     "Zealot's Smite"
 });

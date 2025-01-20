@@ -21,14 +21,14 @@ public class DefaultAbilityDamageCalculator : IAbilityDamageCalculator
         "Explosive Caltrops",
         "Fade to Shadow",
         "Faeform",
-        "G.R.A.V. Glove",
         "Hunter's Chains",
         "Lightning Bulwark",
         "Quaking Leap",
         "Repel",
         "Snowdrift",
         "Steel Traps",
-        "Windstorm"
+        "Windstorm",
+        "Void Tear"
     ];
 
     public DefaultAbilityDamageCalculator(AbilityServiceProvider abilityServiceProvider)

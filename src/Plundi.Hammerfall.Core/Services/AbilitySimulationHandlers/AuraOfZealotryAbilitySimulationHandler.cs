@@ -53,7 +53,7 @@ public class AuraOfZealotrySimulationHandler : DefaultAbilitySimulationHandler
             abilitySimulationContext.AbilityName,
             abilitySimulationContext.AbilityRarity,
             abilitySimulationContext.CharacterLevel,
-            "Pressed",
+            "Inital Cast",
             0));
 
         abilitySimulationContext.NextHandlingNeededAt = loadoutSimulationContext.CurrentTime + castDuration;

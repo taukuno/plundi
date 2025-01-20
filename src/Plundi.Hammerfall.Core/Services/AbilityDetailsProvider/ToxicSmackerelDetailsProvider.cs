@@ -157,7 +157,7 @@ public class ToxicSmackerelDetailsProvider : IAbilityDetailsProvider
         [
             new() { Description = "frontal cone", Duration = 0m },
             new() { Description = "applies poison dot", Duration = 8m },
-            new() { Description = $"does bonus damage on already poisoned targets ({bonusDamage})", Duration = 8m }
+            new() { Description = $"does bonus damage on already poisoned targets ({bonusDamage:N1})", Duration = 8m }
         ];
     }
 

@@ -2,7 +2,7 @@ using Plundi.Hammerfall.Core.Models;
 
 namespace Plundi.Hammerfall.Core.Services.AbilityDetailsProvider;
 
-public class GravGloveDetailsProvider : IAbilityDetailsProvider
+public class VoidTearDetailsProvider : IAbilityDetailsProvider
 {
     private readonly Dictionary<AbilityRarity, decimal> _cooldowns = new()
     {
@@ -14,16 +14,16 @@ public class GravGloveDetailsProvider : IAbilityDetailsProvider
 
     private readonly Dictionary<AbilityRarity, DamageProfile> _damageProfiles = new()
     {
-        { AbilityRarity.Common, new() { BaseHits = [], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Uncommon, new() { BaseHits = [], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Rare, new() { BaseHits = [], SpecialHits = [], DotHits = [] } },
-        { AbilityRarity.Epic, new() { BaseHits = [], SpecialHits = [], DotHits = [] } }
+        { AbilityRarity.Common, new() { BaseHits = [], SpecialHits = [new() {Damage = 0.45m, IsRelative = true, Timing = 1m}], DotHits = [] } },
+        { AbilityRarity.Uncommon, new() { BaseHits = [], SpecialHits = [new() {Damage = 0.4725m, IsRelative = true, Timing = 1m}], DotHits = [] } },
+        { AbilityRarity.Rare, new() { BaseHits = [], SpecialHits = [new() {Damage = 0.495m, IsRelative = true, Timing = 1m}], DotHits = [] } },
+        { AbilityRarity.Epic, new() { BaseHits = [], SpecialHits = [new() {Damage = 0.5175m, IsRelative = true, Timing = 1m}], DotHits = [] } }
     };
 
     /// <inheritdoc />
     public bool CanHandleAbility(string abilityName)
     {
-        return abilityName == "G.R.A.V. Glove";
+        return abilityName == "Void Tear";
     }
 
     /// <inheritdoc />
@@ -34,7 +34,7 @@ public class GravGloveDetailsProvider : IAbilityDetailsProvider
             throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        return "G.R.A.V. Glove";
+        return "Void Tear";
     }
 
     /// <inheritdoc />
@@ -67,7 +67,7 @@ public class GravGloveDetailsProvider : IAbilityDetailsProvider
             throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        return "grav_glove.jpg";
+        return "void_tear.jpg";
     }
 
     /// <inheritdoc />
@@ -95,10 +95,14 @@ public class GravGloveDetailsProvider : IAbilityDetailsProvider
             throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
+        var damageOnReturn = _damageProfiles[abilityRarity].SpecialHits[0].Damage * CharacterStatsProvider.GetAttackPower(characterLevel);
+
         return
         [
             new() { Description = "set's a portal", Duration = 10m },
-            new() { Description = "recast to port back to portal", Duration = 0m }
+            new() { Description = "recast to port back to portal", Duration = 0m },
+            new() { Description = $"damages enemies around portal on return ({damageOnReturn:N1})", Duration = 0m },
+            new() { Description = "slows enemies around portal on return (-40%)", Duration = 3m }
         ];
     }
 

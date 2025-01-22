@@ -71,6 +71,13 @@ public class FaeformDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
+    public string GetWowheadLink(string abilityName)
+    {
+        const int spellId = 432594;
+        return $"https://www.wowhead.com/spell={spellId}";
+    }
+
+    /// <inheritdoc />
     public bool CanBeCastedDuringGlobalCooldown(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
         return false;

@@ -143,9 +143,10 @@ public class FireWhirlDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
-    public string GetWowHeadLink(string abilityName)
+    public string GetWowheadLink(string abilityName)
     {
-        throw new NotImplementedException();
+        const int spellId = 431777;
+        return $"https://www.wowhead.com/spell={spellId}";
     }
 
     /// <inheritdoc />

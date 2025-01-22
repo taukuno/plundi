@@ -85,6 +85,13 @@ public class SlicingWindsDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
+    public string GetWowheadLink(string abilityName)
+    {
+        const int spellId = 433082;
+        return $"https://www.wowhead.com/spell={spellId}";
+    }
+
+    /// <inheritdoc />
     public bool CanBeCastedDuringGlobalCooldown(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
         return false;

@@ -14,6 +14,8 @@ public interface IAbilityDetailsProvider
 
     string GetImagePath(string abilityName, Dictionary<string, string>? simulationSettings = null);
 
+    string GetWowheadLink(string abilityName);
+
     bool CanBeCastedDuringGlobalCooldown(string abilityName, Dictionary<string, string>? simulationSettings = null);
 
     AbilityType GetAbilityType(string abilityName, Dictionary<string, string>? simulationSettings = null);

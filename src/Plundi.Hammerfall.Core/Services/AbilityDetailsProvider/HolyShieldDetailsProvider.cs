@@ -105,9 +105,10 @@ public class HolyShieldDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
-    public string GetWowHeadLink(string abilityName)
+    public string GetWowheadLink(string abilityName)
     {
-        throw new NotImplementedException();
+        const int spellId = 433380;
+        return $"https://www.wowhead.com/spell={spellId}";
     }
 
     /// <inheritdoc />

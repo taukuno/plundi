@@ -1,11 +1,17 @@
 ﻿@{
     var detailsProvider = AbilityServiceProvider.GetAbilityDetailsProvider(Ability.Name);
+    var wowheadLink = detailsProvider.GetWowheadLink(Ability.Name);
 
     <div class="flex flex-col bg-gradient-to-br from-gray-900 to-gray-900 rounded border shadow border-gray-950">
         <div class="grid gap-2 items-baseline py-2 px-4 rounded-t shadow grid-cols-[1fr,auto,1fr] bg-gray-950">
-            <span class="text-xs text-gray-400">
-                @(Position).
-            </span>
+            <div class="flex gap-2 -my-2">
+                <span class="text-xs text-gray-400">
+                    @(Position).
+                </span>
+                <a class="px-2 text-xs text-gray-400 cursor-pointer hover:text-gray-100" href="@wowheadLink" target="_blank" rel="noreferrer">
+                    <i class="fa-solid fa-link"></i>
+                </a>
+            </div>
             <span class="col-start-2 text-xs text-center text-gray-400">
                 @detailsProvider.GetDisplayName(Ability.Name)
             </span>

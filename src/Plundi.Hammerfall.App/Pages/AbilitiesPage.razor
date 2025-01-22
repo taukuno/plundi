@@ -98,7 +98,7 @@
             </div>
             <CascadingValue Value="_playerLevel" Name="PlayerLevel">
                 <CascadingValue Value="_displayDamageAbilitiesInCompactView" Name="DisplayInCompactView">
-                    <div class="grid gap-2 lg:grid-cols-2 @(_displayDamageAbilitiesInCompactView ? "2xl:grid-cols-3" : "")">
+                    <div class="grid gap-2 lg:grid-cols-2 @(_displayDamageAbilitiesInCompactView ? "2xl:grid-cols-3 min-[1920px]:grid-cols-4" : "min-[1920px]:grid-cols-3")">
                         @foreach (var ability in _damageAbilities.Select((x, i) => (Value: x, Index: i + 1)))
                         {
                             <AbilityCard Ability="ability.Value"
@@ -132,7 +132,7 @@
             </div>
             <CascadingValue Value="_playerLevel" Name="PlayerLevel">
                 <CascadingValue Value="_displayUtilityAbilitiesInCompactView" Name="DisplayInCompactView">
-                    <div class="grid gap-2 lg:grid-cols-2 @(_displayUtilityAbilitiesInCompactView ? "2xl:grid-cols-3" : "")">
+                    <div class="grid gap-2 lg:grid-cols-2 @(_displayUtilityAbilitiesInCompactView ? "2xl:grid-cols-3 min-[1920px]:grid-cols-4" : "min-[1920px]:grid-cols-3")">
                         @foreach (var ability in _utilityAbilities.Select((x, i) => (Value: x, Index: i + 1)))
                         {
                             <AbilityCard Ability="ability.Value"
@@ -166,7 +166,7 @@
             </div>
             <CascadingValue Value="_playerLevel" Name="PlayerLevel">
                 <CascadingValue Value="_displayMeleeAbilitiesInCompactView" Name="DisplayInCompactView">
-                    <div class="grid gap-2 lg:grid-cols-2 @(_displayMeleeAbilitiesInCompactView ? "2xl:grid-cols-3" : "")">
+                    <div class="grid gap-2 lg:grid-cols-2 @(_displayMeleeAbilitiesInCompactView ? "2xl:grid-cols-3 min-[1920px]:grid-cols-4" : "min-[1920px]:grid-cols-3")">
                         @foreach (var ability in _meleeAbilities.Select((x, i) => (Value: x, Index: i + 1)))
                         {
                             <AbilityCard Ability="ability.Value"

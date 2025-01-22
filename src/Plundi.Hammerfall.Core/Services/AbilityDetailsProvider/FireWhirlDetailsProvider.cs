@@ -143,6 +143,12 @@ public class FireWhirlDetailsProvider : IAbilityDetailsProvider
     }
 
     /// <inheritdoc />
+    public string GetWowHeadLink(string abilityName)
+    {
+        throw new NotImplementedException();
+    }
+
+    /// <inheritdoc />
     public bool CanBeCastedDuringGlobalCooldown(string abilityName, Dictionary<string, string>? simulationSettings = null)
     {
         return false;

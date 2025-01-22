@@ -76,7 +76,7 @@ public class ZealotsSmiteDetailsProvider : IAbilityDetailsProvider
             throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        return AbilityType.Special;
+        return AbilityType.Melee;
     }
 
     /// <inheritdoc />
@@ -90,6 +90,7 @@ public class ZealotsSmiteDetailsProvider : IAbilityDetailsProvider
         return
         [
             new() { Description = "frontal cone (12y)", Duration = 0m },
+            new() { Description = "replaces Slash when inside Aura of Zealotry's AoE", Duration = 0m },
         ];
     }
 
@@ -101,7 +102,7 @@ public class ZealotsSmiteDetailsProvider : IAbilityDetailsProvider
             throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        return 0m;
+        return 1m;
     }
 
     /// <inheritdoc />

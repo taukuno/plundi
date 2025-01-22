@@ -1,7 +1,7 @@
 ﻿@page "/"
 
 <main class="overflow-auto grow" tabindex="-1">
-    <div class="flex flex-col gap-y-6 p-4 mx-auto max-w-screen-2xl lg:px-6">
+    <div class="flex flex-col gap-y-6 p-4 mx-auto lg:px-6 max-w-[1920px]">
         <div class="flex flex-col gap-2">
             <span class="text-lg">
                 Configuration
@@ -134,6 +134,40 @@
                 <CascadingValue Value="_displayUtilityAbilitiesInCompactView" Name="DisplayInCompactView">
                     <div class="grid gap-2 lg:grid-cols-2 @(_displayUtilityAbilitiesInCompactView ? "2xl:grid-cols-3" : "")">
                         @foreach (var ability in _utilityAbilities.Select((x, i) => (Value: x, Index: i + 1)))
+                        {
+                            <AbilityCard Ability="ability.Value"
+                                         Position="ability.Index"
+                                         OnMoveUpClicked="async _ => await MoveUtilityAbilityAsync(ability.Value, MoveDirection.Up)"
+                                         OnMoveDownClicked="async _ => await MoveUtilityAbilityAsync(ability.Value, MoveDirection.Down)"/>
+                        }
+                    </div>
+                </CascadingValue>
+            </CascadingValue>
+        </div>
+        <div class="flex flex-col gap-2 items-stretch">
+            <div class="flex justify-between items-center">
+                <span class="text-lg">
+                    Melee abilities
+                </span>
+                <div class="flex">
+                    <div class="flex">
+                        <button
+                            class="@(_displayMeleeAbilitiesInCompactView ? "from-violet-600 to-violet-500 hover:from-violet-500 hover:to-violet-400 focus:outline-violet-600 font-semibold" : "from-gray-900 to-gray-900 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") py-1 px-2 text-xs bg-gradient-to-r rounded-l border-l focus:z-10 border-y border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
+                            @onclick="() => _displayMeleeAbilitiesInCompactView = !_displayMeleeAbilitiesInCompactView">
+                            Compact
+                        </button>
+                        <button
+                            class="@(_displayMeleeAbilitiesInCompactView ? "from-gray-900 to-gray-900 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600" : "from-violet-600 to-violet-500 hover:from-violet-500 hover:to-violet-400 focus:outline-violet-600 font-semibold") py-1 px-2 text-xs bg-gradient-to-r rounded-r border focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
+                            @onclick="() => _displayMeleeAbilitiesInCompactView = !_displayMeleeAbilitiesInCompactView">
+                            Detailed
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <CascadingValue Value="_playerLevel" Name="PlayerLevel">
+                <CascadingValue Value="_displayMeleeAbilitiesInCompactView" Name="DisplayInCompactView">
+                    <div class="grid gap-2 lg:grid-cols-2 @(_displayMeleeAbilitiesInCompactView ? "2xl:grid-cols-3" : "")">
+                        @foreach (var ability in _meleeAbilities.Select((x, i) => (Value: x, Index: i + 1)))
                         {
                             <AbilityCard Ability="ability.Value"
                                          Position="ability.Index"

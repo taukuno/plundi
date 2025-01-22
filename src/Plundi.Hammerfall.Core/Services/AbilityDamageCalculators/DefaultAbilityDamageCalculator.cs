@@ -28,7 +28,9 @@ public class DefaultAbilityDamageCalculator : IAbilityDamageCalculator
         "Snowdrift",
         "Steel Traps",
         "Windstorm",
-        "Void Tear"
+        "Void Tear",
+        "Slash",
+        "Zealot's Smite"
     ];
 
     public DefaultAbilityDamageCalculator(AbilityServiceProvider abilityServiceProvider)

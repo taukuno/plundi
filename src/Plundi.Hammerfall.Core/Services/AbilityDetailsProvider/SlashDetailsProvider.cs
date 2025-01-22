@@ -68,7 +68,7 @@ public class SlashDetailsProvider : IAbilityDetailsProvider
             throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        return AbilityType.Special;
+        return AbilityType.Melee;
     }
 
     /// <inheritdoc />
@@ -93,7 +93,7 @@ public class SlashDetailsProvider : IAbilityDetailsProvider
             throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        return 0m;
+        return 1m;
     }
 
     /// <inheritdoc />

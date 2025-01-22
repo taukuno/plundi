@@ -4,5 +4,5 @@ public enum AbilityType
 {
     Damage,
     Utility,
-    Special
+    Melee
 }

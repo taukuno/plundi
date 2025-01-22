@@ -59,7 +59,7 @@ public class AuraOfZealotrySimulationHandler : DefaultAbilitySimulationHandler
         abilitySimulationContext.NextHandlingNeededAt = loadoutSimulationContext.CurrentTime + castDuration;
         loadoutSimulationContext.AbilitySimulationContexts.Add(abilitySimulationContext);
 
-        var meleeAbilityIndex = loadoutSimulationContext.AvailableAbilities.FindIndex(x => x.Name == "Melee");
+        var meleeAbilityIndex = loadoutSimulationContext.AvailableAbilities.FindIndex(x => x.Name == "Slash");
         if (meleeAbilityIndex != -1)
         {
             loadoutSimulationContext.AvailableAbilities[meleeAbilityIndex] = new()

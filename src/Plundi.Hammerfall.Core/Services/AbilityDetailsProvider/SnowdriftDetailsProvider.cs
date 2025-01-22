@@ -150,7 +150,7 @@ public class SnowdriftDetailsProvider : IAbilityDetailsProvider
         return
         [
             new() { Description = "AoE (15y radius)", Duration = 0m },
-            new() { Description = "stacking slow (30-90%) on hit", Duration = 4.5m }
+            new() { Description = "slows (30-90%) on hit (stacking)", Duration = 4.5m }
         ];
     }
 

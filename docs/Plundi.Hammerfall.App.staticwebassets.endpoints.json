@@ -15889,13 +15889,13 @@
       ]
     },
     {
-      "Route": "_framework/Plundi.Hammerfall.App.9zt8i5izuz.wasm",
-      "AssetFile": "_framework/Plundi.Hammerfall.App.9zt8i5izuz.wasm.br",
+      "Route": "_framework/Plundi.Hammerfall.App.o2yjyrkesh.wasm",
+      "AssetFile": "_framework/Plundi.Hammerfall.App.o2yjyrkesh.wasm.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000025953802"
+          "Quality": "0.000026100801"
         }
       ],
       "ResponseHeaders": [
@@ -15913,7 +15913,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "38529"
+          "Value": "38312"
         },
         {
           "Name": "Content-Type",
@@ -15921,15 +15921,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"7w2nN7bkA8sUjTjYO5GonnvxSLnLiRiDiRkzkpm5iuU=\""
+          "Value": "\"SnFlw15VWelQMJArpPGo8wzIJSS0hzLR2W546Gp2Po0=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"xa8ErNpxeYQIpSda/bk4LHEc48wt3DWdQPrRpLstmfA=\""
+          "Value": "W/\"QKHJX5YsxItXNZymAq3Dq7BSu80hxwCaGbtHsTjwNcY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:01:27 GMT"
         },
         {
           "Name": "Vary",
@@ -15939,11 +15939,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "9zt8i5izuz"
+          "Value": "o2yjyrkesh"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-xa8ErNpxeYQIpSda/bk4LHEc48wt3DWdQPrRpLstmfA="
+          "Value": "sha256-QKHJX5YsxItXNZymAq3Dq7BSu80hxwCaGbtHsTjwNcY="
         },
         {
           "Name": "label",
@@ -15952,13 +15952,13 @@
       ]
     },
     {
-      "Route": "_framework/Plundi.Hammerfall.App.9zt8i5izuz.wasm",
-      "AssetFile": "_framework/Plundi.Hammerfall.App.9zt8i5izuz.wasm.gz",
+      "Route": "_framework/Plundi.Hammerfall.App.o2yjyrkesh.wasm",
+      "AssetFile": "_framework/Plundi.Hammerfall.App.o2yjyrkesh.wasm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000020187746"
+          "Quality": "0.000020194269"
         }
       ],
       "ResponseHeaders": [
@@ -15976,7 +15976,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "49534"
+          "Value": "49518"
         },
         {
           "Name": "Content-Type",
@@ -15984,15 +15984,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"AJ4blyI09HdkqHePdoh3fVqgRxvrBOf166Lhm7+npFU=\""
+          "Value": "\"SDXd27V9GMlS7hdiT74bbeAe2K6tycwHmV0vPIqNFx8=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"xa8ErNpxeYQIpSda/bk4LHEc48wt3DWdQPrRpLstmfA=\""
+          "Value": "W/\"QKHJX5YsxItXNZymAq3Dq7BSu80hxwCaGbtHsTjwNcY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:01:27 GMT"
         },
         {
           "Name": "Vary",
@@ -16002,11 +16002,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "9zt8i5izuz"
+          "Value": "o2yjyrkesh"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-xa8ErNpxeYQIpSda/bk4LHEc48wt3DWdQPrRpLstmfA="
+          "Value": "sha256-QKHJX5YsxItXNZymAq3Dq7BSu80hxwCaGbtHsTjwNcY="
         },
         {
           "Name": "label",
@@ -16015,8 +16015,8 @@
       ]
     },
     {
-      "Route": "_framework/Plundi.Hammerfall.App.9zt8i5izuz.wasm",
-      "AssetFile": "_framework/Plundi.Hammerfall.App.9zt8i5izuz.wasm",
+      "Route": "_framework/Plundi.Hammerfall.App.o2yjyrkesh.wasm",
+      "AssetFile": "_framework/Plundi.Hammerfall.App.o2yjyrkesh.wasm",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16037,21 +16037,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xa8ErNpxeYQIpSda/bk4LHEc48wt3DWdQPrRpLstmfA=\""
+          "Value": "\"QKHJX5YsxItXNZymAq3Dq7BSu80hxwCaGbtHsTjwNcY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:01:27 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "9zt8i5izuz"
+          "Value": "o2yjyrkesh"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-xa8ErNpxeYQIpSda/bk4LHEc48wt3DWdQPrRpLstmfA="
+          "Value": "sha256-QKHJX5YsxItXNZymAq3Dq7BSu80hxwCaGbtHsTjwNcY="
         },
         {
           "Name": "label",
@@ -16060,8 +16060,8 @@
       ]
     },
     {
-      "Route": "_framework/Plundi.Hammerfall.App.9zt8i5izuz.wasm.br",
-      "AssetFile": "_framework/Plundi.Hammerfall.App.9zt8i5izuz.wasm.br",
+      "Route": "_framework/Plundi.Hammerfall.App.o2yjyrkesh.wasm.br",
+      "AssetFile": "_framework/Plundi.Hammerfall.App.o2yjyrkesh.wasm.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16078,7 +16078,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "38529"
+          "Value": "38312"
         },
         {
           "Name": "Content-Type",
@@ -16086,11 +16086,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"7w2nN7bkA8sUjTjYO5GonnvxSLnLiRiDiRkzkpm5iuU=\""
+          "Value": "\"SnFlw15VWelQMJArpPGo8wzIJSS0hzLR2W546Gp2Po0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:01:27 GMT"
         },
         {
           "Name": "Vary",
@@ -16100,11 +16100,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "9zt8i5izuz"
+          "Value": "o2yjyrkesh"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-7w2nN7bkA8sUjTjYO5GonnvxSLnLiRiDiRkzkpm5iuU="
+          "Value": "sha256-SnFlw15VWelQMJArpPGo8wzIJSS0hzLR2W546Gp2Po0="
         },
         {
           "Name": "label",
@@ -16113,8 +16113,8 @@
       ]
     },
     {
-      "Route": "_framework/Plundi.Hammerfall.App.9zt8i5izuz.wasm.gz",
-      "AssetFile": "_framework/Plundi.Hammerfall.App.9zt8i5izuz.wasm.gz",
+      "Route": "_framework/Plundi.Hammerfall.App.o2yjyrkesh.wasm.gz",
+      "AssetFile": "_framework/Plundi.Hammerfall.App.o2yjyrkesh.wasm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16131,7 +16131,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "49534"
+          "Value": "49518"
         },
         {
           "Name": "Content-Type",
@@ -16139,11 +16139,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"AJ4blyI09HdkqHePdoh3fVqgRxvrBOf166Lhm7+npFU=\""
+          "Value": "\"SDXd27V9GMlS7hdiT74bbeAe2K6tycwHmV0vPIqNFx8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:01:27 GMT"
         },
         {
           "Name": "Vary",
@@ -16153,11 +16153,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "9zt8i5izuz"
+          "Value": "o2yjyrkesh"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-AJ4blyI09HdkqHePdoh3fVqgRxvrBOf166Lhm7+npFU="
+          "Value": "sha256-SDXd27V9GMlS7hdiT74bbeAe2K6tycwHmV0vPIqNFx8="
         },
         {
           "Name": "label",
@@ -16167,12 +16167,12 @@
     },
     {
       "Route": "_framework/Plundi.Hammerfall.App.wasm",
-      "AssetFile": "_framework/Plundi.Hammerfall.App.9zt8i5izuz.wasm.br",
+      "AssetFile": "_framework/Plundi.Hammerfall.App.o2yjyrkesh.wasm.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000025953802"
+          "Quality": "0.000026100801"
         }
       ],
       "ResponseHeaders": [
@@ -16190,7 +16190,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "38529"
+          "Value": "38312"
         },
         {
           "Name": "Content-Type",
@@ -16198,15 +16198,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"7w2nN7bkA8sUjTjYO5GonnvxSLnLiRiDiRkzkpm5iuU=\""
+          "Value": "\"SnFlw15VWelQMJArpPGo8wzIJSS0hzLR2W546Gp2Po0=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"xa8ErNpxeYQIpSda/bk4LHEc48wt3DWdQPrRpLstmfA=\""
+          "Value": "W/\"QKHJX5YsxItXNZymAq3Dq7BSu80hxwCaGbtHsTjwNcY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:01:27 GMT"
         },
         {
           "Name": "Vary",
@@ -16216,18 +16216,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-xa8ErNpxeYQIpSda/bk4LHEc48wt3DWdQPrRpLstmfA="
+          "Value": "sha256-QKHJX5YsxItXNZymAq3Dq7BSu80hxwCaGbtHsTjwNcY="
         }
       ]
     },
     {
       "Route": "_framework/Plundi.Hammerfall.App.wasm",
-      "AssetFile": "_framework/Plundi.Hammerfall.App.9zt8i5izuz.wasm.gz",
+      "AssetFile": "_framework/Plundi.Hammerfall.App.o2yjyrkesh.wasm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000020187746"
+          "Quality": "0.000020194269"
         }
       ],
       "ResponseHeaders": [
@@ -16245,7 +16245,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "49534"
+          "Value": "49518"
         },
         {
           "Name": "Content-Type",
@@ -16253,15 +16253,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"AJ4blyI09HdkqHePdoh3fVqgRxvrBOf166Lhm7+npFU=\""
+          "Value": "\"SDXd27V9GMlS7hdiT74bbeAe2K6tycwHmV0vPIqNFx8=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"xa8ErNpxeYQIpSda/bk4LHEc48wt3DWdQPrRpLstmfA=\""
+          "Value": "W/\"QKHJX5YsxItXNZymAq3Dq7BSu80hxwCaGbtHsTjwNcY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:01:27 GMT"
         },
         {
           "Name": "Vary",
@@ -16271,13 +16271,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-xa8ErNpxeYQIpSda/bk4LHEc48wt3DWdQPrRpLstmfA="
+          "Value": "sha256-QKHJX5YsxItXNZymAq3Dq7BSu80hxwCaGbtHsTjwNcY="
         }
       ]
     },
     {
       "Route": "_framework/Plundi.Hammerfall.App.wasm",
-      "AssetFile": "_framework/Plundi.Hammerfall.App.9zt8i5izuz.wasm",
+      "AssetFile": "_framework/Plundi.Hammerfall.App.o2yjyrkesh.wasm",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16298,23 +16298,23 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xa8ErNpxeYQIpSda/bk4LHEc48wt3DWdQPrRpLstmfA=\""
+          "Value": "\"QKHJX5YsxItXNZymAq3Dq7BSu80hxwCaGbtHsTjwNcY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:01:27 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-xa8ErNpxeYQIpSda/bk4LHEc48wt3DWdQPrRpLstmfA="
+          "Value": "sha256-QKHJX5YsxItXNZymAq3Dq7BSu80hxwCaGbtHsTjwNcY="
         }
       ]
     },
     {
       "Route": "_framework/Plundi.Hammerfall.App.wasm.br",
-      "AssetFile": "_framework/Plundi.Hammerfall.App.9zt8i5izuz.wasm.br",
+      "AssetFile": "_framework/Plundi.Hammerfall.App.o2yjyrkesh.wasm.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16331,7 +16331,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "38529"
+          "Value": "38312"
         },
         {
           "Name": "Content-Type",
@@ -16339,11 +16339,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"7w2nN7bkA8sUjTjYO5GonnvxSLnLiRiDiRkzkpm5iuU=\""
+          "Value": "\"SnFlw15VWelQMJArpPGo8wzIJSS0hzLR2W546Gp2Po0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:01:27 GMT"
         },
         {
           "Name": "Vary",
@@ -16353,13 +16353,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-7w2nN7bkA8sUjTjYO5GonnvxSLnLiRiDiRkzkpm5iuU="
+          "Value": "sha256-SnFlw15VWelQMJArpPGo8wzIJSS0hzLR2W546Gp2Po0="
         }
       ]
     },
     {
       "Route": "_framework/Plundi.Hammerfall.App.wasm.gz",
-      "AssetFile": "_framework/Plundi.Hammerfall.App.9zt8i5izuz.wasm.gz",
+      "AssetFile": "_framework/Plundi.Hammerfall.App.o2yjyrkesh.wasm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16376,7 +16376,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "49534"
+          "Value": "49518"
         },
         {
           "Name": "Content-Type",
@@ -16384,11 +16384,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"AJ4blyI09HdkqHePdoh3fVqgRxvrBOf166Lhm7+npFU=\""
+          "Value": "\"SDXd27V9GMlS7hdiT74bbeAe2K6tycwHmV0vPIqNFx8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:01:27 GMT"
         },
         {
           "Name": "Vary",
@@ -16398,18 +16398,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-AJ4blyI09HdkqHePdoh3fVqgRxvrBOf166Lhm7+npFU="
+          "Value": "sha256-SDXd27V9GMlS7hdiT74bbeAe2K6tycwHmV0vPIqNFx8="
         }
       ]
     },
     {
-      "Route": "_framework/Plundi.Hammerfall.Core.ooxyzxplf4.wasm",
-      "AssetFile": "_framework/Plundi.Hammerfall.Core.ooxyzxplf4.wasm.br",
+      "Route": "_framework/Plundi.Hammerfall.Core.utkpxkektp.wasm",
+      "AssetFile": "_framework/Plundi.Hammerfall.Core.utkpxkektp.wasm.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000039723524"
+          "Quality": "0.000039789909"
         }
       ],
       "ResponseHeaders": [
@@ -16427,7 +16427,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "25173"
+          "Value": "25131"
         },
         {
           "Name": "Content-Type",
@@ -16435,15 +16435,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"fQokWLE357EKRZ+xgErp8ugZzp9yZCwmW1eQcasalqE=\""
+          "Value": "\"lcJpm6zz8ID+kHCrLhGWmrMGeVqvt6Aka413B82c8z8=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"CNZLWb4AQGBQiZrEWmT8hF9qtSIstfobJVtIRyx8x98=\""
+          "Value": "W/\"TlmalJIycUD+VwIRZvp+dwiHrRUQln16d3yCF1nIAQo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:02:04 GMT"
         },
         {
           "Name": "Vary",
@@ -16453,11 +16453,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ooxyzxplf4"
+          "Value": "utkpxkektp"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-CNZLWb4AQGBQiZrEWmT8hF9qtSIstfobJVtIRyx8x98="
+          "Value": "sha256-TlmalJIycUD+VwIRZvp+dwiHrRUQln16d3yCF1nIAQo="
         },
         {
           "Name": "label",
@@ -16466,8 +16466,8 @@
       ]
     },
     {
-      "Route": "_framework/Plundi.Hammerfall.Core.ooxyzxplf4.wasm",
-      "AssetFile": "_framework/Plundi.Hammerfall.Core.ooxyzxplf4.wasm.gz",
+      "Route": "_framework/Plundi.Hammerfall.Core.utkpxkektp.wasm",
+      "AssetFile": "_framework/Plundi.Hammerfall.Core.utkpxkektp.wasm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -16498,15 +16498,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pREpccCpBBEKOgSdqNqaW2XmTrxTz+AkmBqTatL6OYk=\""
+          "Value": "\"fxWlyvgTl9KxvLdm4U1D5ZxqaYHf43huFyVSEqXhe1g=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"CNZLWb4AQGBQiZrEWmT8hF9qtSIstfobJVtIRyx8x98=\""
+          "Value": "W/\"TlmalJIycUD+VwIRZvp+dwiHrRUQln16d3yCF1nIAQo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:02:04 GMT"
         },
         {
           "Name": "Vary",
@@ -16516,11 +16516,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ooxyzxplf4"
+          "Value": "utkpxkektp"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-CNZLWb4AQGBQiZrEWmT8hF9qtSIstfobJVtIRyx8x98="
+          "Value": "sha256-TlmalJIycUD+VwIRZvp+dwiHrRUQln16d3yCF1nIAQo="
         },
         {
           "Name": "label",
@@ -16529,8 +16529,8 @@
       ]
     },
     {
-      "Route": "_framework/Plundi.Hammerfall.Core.ooxyzxplf4.wasm",
-      "AssetFile": "_framework/Plundi.Hammerfall.Core.ooxyzxplf4.wasm",
+      "Route": "_framework/Plundi.Hammerfall.Core.utkpxkektp.wasm",
+      "AssetFile": "_framework/Plundi.Hammerfall.Core.utkpxkektp.wasm",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16551,21 +16551,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"CNZLWb4AQGBQiZrEWmT8hF9qtSIstfobJVtIRyx8x98=\""
+          "Value": "\"TlmalJIycUD+VwIRZvp+dwiHrRUQln16d3yCF1nIAQo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:02:04 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ooxyzxplf4"
+          "Value": "utkpxkektp"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-CNZLWb4AQGBQiZrEWmT8hF9qtSIstfobJVtIRyx8x98="
+          "Value": "sha256-TlmalJIycUD+VwIRZvp+dwiHrRUQln16d3yCF1nIAQo="
         },
         {
           "Name": "label",
@@ -16574,8 +16574,8 @@
       ]
     },
     {
-      "Route": "_framework/Plundi.Hammerfall.Core.ooxyzxplf4.wasm.br",
-      "AssetFile": "_framework/Plundi.Hammerfall.Core.ooxyzxplf4.wasm.br",
+      "Route": "_framework/Plundi.Hammerfall.Core.utkpxkektp.wasm.br",
+      "AssetFile": "_framework/Plundi.Hammerfall.Core.utkpxkektp.wasm.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16592,7 +16592,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "25173"
+          "Value": "25131"
         },
         {
           "Name": "Content-Type",
@@ -16600,11 +16600,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"fQokWLE357EKRZ+xgErp8ugZzp9yZCwmW1eQcasalqE=\""
+          "Value": "\"lcJpm6zz8ID+kHCrLhGWmrMGeVqvt6Aka413B82c8z8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:02:04 GMT"
         },
         {
           "Name": "Vary",
@@ -16614,11 +16614,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ooxyzxplf4"
+          "Value": "utkpxkektp"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-fQokWLE357EKRZ+xgErp8ugZzp9yZCwmW1eQcasalqE="
+          "Value": "sha256-lcJpm6zz8ID+kHCrLhGWmrMGeVqvt6Aka413B82c8z8="
         },
         {
           "Name": "label",
@@ -16627,8 +16627,8 @@
       ]
     },
     {
-      "Route": "_framework/Plundi.Hammerfall.Core.ooxyzxplf4.wasm.gz",
-      "AssetFile": "_framework/Plundi.Hammerfall.Core.ooxyzxplf4.wasm.gz",
+      "Route": "_framework/Plundi.Hammerfall.Core.utkpxkektp.wasm.gz",
+      "AssetFile": "_framework/Plundi.Hammerfall.Core.utkpxkektp.wasm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16653,11 +16653,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pREpccCpBBEKOgSdqNqaW2XmTrxTz+AkmBqTatL6OYk=\""
+          "Value": "\"fxWlyvgTl9KxvLdm4U1D5ZxqaYHf43huFyVSEqXhe1g=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:02:04 GMT"
         },
         {
           "Name": "Vary",
@@ -16667,11 +16667,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ooxyzxplf4"
+          "Value": "utkpxkektp"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-pREpccCpBBEKOgSdqNqaW2XmTrxTz+AkmBqTatL6OYk="
+          "Value": "sha256-fxWlyvgTl9KxvLdm4U1D5ZxqaYHf43huFyVSEqXhe1g="
         },
         {
           "Name": "label",
@@ -16681,12 +16681,12 @@
     },
     {
       "Route": "_framework/Plundi.Hammerfall.Core.wasm",
-      "AssetFile": "_framework/Plundi.Hammerfall.Core.ooxyzxplf4.wasm.br",
+      "AssetFile": "_framework/Plundi.Hammerfall.Core.utkpxkektp.wasm.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000039723524"
+          "Quality": "0.000039789909"
         }
       ],
       "ResponseHeaders": [
@@ -16704,7 +16704,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "25173"
+          "Value": "25131"
         },
         {
           "Name": "Content-Type",
@@ -16712,15 +16712,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"fQokWLE357EKRZ+xgErp8ugZzp9yZCwmW1eQcasalqE=\""
+          "Value": "\"lcJpm6zz8ID+kHCrLhGWmrMGeVqvt6Aka413B82c8z8=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"CNZLWb4AQGBQiZrEWmT8hF9qtSIstfobJVtIRyx8x98=\""
+          "Value": "W/\"TlmalJIycUD+VwIRZvp+dwiHrRUQln16d3yCF1nIAQo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:02:04 GMT"
         },
         {
           "Name": "Vary",
@@ -16730,13 +16730,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-CNZLWb4AQGBQiZrEWmT8hF9qtSIstfobJVtIRyx8x98="
+          "Value": "sha256-TlmalJIycUD+VwIRZvp+dwiHrRUQln16d3yCF1nIAQo="
         }
       ]
     },
     {
       "Route": "_framework/Plundi.Hammerfall.Core.wasm",
-      "AssetFile": "_framework/Plundi.Hammerfall.Core.ooxyzxplf4.wasm.gz",
+      "AssetFile": "_framework/Plundi.Hammerfall.Core.utkpxkektp.wasm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -16767,15 +16767,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pREpccCpBBEKOgSdqNqaW2XmTrxTz+AkmBqTatL6OYk=\""
+          "Value": "\"fxWlyvgTl9KxvLdm4U1D5ZxqaYHf43huFyVSEqXhe1g=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"CNZLWb4AQGBQiZrEWmT8hF9qtSIstfobJVtIRyx8x98=\""
+          "Value": "W/\"TlmalJIycUD+VwIRZvp+dwiHrRUQln16d3yCF1nIAQo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:02:04 GMT"
         },
         {
           "Name": "Vary",
@@ -16785,13 +16785,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-CNZLWb4AQGBQiZrEWmT8hF9qtSIstfobJVtIRyx8x98="
+          "Value": "sha256-TlmalJIycUD+VwIRZvp+dwiHrRUQln16d3yCF1nIAQo="
         }
       ]
     },
     {
       "Route": "_framework/Plundi.Hammerfall.Core.wasm",
-      "AssetFile": "_framework/Plundi.Hammerfall.Core.ooxyzxplf4.wasm",
+      "AssetFile": "_framework/Plundi.Hammerfall.Core.utkpxkektp.wasm",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16812,23 +16812,23 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"CNZLWb4AQGBQiZrEWmT8hF9qtSIstfobJVtIRyx8x98=\""
+          "Value": "\"TlmalJIycUD+VwIRZvp+dwiHrRUQln16d3yCF1nIAQo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:02:04 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-CNZLWb4AQGBQiZrEWmT8hF9qtSIstfobJVtIRyx8x98="
+          "Value": "sha256-TlmalJIycUD+VwIRZvp+dwiHrRUQln16d3yCF1nIAQo="
         }
       ]
     },
     {
       "Route": "_framework/Plundi.Hammerfall.Core.wasm.br",
-      "AssetFile": "_framework/Plundi.Hammerfall.Core.ooxyzxplf4.wasm.br",
+      "AssetFile": "_framework/Plundi.Hammerfall.Core.utkpxkektp.wasm.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16845,7 +16845,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "25173"
+          "Value": "25131"
         },
         {
           "Name": "Content-Type",
@@ -16853,11 +16853,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"fQokWLE357EKRZ+xgErp8ugZzp9yZCwmW1eQcasalqE=\""
+          "Value": "\"lcJpm6zz8ID+kHCrLhGWmrMGeVqvt6Aka413B82c8z8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:02:04 GMT"
         },
         {
           "Name": "Vary",
@@ -16867,13 +16867,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-fQokWLE357EKRZ+xgErp8ugZzp9yZCwmW1eQcasalqE="
+          "Value": "sha256-lcJpm6zz8ID+kHCrLhGWmrMGeVqvt6Aka413B82c8z8="
         }
       ]
     },
     {
       "Route": "_framework/Plundi.Hammerfall.Core.wasm.gz",
-      "AssetFile": "_framework/Plundi.Hammerfall.Core.ooxyzxplf4.wasm.gz",
+      "AssetFile": "_framework/Plundi.Hammerfall.Core.utkpxkektp.wasm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16898,11 +16898,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pREpccCpBBEKOgSdqNqaW2XmTrxTz+AkmBqTatL6OYk=\""
+          "Value": "\"fxWlyvgTl9KxvLdm4U1D5ZxqaYHf43huFyVSEqXhe1g=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:02:04 GMT"
         },
         {
           "Name": "Vary",
@@ -16912,7 +16912,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pREpccCpBBEKOgSdqNqaW2XmTrxTz+AkmBqTatL6OYk="
+          "Value": "sha256-fxWlyvgTl9KxvLdm4U1D5ZxqaYHf43huFyVSEqXhe1g="
         }
       ]
     },
@@ -100207,17 +100207,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"MfeFveh8IsaFZ1F2o4MLhUYzvqm0FQd59TR66Al1HxA=\""
+          "Value": "\"Pd4UyBPPZQAI1HqrO0tk7lxmV1xjxHGf+SPK6I1t1J0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:02:04 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-MfeFveh8IsaFZ1F2o4MLhUYzvqm0FQd59TR66Al1HxA="
+          "Value": "sha256-Pd4UyBPPZQAI1HqrO0tk7lxmV1xjxHGf+SPK6I1t1J0="
         }
       ]
     },
@@ -100228,7 +100228,7 @@
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000090049527"
+          "Quality": "0.000089903803"
         }
       ],
       "ResponseHeaders": [
@@ -100246,7 +100246,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11104"
+          "Value": "11122"
         },
         {
           "Name": "Content-Type",
@@ -100254,15 +100254,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"F/9AK7qyLTHz/o0VdKKQxuHTV/iGsT0Oji6nCAPJetQ=\""
+          "Value": "\"p9hCgWnyFAluYAW+xkFDyypA9CUP+qYasqzf7CoZGWA=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"MfeFveh8IsaFZ1F2o4MLhUYzvqm0FQd59TR66Al1HxA=\""
+          "Value": "W/\"Pd4UyBPPZQAI1HqrO0tk7lxmV1xjxHGf+SPK6I1t1J0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:02:04 GMT"
         },
         {
           "Name": "Vary",
@@ -100272,7 +100272,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-MfeFveh8IsaFZ1F2o4MLhUYzvqm0FQd59TR66Al1HxA="
+          "Value": "sha256-Pd4UyBPPZQAI1HqrO0tk7lxmV1xjxHGf+SPK6I1t1J0="
         }
       ]
     },
@@ -100283,7 +100283,7 @@
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000081320647"
+          "Quality": "0.000081327261"
         }
       ],
       "ResponseHeaders": [
@@ -100301,7 +100301,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12296"
+          "Value": "12295"
         },
         {
           "Name": "Content-Type",
@@ -100309,15 +100309,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"KAkSd9dNtdylc6weCvfI1Ki/V/ikSEiwFAL2uH6YSpw=\""
+          "Value": "\"aXzvIQFe/hVhM3okkPOMtuqLjqoQiB1cF2bA63nS/E0=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"MfeFveh8IsaFZ1F2o4MLhUYzvqm0FQd59TR66Al1HxA=\""
+          "Value": "W/\"Pd4UyBPPZQAI1HqrO0tk7lxmV1xjxHGf+SPK6I1t1J0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:02:04 GMT"
         },
         {
           "Name": "Vary",
@@ -100327,7 +100327,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-MfeFveh8IsaFZ1F2o4MLhUYzvqm0FQd59TR66Al1HxA="
+          "Value": "sha256-Pd4UyBPPZQAI1HqrO0tk7lxmV1xjxHGf+SPK6I1t1J0="
         }
       ]
     },
@@ -100350,7 +100350,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11104"
+          "Value": "11122"
         },
         {
           "Name": "Content-Type",
@@ -100358,11 +100358,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"F/9AK7qyLTHz/o0VdKKQxuHTV/iGsT0Oji6nCAPJetQ=\""
+          "Value": "\"p9hCgWnyFAluYAW+xkFDyypA9CUP+qYasqzf7CoZGWA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:02:04 GMT"
         },
         {
           "Name": "Vary",
@@ -100372,7 +100372,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-F/9AK7qyLTHz/o0VdKKQxuHTV/iGsT0Oji6nCAPJetQ="
+          "Value": "sha256-p9hCgWnyFAluYAW+xkFDyypA9CUP+qYasqzf7CoZGWA="
         }
       ]
     },
@@ -100395,7 +100395,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12296"
+          "Value": "12295"
         },
         {
           "Name": "Content-Type",
@@ -100403,11 +100403,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"KAkSd9dNtdylc6weCvfI1Ki/V/ikSEiwFAL2uH6YSpw=\""
+          "Value": "\"aXzvIQFe/hVhM3okkPOMtuqLjqoQiB1cF2bA63nS/E0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 16:58:18 GMT"
+          "Value": "Wed, 22 Jan 2025 17:02:04 GMT"
         },
         {
           "Name": "Vary",
@@ -100417,7 +100417,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-KAkSd9dNtdylc6weCvfI1Ki/V/ikSEiwFAL2uH6YSpw="
+          "Value": "sha256-aXzvIQFe/hVhM3okkPOMtuqLjqoQiB1cF2bA63nS/E0="
         }
       ]
     },

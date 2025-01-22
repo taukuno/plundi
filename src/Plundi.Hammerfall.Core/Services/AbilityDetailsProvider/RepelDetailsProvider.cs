@@ -102,7 +102,7 @@ public class RepelDetailsProvider : IAbilityDetailsProvider
             new() { Description = "cc immunity while channeling", Duration = 1.25m },
             new() { Description = "knockback on hit", Duration = 0m },
             new() { Description = "silence on hit", Duration = 2.5m },
-            new() { Description = "castable during gcd", Duration = 0m },
+            new() { Description = "castable during GCD", Duration = 0m },
             new() { Description = "heavily slowed while channeling (-97%)", Duration = 1.25m }
         ];
     }

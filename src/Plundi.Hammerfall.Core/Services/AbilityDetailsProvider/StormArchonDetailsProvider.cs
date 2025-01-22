@@ -150,7 +150,7 @@ public class StormArchonDetailsProvider : IAbilityDetailsProvider
         return
         [
             new() { Description = "frontal barrage (50y, 5y radius)", Duration = 0m },
-            new() { Description = "can be recast twice (last cast does decimal-damage)", Duration = 0m },
+            new() { Description = "can be recast twice (last cast does double-damage)", Duration = 0m },
             new() { Description = "heavily slowed while channeling (-96%)", Duration = 2.25m }
         ];
     }

@@ -160,7 +160,7 @@ public class LightningBulwarkDetailsProvider : IAbilityDetailsProvider
             new() { Description = "repels one hit", Duration = 2m },
             new() { Description = "triggers AoE (6y radius) on repel", Duration = 4m },
             new() { Description = "+120% movement speed on repel", Duration = 4m },
-            new() { Description = "castable during gcd", Duration = 0m },
+            new() { Description = "castable during GCD", Duration = 0m },
             new() { Description = "heavily slowed while channeling (-96%)", Duration = 2m }
 
         ];

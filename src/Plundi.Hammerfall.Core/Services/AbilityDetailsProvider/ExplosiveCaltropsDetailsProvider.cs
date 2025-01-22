@@ -97,8 +97,9 @@ public class ExplosiveCaltropsDetailsProvider : IAbilityDetailsProvider
 
         return
         [
-            new() { Description = "evades backwards", Duration = 0m },
-            new() { Description = "leaves behind snare AoE (-40%) after evade", Duration = 3m }
+            new() { Description = "evades backwards (25y)", Duration = 0m },
+            new() { Description = "leaves 3x AoEs (8y radius) behind", Duration = 3m },
+            new() { Description = "slows on hit (-40%)", Duration = 3m }
         ];
     }
 

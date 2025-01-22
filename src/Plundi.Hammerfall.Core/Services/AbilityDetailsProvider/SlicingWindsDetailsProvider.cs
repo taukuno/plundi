@@ -109,39 +109,12 @@ public class SlicingWindsDetailsProvider : IAbilityDetailsProvider
             throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        return abilityRarity switch
-        {
-            AbilityRarity.Common =>
-            [
-                new() { Description = "frontal dash", Duration = 0m },
-                new() { Description = "dash can be charged up to 12 yards", Duration = 0m },
-                new() { Description = "heavily slowed while channeling (-97%)", Duration = 1.4m }
-            ],
-            AbilityRarity.Uncommon =>
-            [
-                new() { Description = "frontal dash", Duration = 0m },
-                new() { Description = "dash can be charged up to 20 yards", Duration = 0m },
-                new() { Description = "heavily slowed while channeling (-97%)", Duration = 1.4m }
-            ],
-            AbilityRarity.Rare =>
-            [
-                new() { Description = "frontal dash", Duration = 0m },
-                new() { Description = "dash can be charged up to 28 yards", Duration = 0m },
-                new() { Description = "heavily slowed while channeling (-97%)", Duration = 1.4m }
-            ],
-            AbilityRarity.Epic =>
-            [
-                new() { Description = "frontal dash", Duration = 0m },
-                new() { Description = "dash can be charged up to 36 yards", Duration = 0m },
-                new() { Description = "heavily slowed while channeling (-97%)", Duration = 1.4m }
-            ],
-            _ =>
-            [
-                new() { Description = "frontal dash", Duration = 0m },
-                new() { Description = "dash can be charged up to 12 yards", Duration = 0m },
-                new() { Description = "heavily slowed while channeling (-97%)", Duration = 1.4m }
-            ]
-        };
+        return
+        [
+            new() { Description = "frontal dash (12-36y)", Duration = 0m },
+            new() { Description = "dash can be charged (+8y/stage)", Duration = 0m },
+            new() { Description = "heavily slowed while channeling (-97%)", Duration = 1.4m }
+        ];
     }
 
     /// <inheritdoc />

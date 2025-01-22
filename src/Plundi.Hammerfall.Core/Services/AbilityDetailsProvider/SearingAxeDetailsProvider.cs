@@ -97,7 +97,7 @@ public class SearingAxeDetailsProvider : IAbilityDetailsProvider
 
         return
         [
-            new() { Description = "frontal cone", Duration = 0m },
+            new() { Description = "frontal cone (15y)", Duration = 0m },
             new() { Description = "small knockback on hit", Duration = 0m },
             new() { Description = "heavily slowed while channeling (-99%)", Duration = 0.8m }
         ];

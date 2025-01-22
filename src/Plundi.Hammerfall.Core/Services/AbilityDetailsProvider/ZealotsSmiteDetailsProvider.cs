@@ -82,7 +82,15 @@ public class ZealotsSmiteDetailsProvider : IAbilityDetailsProvider
     /// <inheritdoc />
     public IEnumerable<AbilityEffect> GetEffects(string abilityName, AbilityRarity abilityRarity, int playerLevel, Dictionary<string, string>? simulationSettings = null)
     {
-        return [];
+        if (!CanHandleAbility(abilityName))
+        {
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
+        }
+
+        return
+        [
+            new() { Description = "frontal cone (12y)", Duration = 0m },
+        ];
     }
 
     /// <inheritdoc />

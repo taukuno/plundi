@@ -131,8 +131,8 @@ public class HolyShieldDetailsProvider : IAbilityDetailsProvider
 
         return
         [
-            new() { Description = "frontal swirly (bommerangs)", Duration = 0m },
-            new() { Description = "recast to activate AoE", Duration = 0m }
+            new() { Description = "frontal boomerang (4y radius)", Duration = 0m },
+            new() { Description = "recast to activate AoE (10y radius)", Duration = 0m }
         ];
     }
 

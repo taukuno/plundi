@@ -2,12 +2,12 @@ using Plundi.Hammerfall.Core.Models;
 
 namespace Plundi.Hammerfall.Core.Services.AbilityDetailsProvider;
 
-public class MeleeDetailsProvider : IAbilityDetailsProvider
+public class SlashDetailsProvider : IAbilityDetailsProvider
 {
     /// <inheritdoc />
     public bool CanHandleAbility(string abilityName)
     {
-        return abilityName == "Melee";
+        return abilityName == "Slash";
     }
 
     /// <inheritdoc />
@@ -18,7 +18,7 @@ public class MeleeDetailsProvider : IAbilityDetailsProvider
             throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        return "Melee";
+        return "Slash";
     }
 
     /// <inheritdoc />
@@ -74,7 +74,15 @@ public class MeleeDetailsProvider : IAbilityDetailsProvider
     /// <inheritdoc />
     public IEnumerable<AbilityEffect> GetEffects(string abilityName, AbilityRarity abilityRarity, int playerLevel, Dictionary<string, string>? simulationSettings = null)
     {
-        return [];
+        if (!CanHandleAbility(abilityName))
+        {
+            throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
+        }
+
+        return
+        [
+            new() { Description = "frontal cone (6y)", Duration = 0m },
+        ];
     }
 
     /// <inheritdoc />

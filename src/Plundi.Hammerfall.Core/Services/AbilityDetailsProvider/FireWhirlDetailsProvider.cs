@@ -169,7 +169,7 @@ public class FireWhirlDetailsProvider : IAbilityDetailsProvider
 
         return
         [
-            new() { Description = "AoE", Duration = 0m },
+            new() { Description = "AoE (8y radius)", Duration = 0m },
             new() { Description = "+70% movement speed", Duration = 3m }
         ];
     }

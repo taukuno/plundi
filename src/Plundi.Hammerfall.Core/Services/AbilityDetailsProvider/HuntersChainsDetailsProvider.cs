@@ -97,7 +97,7 @@ public class HuntersChainsDetailsProvider : IAbilityDetailsProvider
 
         return
         [
-            new() { Description = "chain to target (35 yards)", Duration = 0m },
+            new() { Description = "chains to target (35y radius)", Duration = 0m },
             new() { Description = "recast to pull yourself to target", Duration = 0m },
             new() { Description = "target will be pulled back if out of range", Duration = 0m }
         ];

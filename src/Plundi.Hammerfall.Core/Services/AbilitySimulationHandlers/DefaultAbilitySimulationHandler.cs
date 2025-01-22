@@ -30,7 +30,7 @@ public class DefaultAbilitySimulationHandler : IAbilitySimulationHandler
         "Steel Traps",
         "Windstorm",
         "Void Tear",
-        "Melee",
+        "Slash",
         "Zealot's Smite"
     ];
 

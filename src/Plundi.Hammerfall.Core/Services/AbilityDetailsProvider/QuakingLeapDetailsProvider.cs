@@ -97,7 +97,8 @@ public class QuakingLeapDetailsProvider : IAbilityDetailsProvider
 
         return
         [
-            new() { Description = "stun AoE on crash down", Duration = 0m },
+            new() { Description = "leaps forward (30y)", Duration = 0m },
+            new() { Description = "AoE on crash down (9y radius)", Duration = 0m },
             new() { Description = "stuns on hit", Duration = 0.75m },
             new() { Description = "can be recast mid air to crash down early", Duration = 0m },
             new() { Description = "heavily slowed while channeling (-99%)", Duration = 0.5m }

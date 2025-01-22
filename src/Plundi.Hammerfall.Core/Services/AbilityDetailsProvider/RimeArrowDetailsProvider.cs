@@ -98,7 +98,8 @@ public class RimeArrowDetailsProvider : IAbilityDetailsProvider
         return
         [
             new() { Description = "targeted projectile", Duration = 0m },
-            new() { Description = "small AoE on hit", Duration = 0m }, new() { Description = "can't miss", Duration = 0m }
+            new() { Description = "AoE (6y radius) on hit", Duration = 0m },
+            new() { Description = "can't miss", Duration = 0m }
         ];
     }
 

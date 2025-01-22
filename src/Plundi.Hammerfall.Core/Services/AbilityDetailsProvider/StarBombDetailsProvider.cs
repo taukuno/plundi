@@ -97,7 +97,7 @@ public class StarBombDetailsProvider : IAbilityDetailsProvider
 
         return
         [
-            new() { Description = "frontal AoE", Duration = 0m },
+            new() { Description = "frontal AoE (12y radius)", Duration = 0m },
             new() { Description = "pulls enemies into center on hit", Duration = 0m },
             new() { Description = "heavily slowed while casting (-97%)", Duration = 2m }
         ];

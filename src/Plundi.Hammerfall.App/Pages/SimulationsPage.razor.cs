@@ -103,7 +103,7 @@ public partial class SimulationsPage : ComponentBase
 
         if (_useMeleeDuringDowntime)
         {
-            abilities.Add(new() { Name = "Melee", Rarity = AbilityRarity.Common });
+            abilities.Add(new() { Name = "Slash", Rarity = AbilityRarity.Common });
         }
 
         abilities.AddRange(abilitiesAfterMelee);

@@ -110,9 +110,9 @@ public class ManaSphereDetailsProvider : IAbilityDetailsProvider
 
         return
         [
-            new() { Description = "frontal orb", Duration = 0m },
+            new() { Description = "frontal orb (4-7y radius)", Duration = 0m },
             new() { Description = "medium knockback on hit", Duration = 0m },
-            new() { Description = "size of orb can be charged", Duration = 0m },
+            new() { Description = "size of orb can be charged (+1y/stage)", Duration = 0m },
             new() { Description = "heavily slowed while channeling (-97%)", Duration = 1.8m }
         ];
     }

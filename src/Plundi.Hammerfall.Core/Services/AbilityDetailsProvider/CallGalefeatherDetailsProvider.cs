@@ -97,7 +97,7 @@ public class CallGalefeatherDetailsProvider : IAbilityDetailsProvider
 
         return
         [
-            new() { Description = "targetable AoE", Duration = 0m },
+            new() { Description = "targetable AoE (10y radius)", Duration = 0m },
             new() { Description = "big knockback on hit", Duration = 8m }
         ];
     }

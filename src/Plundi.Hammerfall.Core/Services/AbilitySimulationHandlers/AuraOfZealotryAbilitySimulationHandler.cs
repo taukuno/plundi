@@ -109,7 +109,7 @@ public class AuraOfZealotrySimulationHandler : DefaultAbilitySimulationHandler
             {
                 loadoutSimulationContext.AvailableAbilities[zealotsSmiteAbilityIndex] = new()
                 {
-                    Name = "Melee",
+                    Name = "Slash",
                     Rarity = AbilityRarity.Common
                 };
             }

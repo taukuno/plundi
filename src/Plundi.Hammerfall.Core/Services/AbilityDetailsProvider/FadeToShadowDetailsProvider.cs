@@ -97,7 +97,7 @@ public class FadeToShadowDetailsProvider : IAbilityDetailsProvider
 
         return
         [
-            new() { Description = "blinks 25 yards", Duration = 0m },
+            new() { Description = "blinks forward (25y)", Duration = 0m },
             new() { Description = "stealth after blink", Duration = 4m }
         ];
     }

@@ -151,13 +151,11 @@ public class ToxicSmackerelDetailsProvider : IAbilityDetailsProvider
             throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        var bonusDamage = Math.Round(_damageProfiles[abilityRarity].SpecialHits[0].Damage * PlayerStatsProvider.GetAttackPower(playerLevel), 1);
-
         return
         [
-            new() { Description = "frontal cone", Duration = 0m },
+            new() { Description = "frontal cone (15y)", Duration = 0m },
             new() { Description = "applies poison dot", Duration = 8m },
-            new() { Description = $"does bonus damage on already poisoned targets ({bonusDamage:N1})", Duration = 8m }
+            new() { Description = "does bonus damage on already poisoned targets", Duration = 8m }
         ];
     }
 

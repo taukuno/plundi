@@ -97,7 +97,7 @@ public class EarthbreakerDetailsProvider : IAbilityDetailsProvider
 
         return
         [
-            new() { Description = "AoE", Duration = 0m },
+            new() { Description = "AoE (12y radius)", Duration = 0m },
             new() { Description = "immune to cc while channeling", Duration = 2m },
             new() { Description = "stuns on hit", Duration = 2m },
             new() { Description = "big knockback on hit", Duration = 0m },

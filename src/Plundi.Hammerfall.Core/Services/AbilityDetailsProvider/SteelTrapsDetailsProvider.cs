@@ -97,8 +97,8 @@ public class SteelTrapsDetailsProvider : IAbilityDetailsProvider
 
         return
         [
-            new() { Description = "throws 5x root AoEs around you", Duration = 0m },
-            new() { Description = "root on hit", Duration = 3m }
+            new() { Description = "throws 5x AoEs (4y radius) around you", Duration = 0m },
+            new() { Description = "roots on hit", Duration = 3m }
         ];
     }
 

@@ -95,14 +95,12 @@ public class VoidTearDetailsProvider : IAbilityDetailsProvider
             throw new ArgumentException($"Can't handle the ability '{abilityName}'.", nameof(abilityName));
         }
 
-        var damageOnReturn = _damageProfiles[abilityRarity].SpecialHits[0].Damage * PlayerStatsProvider.GetAttackPower(playerLevel);
-
         return
         [
             new() { Description = "set's a portal", Duration = 10m },
             new() { Description = "recast to port back to portal", Duration = 0m },
-            new() { Description = $"damages enemies around portal on return ({damageOnReturn:N1})", Duration = 0m },
-            new() { Description = "slows enemies around portal on return (-40%)", Duration = 3m }
+            new() { Description = "AoE (10y radius) around portal on return", Duration = 0m },
+            new() { Description = "slows on hit (-40%)", Duration = 3m }
         ];
     }
 

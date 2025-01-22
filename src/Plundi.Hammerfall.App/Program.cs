@@ -37,7 +37,7 @@ builder.Services.AddSingleton(new List<string>()
     "Steel Traps",
     "Windstorm",
     "Void Tear",
-    "Melee",
+    "Slash",
     "Zealot's Smite"
 });
 

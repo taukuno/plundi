@@ -97,7 +97,7 @@ public class WindstormDetailsProvider : IAbilityDetailsProvider
 
         return
         [
-            new() { Description = "frontal swirly", Duration = 0m },
+            new() { Description = "frontal swirly (4y radius)", Duration = 0m },
             new() { Description = "stun on hit", Duration = 2.5m },
             new() { Description = "heavily slowed while channeling (-99%)", Duration = 1m }
         ];

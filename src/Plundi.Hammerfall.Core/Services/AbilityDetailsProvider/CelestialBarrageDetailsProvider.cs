@@ -117,9 +117,9 @@ public class CelestialBarrageDetailsProvider : IAbilityDetailsProvider
 
         return
         [
-            new() { Description = "frontal barrage (60-150y, 6y radius)", Duration = 0m },
+            new() { Description = "frontal barrage (60-150y, 4y radius)", Duration = 0m },
             new() { Description = "length of beam can be charged (+30y/stage)", Duration = 0m },
-            new() { Description = "jumps back for channeling (10y)", Duration = 0m },
+            new() { Description = "jumps back for channeling (4y)", Duration = 0m },
             new() { Description = "heavily slowed while channeling (-97%)", Duration = 2m }
         ];
     }

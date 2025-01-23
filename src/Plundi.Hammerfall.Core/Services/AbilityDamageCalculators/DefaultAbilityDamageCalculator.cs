@@ -248,7 +248,7 @@ public class DefaultAbilityDamageCalculator : IAbilityDamageCalculator
         {
             var damage = x.IsRelative ? x.Damage * attackPower : x.Damage;
             return new DamageHit { Damage = damage, IsRelative = false, Timing = x.Timing };
-        }).ToList();
+        }).Where(x => x.Damage > 0).ToList();
     }
 
     protected virtual  decimal CalculateDps(IEnumerable<DamageHit> hits, decimal totalCooldown)

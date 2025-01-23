@@ -10,7 +10,6 @@ public partial class AbilityCard
 {
     [Inject] private AbilityReportGenerator AbilityReportGenerator { get; set; } = null!;
     [Inject] private AbilityServiceProvider AbilityServiceProvider { get; set; } = null!;
-    [Inject] private NavigationManager NavigationManager { get; set; } = null!;
 
     [Parameter] public RarifiedAbility Ability { get; set; } = null!;
     [Parameter] public int Position { get; set; }

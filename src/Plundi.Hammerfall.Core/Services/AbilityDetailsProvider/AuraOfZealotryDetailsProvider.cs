@@ -202,9 +202,12 @@ public class AuraOfZealotryDetailsProvider : IAbilityDetailsProvider
         }
 
         var damageProfile = _damageProfiles[abilityRarity];
+        var adjustedBaseHits = damageProfile.BaseHits.Take(numberOfHitsToKeep).ToList();
+        adjustedBaseHits.Add(new() { Damage = 0m, IsRelative = true, Timing = (adjustedBaseHits.LastOrDefault()?.Timing ?? 0) + 1m });
+
         var adjustedDamageProfile = damageProfile with
         {
-            BaseHits = damageProfile.BaseHits.Take(numberOfHitsToKeep).ToList()
+            BaseHits = adjustedBaseHits
         };
 
         return adjustedDamageProfile;

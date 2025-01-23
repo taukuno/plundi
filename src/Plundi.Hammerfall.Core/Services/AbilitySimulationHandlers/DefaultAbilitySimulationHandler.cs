@@ -165,7 +165,6 @@ public class DefaultAbilitySimulationHandler : IAbilitySimulationHandler
             var durationSinceChannelStarted = loadoutSimulationContext.CurrentTime - abilitySimulationContext.ChannelStartedAt;
             if (durationSinceChannelStarted >= abilitySimulationContext.AdjustedChannelDuration)
             {
-                channelIsFinished = true;
                 abilitySimulationContext.ChannelFinishedAt = loadoutSimulationContext.CurrentTime;
                 loadoutSimulationContext.IsCurrentlyChanneling = false;
             }
@@ -210,41 +209,37 @@ public class DefaultAbilitySimulationHandler : IAbilitySimulationHandler
         if (currentBaseHit is not null)
         {
             var damage = currentBaseHit.IsRelative ? currentBaseHit.Damage * attackPower : currentBaseHit.Damage;
-            loadoutSimulationContext.Events.Add(
-                (
-                    loadoutSimulationContext.CurrentTime,
-                    abilitySimulationContext.AbilityName,
-                    abilitySimulationContext.AbilityRarity,
-                    abilitySimulationContext.PlayerLevel,
-                    "Hit",
-                    damage
-                ));
+            AddHitEvent("Hit", damage);
         }
 
         if (currentSpecialHit is not null)
         {
             var damage = currentSpecialHit.IsRelative ? currentSpecialHit.Damage * attackPower : currentSpecialHit.Damage;
-            loadoutSimulationContext.Events.Add(
-                (
-                    loadoutSimulationContext.CurrentTime,
-                    abilitySimulationContext.AbilityName,
-                    abilitySimulationContext.AbilityRarity,
-                    abilitySimulationContext.PlayerLevel,
-                    "Hit (special)",
-                    damage
-                ));
+            AddHitEvent("Hit (special)", damage);
         }
 
         if (currentDotHit is not null)
         {
             var damage = currentDotHit.IsRelative ? currentDotHit.Damage * attackPower : currentDotHit.Damage;
+            AddHitEvent("Hit (dot)", damage);
+        }
+
+        return;
+
+        void AddHitEvent(string @event, decimal damage)
+        {
+            if(damage == 0)
+            {
+                return;
+            }
+
             loadoutSimulationContext.Events.Add(
                 (
                     loadoutSimulationContext.CurrentTime,
                     abilitySimulationContext.AbilityName,
                     abilitySimulationContext.AbilityRarity,
                     abilitySimulationContext.PlayerLevel,
-                    "Hit (dot)",
+                    @event,
                     damage
                 ));
         }

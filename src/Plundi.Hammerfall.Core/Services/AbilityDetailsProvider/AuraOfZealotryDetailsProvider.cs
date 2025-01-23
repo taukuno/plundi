@@ -172,6 +172,7 @@ public class AuraOfZealotryDetailsProvider : IAbilityDetailsProvider
             new() { Description = "+70% movement speed while inside AoE", Duration = 8m },
             new() { Description = $"increases melee damage (+{bonusMeleeDamage:P0}) while inside AoE", Duration = 8m },
             new() { Description = "increases melee range (12y) while inside AoE", Duration = 8m },
+            new() {Description = "auras persist shortly after leaving AoE", Duration = 1m},
             new() { Description = "doesn't allow stealth", Duration = 0m }
         ];
     }

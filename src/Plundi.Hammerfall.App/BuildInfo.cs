@@ -11,6 +11,6 @@ namespace Plundi.Hammerfall.App
 {
     public static class BuildInfo
     {
-        public static string LastUpdate = "2025-01-23 13:19 UTC";
+        public static string LastUpdate = "2025-01-23 18:57 UTC";
     }
 }

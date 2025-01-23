@@ -1,4 +1,8 @@
 ﻿<div class="flex flex-col gap-2 items-center mb-2">
+    <button class="py-1 px-2 text-sm text-red-400 rounded border-2 border-red-400 hover:text-white hover:uppercase hover:bg-red-400"
+            @onclick="@(() => NavigationManager.NavigateTo("https://rickroll.it/rickroll.mp4"))">
+        don't press me
+    </button>
     <span class="text-xs text-gray-400">&copy; 2025 <a href="https://github.com/taukuno" class="hover:underline">Taukuno</a>. All rights reserved.</span>
     <span class="text-xs text-gray-400">Latest update: @BuildInfo.LastUpdate</span>
     <a class="text-xs text-gray-400 hover:underline" href="https://github.com/taukuno/plundi">Source code on GitHub</a>

@@ -2,4 +2,8 @@
 
 namespace Plundi.Hammerfall.App.Components;
 
-public partial class SiteInformationDisplay : ComponentBase { }
+public partial class SiteInformationDisplay : ComponentBase
+{
+    [Inject] private NavigationManager NavigationManager { get; set; } = null!;
+
+}

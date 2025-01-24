@@ -78,22 +78,22 @@
                     <div class="flex">
                         <button
                             class="@(_primaryOffensiveAbilityRarity == AbilityRarity.Common ? "from-gray-400 to-gray-500 hover:from-gray-300 hover:to-gray-400 focus:outline-gray-600 text-black font-bold" : "from-gray-950 to-gray-950 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 text-xs bg-gradient-to-r rounded-l border-y border-l focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                            @onclick="() => _primaryOffensiveAbilityRarity = AbilityRarity.Common">
+                            @onclick="() => { _primaryOffensiveAbilityRarity = AbilityRarity.Common; _isSimulationOutdated = true; }">
                             C
                         </button>
                         <button
                             class="@(_primaryOffensiveAbilityRarity == AbilityRarity.Uncommon ? "from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 focus:outline-emerald-600 text-black font-bold" : "text-emerald-400 from-gray-950 to-gray-950 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 text-xs bg-gradient-to-r border-l border-y focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                            @onclick="() => _primaryOffensiveAbilityRarity = AbilityRarity.Uncommon">
+                            @onclick="() => { _primaryOffensiveAbilityRarity = AbilityRarity.Uncommon; _isSimulationOutdated = true; }">
                             U
                         </button>
                         <button
                             class="@(_primaryOffensiveAbilityRarity == AbilityRarity.Rare ? "from-sky-500 to-sky-600 hover:from-sky-40 hover:to-sky-500 focus:outline-sky-600 text-black font-bold" : "text-sky-400 from-gray-950 to-gray-950 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 text-xs bg-gradient-to-r border-l border-y focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                            @onclick="() => _primaryOffensiveAbilityRarity = AbilityRarity.Rare">
+                            @onclick="() => { _primaryOffensiveAbilityRarity = AbilityRarity.Rare; _isSimulationOutdated = true; }">
                             R
                         </button>
                         <button
                             class="@(_primaryOffensiveAbilityRarity == AbilityRarity.Epic ? "from-purple-500 to-purple-600 hover:from-purple-400 hover:to-purple-500 focus:outline-purple-600 text-black font-bold" : "text-purple-400 from-gray-950 to-gray-950 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 text-xs bg-gradient-to-r border border rounded-r focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                            @onclick="() => _primaryOffensiveAbilityRarity = AbilityRarity.Epic">
+                            @onclick="() => { _primaryOffensiveAbilityRarity = AbilityRarity.Epic; _isSimulationOutdated = true; }">
                             E
                         </button>
                     </div>
@@ -120,22 +120,22 @@
                     <div class="flex">
                         <button
                             class="@(_secondaryOffensiveAbilityRarity == AbilityRarity.Common ? "from-gray-400 to-gray-500 hover:from-gray-300 hover:to-gray-400 focus:outline-gray-600 text-black font-bold" : "from-gray-950 to-gray-950 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 text-xs bg-gradient-to-r rounded-l border-y border-l focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                            @onclick="() => _secondaryOffensiveAbilityRarity = AbilityRarity.Common">
+                            @onclick="() => { _secondaryOffensiveAbilityRarity = AbilityRarity.Common; _isSimulationOutdated = true; }">
                             C
                         </button>
                         <button
                             class="@(_secondaryOffensiveAbilityRarity == AbilityRarity.Uncommon ? "from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 focus:outline-emerald-600 text-black font-bold" : "text-emerald-400 from-gray-950 to-gray-950 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 text-xs bg-gradient-to-r border-l border-y focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                            @onclick="() => _secondaryOffensiveAbilityRarity = AbilityRarity.Uncommon">
+                            @onclick="() => { _secondaryOffensiveAbilityRarity = AbilityRarity.Uncommon; _isSimulationOutdated = true; }">
                             U
                         </button>
                         <button
                             class="@(_secondaryOffensiveAbilityRarity == AbilityRarity.Rare ? "from-sky-500 to-sky-600 hover:from-sky-40 hover:to-sky-500 focus:outline-sky-600 text-black font-bold" : "text-sky-400 from-gray-950 to-gray-950 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 text-xs bg-gradient-to-r border-l border-y focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                            @onclick="() => _secondaryOffensiveAbilityRarity = AbilityRarity.Rare">
+                            @onclick="() => { _secondaryOffensiveAbilityRarity = AbilityRarity.Rare; _isSimulationOutdated = true; }">
                             R
                         </button>
                         <button
                             class="@(_secondaryOffensiveAbilityRarity == AbilityRarity.Epic ? "from-purple-500 to-purple-600 hover:from-purple-400 hover:to-purple-500 focus:outline-purple-600 text-black font-bold" : "text-purple-400 from-gray-950 to-gray-950 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 text-xs bg-gradient-to-r border border rounded-r focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                            @onclick="() => _secondaryOffensiveAbilityRarity = AbilityRarity.Epic">
+                            @onclick="() => { _secondaryOffensiveAbilityRarity = AbilityRarity.Epic; _isSimulationOutdated = true; }">
                             E
                         </button>
                     </div>
@@ -163,22 +163,22 @@
                     <div class="flex">
                         <button
                             class="@(_primaryUtilityAbilityRarity == AbilityRarity.Common ? "from-gray-400 to-gray-500 hover:from-gray-300 hover:to-gray-400 focus:outline-gray-600 text-black font-bold" : "from-gray-950 to-gray-950 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 text-xs bg-gradient-to-r rounded-l border-y border-l focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                            @onclick="() => _primaryUtilityAbilityRarity = AbilityRarity.Common">
+                            @onclick="() =>{ _primaryUtilityAbilityRarity = AbilityRarity.Common; _isSimulationOutdated = true; }">
                             C
                         </button>
                         <button
                             class="@(_primaryUtilityAbilityRarity == AbilityRarity.Uncommon ? "from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 focus:outline-emerald-600 text-black font-bold" : "text-emerald-400 from-gray-950 to-gray-950 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 text-xs bg-gradient-to-r border-l border-y focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                            @onclick="() => _primaryUtilityAbilityRarity = AbilityRarity.Uncommon">
+                            @onclick="() => { _primaryUtilityAbilityRarity = AbilityRarity.Uncommon; _isSimulationOutdated = true; }">
                             U
                         </button>
                         <button
                             class="@(_primaryUtilityAbilityRarity == AbilityRarity.Rare ? "from-sky-500 to-sky-600 hover:from-sky-40 hover:to-sky-500 focus:outline-sky-600 text-black font-bold" : "text-sky-400 from-gray-950 to-gray-950 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 text-xs bg-gradient-to-r border-l border-y focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                            @onclick="() => _primaryUtilityAbilityRarity = AbilityRarity.Rare">
+                            @onclick="() =>{ _primaryUtilityAbilityRarity = AbilityRarity.Rare; _isSimulationOutdated = true; }">
                             R
                         </button>
                         <button
                             class="@(_primaryUtilityAbilityRarity == AbilityRarity.Epic ? "from-purple-500 to-purple-600 hover:from-purple-400 hover:to-purple-500 focus:outline-purple-600 text-black font-bold" : "text-purple-400 from-gray-950 to-gray-950 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 text-xs bg-gradient-to-r border border rounded-r focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                            @onclick="() => _primaryUtilityAbilityRarity = AbilityRarity.Epic">
+                            @onclick="() => { _primaryUtilityAbilityRarity = AbilityRarity.Epic; _isSimulationOutdated = true; }">
                             E
                         </button>
                     </div>
@@ -205,22 +205,22 @@
                     <div class="flex">
                         <button
                             class="@(_secondaryUtilityAbilityRarity == AbilityRarity.Common ? "from-gray-400 to-gray-500 hover:from-gray-300 hover:to-gray-400 focus:outline-gray-600 text-black font-bold" : "from-gray-950 to-gray-950 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 text-xs bg-gradient-to-r rounded-l border-y border-l focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                            @onclick="() => _secondaryUtilityAbilityRarity = AbilityRarity.Common">
+                            @onclick="() => { _secondaryUtilityAbilityRarity = AbilityRarity.Common; _isSimulationOutdated = true; }">
                             C
                         </button>
                         <button
                             class="@(_secondaryUtilityAbilityRarity == AbilityRarity.Uncommon ? "from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 focus:outline-emerald-600 text-black font-bold" : "text-emerald-400 from-gray-950 to-gray-950 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 text-xs bg-gradient-to-r border-l border-y focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                            @onclick="() => _secondaryUtilityAbilityRarity = AbilityRarity.Uncommon">
+                            @onclick="() => { _secondaryUtilityAbilityRarity = AbilityRarity.Uncommon; _isSimulationOutdated = true; }">
                             U
                         </button>
                         <button
                             class="@(_secondaryUtilityAbilityRarity == AbilityRarity.Rare ? "from-sky-500 to-sky-600 hover:from-sky-40 hover:to-sky-500 focus:outline-sky-600 text-black font-bold" : "text-sky-400 from-gray-950 to-gray-950 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 text-xs bg-gradient-to-r border-l border-y focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                            @onclick="() => _secondaryUtilityAbilityRarity = AbilityRarity.Rare">
+                            @onclick="() => { _secondaryUtilityAbilityRarity = AbilityRarity.Rare; _isSimulationOutdated = true; }">
                             R
                         </button>
                         <button
                             class="@(_secondaryUtilityAbilityRarity == AbilityRarity.Epic ? "from-purple-500 to-purple-600 hover:from-purple-400 hover:to-purple-500 focus:outline-purple-600 text-black font-bold" : "text-purple-400 from-gray-950 to-gray-950 hover:from-gray-800 hover:to-gray-800 focus:outline-gray-600") p-1 text-xs bg-gradient-to-r border border rounded-r focus:z-10 border-gray-950 focus:outline focus:outline-2 focus:outline-offset-2"
-                            @onclick="() => _secondaryUtilityAbilityRarity = AbilityRarity.Epic">
+                            @onclick="() => { _secondaryUtilityAbilityRarity = AbilityRarity.Epic; _isSimulationOutdated = true; }">
                             E
                         </button>
                     </div>

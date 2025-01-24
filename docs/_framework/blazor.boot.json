@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Plundi.Hammerfall.App",
   "resources": {
-    "hash": "sha256-cd5WFp/c2hUPKlejDULht39yngIl3bqdzjCxZSZ+Qu4=",
+    "hash": "sha256-+Zlci1lg1ZTFtAMgORqGpuZBw8joRbPDoBBas1vkmJs=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Authorization.qe23mgxr71.wasm": "Microsoft.AspNetCore.Authorization.wasm",
       "Microsoft.AspNetCore.Components.Forms.thhw8cz9wu.wasm": "Microsoft.AspNetCore.Components.Forms.wasm",
@@ -32,8 +32,8 @@
       "Microsoft.Win32.Registry.krtg4e9rjb.wasm": "Microsoft.Win32.Registry.wasm",
       "mscorlib.l6md3pggqy.wasm": "mscorlib.wasm",
       "netstandard.lij9csiyuf.wasm": "netstandard.wasm",
-      "Plundi.Hammerfall.App.y85nxehu68.wasm": "Plundi.Hammerfall.App.wasm",
-      "Plundi.Hammerfall.Core.enl2al1fae.wasm": "Plundi.Hammerfall.Core.wasm",
+      "Plundi.Hammerfall.App.bhr7p8n2v8.wasm": "Plundi.Hammerfall.App.wasm",
+      "Plundi.Hammerfall.Core.8jewjwvwvo.wasm": "Plundi.Hammerfall.Core.wasm",
       "System.AppContext.ch56s52ual.wasm": "System.AppContext.wasm",
       "System.Buffers.tlm3i6pt76.wasm": "System.Buffers.wasm",
       "System.Collections.Concurrent.jadgrn67lq.wasm": "System.Collections.Concurrent.wasm",
@@ -252,8 +252,8 @@
       "Microsoft.Win32.Registry.krtg4e9rjb.wasm": "sha256-sMbuu2+9aoI7Hg1VxqD7awy9/80c7+mSA2IpQJ9cIiw=",
       "mscorlib.l6md3pggqy.wasm": "sha256-jZgH0LixLeQKqaq33akQgDGhfE7vbXbHtvCId5HC0Yo=",
       "netstandard.lij9csiyuf.wasm": "sha256-DeeBl9s8G34N3IfYRQ+MoY807amodj8cvpuvUSNaWE4=",
-      "Plundi.Hammerfall.App.y85nxehu68.wasm": "sha256-rjzLa3DhquzGh97ZYENUgypHOkp+y7W7Qu46uKKhX00=",
-      "Plundi.Hammerfall.Core.enl2al1fae.wasm": "sha256-5peHxBCl4LXAc/CSCAnqRCE1DdHxgsx4WxNecFbqt2o=",
+      "Plundi.Hammerfall.App.bhr7p8n2v8.wasm": "sha256-308xr1pHlTxdZuft5Zt2bDVNaciVjDyC/iXYqrlEqT4=",
+      "Plundi.Hammerfall.Core.8jewjwvwvo.wasm": "sha256-lHTcd9xDbAVzYM8Pg64K8nuNJUWK/gIQN+XE3yhV0rg=",
       "System.AppContext.ch56s52ual.wasm": "sha256-wC6hefX/ulHEGaUYIqCLBwi7gA6hQNb0Wx8qMIV9z6s=",
       "System.Buffers.tlm3i6pt76.wasm": "sha256-MY+U3ZlBY/4EXlPMdmcAcxpQ3PtuXA/QTcWMig4lBE4=",
       "System.Collections.Concurrent.jadgrn67lq.wasm": "sha256-S34voGnBqYhqsh0kGAp9FGIPyRaYbwLbZnsMN94DxMQ=",

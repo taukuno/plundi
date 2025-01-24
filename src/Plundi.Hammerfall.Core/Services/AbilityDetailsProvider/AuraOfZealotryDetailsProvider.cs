@@ -172,7 +172,7 @@ public class AuraOfZealotryDetailsProvider : IAbilityDetailsProvider
             new() { Description = "+70% movement speed while inside AoE", Duration = 8m },
             new() { Description = $"increases melee damage (+{bonusMeleeDamage:P0}) while inside AoE", Duration = 8m },
             new() { Description = "increases melee range (12y) while inside AoE", Duration = 8m },
-            new() {Description = "auras persist shortly after leaving AoE", Duration = 1m},
+            new() {Description = "auras persist shortly after leaving AoE", Duration = 1.5m},
             new() { Description = "doesn't allow stealth", Duration = 0m }
         ];
     }
@@ -204,7 +204,7 @@ public class AuraOfZealotryDetailsProvider : IAbilityDetailsProvider
 
         var damageProfile = _damageProfiles[abilityRarity];
         var adjustedBaseHits = damageProfile.BaseHits.Take(numberOfHitsToKeep).ToList();
-        adjustedBaseHits.Add(new() { Damage = 0m, IsRelative = true, Timing = (adjustedBaseHits.LastOrDefault()?.Timing ?? 0) + 1m });
+        adjustedBaseHits.Add(new() { Damage = 0m, IsRelative = true, Timing = (adjustedBaseHits.LastOrDefault()?.Timing ?? 0) + 1.5m });
 
         var adjustedDamageProfile = damageProfile with
         {

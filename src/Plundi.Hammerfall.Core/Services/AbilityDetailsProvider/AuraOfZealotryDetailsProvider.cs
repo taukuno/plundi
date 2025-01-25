@@ -169,6 +169,7 @@ public class AuraOfZealotryDetailsProvider : IAbilityDetailsProvider
         [
             new() { Description = "AoE (12y radius)", Duration = 8m },
             new() { Description = "+12% movement speed passively", Duration = 0m },
+            new() { Description = "+12% movement speed passively for nearby party members (12y)", Duration = 0m },
             new() { Description = "+70% movement speed while inside AoE", Duration = 8m },
             new() { Description = $"increases melee damage (+{bonusMeleeDamage:P0}) while inside AoE", Duration = 8m },
             new() { Description = "increases melee range (12y) while inside AoE", Duration = 8m },

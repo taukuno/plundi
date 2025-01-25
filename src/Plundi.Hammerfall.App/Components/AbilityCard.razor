@@ -203,17 +203,17 @@
                     {
                         if (effect.Duration == 0)
                         {
-                            <div class="py-1 px-3 font-mono rounded shadow bg-gray-950">
-                                <span class="text-xs text-center">@effect.Description</span>
+                            <div class="py-1 px-3 text-center rounded shadow bg-gray-950">
+                                <span class="font-mono text-xs text-center">@effect.Description</span>
                             </div>
                         }
                         else
                         {
-                            <div class="flex shadow">
+                            <div class="flex text-center shadow">
                                 <div class="py-1 px-3 rounded-l bg-gray-950">
                                     <span class="font-mono text-xs text-center">@effect.Description</span>
                                 </div>
-                                <div class="py-1 px-3 rounded-r border-l border-gray-900 bg-gray-950">
+                                <div class="flex items-center py-1 px-3 rounded-r border-l border-gray-900 bg-gray-950">
                                     <span class="font-mono text-xs text-center text-gray-400">@(effect.Duration)s</span>
                                 </div>
                             </div>

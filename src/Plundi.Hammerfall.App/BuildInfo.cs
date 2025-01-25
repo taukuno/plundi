@@ -5,12 +5,12 @@
 //     Changes to this file may cause incorrect behavior and will be lost if
 //     the code is regenerated.
 // </auto-generated>
-//------------------------------------------------------------------------------                
+//------------------------------------------------------------------------------
 
 namespace Plundi.Hammerfall.App
 {
     public static class BuildInfo
     {
-        public static string LastUpdate = "2025-01-24 00:54 UTC";
+        public static string LastUpdate = "2025-01-25 22:02 UTC";
     }
 }
